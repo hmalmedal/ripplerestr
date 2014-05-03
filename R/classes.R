@@ -26,7 +26,7 @@ Balance <- setClass(Class = "Balance",
                     prototype = list(value = 0,
                                      counterparty = ""))
 validBalanceObject <- function(object) {
-    if ((length(object@value) != length(object@currency)) || 
+    if ((length(object@value) != length(object@currency)) ||
             (length(object@value) != length(object@counterparty))) {
         return("Unequal lengths.")
     }

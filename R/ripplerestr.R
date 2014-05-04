@@ -69,10 +69,26 @@ uuid_generator <- function(...) {
 #' Get an account's existing balances. This includes XRP balance (which does not
 #' include a counterparty) and trustline balances.
 #'
+#' @param currency The balance's currency
+#' @param counterparty Counterparty (issuer) of balance
+#'
 #' @export
-account_balances <- function(address, ...) {
+account_balances <- function(address, currency = NULL,
+                             counterparty = NULL, ...) {
+    query <- NULL
+    if (!is.null(currency)) {
+        query <- paste0("currency=", currency)
+        if (!is.null(counterparty)) {
+            query <- paste0(query, "&counterparty=", counterparty)
+        }
+    } else {
+        if (!is.null(counterparty)) {
+            query <- paste0("counterparty=", counterparty)
+        }
+    }
+
     path <- paste0("v1/accounts/", address, "/balances")
-    .GET(path, ...)
+    .GET(path, query = query, ...)
 }
 
 #' Get trustlines

@@ -1,5 +1,11 @@
 #' Ripple REST Client for R
 #'
+#' \code{ripple-rest} is a RESTful API for submitting payments and monitoring
+#' accounts on the Ripple Network.
+#'
+#' @references
+#' \url{https://github.com/ripple/ripple-rest}
+#'
 #' @name ripplerestr
 #' @docType package
 #' @import httr

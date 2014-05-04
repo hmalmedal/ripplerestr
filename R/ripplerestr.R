@@ -9,16 +9,27 @@ NULL
 .GET <- function(path, ...) {
     req <- GET("http://localhost:5990/", path = path, ...)
     .check(req)
+    .success(req)
 
     req
+}
+
+.success <- function(req) {
+    if (.parse(req)$success)
+        return(invisible())
+    else
+        stop(.parse(req)$message, call. = FALSE)
 }
 
 .check <- function(req) {
     if (req$status_code < 400)
         return(invisible())
 
-    message <- content(req, as = "text")
-    stop("HTTP failure: ", req$status_code, "\n  ", message, call. = FALSE)
+    if (req$status_code == 404)
+        stop("HTTP failure: 404\n", content(req, as = "text"), call. = FALSE)
+
+    message <- .parse(req)$message
+    stop("HTTP failure: ", req$status_code, "\n", message, call. = FALSE)
 }
 
 .parse <- function(req) {

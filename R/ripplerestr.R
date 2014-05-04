@@ -44,8 +44,12 @@ NULL
 #' Get an account's existing balances. This includes XRP balance (which does not
 #' include a counterparty) and trustline balances.
 #'
+#' @param address Account address
 #' @param currency The balance's currency
 #' @param counterparty Counterparty (issuer) of balance
+#' @param ... Named parameters – such as \code{scheme}, \code{hostname} and
+#'   \code{port} – passed on to \code{\link{httr}}'s \code{\link{modify_url}}.
+#'   See \code{\link{server_connected}} for details.
 #'
 #' @export
 account_balances <- function(address, currency = NULL,
@@ -70,6 +74,11 @@ account_balances <- function(address, currency = NULL,
 #'
 #' Get an account's existing trustlines
 #'
+#' @param address Account address
+#' @param ... Named parameters – such as \code{scheme}, \code{hostname} and
+#'   \code{port} – passed on to \code{\link{httr}}'s \code{\link{modify_url}}.
+#'   See \code{\link{server_connected}} for details.
+#'
 #' @export
 get_account_trustlines <- function(address, ...) {
     path <- paste0("v1/accounts/", address, "/trustlines")
@@ -79,6 +88,11 @@ get_account_trustlines <- function(address, ...) {
 #' Get settings
 #'
 #' Get an account's settings
+#'
+#' @param address Account address
+#' @param ... Named parameters – such as \code{scheme}, \code{hostname} and
+#'   \code{port} – passed on to \code{\link{httr}}'s \code{\link{modify_url}}.
+#'   See \code{\link{server_connected}} for details.
 #'
 #' @export
 get_account_settings <- function(address, ...) {

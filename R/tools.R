@@ -3,6 +3,10 @@
 #' Retrieve information about the \code{ripple-rest} and connected
 #' \code{rippled}'s current status.
 #'
+#' @param ... Named parameters – such as \code{scheme}, \code{hostname} and
+#'   \code{port} – passed on to \code{\link{httr}}'s \code{\link{modify_url}}.
+#'   See \code{\link{server_connected}} for details.
+#'
 #' @return A list of lists
 #'
 #' @export
@@ -22,6 +26,17 @@ server_status <- function(...) {
 #' \code{rippled} is disconnected from the Ripple Network and unable to process
 #' transactions.
 #'
+#' The default base url is \code{http://localhost:5990/}. This can be changed
+#' via ellipsis.
+#'
+#' @param ... Named parameters – such as \code{scheme}, \code{hostname} and
+#'   \code{port} – passed on to \code{\link{httr}}'s \code{\link{modify_url}}.
+#'
+#' @examples
+#' \dontrun{
+#' # Use https://example.com:80/
+#' server_connected(scheme = "https", hostname = "example.com", port = 80)}
+#'
 #' @return TRUE or FALSE
 #'
 #' @export
@@ -35,6 +50,10 @@ server_connected <- function(...) {
 #'
 #' A UUID v4 generator, which can be used if the client wishes to use UUIDs for
 #' the \code{client_resource_id} but does not have a UUID generator handy.
+#'
+#' @param ... Named parameters – such as \code{scheme}, \code{hostname} and
+#'   \code{port} – passed on to \code{\link{httr}}'s \code{\link{modify_url}}.
+#'   See \code{\link{server_connected}} for details.
 #'
 #' @return Character vector of length 1
 #'

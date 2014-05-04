@@ -10,4 +10,6 @@ Description: This is a client that interacts with the Ripple
 License: MIT
 Imports:
     httr
+Suggests:
+    jsonlite
 Encoding: UTF-8

@@ -84,3 +84,13 @@ get_account_trustlines <- function(address, ...) {
     path <- paste0("v1/accounts/", address, "/trustlines")
     .GET(path, ...)
 }
+
+#' Get settings
+#'
+#' Get an account's settings
+#'
+#' @export
+get_account_settings <- function(address, ...) {
+    path <- paste0("v1/accounts/", address, "/settings")
+    .GET(path, ...)
+}

@@ -3,10 +3,15 @@
 #' Retrieve information about the \code{ripple-rest} and connected
 #' \code{rippled}'s current status.
 #'
+#' @return A list of lists
+#'
 #' @export
 server_status <- function(...) {
     path <- "v1/server"
-    .GET(path, ...)
+    req <- .GET(path, ...)
+    object <- .parse(req)
+    object["success"] <- NULL
+    object
 }
 
 #' Get connected state

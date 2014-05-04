@@ -31,8 +31,11 @@ server_connected <- function(...) {
 #' A UUID v4 generator, which can be used if the client wishes to use UUIDs for
 #' the \code{client_resource_id} but does not have a UUID generator handy.
 #'
+#' @return Character vector of length 1
+#'
 #' @export
 uuid_generator <- function(...) {
     path <- "v1/uuid"
-    .GET(path, ...)
+    req <- .GET(path, ...)
+    .parse(req)$uuid
 }

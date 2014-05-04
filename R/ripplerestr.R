@@ -58,10 +58,13 @@ server_status <- function(...) {
 #' \code{rippled} is disconnected from the Ripple Network and unable to process
 #' transactions.
 #'
+#' @return TRUE or FALSE
+#'
 #' @export
 server_connected <- function(...) {
     path <- "v1/server/connected"
-    .GET(path, ...)
+    req <- .GET(path, ...)
+    .parse(req)$connected
 }
 
 #' Get UUID

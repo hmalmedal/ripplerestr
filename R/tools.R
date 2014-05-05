@@ -5,12 +5,12 @@
 #'
 #' @param ... Named parameters – such as \code{scheme}, \code{hostname} and
 #'   \code{port} – passed on to \code{\link{httr}}'s \code{\link{modify_url}}.
-#'   See \code{\link{server_connected}} for details.
+#'   See \code{\link{is_server_connected}} for details.
 #'
 #' @return A list of lists
 #'
 #' @export
-server_status <- function(...) {
+get_server_status <- function(...) {
     path <- "v1/server"
     req <- .GET(path, ...)
     object <- .parse(req)
@@ -35,12 +35,12 @@ server_status <- function(...) {
 #' @examples
 #' \dontrun{
 #' # Use https://example.com:80/
-#' server_connected(scheme = "https", hostname = "example.com", port = 80)}
+#' is_server_connected(scheme = "https", hostname = "example.com", port = 80)}
 #'
 #' @return TRUE or FALSE
 #'
 #' @export
-server_connected <- function(...) {
+is_server_connected <- function(...) {
     path <- "v1/server/connected"
     req <- .GET(path, ...)
     .parse(req)$connected
@@ -53,12 +53,12 @@ server_connected <- function(...) {
 #'
 #' @param ... Named parameters – such as \code{scheme}, \code{hostname} and
 #'   \code{port} – passed on to \code{\link{httr}}'s \code{\link{modify_url}}.
-#'   See \code{\link{server_connected}} for details.
+#'   See \code{\link{is_server_connected}} for details.
 #'
 #' @return Character vector of length 1
 #'
 #' @export
-uuid_generator <- function(...) {
+generate_uuid <- function(...) {
     path <- "v1/uuid"
     req <- .GET(path, ...)
     .parse(req)$uuid

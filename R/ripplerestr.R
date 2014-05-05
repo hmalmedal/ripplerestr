@@ -55,11 +55,11 @@ NULL
 #' @param counterparty Counterparty (issuer) of balance
 #' @param ... Named parameters – such as \code{scheme}, \code{hostname} and
 #'   \code{port} – passed on to \code{\link{httr}}'s \code{\link{modify_url}}.
-#'   See \code{\link{server_connected}} for details.
+#'   See \code{\link{is_server_connected}} for details.
 #'
 #' @export
-account_balances <- function(address, currency = NULL,
-                             counterparty = NULL, ...) {
+get_account_balances <- function(address, currency = NULL,
+                                 counterparty = NULL, ...) {
     query <- NULL
     if (!is.null(currency)) {
         query <- paste0("currency=", currency)
@@ -83,7 +83,7 @@ account_balances <- function(address, currency = NULL,
 #' @param address Account address
 #' @param ... Named parameters – such as \code{scheme}, \code{hostname} and
 #'   \code{port} – passed on to \code{\link{httr}}'s \code{\link{modify_url}}.
-#'   See \code{\link{server_connected}} for details.
+#'   See \code{\link{is_server_connected}} for details.
 #'
 #' @export
 get_account_trustlines <- function(address, ...) {
@@ -98,7 +98,7 @@ get_account_trustlines <- function(address, ...) {
 #' @param address Account address
 #' @param ... Named parameters – such as \code{scheme}, \code{hostname} and
 #'   \code{port} – passed on to \code{\link{httr}}'s \code{\link{modify_url}}.
-#'   See \code{\link{server_connected}} for details.
+#'   See \code{\link{is_server_connected}} for details.
 #'
 #' @export
 get_account_settings <- function(address, ...) {

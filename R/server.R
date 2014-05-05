@@ -1,7 +1,7 @@
-#' Get server info
+#' Get Server Status
 #'
-#' Retrieve information about the \code{ripple-rest} and connected
-#' \code{rippled}'s current status.
+#' Retrieve information about the current status of the \code{ripple-rest} API
+#' and the \code{rippled} server it is connected to.
 #'
 #' @param ... Named parameters – such as \code{scheme}, \code{hostname} and
 #'   \code{port} – passed on to \code{\link{httr}}'s \code{\link{modify_url}}.
@@ -18,13 +18,12 @@ get_server_status <- function(...) {
     object
 }
 
-#' Get connected state
+#' Check Connection State
 #'
-#' A simple endpoint that can be used to check if \code{ripple-rest} is
-#' connected to a \code{rippled} and is ready to serve. If used before querying
-#' the other endpoints this can be used to centralize the logic to handle if
-#' \code{rippled} is disconnected from the Ripple Network and unable to process
-#' transactions.
+#' Checks to see if the \code{ripple-rest} API is currently connected to a
+#' \code{rippled} server, and is ready to be used. This provides a quick and
+#' easy way to check to see if the API is up and running, before attempting to
+#' process transactions.
 #'
 #' The default base url is \code{http://localhost:5990/}. This can be changed
 #' via ellipsis.

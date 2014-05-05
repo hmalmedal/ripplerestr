@@ -1,11 +1,10 @@
-#' Get balances
+#' Account Balances
 #'
-#' Get an account's existing balances. This includes XRP balance (which does not
-#' include a counterparty) and trustline balances.
+#' Retrieve the current balances for the given Ripple account.
 #'
-#' @param address Account address
-#' @param currency The balance's currency
-#' @param counterparty Counterparty (issuer) of balance
+#' @param address The Ripple address of the desired account
+#' @param currency Three letter currency denominations
+#' @param counterparty The Ripple address of the counterparty trusted
 #' @param ... Named parameters – such as \code{scheme}, \code{hostname} and
 #'   \code{port} – passed on to \code{\link{httr}}'s \code{\link{modify_url}}.
 #'   See \code{\link{is_server_connected}} for details.
@@ -24,16 +23,17 @@ get_account_balances <- function(address, currency = NULL,
             query <- paste0("counterparty=", counterparty)
         }
     }
-    
+
     path <- paste0("v1/accounts/", address, "/balances")
     .GET(path, query = query, ...)
 }
 
-#' Get settings
+#' Account Settings
 #'
-#' Get an account's settings
+#' You can retrieve an account's settings. The server will return a list of the
+#' current settings in force for the given account.
 #'
-#' @param address Account address
+#' @param address The Ripple address of the desired account
 #' @param ... Named parameters – such as \code{scheme}, \code{hostname} and
 #'   \code{port} – passed on to \code{\link{httr}}'s \code{\link{modify_url}}.
 #'   See \code{\link{is_server_connected}} for details.

@@ -1,7 +1,8 @@
-#' Get UUID
+#' Create Client Resource ID
 #'
-#' A UUID v4 generator, which can be used if the client wishes to use UUIDs for
-#' the \code{client_resource_id} but does not have a UUID generator handy.
+#' This endpoint creates a universally unique identifier (UUID) value which can
+#' be used to calculate a client resource ID for a payment. This can be useful
+#' if the application does not have a UUID generator handy.
 #'
 #' @param ... Named parameters – such as \code{scheme}, \code{hostname} and
 #'   \code{port} – passed on to \code{\link{httr}}'s \code{\link{modify_url}}.

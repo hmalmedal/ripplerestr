@@ -2,6 +2,9 @@
 #'
 #' Retrieve the current balances for the given Ripple account.
 #'
+#' The parameters \code{currency} and \code{counterparty} are supported to
+#' provide additional filtering.
+#'
 #' @param address The Ripple address of the desired account
 #' @param currency Three letter currency denominations
 #' @param counterparty The Ripple address of the counterparty trusted

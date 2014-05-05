@@ -11,5 +11,6 @@ License: MIT + file LICENSE
 Imports:
     httr
 Suggests:
-    jsonlite
+    jsonlite,
+    methods
 Encoding: UTF-8

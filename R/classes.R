@@ -13,9 +13,17 @@ validCurrencyObject <- function(object) {
     return(TRUE)
 }
 setValidity("Currency", validCurrencyObject)
+
 #' Balance
 #'
 #' A simplified representation of an account Balance
+#'
+#' @slot value Object of class \code{"numeric"}. The quantity of the currency.
+#' @slot currency Object of class \code{"\link{Currency}"}. The currency
+#'   expressed as a three-character code.
+#' @slot counterparty Object of class \code{"character"}. The Ripple account
+#'   address of the currency's issuer or gateway, or an empty string if the
+#'   currency is XRP.
 #'
 #' @export Balance
 #' @exportClass Balance

@@ -1,22 +1,3 @@
-#' Currency
-#'
-#' The three-character code or hex string used to denote currencies
-#'
-#' @examples
-#' USD <- Currency("USD")
-#' XAU <- Currency("015841551A748AD2C1F76FF6ECB0CCCD00000000")
-#'
-#' @export Currency
-#' @exportClass Currency
-Currency <- setClass("Currency", contains = "character")
-validCurrencyObject <- function(object) {
-    if (!all(grepl("^([a-zA-Z0-9]{3}|[A-Fa-f0-9]{40})$", object))) {
-        return("Invalid currency.")
-    }
-    return(TRUE)
-}
-setValidity("Currency", validCurrencyObject)
-
 #' Balance
 #'
 #' A simplified representation of an account Balance
@@ -50,7 +31,7 @@ setValidity("Balance", validBalanceObject)
 #'
 setMethod("show",
           signature(object = "Balance"),
-          function (object) 
+          function (object)
           {
               print(sub("\\+$", "",
                         paste0(object@value,
@@ -64,7 +45,7 @@ setMethod("show",
 #'
 setMethod("length",
           signature(x = "Balance"),
-          function (x) 
+          function (x)
           {
               length(x@value)
           }
@@ -75,7 +56,7 @@ setMethod("length",
 #' @param ... ignored
 setMethod("[",
           signature(x = "Balance"),
-          function (x, i, j, ..., drop = TRUE) 
+          function (x, i, j, ..., drop = TRUE)
           {
               Balance(value = x@value[i],
                       currency = Currency(x@currency[i]),
@@ -88,7 +69,7 @@ setMethod("[",
 #' @param ... ignored
 setMethod("[<-",
           signature(x = "Balance"),
-          function (x, i, j, ..., value) 
+          function (x, i, j, ..., value)
           {
               if(!is(value, "Balance")) stop("wrong class")
               .value <- x@value
@@ -102,21 +83,3 @@ setMethod("[<-",
                       counterparty = .counterparty)
           }
 )
-
-#' RippleAddress
-#'
-#' A Ripple account address
-#'
-#' @examples
-#' root_account <- RippleAddress("rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh")
-#'
-#' @export RippleAddress
-#' @exportClass RippleAddress
-RippleAddress <- setClass("RippleAddress", contains = "character")
-validRippleAddressObject <- function(object) {
-    if (!all(grepl("^r[1-9A-HJ-NP-Za-km-z]{25,33}$", object))) {
-        return("Invalid address.")
-    }
-    return(TRUE)
-}
-setValidity("RippleAddress", validRippleAddressObject)

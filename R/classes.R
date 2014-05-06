@@ -46,6 +46,62 @@ validBalanceObject <- function(object) {
     return(TRUE)
 }
 setValidity("Balance", validBalanceObject)
+#' Show
+#'
+setMethod("show",
+          signature(object = "Balance"),
+          function (object) 
+          {
+              print(sub("\\+$", "",
+                        paste0(object@value,
+                               "+",
+                               object@currency,
+                               "+",
+                               object@counterparty)))
+          }
+)
+#' Length
+#'
+setMethod("length",
+          signature(x = "Balance"),
+          function (x) 
+          {
+              length(x@value)
+          }
+)
+#' Extract
+#'
+#' @param j ignored
+#' @param ... ignored
+setMethod("[",
+          signature(x = "Balance"),
+          function (x, i, j, ..., drop = TRUE) 
+          {
+              Balance(value = x@value[i],
+                      currency = Currency(x@currency[i]),
+                      counterparty = x@counterparty[i])
+          }
+)
+#' Replace
+#'
+#' @param j ignored
+#' @param ... ignored
+setMethod("[<-",
+          signature(x = "Balance"),
+          function (x, i, j, ..., value) 
+          {
+              if(!is(value, "Balance")) stop("wrong class")
+              .value <- x@value
+              .currency <- x@currency
+              .counterparty <- x@counterparty
+              .value[i] <- value@value
+              .currency[i] <- value@currency
+              .counterparty[i] <- value@counterparty
+              Balance(value = .value,
+                      currency = .currency,
+                      counterparty = .counterparty)
+          }
+)
 
 #' RippleAddress
 #'

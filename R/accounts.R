@@ -12,6 +12,13 @@
 #'   \code{port} – passed on to \code{\link{httr}}'s \code{\link{modify_url}}.
 #'   See \code{\link{is_server_connected}} for details.
 #'
+#' @examples
+#' root_account <- RippleAddress("rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh")
+#' \dontrun{
+#' get_account_balances(root_account)}
+#'
+#' @return An object of class \code{"\link{Balance}"}
+#'
 #' @export
 get_account_balances <- function(address, currency = NULL,
                                  counterparty = NULL, ...) {
@@ -28,7 +35,17 @@ get_account_balances <- function(address, currency = NULL,
     }
 
     path <- paste0("v1/accounts/", address, "/balances")
-    .GET(path, query = query, ...)
+    req <- .GET(path, query = query, ...)
+    list_of_balances <- .parse(req)$balances
+    values <- sapply(list_of_balances, function(element) element$value)
+    values <- as.numeric(values)
+    currencies <- sapply(list_of_balances,
+                         function(element) element$currency)
+    currencies <- Currency(currencies)
+    counterparties <- sapply(list_of_balances,
+                             function(element) element$counterparty)
+    Balance(value = values, currency = currencies,
+            counterparty = counterparties)
 }
 
 #' Account Settings

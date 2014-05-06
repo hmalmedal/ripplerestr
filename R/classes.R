@@ -2,6 +2,10 @@
 #'
 #' The three-character code or hex string used to denote currencies
 #'
+#' @examples
+#' USD <- Currency("USD")
+#' XAU <- Currency("015841551A748AD2C1F76FF6ECB0CCCD00000000")
+#'
 #' @export Currency
 #' @exportClass Currency
 Currency <- setClass("Currency", contains = "character")
@@ -46,6 +50,9 @@ setValidity("Balance", validBalanceObject)
 #' RippleAddress
 #'
 #' A Ripple account address
+#'
+#' @examples
+#' root_account <- RippleAddress("rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh")
 #'
 #' @export RippleAddress
 #' @exportClass RippleAddress

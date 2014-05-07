@@ -55,6 +55,21 @@ validResourceIdObject <- function(object) {
 }
 setValidity("ResourceId", validResourceIdObject)
 
+#' UINT32
+#'
+#' A representation of an unsigned 32-bit integer (0-4294967295)
+#'
+#' @export UINT32
+#' @exportClass UINT32
+UINT32 <- setClass("UINT32", contains = "numeric")
+validUINT32Object <- function(object) {
+    if (!all(object >= 0 & object < 2^32 & object %% 1 == 0)) {
+        return("Invalid number.")
+    }
+    return(TRUE)
+}
+setValidity("UINT32", validUINT32Object)
+
 #' Balance
 #'
 #' A simplified representation of an account Balance

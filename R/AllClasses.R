@@ -35,6 +35,26 @@ validRippleAddressObject <- function(object) {
 }
 setValidity("RippleAddress", validRippleAddressObject)
 
+#' ResourceId
+#'
+#' A client-supplied unique identifier (ideally a UUID) for this transaction
+#' used to prevent duplicate payments and help confirm the transaction's final
+#' status. All ASCII printable characters are allowed. Note that 256-bit hex
+#' strings are disallowed because of the potential confusion with transaction
+#' hashes.
+#'
+#' @export ResourceId
+#' @exportClass ResourceId
+ResourceId <- setClass("ResourceId", contains = "character")
+validResourceIdObject <- function(object) {
+    if (!all(grepl("^(?!$|^[A-Fa-f0-9]{64})[ -~]{1,255}$", object,
+                   perl = T))) {
+        return("Invalid resource ID.")
+    }
+    return(TRUE)
+}
+setValidity("ResourceId", validResourceIdObject)
+
 #' Balance
 #'
 #' A simplified representation of an account Balance

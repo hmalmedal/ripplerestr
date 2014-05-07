@@ -8,11 +8,11 @@
 #'   \code{port} – passed on to \code{\link{httr}}'s \code{\link{modify_url}}.
 #'   See \code{\link{is_server_connected}} for details.
 #'
-#' @return Character vector of length 1
+#' @return An object of class \code{"\link{ResourceId}"}
 #'
 #' @export
 generate_uuid <- function(...) {
     path <- "v1/uuid"
     req <- .GET(path, ...)
-    .parse(req)$uuid
+    ResourceId(.parse(req)$uuid)
 }

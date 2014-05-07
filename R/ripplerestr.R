@@ -9,6 +9,7 @@
 #' @name ripplerestr
 #' @docType package
 #' @import httr
+#' @import lubridate
 NULL
 
 # Helper functions from httr vignette.

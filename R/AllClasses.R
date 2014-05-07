@@ -35,6 +35,21 @@ validRippleAddressObject <- function(object) {
 }
 setValidity("RippleAddress", validRippleAddressObject)
 
+#' Hash256
+#'
+#' The hex representation of a 256-bit hash
+#'
+#' @export Hash256
+#' @exportClass Hash256
+Hash256 <- setClass("Hash256", contains = "character")
+validHash256Object <- function(object) {
+    if (!all(grepl("^$|^[A-Fa-f0-9]{64}$", object))) {
+        return("Invalid hash.")
+    }
+    return(TRUE)
+}
+setValidity("Hash256", validHash256Object)
+
 #' ResourceId
 #'
 #' A client-supplied unique identifier (ideally a UUID) for this transaction

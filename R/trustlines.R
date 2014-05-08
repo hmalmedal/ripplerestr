@@ -28,5 +28,35 @@ get_account_trustlines <- function(address, currency = NULL,
     }
 
     path <- paste0("v1/accounts/", address, "/trustlines")
-    .GET(path, query = query, ...)
+    req <- .GET(path, query = query, ...)
+    trustlines <- .parse(req)$trustlines
+    accounts <- sapply(trustlines, function(element) element$account)
+    n <- length(accounts)
+    accounts <- RippleAddress(accounts)
+    counterparties <- sapply(trustlines, function(element) element$counterparty)
+    counterparties <- RippleAddress(counterparties)
+    currencies <- sapply(trustlines, function(element) element$currency)
+    currencies <- Currency(currencies)
+    limits <- sapply(trustlines, function(element) element$limit)
+    limits <- as.numeric(limits)
+    reciprocated_limits <- sapply(trustlines,
+                                  function(element) element$reciprocated__limit)
+    reciprocated_limits <- as.numeric(reciprocated_limits)
+    .account_allows_rippling <-
+        sapply(trustlines, function(element) element$account_allows_rippling)
+    .counterparty_allows_rippling <-
+        sapply(trustlines,
+               function(element) element$counterparty_allows_rippling)
+    ledgers <- rep(NA_real_, n)
+    hashes <- character(n)
+    hashes <- Hash256(hashes)
+    Trustline(account = accounts,
+              counterparty = counterparties,
+              currency = currencies,
+              limit = limits,
+              reciprocated_limit = reciprocated_limits,
+              account_allows_rippling = .account_allows_rippling,
+              counterparty_allows_rippling = .counterparty_allows_rippling,
+              ledger = ledgers,
+              hash = hashes)
 }

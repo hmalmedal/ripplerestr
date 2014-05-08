@@ -16,3 +16,12 @@ setMethod("length",
               length(x@account)
           }
 )
+#' Length for Trustline class
+#'
+setMethod("length",
+          signature(x = "Trustline"),
+          function (x)
+          {
+              length(x@account)
+          }
+)

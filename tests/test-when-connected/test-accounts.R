@@ -6,6 +6,9 @@ result <- get_account_balances(root_account)
 
 test_that("class is correct", {
     expect_that(is(result, "Balance"), is_true())
+    expect_that(is(result@value, "numeric"), is_true())
+    expect_that(is(result@currency, "Currency"), is_true())
+    expect_that(is(result@counterparty, "character"), is_true())
 })
 
 test_that("first result is XRP", {

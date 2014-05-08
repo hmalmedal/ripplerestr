@@ -34,7 +34,10 @@ get_server_status <- function(...) {
 #' @examples
 #' \dontrun{
 #' # Use https://example.com:80/
-#' is_server_connected(scheme = "https", hostname = "example.com", port = 80)}
+#' is_server_connected(scheme = "https", hostname = "example.com", port = 80)
+#' # alternatively
+#' host <- list(scheme = "https", hostname = "example.com", port = 80)
+#' do.call(is_server_connected, host)}
 #'
 #' @return TRUE or FALSE
 #'

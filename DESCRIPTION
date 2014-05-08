@@ -13,7 +13,8 @@ Imports:
     lubridate
 Suggests:
     jsonlite,
-    methods
+    methods,
+    testthat
 URL: https://github.com/hmalmedal/ripplerestr
 BugReports: https://github.com/hmalmedal/ripplerestr/issues
 Encoding: UTF-8

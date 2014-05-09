@@ -50,6 +50,21 @@ validHash256Object <- function(object) {
 }
 setValidity("Hash256", validHash256Object)
 
+#' Hash128
+#'
+#' The hex representation of a 128-bit hash
+#'
+#' @export Hash128
+#' @exportClass Hash128
+Hash128 <- setClass("Hash128", contains = "character")
+validHash128Object <- function(object) {
+    if (!all(grepl("^$|^[A-Fa-f0-9]{32}$", object))) {
+        return("Invalid hash.")
+    }
+    return(TRUE)
+}
+setValidity("Hash128", validHash128Object)
+
 #' ResourceId
 #'
 #' A client-supplied unique identifier (ideally a UUID) for this transaction

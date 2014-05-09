@@ -12,6 +12,14 @@
 #' @import lubridate
 NULL
 
+.are_slot_lengths_equal <- function(object) {
+    if(!isS4(object)) stop("Not S4 object")
+    l <- sapply(slotNames(object),
+                function(slotname) length(slot(object, slotname)))
+    l <- unique(l)
+    if(length(l) > 1) F else T
+}
+
 # Helper functions from httr vignette.
 .GET <- function(path, ...) {
     req <- GET("http://localhost:5990/", path = path, ...)

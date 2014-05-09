@@ -118,10 +118,8 @@ Balance <- setClass(Class = "Balance",
                               currency = "Currency",
                               counterparty = "character"))
 validBalanceObject <- function(object) {
-    if ((length(object@value) != length(object@currency)) ||
-            (length(object@value) != length(object@counterparty))) {
+    if (!.are_slot_lengths_equal(object))
         return("Unequal lengths.")
-    }
     if (!all(grepl("^$|^r[1-9A-HJ-NP-Za-km-z]{25,33}$",
                    object@counterparty))) {
         return("Invalid counterparty.")
@@ -181,19 +179,8 @@ Notification <- setClass("Notification",
                                    previous_notification_url = "character",
                                    next_notification_url = "character"))
 validNotificationObject <- function(object) {
-    n <- length(object@account)
-    if ((n != length(object@type)) ||
-            (n != length(object@direction)) ||
-            (n != length(object@state)) ||
-            (n != length(object@result)) ||
-            (n != length(object@ledger)) ||
-            (n != length(object@hash)) ||
-            (n != length(object@timestamp)) ||
-            (n != length(object@transaction_url)) ||
-            (n != length(object@previous_notification_url)) ||
-            (n != length(object@next_notification_url))) {
+    if (!.are_slot_lengths_equal(object))
         return("Unequal lengths.")
-    }
     if (!all(grepl("^payment|order|trustline|accountsettings$",
                    object@type))) {
         return("Invalid type.")
@@ -270,17 +257,8 @@ Trustline <- setClass("Trustline",
                                 ledger = "numeric",
                                 hash = "Hash256"))
 validTrustlineObject <- function(object) {
-    n <- length(object@account)
-    if ((n != length(object@counterparty)) ||
-            (n != length(object@currency)) ||
-            (n != length(object@limit)) ||
-            (n != length(object@reciprocated_limit)) ||
-            (n != length(object@account_allows_rippling)) ||
-            (n != length(object@counterparty_allows_rippling)) ||
-            (n != length(object@ledger)) ||
-            (n != length(object@hash))) {
+    if (!.are_slot_lengths_equal(object))
         return("Unequal lengths.")
-    }
     return(TRUE)
 }
 setValidity("Trustline", validTrustlineObject)

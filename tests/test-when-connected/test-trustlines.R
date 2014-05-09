@@ -4,7 +4,7 @@ context("trustlines")
 root_account <- RippleAddress("rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh")
 result <- get_account_trustlines(root_account)
 
-test_that("class is correct", {
+test_that("classes are correct", {
     expect_that(is(result, "Trustline"), is_true())
     expect_that(is(result@account, "RippleAddress"), is_true())
     expect_that(is(result@counterparty, "RippleAddress"), is_true())

@@ -4,7 +4,7 @@ context("accounts")
 root_account <- RippleAddress("rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh")
 result <- get_account_balances(root_account)
 
-test_that("class is correct", {
+test_that("classes are correct", {
     expect_that(is(result, "Balance"), is_true())
     expect_that(is(result@value, "numeric"), is_true())
     expect_that(is(result@currency, "Currency"), is_true())
@@ -26,7 +26,7 @@ test_that("slot lengths are equal to object length", {
 black_hole <- RippleAddress("rJp2sUmi2iTbWzqhxoYnNAg4QqCxgByCTy")
 result <- get_account_settings(black_hole)
 
-test_that("class is correct", {
+test_that("classes are correct", {
     expect_that(is(result, "AccountSettings"), is_true())
     expect_that(is(result@account, "RippleAddress"), is_true())
     expect_that(is(result@regular_key, "RippleAddress"), is_true())

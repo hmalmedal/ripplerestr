@@ -1,6 +1,6 @@
 context("RippleAddress")
 
-test_that("invalid addressses fail", {
+test_that("invalid addresses fail", {
     expect_that(RippleAddress("rrrrrrrrr"), throws_error())
 })
 

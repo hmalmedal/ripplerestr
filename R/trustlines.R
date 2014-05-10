@@ -12,6 +12,8 @@
 #'   \code{port} – passed on to \code{\link{httr}}'s \code{\link{modify_url}}.
 #'   See \code{\link{is_server_connected}} for details.
 #'
+#' @return An object of class \code{"\link{Trustline}"}
+#'
 #' @export
 get_account_trustlines <- function(address, currency = NULL,
                                    counterparty = NULL, ...) {

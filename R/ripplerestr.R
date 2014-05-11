@@ -40,9 +40,6 @@ NULL
     if (req$status_code < 400)
         return(invisible())
 
-    if (req$status_code == 404)
-        stop("HTTP failure: 404\n", content(req, as = "text"), call. = FALSE)
-
     message <- .parse(req)$message
     stop("HTTP failure: ", req$status_code, "\n", message, call. = FALSE)
 }

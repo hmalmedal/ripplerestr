@@ -265,7 +265,7 @@ setValidity("Notification", validNotificationObject)
 # ' @slot authorized_by_counterparty Object of class \code{"logical"}. Set to
 # '   \code{TRUE} if the counterparty has explicitly authorized the account to
 # '   hold currency it issues. This is only necessary if the counterparty's
-# '   settings include \code{require_authorization_for_incoming_trustlines.}
+# '   settings include \code{require_authorization_for_incoming_trustlines}.
 ################################################################################
 #' @slot account_allows_rippling Object of class \code{"logical"}. If
 #'   \code{TRUE} it indicates that the account allows pairwise rippling out
@@ -323,7 +323,7 @@ setValidity("Trustline", validTrustlineObject)
 #' @slot transfer_rate Object of class \code{"\link{UINT32}"}.
 #' @slot require_destination_tag Object of class \code{"logical"}. If set to
 #'   \code{TRUE} incoming payments will only be validated if they include a
-#'   \code{destination_tag.} This may be used primarily by gateways that operate
+#'   \code{destination_tag}. This may be used primarily by gateways that operate
 #'   exclusively with hosted wallets.
 #' @slot require_authorization Object of class \code{"logical"}. If set to
 #'   \code{TRUE} incoming trustlines will only be validated if this account

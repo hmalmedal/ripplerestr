@@ -20,6 +20,33 @@ NULL
     if(length(l) > 1) F else T
 }
 
+.parse_list_of_settings <- function(address, list_of_settings,
+                                    ledger = numeric(),
+                                    hash = Hash256()) {
+    list_names <- names(list_of_settings)
+    result <- AccountSettings(account = RippleAddress(address))
+    slot_names <- slotNames(result)
+    list_diff_slot <- setdiff(list_names, slot_names)
+    if(length(list_diff_slot) > 0) warning("Unknown settings")
+    settings_names <- intersect(slot_names, list_names)
+    slots_classes <- getSlots("AccountSettings")
+    S4_slots <- lapply(slots_classes,
+                       function(slotclass) isS4(do.call(slotclass, list())))
+    for (i in 1:length(settings_names)) {
+        s_name <- settings_names[i]
+        if(S4_slots[s_name]==T)
+            slot(result, s_name) <- do.call(slots_classes[s_name],
+                                            unname(list_of_settings[s_name]))
+        else
+            slot(result, s_name) <- unname(unlist(list_of_settings[s_name]))
+    }
+    ledger = as.numeric(ledger)
+    result@ledger = ledger
+    hash <- Hash256(hash)
+    result@hash = hash
+    result
+}
+
 # Helper functions from httr vignette.
 .GET <- function(path, ...) {
     req <- GET("http://localhost:5990/", path = path, ...)

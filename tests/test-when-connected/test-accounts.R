@@ -55,3 +55,62 @@ test_that("slot values are correct", {
     expect_that(result@disable_master, equals(T))
     expect_that(result@transaction_sequence, equals(UINT32(14)))
 })
+
+address <- RippleAddress("rJMNfiJTwXHcMdB4SpxMgL3mvV4xUVHDnd")
+secret <- "snQ9dAZHB3rvqcgRqjbyWHJDeVJbA"
+
+test_that("transfer rate less than 1 gives error", {
+    expect_that(change_account_settings(address = address,
+                                        secret = secret,
+                                        transfer_rate = 0.9),
+                throws_error())
+})
+
+test_that("no provided settings gives error", {
+    expect_that(change_account_settings(address = address,
+                                        secret = secret),
+                throws_error())
+})
+
+transfer_rate = 18/17
+domain <- "example.com"
+email_hash <- "B58996C504C5638798EB6B511E6F49AF"
+
+result <- change_account_settings(address = address,
+                                  secret = secret,
+                                  transfer_rate = transfer_rate,
+                                  domain = domain,
+                                  email_hash = email_hash,
+                                  disallow_xrp = T,
+                                  require_authorization = F,
+                                  require_destination_tag = T)
+
+test_that("classes are correct", {
+    expect_that(is(result, "AccountSettings"), is_true())
+    expect_that(is(result@account, "RippleAddress"), is_true())
+    expect_that(is(result@regular_key, "RippleAddress"), is_true())
+    expect_that(is(result@domain, "character"), is_true())
+    expect_that(is(result@email_hash, "Hash128"), is_true())
+    expect_that(is(result@message_key, "character"), is_true())
+    expect_that(is(result@transfer_rate, "UINT32"), is_true())
+    expect_that(is(result@require_destination_tag, "logical"), is_true())
+    expect_that(is(result@require_authorization, "logical"), is_true())
+    expect_that(is(result@disallow_xrp, "logical"), is_true())
+    expect_that(is(result@password_spent, "logical"), is_true())
+    expect_that(is(result@disable_master, "logical"), is_true())
+    expect_that(is(result@transaction_sequence, "UINT32"), is_true())
+    expect_that(is(result@trustline_count, "UINT32"), is_true())
+    expect_that(is(result@ledger, "numeric"), is_true())
+    expect_that(is(result@hash, "Hash256"), is_true())
+})
+
+test_that("slot values are correct", {
+    expect_that(result@account, equals(address))
+    expect_that(result@transfer_rate,
+                equals(UINT32(round(transfer_rate * 1e9))))
+    expect_that(result@domain, equals(domain))
+    expect_that(result@email_hash, equals(Hash128(email_hash)))
+    expect_that(result@disallow_xrp, is_true())
+    expect_that(result@require_authorization, is_false())
+    expect_that(result@require_destination_tag, is_true())
+})

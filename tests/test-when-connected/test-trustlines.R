@@ -29,3 +29,40 @@ test_that("slot lengths are equal to object length", {
     expect_that(n, equals(length(result@ledger)))
     expect_that(n, equals(length(result@hash)))
 })
+
+address <- "rJMNfiJTwXHcMdB4SpxMgL3mvV4xUVHDnd"
+secret <- "snQ9dAZHB3rvqcgRqjbyWHJDeVJbA"
+limit <- 1000
+currency <- Currency("USD")
+counterparty <- root_account
+amount <- Amount(value = limit,
+                 currency = currency,
+                 counterparty = counterparty)
+result <- set_account_trustline(address, secret, amount)
+
+test_that("classes are correct", {
+    expect_that(is(result, "Trustline"), is_true())
+    expect_that(is(result@account, "RippleAddress"), is_true())
+    expect_that(is(result@counterparty, "RippleAddress"), is_true())
+    expect_that(is(result@currency, "Currency"), is_true())
+    expect_that(is(result@limit, "numeric"), is_true())
+    expect_that(is(result@reciprocated_limit, "numeric"), is_true())
+    expect_that(is(result@account_allows_rippling, "logical"), is_true())
+    expect_that(is(result@counterparty_allows_rippling, "logical"), is_true())
+    expect_that(is(result@ledger, "numeric"), is_true())
+    expect_that(is(result@hash, "Hash256"), is_true())
+})
+
+test_that("object length and slot lengths are 1", {
+    n <- 1
+    expect_that(n, equals(length(result)))
+    expect_that(n, equals(length(result@account)))
+    expect_that(n, equals(length(result@counterparty)))
+    expect_that(n, equals(length(result@currency)))
+    expect_that(n, equals(length(result@limit)))
+    expect_that(n, equals(length(result@reciprocated_limit)))
+    expect_that(n, equals(length(result@account_allows_rippling)))
+    expect_that(n, equals(length(result@counterparty_allows_rippling)))
+    expect_that(n, equals(length(result@ledger)))
+    expect_that(n, equals(length(result@hash)))
+})

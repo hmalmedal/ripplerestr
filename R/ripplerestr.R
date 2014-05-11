@@ -53,3 +53,12 @@ NULL
         stop("No output to parse", call. = FALSE)
     jsonlite::fromJSON(text, simplifyVector = FALSE)
 }
+
+.POST <- function(path, body, ...) {
+    req <- POST("http://localhost:5990/", path = path, body = I(body),
+                content_type_json(), ...)
+    .check(req)
+    .success(req)
+
+    req
+}

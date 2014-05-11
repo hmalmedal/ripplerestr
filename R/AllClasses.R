@@ -307,9 +307,8 @@ setValidity("Trustline", validTrustlineObject)
 
 #' AccountSettings
 #'
-#' @slot account Object of class \code{"\link{RippleAddress}"}. Object of class
-#'   \code{"\link{RippleAddress}"}. The Ripple address of the account in
-#'   question.
+#' @slot account Object of class \code{"\link{RippleAddress}"}. The Ripple
+#'   address of the account in question.
 #' @slot regular_key Object of class \code{"\link{RippleAddress}"}. The hash of
 #'   an optional additional public key that can be used for signing and
 #'   verifying transactions.

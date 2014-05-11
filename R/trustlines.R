@@ -72,8 +72,8 @@ get_account_trustlines <- function(address, currency = NULL,
 #' @param secret The secret key for your Ripple account.
 #' @param amount Object of class \code{"\link{Amount}"}. The limit, currency and
 #'   counterparty for the trustline.
-#' @param allows_rippling TRUE or FALSE. Allow rippling or not for the
-#'   trustline.
+#' @param allows_rippling \code{TRUE} or \code{FALSE}. Allow rippling or not for
+#'   the trustline.
 #' @param limit A number indicating the maximum you are willing to trust.
 #'   Ignored if \code{amount} is provided.
 #' @param currency Three letter currency denomination. Ignored if \code{amount}

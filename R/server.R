@@ -39,7 +39,7 @@ get_server_status <- function(...) {
 #' host <- list(scheme = "https", hostname = "example.com", port = 80)
 #' do.call(is_server_connected, host)}
 #'
-#' @return TRUE or FALSE
+#' @return \code{TRUE} or \code{FALSE}
 #'
 #' @export
 is_server_connected <- function(...) {

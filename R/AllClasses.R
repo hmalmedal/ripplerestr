@@ -258,21 +258,21 @@ setValidity("Notification", validNotificationObject)
 #' @slot reciprocated_limit Object of class \code{"numeric"}. The maximum value
 #'   of the currency that the counterparty may hold issued by the account.
 ################################################################################
-# ' @slot authorized_by_account Object of class \code{"logical"}. Set to true if
-# '   the account has explicitly authorized the counterparty to hold currency it
-# '   issues. This is only necessary if the account's settings include
-# '   \code{require_authorization_for_incoming_trustlines}.
+# ' @slot authorized_by_account Object of class \code{"logical"}. Set to
+# '   \code{TRUE} if the account has explicitly authorized the counterparty to
+# '   hold currency it issues. This is only necessary if the account's settings
+# '   include \code{require_authorization_for_incoming_trustlines}.
 # ' @slot authorized_by_counterparty Object of class \code{"logical"}. Set to
-# '   true if the counterparty has explicitly authorized the account to hold
-# '   currency it issues. This is only necessary if the counterparty's settings
-# '   include \code{require_authorization_for_incoming_trustlines.}
+# '   \code{TRUE} if the counterparty has explicitly authorized the account to
+# '   hold currency it issues. This is only necessary if the counterparty's
+# '   settings include \code{require_authorization_for_incoming_trustlines.}
 ################################################################################
-#' @slot account_allows_rippling Object of class \code{"logical"}. If true it
-#'   indicates that the account allows pairwise rippling out through this
-#'   trustline.
-#' @slot counterparty_allows_rippling Object of class \code{"logical"}. If true
-#'   it indicates that the counterparty allows pairwise rippling out through
-#'   this trustline.
+#' @slot account_allows_rippling Object of class \code{"logical"}. If
+#'   \code{TRUE} it indicates that the account allows pairwise rippling out
+#'   through this trustline.
+#' @slot counterparty_allows_rippling Object of class \code{"logical"}. If
+#'   \code{TRUE} it indicates that the counterparty allows pairwise rippling out
+#'   through this trustline.
 #' @slot ledger Object of class \code{"numeric"}. The index number of the ledger
 #'   containing this trustline or, in the case of historical queries, of the
 #'   transaction that modified this Trustline.
@@ -322,16 +322,16 @@ setValidity("Trustline", validTrustlineObject)
 #'   messages to the account owner.
 #' @slot transfer_rate Object of class \code{"\link{UINT32}"}.
 #' @slot require_destination_tag Object of class \code{"logical"}. If set to
-#'   true incoming payments will only be validated if they include a
+#'   \code{TRUE} incoming payments will only be validated if they include a
 #'   \code{destination_tag.} This may be used primarily by gateways that operate
 #'   exclusively with hosted wallets.
-#' @slot require_authorization Object of class \code{"logical"}. If set to true
-#'   incoming trustlines will only be validated if this account first creates a
-#'   trustline to the counterparty with the authorized flag set to true. This
-#'   may be used by gateways to prevent accounts unknown to them from holding
-#'   currencies they issue.
-#' @slot disallow_xrp Object of class \code{"logical"}. If set to true incoming
-#'   XRP payments will not be allowed.
+#' @slot require_authorization Object of class \code{"logical"}. If set to
+#'   \code{TRUE} incoming trustlines will only be validated if this account
+#'   first creates a trustline to the counterparty with the authorized flag set
+#'   to \code{TRUE}. This may be used by gateways to prevent accounts unknown to
+#'   them from holding currencies they issue.
+#' @slot disallow_xrp Object of class \code{"logical"}. If set to \code{TRUE}
+#'   incoming XRP payments will not be allowed.
 #' @slot password_spent Object of class \code{"logical"}.
 #' @slot disable_master Object of class \code{"logical"}.
 #' @slot transaction_sequence Object of class \code{"\link{UINT32}"}. The last

@@ -84,18 +84,19 @@ get_account_settings <- function(address, ...) {
 #'   owner.
 #' @param email_hash The MD5 128-bit hash of the account owner’s email address,
 #'   if known.
-#' @param disallow_xrp If this is set to true, payments in XRP will not be
-#'   allowed.
-#' @param require_authorization If this is set to true, incoming trustlines will
-#'   only be validated if this account first creates a trustline to the
-#'   counterparty with the authorized flag set to true. This may be used by
-#'   gateways to prevent accounts unknown to them from holding currencies they
-#'   issue.
-#' @param require_destination_tag If this is set to true, incoming payments will
-#'   only be validated if they include a \code{destination_tag} value. Note that
-#'   this is used primarily by gateways that operate exclusively with hosted
-#'   wallets.
-#' @param password_spent True if the password has been "spent", else false.
+#' @param disallow_xrp If this is set to \code{TRUE}, payments in XRP will not
+#'   be allowed.
+#' @param require_authorization If this is set to \code{TRUE}, incoming
+#'   trustlines will only be validated if this account first creates a trustline
+#'   to the counterparty with the authorized flag set to \code{TRUE}. This may
+#'   be used by gateways to prevent accounts unknown to them from holding
+#'   currencies they issue.
+#' @param require_destination_tag If this is set to \code{TRUE}, incoming
+#'   payments will only be validated if they include a \code{destination_tag}
+#'   value. Note that this is used primarily by gateways that operate
+#'   exclusively with hosted wallets.
+#' @param password_spent \code{TRUE} if the password has been "spent", else
+#'   \code{FALSE}.
 #' @param ... Named parameters – such as \code{scheme}, \code{hostname} and
 #'   \code{port} – passed on to \code{\link{httr}}'s \code{\link{modify_url}}.
 #'   See \code{\link{is_server_connected}} for details.

@@ -60,7 +60,7 @@ NULL
     if (.parse(req)$success)
         return(invisible())
     else
-        stop(.parse(req)$message, call. = FALSE)
+        stop(.parse(req)$error, "\n", .parse(req)$message, call. = FALSE)
 }
 
 .check <- function(req) {

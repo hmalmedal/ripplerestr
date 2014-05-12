@@ -129,7 +129,7 @@ set_account_trustline <- function(address, secret,
         trustline <- c(trustline, list(allows_rippling = allows_rippling))
     bodylist <- list(secret = secret, trustline = trustline)
     body <- jsonlite::toJSON(bodylist)
-    body <- gsub("\\[|\\]", "", body)
+    body <- gsub("\\[ | \\]", "", body)
     path <- paste0("v1/accounts/", address, "/trustlines")
     req <- .POST(path, body, ...)
     result <- .parse(req)

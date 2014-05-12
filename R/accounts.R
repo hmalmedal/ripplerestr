@@ -185,7 +185,7 @@ change_account_settings <- function(address, secret,
 
     bodylist <- list(secret = secret, settings = settingslist)
     body <- jsonlite::toJSON(bodylist)
-    body <- gsub("\\[|\\]", "", body)
+    body <- gsub("\\[ | \\]", "", body)
     path <- paste0("v1/accounts/", address, "/settings")
     req <- .POST(path, body, ...)
     list_of_settings <- .parse(req)$settings

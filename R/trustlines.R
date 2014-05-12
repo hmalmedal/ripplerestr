@@ -15,23 +15,33 @@
 #' @return An object of class \code{"\link{Trustline}"}
 #'
 #' @export
-get_account_trustlines <- function(address, currency = NULL,
-                                   counterparty = NULL, ...) {
+get_account_trustlines <- function(address, currency,
+                                   counterparty, ...) {
+    address <- RippleAddress(address)
+    assert_that(is.string(address))
+
     query <- NULL
-    if (!is.null(currency)) {
-        query <- paste0("currency=", currency)
-        if (!is.null(counterparty)) {
-            query <- paste0(query, "&counterparty=", counterparty)
-        }
-    } else {
-        if (!is.null(counterparty)) {
-            query <- paste0("counterparty=", counterparty)
-        }
+
+    if (!missing(counterparty)) {
+        counterparty <- RippleAddress(counterparty)
+        assert_that(is.string(counterparty))
     }
+
+    if (!missing(currency)) {
+        currency <- Currency(currency)
+        assert_that(is.string(currency))
+        query <- paste0("currency=", currency)
+        if (!missing(counterparty))
+            query <- paste0(query, "&counterparty=", counterparty)
+    } else if (!missing(counterparty))
+        query <- paste0("counterparty=", counterparty)
 
     path <- paste0("v1/accounts/", address, "/trustlines")
     req <- .GET(path, query = query, ...)
     trustlines <- .parse(req)$trustlines
+
+    if(length(trustlines) == 0) return(Trustline())
+
     accounts <- sapply(trustlines, function(element) element$account)
     n <- length(accounts)
     accounts <- RippleAddress(accounts)
@@ -92,13 +102,26 @@ set_account_trustline <- function(address, secret,
                                   allows_rippling = NA,
                                   limit, currency,
                                   counterparty, ...) {
+    address <- RippleAddress(address)
+    assert_that(is.string(address))
+    assert_that(is.string(secret))
+    assert_that(is.flag(allows_rippling))
+
     if (!missing(amount)) {
+        assert_that(is(amount, "Amount"))
         limit <- amount@value
         currency <- amount@currency
         counterparty <- amount@counterparty
         if (counterparty == "")
             counterparty <- amount@issuer
     }
+
+    assert_that(is.number(limit))
+    currency <- Currency(currency)
+    assert_that(is.string(currency))
+    counterparty <- RippleAddress(counterparty)
+    assert_that(is.string(counterparty))
+
     trustline <- list(limit = as.character(limit),
                       currency = currency,
                       counterparty = counterparty)

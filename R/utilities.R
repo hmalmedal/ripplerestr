@@ -33,6 +33,9 @@ generate_uuid <- function(...) {
 #'
 #' @export
 get_transaction <- function(hash, ...) {
+    hash <- Hash256(hash)
+    assert_that(is.string(hash))
+
     path <- paste0("v1/tx/", hash)
     req <- .GET(path, ...)
     .parse(req)$transaction

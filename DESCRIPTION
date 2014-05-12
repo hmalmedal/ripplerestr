@@ -10,7 +10,8 @@ Description: This is a client that interacts with the Ripple
 License: file LICENSE
 Imports:
     httr,
-    lubridate
+    lubridate,
+    assertthat
 Suggests:
     jsonlite,
     methods,

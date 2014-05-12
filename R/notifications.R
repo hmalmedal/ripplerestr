@@ -21,6 +21,12 @@
 #'
 #' @export
 get_notification <- function(address, hash, ...) {
+    address <- RippleAddress(address)
+    assert_that(is.string(address))
+
+    hash <- Hash256(hash)
+    assert_that(is.string(hash))
+
     path <- paste0("v1/accounts/", address, "/notifications/", hash)
     req <- .GET(path, ...)
     .list <- .parse(req)$notification

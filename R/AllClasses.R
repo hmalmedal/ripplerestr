@@ -92,12 +92,10 @@ setValidity("ResourceId", validResourceIdObject)
 #' @export UINT32
 #' @exportClass UINT32
 UINT32 <- setClass("UINT32", contains = "numeric")
-validUINT32Object <- function(object) {
-    if (!all(object >= 0 & object < 2^32 & object %% 1 == 0)) {
-        return("Invalid number.")
-    }
-    return(TRUE)
-}
+validUINT32Object <- function(object)
+    validate_that(all(object >= 0),
+                  all(object < 2^32),
+                  all(object %% 1 == 0))
 setValidity("UINT32", validUINT32Object)
 
 #' Balance

@@ -10,6 +10,7 @@
 #' @docType package
 #' @import httr
 #' @import lubridate
+#' @import assertthat
 NULL
 
 .are_slot_lengths_equal <- function(object) {

@@ -20,23 +20,33 @@
 #' @return An object of class \code{"\link{Balance}"}
 #'
 #' @export
-get_account_balances <- function(address, currency = NULL,
-                                 counterparty = NULL, ...) {
+get_account_balances <- function(address, currency,
+                                 counterparty, ...) {
+    address <- RippleAddress(address)
+    assert_that(is.string(address))
+
     query <- NULL
-    if (!is.null(currency)) {
-        query <- paste0("currency=", currency)
-        if (!is.null(counterparty)) {
-            query <- paste0(query, "&counterparty=", counterparty)
-        }
-    } else {
-        if (!is.null(counterparty)) {
-            query <- paste0("counterparty=", counterparty)
-        }
+
+    if (!missing(counterparty)) {
+        counterparty <- RippleAddress(counterparty)
+        assert_that(is.string(counterparty))
     }
+
+    if (!missing(currency)) {
+        currency <- Currency(currency)
+        assert_that(is.string(currency))
+        query <- paste0("currency=", currency)
+        if (!missing(counterparty))
+            query <- paste0(query, "&counterparty=", counterparty)
+    } else if (!missing(counterparty))
+        query <- paste0("counterparty=", counterparty)
 
     path <- paste0("v1/accounts/", address, "/balances")
     req <- .GET(path, query = query, ...)
     list_of_balances <- .parse(req)$balances
+
+    if (length(list_of_balances) == 0) return(Balance())
+
     values <- sapply(list_of_balances, function(element) element$value)
     values <- as.numeric(values)
     currencies <- sapply(list_of_balances,
@@ -62,6 +72,9 @@ get_account_balances <- function(address, currency = NULL,
 #'
 #' @export
 get_account_settings <- function(address, ...) {
+    address <- RippleAddress(address)
+    assert_that(is.string(address))
+
     path <- paste0("v1/accounts/", address, "/settings")
     req <- .GET(path, ...)
     list_of_settings <- .parse(req)$settings
@@ -114,46 +127,56 @@ change_account_settings <- function(address, secret,
                                     require_destination_tag = NA,
                                     password_spent = NA, ...) {
     address <- RippleAddress(address)
+    assert_that(is.string(address))
+    assert_that(is.string(secret))
 
     settingslist <- list()
 
     if (!missing(transfer_rate)) {
-        if (transfer_rate < 1) stop("Transfer rate must be >= 1.0")
+        assert_that(is.number(transfer_rate),
+                    transfer_rate >= 1)
         settingslist <- c(settingslist,
                           transfer_rate = UINT32(round(transfer_rate * 1e9)))
     }
 
     if (!missing(domain)) {
+        assert_that(is.string(domain))
         settingslist <- c(settingslist,
-                          domain = as.character(domain))
+                          domain = domain)
     }
 
     if (!missing(message_key)) {
+        assert_that(is.string(message_key))
         settingslist <- c(settingslist,
-                          message_key = as.character(message_key))
+                          message_key = message_key)
     }
 
     if (!missing(email_hash)) {
+        assert_that(is.string(email_hash))
         settingslist <- c(settingslist,
                           email_hash = Hash128(email_hash))
     }
 
     if (!is.na(disallow_xrp)) {
+        assert_that(is.flag(disallow_xrp))
         settingslist <- c(settingslist,
                           disallow_xrp = disallow_xrp)
     }
 
     if (!is.na(require_authorization)) {
+        assert_that(is.flag(require_authorization))
         settingslist <- c(settingslist,
                           require_authorization = require_authorization)
     }
 
     if (!is.na(require_destination_tag)) {
+        assert_that(is.flag(require_destination_tag))
         settingslist <- c(settingslist,
                           require_destination_tag = require_destination_tag)
     }
 
     if (!is.na(password_spent)) {
+        assert_that(is.flag(password_spent))
         settingslist <- c(settingslist,
                           password_spent = password_spent)
     }

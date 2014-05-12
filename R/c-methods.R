@@ -1,5 +1,6 @@
 #' Combine for Balance class
 #'
+#' @param x object to be concatenated.
 #' @param recursive ignored
 setMethod("c",
           signature(x = "Balance"),

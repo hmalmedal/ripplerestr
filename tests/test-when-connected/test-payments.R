@@ -28,3 +28,27 @@ test_that("classes are correct", {
     expect_that(is(result@partial_payment, "logical"), is_true())
     expect_that(is(result@no_direct_ripple, "logical"), is_true())
 })
+
+address <- RippleAddress("rJMNfiJTwXHcMdB4SpxMgL3mvV4xUVHDnd")
+secret <- "snQ9dAZHB3rvqcgRqjbyWHJDeVJbA"
+destination_account <- RippleAddress("rH3WTUovV1HKx4S5HZup4dUZEjeGnehL6X")
+root_account <- RippleAddress("rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh")
+
+value  <- 0.01 / 3
+currency <- Currency("USD")
+destination_amount <- Amount(value = value,
+                             currency = currency,
+                             issuer = root_account)
+
+paths <- get_payment_paths(address = address,
+                           destination_account = destination_account,
+                           destination_amount = destination_amount)
+payment <- paths[1]
+payment@source_tag <- UINT32(2^32-1)
+payment@source_slippage <- 1
+payment@destination_tag <- UINT32(2^31-1)
+payment@invoice_id <- Hash256("e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855")
+payment@partial_payment  <- T
+uuid <- generate_uuid()
+
+submit_payment(payment = payment, secret = secret, client_resource_id = uuid)

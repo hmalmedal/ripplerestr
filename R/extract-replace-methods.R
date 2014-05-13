@@ -6,9 +6,13 @@ setMethod("[",
           signature(x = "Balance"),
           function (x, i, j, ..., drop = TRUE)
           {
-              Balance(value = x@value[i],
-                      currency = Currency(x@currency[i]),
-                      counterparty = x@counterparty[i])
+              slots <- getSlots(class(x))
+              for (slotname in names(slots)) {
+                  slotelements <- slot(x, slotname)[i]
+                  slot(x, slotname) <- as(slotelements,
+                                          slots[slotname])
+              }
+              x
           }
 )
 #' Extract for Trustline class
@@ -19,17 +23,13 @@ setMethod("[",
           signature(x = "Trustline"),
           function (x, i, j, ..., drop = TRUE)
           {
-              Trustline(
-                  account = RippleAddress(x@account[i]),
-                  counterparty = RippleAddress(x@counterparty[i]),
-                  currency = Currency(x@currency[i]),
-                  limit = x@limit[i],
-                  reciprocated_limit = x@reciprocated_limit[i],
-                  account_allows_rippling = x@account_allows_rippling[i],
-                  counterparty_allows_rippling =
-                      x@counterparty_allows_rippling[i],
-                  ledger = x@ledger[i],
-                  hash = Hash256(x@hash[i]))
+              slots <- getSlots(class(x))
+              for (slotname in names(slots)) {
+                  slotelements <- slot(x, slotname)[i]
+                  slot(x, slotname) <- as(slotelements,
+                                          slots[slotname])
+              }
+              x
           }
 )
 #' Replace for Balance class

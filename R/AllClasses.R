@@ -146,16 +146,10 @@ Amount <- setClass("Amount",
                    slots = c(value = "numeric",
                              currency = "Currency",
                              issuer = "character",
-                             counterparty = "character"),
-                   prototype = list(value = NA_real_,
-                                    currency = Currency("XRP"),
-                                    issuer = "",
-                                    counterparty = ""))
+                             counterparty = "character"))
 validAmountObject <- function(object) {
-    l <- sapply(slotNames(object),
-                function(slotname) length(slot(object, slotname)))
-    if (!all(l==1))
-        return("Not all lengths are 1.")
+    if (!.are_slot_lengths_equal(object))
+        return("Unequal lengths.")
     if (!all(grepl("^$|^r[1-9A-HJ-NP-Za-km-z]{25,33}$",
                    object@issuer))) {
         return("Invalid issuer.")

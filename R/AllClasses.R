@@ -368,3 +368,55 @@ validAccountSettingsObject <- function(object) {
     return(TRUE)
 }
 setValidity("AccountSettings", validAccountSettingsObject)
+
+#' Payment
+#'
+#' A flattened Payment object used by the ripple-rest API
+#'
+#' @slot source_account Object of class \code{"\link{RippleAddress}"}. The
+#'   Ripple account address of the Payment sender.
+#' @slot source_tag Object of class \code{"\link{UINT32}"}. An unsigned 32-bit
+#'   integer most commonly used to refer to a sender's hosted account at a
+#'   Ripple gateway.
+#' @slot source_amount Object of class \code{"\link{Amount}"}. An optional
+#'   amount that can be specified to constrain cross-currency payments.
+#' @slot source_slippage Object of class \code{"numeric"}. An optional cushion
+#'   for the \code{source_amount} to increase the likelihood that the payment
+#'   will succeed. The \code{source_account} will never be charged more than
+#'   \code{source_amount@@value} + \code{source_slippage}.
+#' @slot destination_account Object of class \code{"\link{RippleAddress}"}.
+#' @slot destination_tag Object of class \code{"\link{UINT32}"}. An unsigned
+#'   32-bit integer most commonly used to refer to a receiver's hosted account
+#'   at a Ripple gateway.
+#' @slot destination_amount Object of class \code{"\link{Amount}"}. The amount
+#'   the \code{destination_account} will receive.
+#' @slot invoice_id Object of class \code{"\link{Hash256}"}. A 256-bit hash that
+#'   can be used to identify a particular payment.
+#' @slot paths Object of class \code{"character"}. A "stringified" version of
+#'   the Ripple PathSet structure that users should treat as opaque.
+#' @slot partial_payment Object of class \code{"logical"}. A boolean that, if
+#'   set to true, indicates that this payment should go through even if the
+#'   whole amount cannot be delivered because of a lack of liquidity or funds in
+#'   the \code{source_account} account.
+#' @slot no_direct_ripple Object of class \code{"logical"}. A boolean that can
+#'   be set to true if paths are specified and the sender would like the Ripple
+#'   Network to disregard any direct paths from the \code{source_account} to the
+#'   \code{destination_account}. This may be used to take advantage of an
+#'   arbitrage opportunity or by gateways wishing to issue balances from a hot
+#'   wallet to a user who has mistakenly set a trustline directly to the hot
+#'   wallet.
+#'
+#' @export Payment
+#' @exportClass Payment
+Payment <- setClass("Payment",
+                    slots = c(source_account = "RippleAddress",
+                              source_tag = "UINT32",
+                              source_amount = "Amount",
+                              source_slippage = "numeric",
+                              destination_account = "RippleAddress",
+                              destination_tag = "UINT32",
+                              destination_amount = "Amount",
+                              invoice_id = "Hash256",
+                              paths = "character",
+                              partial_payment = "logical",
+                              no_direct_ripple = "logical"))

@@ -32,6 +32,23 @@ setMethod("[",
               x
           }
 )
+#' Extract for Amount class
+#'
+#' @param j ignored
+#' @param ... ignored
+setMethod("[",
+          signature(x = "Amount"),
+          function (x, i, j, ..., drop = TRUE)
+          {
+              slots <- getSlots(class(x))
+              for (slotname in names(slots)) {
+                  slotelements <- slot(x, slotname)[i]
+                  slot(x, slotname) <- as(slotelements,
+                                          slots[slotname])
+              }
+              x
+          }
+)
 #' Replace for Balance class
 #'
 #' @param j ignored

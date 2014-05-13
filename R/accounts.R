@@ -83,7 +83,7 @@ get_account_settings <- function(address, ...) {
 
 #' Updating Account Settings
 #'
-#' Change an account’s settings
+#' Change an account's settings
 #'
 #' @param address The Ripple address of the desired account.
 #' @param secret The secret key for your Ripple account.
@@ -95,7 +95,7 @@ get_account_settings <- function(address, ...) {
 #' @param message_key An optional public key, represented as a hex string, that
 #'   can be used to allow others to send encrypted messages to the account
 #'   owner.
-#' @param email_hash The MD5 128-bit hash of the account owner’s email address,
+#' @param email_hash The MD5 128-bit hash of the account owner's email address,
 #'   if known.
 #' @param disallow_xrp If this is set to \code{TRUE}, payments in XRP will not
 #'   be allowed.

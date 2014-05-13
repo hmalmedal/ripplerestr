@@ -25,3 +25,12 @@ setMethod("length",
               length(x@account)
           }
 )
+#' Length for Amount class
+#'
+setMethod("length",
+          signature(x = "Amount"),
+          function (x)
+          {
+              length(x@value)
+          }
+)

@@ -76,7 +76,10 @@ NULL
     text <- content(req, as = "text")
     if (identical(text, ""))
         stop("No output to parse", call. = FALSE)
-    jsonlite::fromJSON(text, simplifyVector = FALSE)
+    if (grepl("^\\{", text))
+        jsonlite::fromJSON(text, simplifyVector = FALSE)
+    else
+        stop(text, call. = FALSE)
 }
 
 .POST <- function(path, body, ...) {

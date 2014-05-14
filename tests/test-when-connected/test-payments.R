@@ -66,4 +66,6 @@ payment@invoice_id <- Hash256("e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca
 payment@partial_payment  <- T
 uuid <- generate_uuid()
 
-submit_payment(payment = payment, secret = secret, client_resource_id = uuid)
+response <- submit_payment(payment = payment, secret = secret, client_resource_id = uuid)
+
+status <- check_payment_status(status_url = response$status_url)

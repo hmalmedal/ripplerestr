@@ -57,7 +57,7 @@ setMethod("[",
           signature(x = "Payment"),
           function (x, i, j, ..., drop = TRUE)
           {
-              slots <- getSlots(class(x))
+              slots <- getSlots(class(x))[1:11]
               for (slotname in names(slots)) {
                   slotelements <- slot(x, slotname)[i]
                   slot(x, slotname) <- as(slotelements,

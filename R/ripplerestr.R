@@ -13,9 +13,11 @@
 #' @import assertthat
 NULL
 
-.are_slot_lengths_equal <- function(object) {
+.are_slot_lengths_equal <- function(object, i) {
     if(!isS4(object)) stop("Not S4 object")
-    l <- sapply(slotNames(object),
+    slotnames <- slotNames(object)
+    if (!missing(i)) slotnames <- slotnames[i]
+    l <- sapply(slotnames,
                 function(slotname) length(slot(object, slotname)))
     l <- unique(l)
     if(length(l) > 1) F else T

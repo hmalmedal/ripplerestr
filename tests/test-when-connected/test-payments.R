@@ -29,6 +29,21 @@ test_that("classes are correct", {
     expect_that(is(result@no_direct_ripple, "logical"), is_true())
 })
 
+test_that("slot lengths are equal to object length", {
+    n <- length(result)
+    expect_that(n, equals(length(result@source_account)))
+    expect_that(n, equals(length(result@source_tag)))
+    expect_that(n, equals(length(result@source_amount)))
+    expect_that(n, equals(length(result@source_slippage)))
+    expect_that(n, equals(length(result@destination_account)))
+    expect_that(n, equals(length(result@destination_tag)))
+    expect_that(n, equals(length(result@destination_amount)))
+    expect_that(n, equals(length(result@invoice_id)))
+    expect_that(n, equals(length(result@paths)))
+    expect_that(n, equals(length(result@partial_payment)))
+    expect_that(n, equals(length(result@no_direct_ripple)))
+})
+
 address <- RippleAddress("rJMNfiJTwXHcMdB4SpxMgL3mvV4xUVHDnd")
 secret <- "snQ9dAZHB3rvqcgRqjbyWHJDeVJbA"
 destination_account <- RippleAddress("rH3WTUovV1HKx4S5HZup4dUZEjeGnehL6X")

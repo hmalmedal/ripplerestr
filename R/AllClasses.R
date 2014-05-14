@@ -405,6 +405,41 @@ setValidity("AccountSettings", validAccountSettingsObject)
 #'   arbitrage opportunity or by gateways wishing to issue balances from a hot
 #'   wallet to a user who has mistakenly set a trustline directly to the hot
 #'   wallet.
+#' @slot direction Object of class \code{"character"}. The direction of the
+#'   payment, from the perspective of the account being queried. Possible values
+#'   are \code{"incoming"}, \code{"outgoing"}, and \code{"passthrough"}.
+#' @slot state Object of class \code{"character"}. The state of the payment from
+#'   the perspective of the Ripple Ledger. Possible values are
+#'   \code{"validated"} and \code{"failed"} and \code{"new"} if the payment has
+#'   not been submitted yet.
+#' @slot result Object of class \code{"character"}. The rippled code indicating
+#'   the success or failure type of the payment. The code \code{"tesSUCCESS"}
+#'   indicates that the payment was successfully validated and written into the
+#'   Ripple Ledger. All other codes will begin with the following prefixes:
+#'   \code{"tec"}, \code{"tef"}, \code{"tel"}, or \code{"tej"}.
+#' @slot ledger Object of class \code{"numeric"}. The index number of the ledger
+#'   containing the validated or failed payment. Failed payments will only be
+#'   written into the Ripple Ledger if they fail after submission to a rippled
+#'   and a Ripple Network fee is claimed.
+#' @slot hash Object of class \code{"\link{Hash256}"}. The 256-bit hash of the
+#'   payment. This is used throughout the Ripple protocol as the unique
+#'   identifier for the transaction.
+#' @slot timestamp Object of class \code{"POSIXct"}. The timestamp representing
+#'   when the payment was validated and written into the Ripple ledger.
+#' @slot fee Object of class \code{"numeric"}. The Ripple Network transaction
+#'   fee, represented in whole XRP (NOT "drops", or millionths of an XRP, which
+#'   is used elsewhere in the Ripple protocol).
+#' @slot source_balance_changes Object of class \code{"\link{Amount}"}. Parsed
+#'   from the validated transaction metadata, this represents all of the changes
+#'   to balances held by the \code{source_account.} Most often this will have
+#'   one amount representing the Ripple Network fee and, if the
+#'   \code{source_amount} was not XRP, one amount representing the actual
+#'   \code{source_amount} that was sent.
+#' @slot destination_balance_changes Object of class \code{"\link{Amount}"}.
+#'   Parsed from the validated transaction metadata, this represents the changes
+#'   to balances held by the \code{destination_account.} For those receiving
+#'   payments this is important to check because if the \code{partial_payment}
+#'   flag is set this value may be less than the \code{destination_amount.}
 #'
 #' @export Payment
 #' @exportClass Payment
@@ -419,4 +454,33 @@ Payment <- setClass("Payment",
                               invoice_id = "Hash256",
                               paths = "character",
                               partial_payment = "logical",
-                              no_direct_ripple = "logical"))
+                              no_direct_ripple = "logical",
+                              direction = "character",
+                              state = "character",
+                              result = "character",
+                              ledger = "numeric",
+                              hash = "Hash256",
+                              timestamp = "POSIXct",
+                              fee = "numeric",
+                              source_balance_changes = "Amount",
+                              destination_balance_changes = "Amount"),
+                    prototype = list(timestamp = as.POSIXct(NA)))
+validPaymentObject <- function(object) {
+    if (!.are_slot_lengths_equal(object, 1:11))
+        return("Unequal lengths.")
+    f <- function(slotname)
+        if(length(slot(object, slotname)) > 1)
+            return(stop(paste("slot", slotname, "has length larger than 1")))
+    lapply(slotNames(object)[12:18], f)
+    if (!all(grepl("^incoming|outgoing|passthrough$",
+                   object@direction)))
+        return("Invalid direction")
+    if (!all(grepl("^validated|failed|new$",
+                   object@state)))
+        return("Invalid state")
+    if (!all(grepl("te[cfjlms][A-Za-z_]+",
+                   object@result)))
+        return("Invalid result")
+    return(TRUE)
+}
+setValidity("Payment", validPaymentObject)

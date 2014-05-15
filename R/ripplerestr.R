@@ -23,10 +23,10 @@ NULL
     if(length(l) > 1) F else T
 }
 
-.parse_list_of_settings <- function(address, list_of_settings,
-                                    ledger = numeric(),
-                                    hash = Hash256()) {
-    list_names <- names(list_of_settings)
+.parse_settings <- function(address, settings,
+                            ledger = numeric(),
+                            hash = Hash256()) {
+    list_names <- names(settings)
     result <- AccountSettings(account = RippleAddress(address))
     slot_names <- slotNames(result)
     list_diff_slot <- setdiff(list_names, slot_names)
@@ -39,14 +39,14 @@ NULL
         s_name <- settings_names[i]
         if(S4_slots[s_name]==T)
             slot(result, s_name) <- do.call(slots_classes[s_name],
-                                            unname(list_of_settings[s_name]))
+                                            unname(settings[s_name]))
         else
-            slot(result, s_name) <- unname(unlist(list_of_settings[s_name]))
+            slot(result, s_name) <- unname(unlist(settings[s_name]))
     }
-    ledger = as.numeric(ledger)
-    result@ledger = ledger
+    ledger <- as.numeric(ledger)
+    result@ledger <- ledger
     hash <- Hash256(hash)
-    result@hash = hash
+    result@hash <- hash
     result
 }
 

@@ -32,11 +32,9 @@
 #' @return An object of class \code{"\link{Payment}"}
 #'
 #' @export
-get_payment_paths <- function(address,
-                              destination_account,
-                              destination_amount,
-                              value, currency, issuer,
-                              source_currencies, ...) {
+get_payment_paths <- function(address, destination_account,
+                              destination_amount, value, currency,
+                              issuer, source_currencies, ...) {
     address <- RippleAddress(address)
     assert_that(is.string(address))
     destination_account <- RippleAddress(destination_account)
@@ -58,115 +56,101 @@ get_payment_paths <- function(address,
 
     query <- NULL
 
-    if (!missing(source_currencies)) {
+    if (!missing(source_currencies))
         if(!is(source_currencies, "Amount")) {
             assert_that(is.string(source_currencies))
             query <- paste0("source_currencies=", source_currencies)
         }
-    }
 
-    destination_amount_string <- paste(value, currency, issuer, sep = "+")
-    destination_amount_string <- sub("\\+$", "",
-                                     destination_amount_string)
+    destination_amount <- paste(value, currency, issuer, sep = "+")
+    destination_amount <- sub("\\+$", "", destination_amount)
 
     XRP <- Currency("XRP")
     if(identical(currency, XRP))
-        destination_amount_string <- sub("XRP.*$", "XRP",
-                                         destination_amount_string)
+        destination_amount <- sub("XRP.*$", "XRP", destination_amount)
 
     path <- paste0("v1/accounts/", address, "/payments/paths/",
-                   destination_account, "/", destination_amount_string)
+                   destination_account, "/", destination_amount)
     req <- .GET(path, query = query, ...)
-    list_of_payments <- .parse(req)$payments
+    payments <- .parse(req)$payments
 
-    if (length(list_of_payments) == 0) return(Payment())
+    if (length(payments) == 0) return(Payment())
 
-    source_accounts <- sapply(list_of_payments,
-                              function(element) element$source_account)
-    source_accounts <- RippleAddress(source_accounts)
+    source_account <- sapply(payments,
+                             function(element) element$source_account)
+    source_account <- RippleAddress(source_account)
 
-    source_tags <- sapply(list_of_payments,
-                          function(element) element$source_tag)
-    source_tags[source_tags == ""] <- NA
-    source_tags <- UINT32(source_tags)
+    source_tag <- sapply(payments, function(element) element$source_tag)
+    source_tag[source_tag == ""] <- NA
+    source_tag <- UINT32(source_tag)
 
-    source_amounts.values <- sapply(list_of_payments,
-                                    function(element)
-                                        element$source_amount$value)
-    source_amounts.values  <- as.numeric(source_amounts.values)
+    value <- sapply(payments, function(element) element$source_amount$value)
+    value  <- as.numeric(value)
 
-    source_amounts.currencies <- sapply(list_of_payments,
+    currency <- sapply(payments,
+                       function(element) element$source_amount$currency)
+    currency  <- Currency(currency)
+
+    issuer <- sapply(payments, function(element) element$source_amount$issuer)
+
+    source_amount <- Amount(value = value,
+                            currency = currency,
+                            issuer = issuer)
+
+    source_slippage <- sapply(payments,
+                              function(element) element$source_slippage)
+    source_slippage <- as.numeric(source_slippage)
+
+    destination_account <- sapply(payments,
+                                  function(element)
+                                      element$destination_account)
+    destination_account <- RippleAddress(destination_account)
+
+    destination_tag <- sapply(payments,
+                              function(element) element$destination_tag)
+    destination_tag[destination_tag == ""] <- NA
+    destination_tag <- UINT32(destination_tag)
+
+    destination_amount.value <- sapply(payments,
+                                       function(element)
+                                           element$destination_amount$value)
+    destination_amount.value  <- as.numeric(destination_amount.value)
+
+    destination_amount.currency <-
+        sapply(payments,
+               function(element) element$destination_amount$currency)
+    destination_amount.currency  <- Currency(destination_amount.currency)
+
+    destination_amount.issuer <- sapply(payments,
                                         function(element)
-                                            element$source_amount$currency)
-    source_amounts.currencies  <- Currency(source_amounts.currencies)
+                                            element$destination_amount$issuer)
 
-    source_amounts.issuers <- sapply(list_of_payments,
-                                     function(element)
-                                         element$source_amount$issuer)
+    destination_amount <- Amount(value = destination_amount.value,
+                                 currency = destination_amount.currency,
+                                 issuer = destination_amount.issuer)
 
-    source_amounts <- Amount(value = source_amounts.values,
-                             currency = source_amounts.currencies,
-                             issuer = source_amounts.issuers)
+    invoice_id <- sapply(payments, function(element) element$invoice_id)
+    invoice_id <- Hash256(invoice_id)
 
-    source_slippages <- sapply(list_of_payments,
-                               function(element) element$source_slippage)
-    source_slippages <- as.numeric(source_slippages)
+    paths <- sapply(payments, function(element) element$paths)
 
-    destination_accounts <- sapply(list_of_payments,
-                                   function(element)
-                                       element$destination_account)
-    destination_accounts <- RippleAddress(destination_accounts)
+    partial_payment <- sapply(payments,
+                              function(element) element$partial_payment)
 
-    destination_tags <- sapply(list_of_payments,
-                               function(element) element$destination_tag)
-    destination_tags[destination_tags == ""] <- NA
-    destination_tags <- UINT32(destination_tags)
+    no_direct_ripple <- sapply(payments,
+                               function(element) element$no_direct_ripple)
 
-    destination_amounts.values <- sapply(list_of_payments,
-                                         function(element)
-                                             element$destination_amount$value)
-    destination_amounts.values  <- as.numeric(destination_amounts.values)
-
-    destination_amounts.currencies <-
-        sapply(list_of_payments,
-               function(element)
-                   element$destination_amount$currency)
-    destination_amounts.currencies  <- Currency(destination_amounts.currencies)
-
-    destination_amounts.issuers <- sapply(list_of_payments,
-                                          function(element)
-                                              element$destination_amount$issuer)
-
-    destination_amounts <- Amount(value = destination_amounts.values,
-                                  currency = destination_amounts.currencies,
-                                  issuer = destination_amounts.issuers)
-
-    invoice_ids <- sapply(list_of_payments,
-                          function(element) element$invoice_id)
-    invoice_ids <- Hash256(invoice_ids)
-
-    paths_vector <- sapply(list_of_payments,
-                           function(element) element$paths)
-
-    partial_payment_vector <- sapply(list_of_payments,
-                                     function(element)
-                                         element$partial_payment)
-
-    no_direct_ripple_vector <- sapply(list_of_payments,
-                                      function(element)
-                                          element$no_direct_ripple)
-
-    Payment(source_account = source_accounts,
-            source_tag = source_tags,
-            source_amount = source_amounts,
-            source_slippage = source_slippages,
-            destination_account = destination_accounts,
-            destination_tag = destination_tags,
-            destination_amount = destination_amounts,
-            invoice_id = invoice_ids,
-            paths = paths_vector,
-            partial_payment = partial_payment_vector,
-            no_direct_ripple = no_direct_ripple_vector)
+    Payment(source_account = source_account,
+            source_tag = source_tag,
+            source_amount = source_amount,
+            source_slippage = source_slippage,
+            destination_account = destination_account,
+            destination_tag = destination_tag,
+            destination_amount = destination_amount,
+            invoice_id = invoice_id,
+            paths = paths,
+            partial_payment = partial_payment,
+            no_direct_ripple = no_direct_ripple)
 }
 
 #' Submitting a Payment
@@ -227,22 +211,22 @@ submit_payment <- function(payment, secret, client_resource_id, ...) {
     partial_payment <- payment@partial_payment
     no_direct_ripple <- payment@no_direct_ripple
 
-    paymentlist <- list(source_account = source_account,
-                        source_tag = source_tag,
-                        source_amount = source_amount,
-                        source_slippage = source_slippage,
-                        destination_account = destination_account,
-                        destination_tag = destination_tag,
-                        destination_amount = destination_amount,
-                        invoice_id = invoice_id,
-                        paths = paths,
-                        partial_payment = partial_payment,
-                        no_direct_ripple = no_direct_ripple)
+    payment <- list(source_account = source_account,
+                    source_tag = source_tag,
+                    source_amount = source_amount,
+                    source_slippage = source_slippage,
+                    destination_account = destination_account,
+                    destination_tag = destination_tag,
+                    destination_amount = destination_amount,
+                    invoice_id = invoice_id,
+                    paths = paths,
+                    partial_payment = partial_payment,
+                    no_direct_ripple = no_direct_ripple)
 
-    bodylist <- list(secret = secret,
-                     client_resource_id = client_resource_id,
-                     payment = paymentlist)
-    body <- jsonlite::toJSON(bodylist)
+    body <- list(secret = secret,
+                 client_resource_id = client_resource_id,
+                 payment = payment)
+    body <- jsonlite::toJSON(body)
     body <- gsub("\\[ | \\]", "", body)
     path <- "v1/payments"
     req <- .POST(path, body, ...)
@@ -252,86 +236,83 @@ submit_payment <- function(payment, secret, client_resource_id, ...) {
 }
 
 #' Confirming a Payment
-#' 
+#'
 #' @return An object of class \code{"\link{Payment}"}
 #'
 #' @export
 check_payment_status <- function(status_url, ...) {
     if (!missing(status_url)) {
         assert_that(is.string(status_url))
-        
-        if(!grepl("^/v1/accounts/r[1-9A-HJ-NP-Za-km-z]{25,33}/payments/(?!$|^[A-Fa-f0-9]{64})[ -~]{1,255}$",
-                  status_url, perl = T))
+
+        pattern <- paste0("^/v1/accounts/",
+                          "r[1-9A-HJ-NP-Za-km-z]{25,33}",
+                          "/payments/",
+                          "(?!$|^[A-Fa-f0-9]{64})[ -~]{1,255}$")
+        if(!grepl(pattern, status_url, perl = T))
             stop("invalid status_url",  call. = FALSE)
-        
+
         path <- sub("^/", "", status_url)
     }
     req <- .GET(path, ...)
-    paymentlist <- .parse(req)$payment
-    
-    source_account <- RippleAddress(paymentlist$source_account)
-    source_tag <- UINT32(paymentlist$source_tag)
-    source_amount <- 
-        Amount(value = paymentlist$source_amount$value,
-               currency = 
-                   Currency(paymentlist$source_amount$currency),
-               issuer = paymentlist$source_amount$issuer)
-    source_slippage <- as.numeric(paymentlist$source_slippage)
-    destination_account <- RippleAddress(paymentlist$destination_account)
-    destination_tag <- UINT32(paymentlist$destination_tag)
-    destination_amount <- 
-        Amount(value = paymentlist$destination_amount$value,
-               currency = 
-                   Currency(paymentlist$destination_amount$currency),
-               issuer = paymentlist$destination_amount$issuer)
-    invoice_id <- Hash256(paymentlist$invoice_id)
-    paths <- paymentlist$paths
-    partial_payment <- paymentlist$partial_payment
-    no_direct_ripple <- paymentlist$no_direct_ripple
-    direction <- paymentlist$direction
-    state <- paymentlist$state
-    result <- paymentlist$result
-    ledger <- as.numeric(paymentlist$ledger)
-    hash <- Hash256(paymentlist$hash)
-    timestamp <- ymd_hms(paymentlist$timestamp, quiet = T)
-    fee <- as.numeric(paymentlist$fee)
+    payment <- .parse(req)$payment
 
-    source_balance_changes.value <- 
-        sapply(paymentlist$source_balance_changes,
-               function(element) element$value)
-    source_balance_changes.value <- 
-        as.numeric(source_balance_changes.value)
-    source_balance_changes.currency <- 
-        sapply(paymentlist$source_balance_changes,
+    source_account <- RippleAddress(payment$source_account)
+    source_tag <- UINT32(payment$source_tag)
+    source_amount <- Amount(value = payment$source_amount$value,
+                            currency =
+                                Currency(payment$source_amount$currency),
+                            issuer = payment$source_amount$issuer)
+    source_slippage <- as.numeric(payment$source_slippage)
+    destination_account <- RippleAddress(payment$destination_account)
+    destination_tag <- UINT32(payment$destination_tag)
+    destination_amount <-
+        Amount(value = payment$destination_amount$value,
+               currency = Currency(payment$destination_amount$currency),
+               issuer = payment$destination_amount$issuer)
+    invoice_id <- Hash256(payment$invoice_id)
+    paths <- payment$paths
+    partial_payment <- payment$partial_payment
+    no_direct_ripple <- payment$no_direct_ripple
+    direction <- payment$direction
+    state <- payment$state
+    result <- payment$result
+    ledger <- as.numeric(payment$ledger)
+    hash <- Hash256(payment$hash)
+    timestamp <- ymd_hms(payment$timestamp, quiet = T)
+    fee <- as.numeric(payment$fee)
+
+    source_balance_changes.value <- sapply(payment$source_balance_changes,
+                                           function(element) element$value)
+    source_balance_changes.value <- as.numeric(source_balance_changes.value)
+    source_balance_changes.currency <-
+        sapply(payment$source_balance_changes,
                function(element) element$currency)
-    source_balance_changes.currency <- 
+    source_balance_changes.currency <-
         Currency(source_balance_changes.currency)
-    source_balance_changes.issuer <- 
-        sapply(paymentlist$source_balance_changes,
-               function(element) element$issuer)
-    source_balance_changes <- 
+    source_balance_changes.issuer <- sapply(payment$source_balance_changes,
+                                            function(element) element$issuer)
+    source_balance_changes <-
         Amount(value = source_balance_changes.value,
                currency = source_balance_changes.currency,
                issuer = source_balance_changes.issuer)
-    
-    destination_balance_changes.value <- 
-        sapply(paymentlist$destination_balance_changes,
+
+    destination_balance_changes.value <-
+        sapply(payment$destination_balance_changes,
                function(element) element$value)
-    destination_balance_changes.value <- 
+    destination_balance_changes.value <-
         as.numeric(destination_balance_changes.value)
-    destination_balance_changes.currency <- 
-        sapply(paymentlist$destination_balance_changes,
+    destination_balance_changes.currency <-
+        sapply(payment$destination_balance_changes,
                function(element) element$currency)
-    destination_balance_changes.currency <- 
+    destination_balance_changes.currency <-
         Currency(destination_balance_changes.currency)
-    destination_balance_changes.issuer <- 
-        sapply(paymentlist$destination_balance_changes,
+    destination_balance_changes.issuer <-
+        sapply(payment$destination_balance_changes,
                function(element) element$issuer)
-    destination_balance_changes <- 
+    destination_balance_changes <-
         Amount(value = destination_balance_changes.value,
                currency = destination_balance_changes.currency,
                issuer = destination_balance_changes.issuer)
-    
 
     Payment(source_account = source_account,
             source_tag = source_tag,

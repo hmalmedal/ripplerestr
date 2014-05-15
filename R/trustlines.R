@@ -15,8 +15,7 @@
 #' @return An object of class \code{"\link{Trustline}"}
 #'
 #' @export
-get_account_trustlines <- function(address, currency,
-                                   counterparty, ...) {
+get_account_trustlines <- function(address, currency, counterparty, ...) {
     address <- RippleAddress(address)
     assert_that(is.string(address))
 
@@ -42,35 +41,35 @@ get_account_trustlines <- function(address, currency,
 
     if(length(trustlines) == 0) return(Trustline())
 
-    accounts <- sapply(trustlines, function(element) element$account)
-    n <- length(accounts)
-    accounts <- RippleAddress(accounts)
-    counterparties <- sapply(trustlines, function(element) element$counterparty)
-    counterparties <- RippleAddress(counterparties)
-    currencies <- sapply(trustlines, function(element) element$currency)
-    currencies <- Currency(currencies)
-    limits <- sapply(trustlines, function(element) element$limit)
-    limits <- as.numeric(limits)
-    reciprocated_limits <- sapply(trustlines,
-                                  function(element) element$reciprocated__limit)
-    reciprocated_limits <- as.numeric(reciprocated_limits)
-    .account_allows_rippling <-
+    account <- sapply(trustlines, function(element) element$account)
+    n <- length(account)
+    account <- RippleAddress(account)
+    counterparty <- sapply(trustlines, function(element) element$counterparty)
+    counterparty <- RippleAddress(counterparty)
+    currency <- sapply(trustlines, function(element) element$currency)
+    currency <- Currency(currency)
+    limit <- sapply(trustlines, function(element) element$limit)
+    limit <- as.numeric(limit)
+    reciprocated_limit <- sapply(trustlines,
+                                 function(element) element$reciprocated__limit)
+    reciprocated_limit <- as.numeric(reciprocated_limit)
+    account_allows_rippling <-
         sapply(trustlines, function(element) element$account_allows_rippling)
-    .counterparty_allows_rippling <-
+    counterparty_allows_rippling <-
         sapply(trustlines,
                function(element) element$counterparty_allows_rippling)
-    ledgers <- rep(NA_real_, n)
-    hashes <- character(n)
-    hashes <- Hash256(hashes)
-    Trustline(account = accounts,
-              counterparty = counterparties,
-              currency = currencies,
-              limit = limits,
-              reciprocated_limit = reciprocated_limits,
-              account_allows_rippling = .account_allows_rippling,
-              counterparty_allows_rippling = .counterparty_allows_rippling,
-              ledger = ledgers,
-              hash = hashes)
+    ledger <- rep(NA_real_, n)
+    hash <- character(n)
+    hash <- Hash256(hash)
+    Trustline(account = account,
+              counterparty = counterparty,
+              currency = currency,
+              limit = limit,
+              reciprocated_limit = reciprocated_limit,
+              account_allows_rippling = account_allows_rippling,
+              counterparty_allows_rippling = counterparty_allows_rippling,
+              ledger = ledger,
+              hash = hash)
 }
 
 #' Granting a Trustline
@@ -97,10 +96,8 @@ get_account_trustlines <- function(address, currency,
 #' @return An object of class \code{"\link{Trustline}"}
 #'
 #' @export
-set_account_trustline <- function(address, secret,
-                                  amount,
-                                  allows_rippling = NA,
-                                  limit, currency,
+set_account_trustline <- function(address, secret, amount,
+                                  allows_rippling = NA, limit, currency,
                                   counterparty, ...) {
     address <- RippleAddress(address)
     assert_that(is.string(address))
@@ -127,8 +124,8 @@ set_account_trustline <- function(address, secret,
                       counterparty = counterparty)
     if (!is.na(allows_rippling))
         trustline <- c(trustline, list(allows_rippling = allows_rippling))
-    bodylist <- list(secret = secret, trustline = trustline)
-    body <- jsonlite::toJSON(bodylist)
+    body <- list(secret = secret, trustline = trustline)
+    body <- jsonlite::toJSON(body)
     body <- gsub("\\[ | \\]", "", body)
     path <- paste0("v1/accounts/", address, "/trustlines")
     req <- .POST(path, body, ...)

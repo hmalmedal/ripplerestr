@@ -20,8 +20,7 @@
 #' @return An object of class \code{"\link{Balance}"}
 #'
 #' @export
-get_account_balances <- function(address, currency,
-                                 counterparty, ...) {
+get_account_balances <- function(address, currency, counterparty, ...) {
     address <- RippleAddress(address)
     assert_that(is.string(address))
 
@@ -43,19 +42,18 @@ get_account_balances <- function(address, currency,
 
     path <- paste0("v1/accounts/", address, "/balances")
     req <- .GET(path, query = query, ...)
-    list_of_balances <- .parse(req)$balances
+    balances <- .parse(req)$balances
 
-    if (length(list_of_balances) == 0) return(Balance())
+    if (length(balances) == 0) return(Balance())
 
-    values <- sapply(list_of_balances, function(element) element$value)
-    values <- as.numeric(values)
-    currencies <- sapply(list_of_balances,
-                         function(element) element$currency)
-    currencies <- Currency(currencies)
-    counterparties <- sapply(list_of_balances,
-                             function(element) element$counterparty)
-    Balance(value = values, currency = currencies,
-            counterparty = counterparties)
+    value <- sapply(balances, function(element) element$value)
+    value <- as.numeric(value)
+    currency <- sapply(balances, function(element) element$currency)
+    currency <- Currency(currency)
+    counterparty <- sapply(balances, function(element) element$counterparty)
+    Balance(value = value,
+            currency = currency,
+            counterparty = counterparty)
 }
 
 #' Account Settings
@@ -77,8 +75,8 @@ get_account_settings <- function(address, ...) {
 
     path <- paste0("v1/accounts/", address, "/settings")
     req <- .GET(path, ...)
-    list_of_settings <- .parse(req)$settings
-    .parse_list_of_settings(address, list_of_settings)
+    settings <- .parse(req)$settings
+    .parse_settings(address, settings)
 }
 
 #' Updating Account Settings
@@ -117,12 +115,8 @@ get_account_settings <- function(address, ...) {
 #' @return An object of class \code{"\link{AccountSettings}"}
 #'
 #' @export
-change_account_settings <- function(address, secret,
-                                    transfer_rate,
-                                    domain,
-                                    message_key,
-                                    email_hash,
-                                    disallow_xrp = NA,
+change_account_settings <- function(address, secret, transfer_rate, domain,
+                                    message_key, email_hash, disallow_xrp = NA,
                                     require_authorization = NA,
                                     require_destination_tag = NA,
                                     password_spent = NA, ...) {
@@ -130,66 +124,59 @@ change_account_settings <- function(address, secret,
     assert_that(is.string(address))
     assert_that(is.string(secret))
 
-    settingslist <- list()
+    settings <- list()
 
     if (!missing(transfer_rate)) {
-        assert_that(is.number(transfer_rate),
-                    transfer_rate >= 1)
-        settingslist <- c(settingslist,
-                          transfer_rate = UINT32(round(transfer_rate * 1e9)))
+        assert_that(is.number(transfer_rate), transfer_rate >= 1)
+        settings <- c(settings,
+                      transfer_rate = UINT32(round(transfer_rate * 1e9)))
     }
 
     if (!missing(domain)) {
         assert_that(is.string(domain))
-        settingslist <- c(settingslist,
-                          domain = domain)
+        settings <- c(settings, domain = domain)
     }
 
     if (!missing(message_key)) {
         assert_that(is.string(message_key))
-        settingslist <- c(settingslist,
-                          message_key = message_key)
+        settings <- c(settings, message_key = message_key)
     }
 
     if (!missing(email_hash)) {
         assert_that(is.string(email_hash))
-        settingslist <- c(settingslist,
-                          email_hash = Hash128(email_hash))
+        settings <- c(settings, email_hash = Hash128(email_hash))
     }
 
     if (!is.na(disallow_xrp)) {
         assert_that(is.flag(disallow_xrp))
-        settingslist <- c(settingslist,
-                          disallow_xrp = disallow_xrp)
+        settings <- c(settings, disallow_xrp = disallow_xrp)
     }
 
     if (!is.na(require_authorization)) {
         assert_that(is.flag(require_authorization))
-        settingslist <- c(settingslist,
-                          require_authorization = require_authorization)
+        settings <- c(settings, require_authorization = require_authorization)
     }
 
     if (!is.na(require_destination_tag)) {
         assert_that(is.flag(require_destination_tag))
-        settingslist <- c(settingslist,
-                          require_destination_tag = require_destination_tag)
+        settings <- c(settings,
+                      require_destination_tag = require_destination_tag)
     }
 
     if (!is.na(password_spent)) {
         assert_that(is.flag(password_spent))
-        settingslist <- c(settingslist,
-                          password_spent = password_spent)
+        settings <- c(settings, password_spent = password_spent)
     }
 
-    if (length(settingslist) == 0) stop("No settings provided")
+    if (length(settings) == 0) stop("No settings provided")
 
-    bodylist <- list(secret = secret, settings = settingslist)
-    body <- jsonlite::toJSON(bodylist)
+    body <- list(secret = secret, settings = settings)
+    body <- jsonlite::toJSON(body)
     body <- gsub("\\[ | \\]", "", body)
     path <- paste0("v1/accounts/", address, "/settings")
     req <- .POST(path, body, ...)
-    list_of_settings <- .parse(req)$settings
-    .parse_list_of_settings(address, list_of_settings,
-                            .parse(req)$ledger,
-                            .parse(req)$hash)
+    settings <- .parse(req)$settings
+    .parse_settings(address, settings,
+                    .parse(req)$ledger,
+                    .parse(req)$hash)
 }

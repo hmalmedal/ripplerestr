@@ -62,10 +62,32 @@ payment <- paths[1]
 payment@source_tag <- UINT32(2^32-1)
 payment@source_slippage <- 1
 payment@destination_tag <- UINT32(2^31-1)
-payment@invoice_id <- Hash256("e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855")
+payment@invoice_id <- 
+    Hash256("e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855")
 payment@partial_payment  <- T
 uuid <- generate_uuid()
 
-response <- submit_payment(payment = payment, secret = secret, client_resource_id = uuid)
+response <- submit_payment(payment = payment,
+                           secret = secret,
+                           client_resource_id = uuid)
+
+test_that("classes are correct", {
+    expect_that(response, is_a("list"))
+    expect_that(response$client_resource_id, is_a("character"))
+    expect_that(response$status_url, is_a("character"))
+})
 
 status <- check_payment_status(status_url = response$status_url)
+
+test_that("classes are correct", {
+    expect_that(status, is_a("Payment"))
+    expect_that(status@direction, is_a("character"))
+    expect_that(status@state, is_a("character"))
+    expect_that(status@result, is_a("character"))
+    expect_that(status@ledger, is_a("numeric"))
+    expect_that(status@hash, is_a("Hash256"))
+    expect_that(status@timestamp, is_a("POSIXct"))
+    expect_that(status@fee, is_a("numeric"))
+    expect_that(status@source_balance_changes, is_a("Amount"))
+    expect_that(status@destination_balance_changes, is_a("Amount"))
+})

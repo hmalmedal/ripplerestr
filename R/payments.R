@@ -239,10 +239,25 @@ submit_payment <- function(payment, secret, client_resource_id, ...) {
 
 #' Confirming a Payment
 #'
+#' To confirm that your payment has been submitted successfully, you can call
+#' this.
+#'
+#' @param status_url Return value from \code{\link{submit_payment}}.
+#' @param address The Ripple address for the source account. Ignored if
+#'   \code{status_url} is provided.
+#' @param client_resource_id Provided to \code{\link{submit_payment}}. Ignored
+#'   if \code{status_url} is provided.
+#' @param hash The transaction hash for the desired payment. Ignored if
+#'   \code{status_url} or \code{client_resource_id} is provided.
+#' @param ... Named parameters – such as \code{scheme}, \code{hostname} and
+#'   \code{port} – passed on to \code{\link{httr}}'s \code{\link{modify_url}}.
+#'   See \code{\link{is_server_connected}} for details.
+#'
 #' @return An object of class \code{"\link{Payment}"}
 #'
 #' @export
-check_payment_status <- function(status_url, ...) {
+check_payment_status <- function(status_url, address, client_resource_id,
+                                 hash, ...) {
     if (!missing(status_url)) {
         assert_that(is.string(status_url))
 
@@ -254,7 +269,21 @@ check_payment_status <- function(status_url, ...) {
             stop("invalid status_url",  call. = FALSE)
 
         path <- sub("^/", "", status_url)
+    } else {
+        address <- RippleAddress(address)
+        assert_that(is.string(address))
+        path <- paste0("v1/accounts/", address, "/payments/")
+        if (!missing(client_resource_id)) {
+            client_resource_id <- ResourceId(client_resource_id)
+            assert_that(is.string(client_resource_id))
+            path <- paste0(path, client_resource_id)
+        } else {
+            hash <- Hash256(hash)
+            assert_that(is.string(hash))
+            path <- paste0(path, hash)
+        }
     }
+
     req <- .GET(path, ...)
     payment <- .parse(req)$payment
 

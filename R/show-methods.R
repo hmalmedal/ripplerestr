@@ -43,9 +43,12 @@ setMethod("show",
                   s <- slot(object, slotname)
                   if (length(s) > 0) {
                       cat("Slot \"", slotname, "\":\n", sep = "")
-                      if (slotname == "transfer_rate")
-                          if (s == 0) print(1) else print(unclass(s / 1e9))
-                      else
+                      if (slotname == "transfer_rate") {
+                          if (is.na(s) | s == 0)
+                              print(1)
+                          else
+                              print(unclass(s / 1e9))
+                      } else
                           print(s)
                       cat("\n")
                   }

@@ -33,16 +33,9 @@ NULL
     if(length(list_diff_slot) > 0) warning("Unknown settings")
     settings_names <- intersect(slot_names, list_names)
     slots_classes <- getSlots("AccountSettings")
-    S4_slots <- lapply(slots_classes,
-                       function(slotclass) isS4(do.call(slotclass, list())))
-    for (i in 1:length(settings_names)) {
-        s_name <- settings_names[i]
-        if(S4_slots[s_name]==T)
-            slot(result, s_name) <- do.call(slots_classes[s_name],
-                                            unname(settings[s_name]))
-        else
-            slot(result, s_name) <- unname(unlist(settings[s_name]))
-    }
+    for (s_name in settings_names)
+        slot(result, s_name) <- as(unname(unlist(settings[s_name])),
+                                   slots_classes[s_name])
     ledger <- as.numeric(ledger)
     result@ledger <- ledger
     hash <- Hash256(hash)

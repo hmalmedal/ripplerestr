@@ -8,11 +8,11 @@ amount <- Amount(value = value,
                  issuer = issuer)
 
 test_that("classes are correct", {
-    expect_that(is(amount, "Amount"), is_true())
-    expect_that(is(amount@value, "numeric"), is_true())
-    expect_that(is(amount@currency, "Currency"), is_true())
-    expect_that(is(amount@issuer, "character"), is_true())
-    expect_that(is(amount@counterparty, "character"), is_true())
+    expect_that(amount, is_a("Amount"))
+    expect_that(amount@value, is_a("numeric"))
+    expect_that(amount@currency, is_a("Currency"))
+    expect_that(amount@issuer, is_a("character"))
+    expect_that(amount@counterparty, is_a("character"))
 })
 
 values <- seq(-1, 1, length.out = 26)

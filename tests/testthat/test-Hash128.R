@@ -6,5 +6,5 @@ test_that("invalid hashes fail", {
 
 test_that("class is correct", {
     hash <- Hash128("D41D8CD98F00B204E9800998ECF8427E")
-    expect_that(is(hash, "Hash128"), is_true())
+    expect_that(hash, is_a("Hash128"))
 })

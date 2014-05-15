@@ -6,5 +6,5 @@ test_that("invalid addresses fail", {
 
 test_that("class is correct", {
     root_account <- RippleAddress("rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh")
-    expect_that(is(root_account, "RippleAddress"), is_true())
+    expect_that(root_account, is_a("RippleAddress"))
 })

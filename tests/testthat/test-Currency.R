@@ -7,7 +7,7 @@ test_that("invalid currencies fail", {
 
 test_that("class is correct", {
     USD <- Currency("USD")
-    expect_that(is(USD, "Currency"), is_true())
+    expect_that(USD, is_a("Currency"))
     XAU <- Currency("015841551A748AD2C1F76FF6ECB0CCCD00000000")
-    expect_that(is(XAU, "Currency"), is_true())
+    expect_that(XAU, is_a("Currency"))
 })

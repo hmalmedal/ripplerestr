@@ -6,5 +6,5 @@ test_that("256-bit hex strings fail", {
 
 test_that("class is correct", {
     id <- ResourceId("5ee51660-df56-4355-a086-277a4b8ad538")
-    expect_that(is(id, "ResourceId"), is_true())
+    expect_that(id, is_a("ResourceId"))
 })

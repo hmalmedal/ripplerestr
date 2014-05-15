@@ -2,14 +2,13 @@ library(ripplerestr)
 context("server")
 
 test_that("result is boolean", {
-    expect_that(is(is_server_connected(), "logical"), is_true())
+    expect_that(is_server_connected(), is_a("logical"))
 })
 
 test_that("result is list", {
     result <- get_server_status()
-    expect_that(is(result, "list"), is_true())
-    expect_that(is(result$rippled_server_status, "list"), is_true())
-    expect_that(is(result$rippled_server_status$last_close, "list"), is_true())
-    expect_that(is(result$rippled_server_status$validated_ledger, "list"),
-                is_true())
+    expect_that(result, is_a("list"))
+    expect_that(result$rippled_server_status, is_a("list"))
+    expect_that(result$rippled_server_status$last_close, is_a("list"))
+    expect_that(result$rippled_server_status$validated_ledger, is_a("list"))
 })

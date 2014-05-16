@@ -24,21 +24,24 @@ get_account_balances <- function(address, currency, counterparty, ...) {
     address <- RippleAddress(address)
     assert_that(is.string(address))
 
-    query <- NULL
-
-    if (!missing(counterparty)) {
-        counterparty <- RippleAddress(counterparty)
-        assert_that(is.string(counterparty))
-    }
+    currency_query <- ""
+    counterparty_query <- ""
 
     if (!missing(currency)) {
         currency <- Currency(currency)
         assert_that(is.string(currency))
-        query <- paste0("currency=", currency)
-        if (!missing(counterparty))
-            query <- paste0(query, "&counterparty=", counterparty)
-    } else if (!missing(counterparty))
-        query <- paste0("counterparty=", counterparty)
+        currency_query <- paste0("currency=", currency)
+    }
+
+    if (!missing(counterparty)) {
+        counterparty <- RippleAddress(counterparty)
+        assert_that(is.string(counterparty))
+        counterparty_query <- paste0("counterparty=", counterparty)
+    }
+
+    query <- paste(currency_query, counterparty_query, sep = "&")
+    query <- gsub("^&+|&+$", "", query)
+    if (query == "") query <- NULL
 
     path <- paste0("v1/accounts/", address, "/balances")
     req <- .GET(path, query = query, ...)

@@ -30,6 +30,21 @@ test_that("slot lengths are equal to object length", {
     expect_that(n, equals(length(result@hash)))
 })
 
+test_that("query parameters don't give errors", {
+    expect_that(get_account_trustlines(root_account,
+                                       currency = "USD",
+                                       counterparty =
+                                           "rJMNfiJTwXHcMdB4SpxMgL3mvV4xUVHDnd"),
+                not(throws_error()))
+    expect_that(get_account_trustlines(root_account,
+                                       currency = "USD"),
+                not(throws_error()))
+    expect_that(get_account_trustlines(root_account,
+                                       counterparty =
+                                           "rJMNfiJTwXHcMdB4SpxMgL3mvV4xUVHDnd"),
+                not(throws_error()))
+})
+
 address <- "rJMNfiJTwXHcMdB4SpxMgL3mvV4xUVHDnd"
 secret <- "snQ9dAZHB3rvqcgRqjbyWHJDeVJbA"
 limit <- 1000

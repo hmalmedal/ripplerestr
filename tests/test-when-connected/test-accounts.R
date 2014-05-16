@@ -23,6 +23,21 @@ test_that("slot lengths are equal to object length", {
     expect_that(n, equals(length(result@counterparty)))
 })
 
+test_that("query parameters don't give errors", {
+    expect_that(get_account_balances(root_account,
+                                     currency = "USD",
+                                     counterparty =
+                                         "rJMNfiJTwXHcMdB4SpxMgL3mvV4xUVHDnd"),
+                not(throws_error()))
+    expect_that(get_account_balances(root_account,
+                                     currency = "USD"),
+                not(throws_error()))
+    expect_that(get_account_balances(root_account,
+                                     counterparty =
+                                         "rJMNfiJTwXHcMdB4SpxMgL3mvV4xUVHDnd"),
+                not(throws_error()))
+})
+
 black_hole <- RippleAddress("rJp2sUmi2iTbWzqhxoYnNAg4QqCxgByCTy")
 result <- get_account_settings(black_hole)
 

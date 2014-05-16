@@ -44,6 +44,20 @@ test_that("slot lengths are equal to object length", {
     expect_that(n, equals(length(result@no_direct_ripple)))
 })
 
+test_that("query parameters don't give errors", {
+    expect_that(get_payment_paths(address = address,
+                                  destination_account = destination_account,
+                                  destination_amount = destination_amount,
+                                  source_currencies = "JPY,EUR"),
+                not(throws_error()))
+    amounts <- Amount(1:2, c("EUR", "JPY"))
+    expect_that(get_payment_paths(address = address,
+                                  destination_account = destination_account,
+                                  destination_amount = destination_amount,
+                                  source_currencies = amounts),
+                not(throws_error()))
+})
+
 address <- RippleAddress("rJMNfiJTwXHcMdB4SpxMgL3mvV4xUVHDnd")
 secret <- "snQ9dAZHB3rvqcgRqjbyWHJDeVJbA"
 destination_account <- RippleAddress("rH3WTUovV1HKx4S5HZup4dUZEjeGnehL6X")

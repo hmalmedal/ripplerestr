@@ -24,7 +24,10 @@
 #'   currency code, or as a currency code and issuer. If the issuer is not
 #'   specified for a currency other than XRP, then the results will be limited
 #'   to the specified currency, but any issuer for that currency will be
-#'   included in the results.
+#'   included in the results. The string should be a comma-separated list of
+#'   source currencies. Each source currency can be specified either as a
+#'   currency code (eg, \code{USD}), or as a currency code and issuer (eg,
+#'   \code{USD+r...}).
 #'
 #' @return An object of class \code{"\link{Payment}"}
 #'
@@ -53,11 +56,17 @@ get_payment_paths <- function(address, destination_account,
 
     query <- NULL
 
-    if (!missing(source_currencies))
+    if (!missing(source_currencies)) {
         if (!is(source_currencies, "Amount")) {
             assert_that(is.string(source_currencies))
-            query <- paste0("source_currencies=", source_currencies)
+        } else {
+            source_currencies <- paste(gsub("^[^\\+]*\\+",
+                                            "",
+                                            source_currencies),
+                                       collapse = ",")
         }
+        query <- paste0("source_currencies=", source_currencies)
+    }
 
     destination_amount <- paste(value, currency, issuer, sep = "+")
     destination_amount <- sub("\\+$", "", destination_amount)

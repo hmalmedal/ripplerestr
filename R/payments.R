@@ -25,16 +25,13 @@
 #'   specified for a currency other than XRP, then the results will be limited
 #'   to the specified currency, but any issuer for that currency will be
 #'   included in the results.
-#' @param ... Named parameters – such as \code{scheme}, \code{hostname} and
-#'   \code{port} – passed on to \code{\link{httr}}'s \code{\link{modify_url}}.
-#'   See \code{\link{is_server_connected}} for details.
 #'
 #' @return An object of class \code{"\link{Payment}"}
 #'
 #' @export
 get_payment_paths <- function(address, destination_account,
                               destination_amount, value, currency,
-                              issuer, source_currencies, ...) {
+                              issuer, source_currencies) {
     address <- RippleAddress(address)
     assert_that(is.string(address))
     destination_account <- RippleAddress(destination_account)
@@ -71,7 +68,7 @@ get_payment_paths <- function(address, destination_account,
 
     path <- paste0("v1/accounts/", address, "/payments/paths/",
                    destination_account, "/", destination_amount)
-    req <- .GET(path, query = query, ...)
+    req <- .GET(path, query = query)
     payments <- .parse(req)$payments
 
     if (length(payments) == 0) return(Payment())
@@ -165,16 +162,13 @@ get_payment_paths <- function(address, destination_account,
 #'   identify this payment within the \code{ripple-rest} API. Note that you can
 #'   use \code{\link{generate_uuid}} to calculate a UUID value if you do not
 #'   have a UUID generator readily available.
-#' @param ... Named parameters – such as \code{scheme}, \code{hostname} and
-#'   \code{port} – passed on to \code{\link{httr}}'s \code{\link{modify_url}}.
-#'   See \code{\link{is_server_connected}} for details.
 #'
 #' @return A named list. The first element is the \code{"client_resource_id"}
 #'   you gave. The second element is named \code{"status_url"} and can be used
 #'   with \code{\link{check_payment_status}}.
 #'
 #' @export
-submit_payment <- function(payment, secret, client_resource_id, ...) {
+submit_payment <- function(payment, secret, client_resource_id) {
     assert_that(is(payment, "Payment"))
     assert_that(is.scalar(payment))
     assert_that(is.string(secret))
@@ -231,7 +225,7 @@ submit_payment <- function(payment, secret, client_resource_id, ...) {
     body <- jsonlite::toJSON(body)
     body <- gsub("\\[ | \\]", "", body)
     path <- "v1/payments"
-    req <- .POST(path, body, ...)
+    req <- .POST(path, body)
     object <- .parse(req)
     object["success"] <- NULL
     object
@@ -249,15 +243,12 @@ submit_payment <- function(payment, secret, client_resource_id, ...) {
 #'   if \code{status_url} is provided.
 #' @param hash The transaction hash for the desired payment. Ignored if
 #'   \code{status_url} or \code{client_resource_id} is provided.
-#' @param ... Named parameters – such as \code{scheme}, \code{hostname} and
-#'   \code{port} – passed on to \code{\link{httr}}'s \code{\link{modify_url}}.
-#'   See \code{\link{is_server_connected}} for details.
 #'
 #' @return An object of class \code{"\link{Payment}"}
 #'
 #' @export
 check_payment_status <- function(status_url, address, client_resource_id,
-                                 hash, ...) {
+                                 hash) {
     if (!missing(status_url)) {
         assert_that(is.string(status_url))
 
@@ -284,7 +275,7 @@ check_payment_status <- function(status_url, address, client_resource_id,
         }
     }
 
-    req <- .GET(path, ...)
+    req <- .GET(path)
     payment <- .parse(req)$payment
 
     source_account <- RippleAddress(payment$source_account)

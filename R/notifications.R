@@ -13,14 +13,11 @@
 #'
 #' @param address The Ripple address of the desired account
 #' @param hash Transaction hash
-#' @param ... Named parameters – such as \code{scheme}, \code{hostname} and
-#'   \code{port} – passed on to \code{\link{httr}}'s \code{\link{modify_url}}.
-#'   See \code{\link{is_server_connected}} for details.
 #'
 #' @return An object of class \code{"\link{Notification}"}
 #'
 #' @export
-get_notification <- function(address, hash, ...) {
+get_notification <- function(address, hash) {
     address <- RippleAddress(address)
     assert_that(is.string(address))
 
@@ -28,7 +25,7 @@ get_notification <- function(address, hash, ...) {
     assert_that(is.string(hash))
 
     path <- paste0("v1/accounts/", address, "/notifications/", hash)
-    req <- .GET(path, ...)
+    req <- .GET(path)
     notification <- .parse(req)$notification
     account <- RippleAddress(notification$account)
     type <- notification$type

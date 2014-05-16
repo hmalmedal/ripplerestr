@@ -8,9 +8,6 @@
 #' @param address The Ripple address of the desired account
 #' @param currency Three letter currency denominations
 #' @param counterparty The Ripple address of the counterparty trusted
-#' @param ... Named parameters – such as \code{scheme}, \code{hostname} and
-#'   \code{port} – passed on to \code{\link{httr}}'s \code{\link{modify_url}}.
-#'   See \code{\link{is_server_connected}} for details.
 #'
 #' @examples
 #' root_account <- RippleAddress("rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh")
@@ -20,7 +17,7 @@
 #' @return An object of class \code{"\link{Balance}"}
 #'
 #' @export
-get_account_balances <- function(address, currency, counterparty, ...) {
+get_account_balances <- function(address, currency, counterparty) {
     address <- RippleAddress(address)
     assert_that(is.string(address))
 
@@ -44,7 +41,7 @@ get_account_balances <- function(address, currency, counterparty, ...) {
     if (query == "") query <- NULL
 
     path <- paste0("v1/accounts/", address, "/balances")
-    req <- .GET(path, query = query, ...)
+    req <- .GET(path, query = query)
     balances <- .parse(req)$balances
 
     if (length(balances) == 0) return(Balance())
@@ -65,19 +62,16 @@ get_account_balances <- function(address, currency, counterparty, ...) {
 #' current settings in force for the given account.
 #'
 #' @param address The Ripple address of the desired account
-#' @param ... Named parameters – such as \code{scheme}, \code{hostname} and
-#'   \code{port} – passed on to \code{\link{httr}}'s \code{\link{modify_url}}.
-#'   See \code{\link{is_server_connected}} for details.
 #'
 #' @return An object of class \code{"\link{AccountSettings}"}
 #'
 #' @export
-get_account_settings <- function(address, ...) {
+get_account_settings <- function(address) {
     address <- RippleAddress(address)
     assert_that(is.string(address))
 
     path <- paste0("v1/accounts/", address, "/settings")
-    req <- .GET(path, ...)
+    req <- .GET(path)
     settings <- .parse(req)$settings
     .parse_settings(address, settings)
 }
@@ -111,9 +105,6 @@ get_account_settings <- function(address, ...) {
 #'   exclusively with hosted wallets.
 #' @param password_spent \code{TRUE} if the password has been "spent", else
 #'   \code{FALSE}.
-#' @param ... Named parameters – such as \code{scheme}, \code{hostname} and
-#'   \code{port} – passed on to \code{\link{httr}}'s \code{\link{modify_url}}.
-#'   See \code{\link{is_server_connected}} for details.
 #'
 #' @return An object of class \code{"\link{AccountSettings}"}
 #'
@@ -122,7 +113,7 @@ change_account_settings <- function(address, secret, transfer_rate, domain,
                                     message_key, email_hash, disallow_xrp = NA,
                                     require_authorization = NA,
                                     require_destination_tag = NA,
-                                    password_spent = NA, ...) {
+                                    password_spent = NA) {
     address <- RippleAddress(address)
     assert_that(is.string(address))
     assert_that(is.string(secret))
@@ -177,7 +168,7 @@ change_account_settings <- function(address, secret, transfer_rate, domain,
     body <- jsonlite::toJSON(body)
     body <- gsub("\\[ | \\]", "", body)
     path <- paste0("v1/accounts/", address, "/settings")
-    req <- .POST(path, body, ...)
+    req <- .POST(path, body)
     settings <- .parse(req)$settings
     .parse_settings(address, settings,
                     .parse(req)$ledger,

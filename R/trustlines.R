@@ -8,14 +8,11 @@
 #' @param address The Ripple address of the desired account
 #' @param currency Three letter currency denominations
 #' @param counterparty The Ripple address of the counterparty trusted
-#' @param ... Named parameters – such as \code{scheme}, \code{hostname} and
-#'   \code{port} – passed on to \code{\link{httr}}'s \code{\link{modify_url}}.
-#'   See \code{\link{is_server_connected}} for details.
 #'
 #' @return An object of class \code{"\link{Trustline}"}
 #'
 #' @export
-get_account_trustlines <- function(address, currency, counterparty, ...) {
+get_account_trustlines <- function(address, currency, counterparty) {
     address <- RippleAddress(address)
     assert_that(is.string(address))
 
@@ -39,7 +36,7 @@ get_account_trustlines <- function(address, currency, counterparty, ...) {
     if (query == "") query <- NULL
 
     path <- paste0("v1/accounts/", address, "/trustlines")
-    req <- .GET(path, query = query, ...)
+    req <- .GET(path, query = query)
     trustlines <- .parse(req)$trustlines
 
     if(length(trustlines) == 0) return(Trustline())
@@ -92,16 +89,13 @@ get_account_trustlines <- function(address, currency, counterparty, ...) {
 #'   is provided.
 #' @param counterparty Ripple address of the counterparty trusted. Ignored if
 #'   \code{amount} is provided.
-#' @param ... Named parameters – such as \code{scheme}, \code{hostname} and
-#'   \code{port} – passed on to \code{\link{httr}}'s \code{\link{modify_url}}.
-#'   See \code{\link{is_server_connected}} for details.
 #'
 #' @return An object of class \code{"\link{Trustline}"}
 #'
 #' @export
 set_account_trustline <- function(address, secret, amount,
                                   allows_rippling = NA, limit, currency,
-                                  counterparty, ...) {
+                                  counterparty) {
     address <- RippleAddress(address)
     assert_that(is.string(address))
     assert_that(is.string(secret))
@@ -131,7 +125,7 @@ set_account_trustline <- function(address, secret, amount,
     body <- jsonlite::toJSON(body)
     body <- gsub("\\[ | \\]", "", body)
     path <- paste0("v1/accounts/", address, "/trustlines")
-    req <- .POST(path, body, ...)
+    req <- .POST(path, body)
     result <- .parse(req)
 
     Trustline(account = RippleAddress(result$trustline$account),

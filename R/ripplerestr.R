@@ -3,8 +3,14 @@
 #' The \code{ripple-rest} API makes it easy to access the Ripple system via a
 #' RESTful web interface.
 #'
+#' The default url is \code{http://localhost:5990/}. You can change it by
+#' setting the option \code{"ripplerestr.url"}.
+#'
 #' @references
 #' \url{https://dev.ripple.com/}
+#'
+#' @examples
+#' options("ripplerestr.url" = "http://example.com/")
 #'
 #' @name ripplerestr
 #' @docType package
@@ -46,7 +52,10 @@ NULL
 
 # Helper functions from httr vignette.
 .GET <- function(path, ...) {
-    req <- GET("http://localhost:5990/", path = path, ...)
+    url <- getOption("ripplerestr.url",
+                     default = "http://localhost:5990/")
+    url <- build_url(parse_url(url))
+    req <- GET(url, path = path, ...)
     .check(req)
     .success(req)
 
@@ -79,7 +88,10 @@ NULL
 }
 
 .POST <- function(path, body, ...) {
-    req <- POST("http://localhost:5990/", path = path, body = I(body),
+    url <- getOption("ripplerestr.url",
+                     default = "http://localhost:5990/")
+    url <- build_url(parse_url(url))
+    req <- POST(url, path = path, body = I(body),
                 content_type_json(), ...)
     .check(req)
     .success(req)

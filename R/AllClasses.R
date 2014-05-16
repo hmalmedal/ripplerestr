@@ -367,7 +367,7 @@ AccountSettings <- setClass("AccountSettings",
                                       hash = "Hash256"))
 validAccountSettingsObject <- function(object) {
     f <- function(slotname)
-        if(length(slot(object, slotname)) > 1)
+        if (length(slot(object, slotname)) > 1)
             return(stop(paste("slot", slotname, "has length larger than 1")))
     lapply(slotNames(object), f)
     return(TRUE)
@@ -474,7 +474,7 @@ validPaymentObject <- function(object) {
     if (!.are_slot_lengths_equal(object, 1:11))
         return("Unequal lengths.")
     f <- function(slotname)
-        if(length(slot(object, slotname)) > 1)
+        if (length(slot(object, slotname)) > 1)
             return(stop(paste("slot", slotname, "has length larger than 1")))
     lapply(slotNames(object)[12:18], f)
     if (!all(grepl("^incoming|outgoing|passthrough$",

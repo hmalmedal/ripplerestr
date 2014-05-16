@@ -54,7 +54,7 @@ get_payment_paths <- function(address, destination_account,
     query <- NULL
 
     if (!missing(source_currencies))
-        if(!is(source_currencies, "Amount")) {
+        if (!is(source_currencies, "Amount")) {
             assert_that(is.string(source_currencies))
             query <- paste0("source_currencies=", source_currencies)
         }
@@ -63,7 +63,7 @@ get_payment_paths <- function(address, destination_account,
     destination_amount <- sub("\\+$", "", destination_amount)
 
     XRP <- Currency("XRP")
-    if(identical(currency, XRP))
+    if (identical(currency, XRP))
         destination_amount <- sub("XRP.*$", "XRP", destination_amount)
 
     path <- paste0("v1/accounts/", address, "/payments/paths/",
@@ -256,7 +256,7 @@ check_payment_status <- function(status_url, address, client_resource_id,
                           "r[1-9A-HJ-NP-Za-km-z]{25,33}",
                           "/payments/",
                           "(?!$|^[A-Fa-f0-9]{64})[ -~]{1,255}$")
-        if(!grepl(pattern, status_url, perl = T))
+        if (!grepl(pattern, status_url, perl = T))
             stop("invalid status_url",  call. = FALSE)
 
         path <- sub("^/", "", status_url)

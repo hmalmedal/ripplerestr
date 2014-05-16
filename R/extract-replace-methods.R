@@ -74,7 +74,7 @@ setMethod("[<-",
           signature(x = "Balance"),
           function (x, i, j, ..., value)
           {
-              if(!is(value, "Balance")) stop("wrong class")
+              if (!is(value, "Balance")) stop("wrong class")
               .value <- x@value
               .currency <- x@currency
               .counterparty <- x@counterparty
@@ -94,7 +94,7 @@ setMethod("[<-",
           signature(x = "Trustline"),
           function (x, i, j, ..., value)
           {
-              if(!is(value, "Trustline")) stop("wrong class")
+              if (!is(value, "Trustline")) stop("wrong class")
               .account <- x@account
               .counterparty <- x@counterparty
               .currency <- x@currency

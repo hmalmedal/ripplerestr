@@ -39,7 +39,7 @@ get_account_trustlines <- function(address, currency, counterparty) {
     req <- .GET(path, query = query)
     trustlines <- .parse(req)$trustlines
 
-    if(length(trustlines) == 0) return(Trustline())
+    if (length(trustlines) == 0) return(Trustline())
 
     account <- sapply(trustlines, function(element) element$account)
     n <- length(account)

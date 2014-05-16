@@ -20,13 +20,13 @@
 NULL
 
 .are_slot_lengths_equal <- function(object, i) {
-    if(!isS4(object)) stop("Not S4 object")
+    if (!isS4(object)) stop("Not S4 object")
     slotnames <- slotNames(object)
     if (!missing(i)) slotnames <- slotnames[i]
     l <- sapply(slotnames,
                 function(slotname) length(slot(object, slotname)))
     l <- unique(l)
-    if(length(l) > 1) F else T
+    if (length(l) > 1) F else T
 }
 
 .parse_settings <- function(address, settings,
@@ -36,7 +36,7 @@ NULL
     result <- AccountSettings(account = RippleAddress(address))
     slot_names <- slotNames(result)
     list_diff_slot <- setdiff(list_names, slot_names)
-    if(length(list_diff_slot) > 0)
+    if (length(list_diff_slot) > 0)
         warning("Unknown settings: ", paste(list_diff_slot, collapse = ", "))
     settings_names <- intersect(slot_names, list_names)
     slots_classes <- getSlots("AccountSettings")

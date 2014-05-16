@@ -50,6 +50,87 @@ NULL
     result
 }
 
+.parse_payment <- function(p) {
+    source_account <- RippleAddress(p$payment$source_account)
+    source_tag <- UINT32(p$payment$source_tag)
+    source_amount <- Amount(value = p$payment$source_amount$value,
+                            currency =
+                                Currency(p$payment$source_amount$currency),
+                            issuer = p$payment$source_amount$issuer)
+    source_slippage <- as.numeric(p$payment$source_slippage)
+    destination_account <- RippleAddress(p$payment$destination_account)
+    destination_tag <- UINT32(p$payment$destination_tag)
+    destination_amount <-
+        Amount(value = p$payment$destination_amount$value,
+               currency = Currency(p$payment$destination_amount$currency),
+               issuer = p$payment$destination_amount$issuer)
+    invoice_id <- Hash256(p$payment$invoice_id)
+    paths <- p$payment$paths
+    partial_payment <- p$payment$partial_payment
+    no_direct_ripple <- p$payment$no_direct_ripple
+    direction <- p$payment$direction
+    state <- p$payment$state
+    result <- p$payment$result
+    ledger <- as.numeric(p$payment$ledger)
+    hash <- Hash256(p$payment$hash)
+    timestamp <- ymd_hms(p$payment$timestamp, quiet = T)
+    fee <- as.numeric(p$payment$fee)
+
+    source_balance_changes.value <- sapply(p$payment$source_balance_changes,
+                                           function(element) element$value)
+    source_balance_changes.value <- as.numeric(source_balance_changes.value)
+    source_balance_changes.currency <-
+        sapply(p$payment$source_balance_changes,
+               function(element) element$currency)
+    source_balance_changes.currency <-
+        Currency(source_balance_changes.currency)
+    source_balance_changes.issuer <- sapply(p$payment$source_balance_changes,
+                                            function(element) element$issuer)
+    source_balance_changes <-
+        Amount(value = source_balance_changes.value,
+               currency = source_balance_changes.currency,
+               issuer = source_balance_changes.issuer)
+
+    destination_balance_changes.value <-
+        sapply(p$payment$destination_balance_changes,
+               function(element) element$value)
+    destination_balance_changes.value <-
+        as.numeric(destination_balance_changes.value)
+    destination_balance_changes.currency <-
+        sapply(p$payment$destination_balance_changes,
+               function(element) element$currency)
+    destination_balance_changes.currency <-
+        Currency(destination_balance_changes.currency)
+    destination_balance_changes.issuer <-
+        sapply(p$payment$destination_balance_changes,
+               function(element) element$issuer)
+    destination_balance_changes <-
+        Amount(value = destination_balance_changes.value,
+               currency = destination_balance_changes.currency,
+               issuer = destination_balance_changes.issuer)
+
+    Payment(source_account = source_account,
+            source_tag = source_tag,
+            source_amount = source_amount,
+            source_slippage = source_slippage,
+            destination_account = destination_account,
+            destination_tag = destination_tag,
+            destination_amount = destination_amount,
+            invoice_id = invoice_id,
+            paths = paths,
+            partial_payment = partial_payment,
+            no_direct_ripple = no_direct_ripple,
+            direction = direction,
+            state = state,
+            result = result,
+            ledger = ledger,
+            hash = hash,
+            timestamp = timestamp,
+            fee = fee,
+            source_balance_changes = source_balance_changes,
+            destination_balance_changes = destination_balance_changes)
+}
+
 # Helper functions from httr vignette.
 .GET <- function(path, ...) {
     url <- getOption("ripplerestr.url",

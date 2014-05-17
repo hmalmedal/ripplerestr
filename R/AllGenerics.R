@@ -9,3 +9,15 @@
 setGeneric("getCurrency",
            function(object, ...)
                standardGeneric("getCurrency"))
+
+#' getTransferRate
+#'
+#' Extracts the \code{transfer_rate} slot.
+#'
+#' @param object Object of class \code{"\link{AccountSettings}"}.
+#' @param ... ignored
+#'
+#' @export
+setGeneric("getTransferRate",
+           function(object, ...)
+               standardGeneric("getTransferRate"))

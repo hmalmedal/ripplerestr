@@ -148,3 +148,27 @@ bitstamp_USD
 ```
 
 
+Examine account settings
+------------------------
+
+Compare the transfer rates of different gateways.
+
+
+```r
+df <- rbind(c("bitstamp", "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"), c("dividendrippler", 
+    "rfYv1TXnwgDDK4WQNbFALykYuEBnrR4pDX"), c("justcoin", "rJHygWcTLVpSXkowott6kzgZU6viQSVYM1"))
+colnames(df) <- c("gateway", "address")
+df <- as.data.frame(df)
+settings <- lapply(df$address, get_account_settings)
+df$transfer_rate <- sapply(settings, getTransferRate)
+print(df, digits = 5)
+```
+
+```
+##           gateway                            address transfer_rate
+## 1        bitstamp  rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B        1.0020
+## 2 dividendrippler rfYv1TXnwgDDK4WQNbFALykYuEBnrR4pDX        1.0015
+## 3        justcoin rJHygWcTLVpSXkowott6kzgZU6viQSVYM1        1.0000
+```
+
+

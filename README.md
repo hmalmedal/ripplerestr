@@ -27,7 +27,7 @@ Installation
 Download the [latest release](https://github.com/hmalmedal/ripplerestr/releases/latest) and install it.
 
 Set up
------
+------
 
 Load the `ripplerestr` library and set the URL.
 
@@ -36,6 +36,8 @@ Load the `ripplerestr` library and set the URL.
 library(ripplerestr)
 options(ripplerestr.url = "http://localhost:5990/")
 ```
+
+
 
 
 Check server
@@ -69,17 +71,17 @@ get_server_status()
 ## [1] "0.25.1"
 ## 
 ## $rippled_server_status$complete_ledgers
-## [1] "32570-6670810"
+## [1] "32570-6671212"
 ## 
 ## $rippled_server_status$hostid
-## [1] "AIR"
+## [1] "MAC"
 ## 
 ## $rippled_server_status$io_latency_ms
 ## [1] 1
 ## 
 ## $rippled_server_status$last_close
 ## $rippled_server_status$last_close$converge_time_s
-## [1] 2.045
+## [1] 2.02
 ## 
 ## $rippled_server_status$last_close$proposers
 ## [1] 5
@@ -92,20 +94,20 @@ get_server_status()
 ## [1] 6
 ## 
 ## $rippled_server_status$pubkey_node
-## [1] "n9LVtEwRBRfLhrs5cZcKYiYMw6wT9MgmAZEMQEXmX4Bwkq4D6hc1"
+## [1] "n94pSqypSfddzAVj9qoezHyUoetsrMnwgNuBqRJ3WHvM8aMMf7rW"
 ## 
 ## $rippled_server_status$server_state
 ## [1] "full"
 ## 
 ## $rippled_server_status$validated_ledger
 ## $rippled_server_status$validated_ledger$age
-## [1] 2
+## [1] 0
 ## 
 ## $rippled_server_status$validated_ledger$base_fee_xrp
 ## [1] 1e-05
 ## 
 ## $rippled_server_status$validated_ledger$hash
-## [1] "409A8AE82EDAA555B787C5C4A8FD94DF8B2874FD8E30CCCD8C86BFF31390BB75"
+## [1] "0643E330050C29940A02D0031BDE4C230001E8209FFCB929A85D26CA3841F1B7"
 ## 
 ## $rippled_server_status$validated_ledger$reserve_base_xrp
 ## [1] 20
@@ -114,7 +116,7 @@ get_server_status()
 ## [1] 5
 ## 
 ## $rippled_server_status$validated_ledger$seq
-## [1] 6670810
+## [1] 6671212
 ## 
 ## 
 ## $rippled_server_status$validation_quorum

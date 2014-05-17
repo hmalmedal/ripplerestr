@@ -27,13 +27,16 @@ Installation
 Download the [latest release](https://github.com/hmalmedal/ripplerestr/releases/latest) and install it.
 
 Set up
------
+------
 
 Load the `ripplerestr` library and set the URL.
 
 ```{r setup}
 library(ripplerestr)
 options("ripplerestr.url" = "http://localhost:5990/")
+```
+```{r cache, echo=FALSE}
+opts_chunk$set(cache=TRUE)
 ```
 
 Check server

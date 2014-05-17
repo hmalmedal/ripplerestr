@@ -2,6 +2,8 @@
 #'
 #' Extracts the \code{currency} slot.
 #'
+#' @param object Object of class \code{"\link{Balance}"}
+#'
 #' @export
 setMethod("getCurrency",
           signature(object = "Balance"),
@@ -15,6 +17,8 @@ setMethod("getCurrency",
 #'
 #' Extracts the \code{currency} slot.
 #'
+#' @param object Object of class \code{"\link{Amount}"}
+#'
 #' @export
 setMethod("getCurrency",
           signature(object = "Amount"),
@@ -27,6 +31,8 @@ setMethod("getCurrency",
 #' getCurrency for Trustline class
 #'
 #' Extracts the \code{currency} slot.
+#'
+#' @param object Object of class \code{"\link{Trustline}"}
 #'
 #' @export
 setMethod("getCurrency",

@@ -20,10 +20,10 @@ Before you can use the `ripple-rest` API, you will need to have three things:
  * An installed version of `ripple-rest` running locally or remotely. Instructions on installing `ripple-rest` can be found in the README.md file in the [Github repository](https://github.com/ripple/ripple-rest).
  * An activated Ripple account.
  * The URL of the server running the `ripple-rest` API that you wish to use.
- 
+
 Installation
 ------------
- 
+
 Download the [latest release](https://github.com/hmalmedal/ripplerestr/releases/latest) and install it.
 
 Set up
@@ -52,5 +52,19 @@ List server information.
 
 ```{r status}
 get_server_status()
+```
+
+Get an account's balances
+-------------------------
+
+Find how much USD Bitstamp has issued.
+
+```{r bitstamp}
+bitstamp_coldwallet <- "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+bitstamp_hotwallet <- "rrpNnNLKrartuEqfJGpqyDwPj1AFPg9vn1"
+bitstamp_coldUSD <- get_account_balances(bitstamp_coldwallet, "USD")
+bitstamp_hotUSD <- get_account_balances(bitstamp_hotwallet, "USD")
+bitstamp_USD <- sum(bitstamp_coldUSD) + sum(bitstamp_hotUSD)
+bitstamp_USD
 ```
 

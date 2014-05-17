@@ -1,0 +1,53 @@
+ripplerestr
+===========
+
+Use **R** with the [`ripple-rest`](https://dev.ripple.com/) API.
+
+Introduction
+------------
+
+[Ripple](https://ripple.com/) is an Internet protocol for making financial transactions.
+
+The [`ripple-rest`](https://dev.ripple.com/) API makes it easy to access the Ripple system via a RESTful web interface.
+
+The **R** package [`ripplerestr`](https://github.com/hmalmedal/ripplerestr) uses the [`httr`](https://github.com/hadley/httr) library to communicate with `ripple-rest`.
+
+Prerequisites
+-------------
+
+Before you can use the `ripple-rest` API, you will need to have three things:
+
+ * An installed version of `ripple-rest` running locally or remotely. Instructions on installing `ripple-rest` can be found in the README.md file in the [Github repository](https://github.com/ripple/ripple-rest).
+ * An activated Ripple account.
+ * The URL of the server running the `ripple-rest` API that you wish to use.
+ 
+Installation
+------------
+ 
+Download the [latest release](https://github.com/hmalmedal/ripplerestr/releases/latest) and install it.
+
+Set up
+-----
+
+Load the `ripplerestr` library and set the URL.
+
+```{r setup}
+library(ripplerestr)
+options("ripplerestr.url" = "http://localhost:5990/")
+```
+
+Check server
+------------
+
+Check whether the server is ready to be used.
+
+```{r connected}
+is_server_connected()
+```
+
+List server information.
+
+```{r status}
+get_server_status()
+```
+

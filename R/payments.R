@@ -34,7 +34,7 @@
 #' @export
 get_payment_paths <- function(address, destination_account,
                               destination_amount, value, currency,
-                              issuer, source_currencies) {
+                              issuer = "", source_currencies) {
     address <- RippleAddress(address)
     assert_that(is.string(address))
     destination_account <- RippleAddress(destination_account)

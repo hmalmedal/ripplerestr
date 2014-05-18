@@ -48,12 +48,6 @@ Check whether the server is ready to be used.
 is_server_connected()
 ```
 
-List server information.
-
-```{r status}
-get_server_status()
-```
-
 Get an account's balances
 -------------------------
 

@@ -488,6 +488,7 @@ validPaymentObject <- function(object) {
         return("Invalid result")
     validate_that(all(object@source_slippage >= 0))
     validate_that(noNA(object@partial_payment))
+    validate_that(noNA(object@no_direct_ripple))
     return(TRUE)
 }
 setValidity("Payment", validPaymentObject)

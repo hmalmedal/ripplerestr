@@ -98,3 +98,16 @@ setGeneric("setSourceSlippage",
 setGeneric("setPartialPayment",
            function(object, x, ...)
                standardGeneric("setPartialPayment"))
+
+#' setNoDirectRipple
+#'
+#' Sets the \code{no_direct_ripple} slot.
+#'
+#' @param object Object of class \code{"\link{Payment}"}.
+#' @param x Object of class \code{"logical"}.
+#' @param ... ignored
+#'
+#' @export
+setGeneric("setNoDirectRipple",
+           function(object, x, ...)
+               standardGeneric("setNoDirectRipple"))

@@ -34,6 +34,30 @@ setGeneric("getSourceAmount",
            function(object, ...)
                standardGeneric("getSourceAmount"))
 
+#' getSourceBalanceChanges
+#'
+#' Extracts the \code{source_balance_changes} slot.
+#'
+#' @param object Object of class \code{"\link{Payment}"}.
+#' @param ... ignored
+#'
+#' @export
+setGeneric("getSourceBalanceChanges",
+           function(object, ...)
+               standardGeneric("getSourceBalanceChanges"))
+
+#' getDestinationBalanceChanges
+#'
+#' Extracts the \code{destination_balance_changes} slot.
+#'
+#' @param object Object of class \code{"\link{Payment}"}.
+#' @param ... ignored
+#'
+#' @export
+setGeneric("getDestinationBalanceChanges",
+           function(object, ...)
+               standardGeneric("getDestinationBalanceChanges"))
+
 #' hasLedger
 #'
 #' Checks whether an object has a valid \code{ledger} slot.

@@ -99,3 +99,87 @@ print(df, digits = 5)
 ```
 
 
+Send a payment
+--------------
+
+Find possible payment paths.
+
+
+```r
+address <- "rJMNfiJTwXHcMdB4SpxMgL3mvV4xUVHDnd"
+destination_account <- "rH3WTUovV1HKx4S5HZup4dUZEjeGnehL6X"
+paths <- get_payment_paths(address, destination_account, value = 0.01, currency = "USD")
+```
+
+
+Examine the possible amounts that can be sent.
+
+
+```r
+getSourceAmount(paths)
+```
+
+```
+## An object of class "Amount"
+## [1] "0.01001+USD"
+```
+
+
+Select one path and set tags, id and flags. The `partial_payment` flag is necessary due to a bug.
+
+
+```r
+payment <- paths[1]
+payment <- setSourceTag(payment, 123)
+payment <- setDestinationTag(payment, 456)
+payment <- setInvoiceId(payment, "0000000000000000000000000000000000000000000000000000000000000000")
+payment <- setPartialPayment(payment, T)
+```
+
+
+Generate an identifier and submit the payment to the network. It is probably best to read the secret from an encrypted file.
+
+
+```r
+secret <- "snQ9dAZHB3rvqcgRqjbyWHJDeVJbA"
+uuid <- generate_uuid()
+response <- submit_payment(payment, secret, uuid)
+```
+
+
+Check the status of the payment.
+
+
+```r
+repeat {
+    status <- check_payment_status(response$status_url)
+    if (hasLedger(status)) 
+        break
+    Sys.sleep(1)
+}
+```
+
+
+Display how the amounts have changed.
+
+
+```r
+getSourceBalanceChanges(status)
+```
+
+```
+## An object of class "Amount"
+## [1] "-0.01+USD+rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh"
+## [2] "-1.2e-05+XRP"
+```
+
+```r
+getDestinationBalanceChanges(status)
+```
+
+```
+## An object of class "Amount"
+## [1] "0.00999000999+USD+rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh"
+```
+
+

@@ -72,3 +72,16 @@ setGeneric("setDestinationTag",
 setGeneric("setInvoiceId",
            function(object, id, ...)
                standardGeneric("setInvoiceId"))
+
+#' setSourceSlippage
+#'
+#' Sets the \code{source_slippage} slot.
+#'
+#' @param object Object of class \code{"\link{Payment}"}.
+#' @param x Object of class \code{"numeric"}.
+#' @param ... ignored
+#'
+#' @export
+setGeneric("setSourceSlippage",
+           function(object, x, ...)
+               standardGeneric("setSourceSlippage"))

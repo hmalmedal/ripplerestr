@@ -486,6 +486,7 @@ validPaymentObject <- function(object) {
     if (!all(grepl("te[cfjlms][A-Za-z_]+",
                    object@result)))
         return("Invalid result")
+    validate_that(all(object@source_slippage >= 0))
     return(TRUE)
 }
 setValidity("Payment", validPaymentObject)

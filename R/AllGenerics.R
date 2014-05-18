@@ -46,3 +46,16 @@ setGeneric("getSourceAmount",
 setGeneric("setSourceTag",
            function(object, tag, ...)
                standardGeneric("setSourceTag"))
+
+#' setDestinationTag
+#'
+#' Sets the \code{destination_tag} slot.
+#'
+#' @param object Object of class \code{"\link{Payment}"}.
+#' @param tag Object of class \code{"\link{UINT32}"}.
+#' @param ... ignored
+#'
+#' @export
+setGeneric("setDestinationTag",
+           function(object, tag, ...)
+               standardGeneric("setDestinationTag"))

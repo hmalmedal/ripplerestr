@@ -75,7 +75,7 @@ paths <- get_payment_paths(address = address,
 payment <- paths[1]
 payment <- setSourceTag(payment, 2^32-1)
 payment@source_slippage <- 1
-payment@destination_tag <- UINT32(2^31-1)
+payment <- setDestinationTag(payment, 2^31-1)
 payment@invoice_id <-
     Hash256("e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855")
 payment@partial_payment  <- T

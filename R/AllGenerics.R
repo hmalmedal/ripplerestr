@@ -33,3 +33,16 @@ setGeneric("getTransferRate",
 setGeneric("getSourceAmount",
            function(object, ...)
                standardGeneric("getSourceAmount"))
+
+#' setSourceTag
+#'
+#' Sets the \code{source_tag} slot.
+#'
+#' @param object Object of class \code{"\link{Payment}"}.
+#' @param tag Object of class \code{"\link{UINT32}"}.
+#' @param ... ignored
+#'
+#' @export
+setGeneric("setSourceTag",
+           function(object, tag, ...)
+               standardGeneric("setSourceTag"))

@@ -73,7 +73,7 @@ paths <- get_payment_paths(address = address,
                            destination_account = destination_account,
                            destination_amount = destination_amount)
 payment <- paths[1]
-payment@source_tag <- UINT32(2^32-1)
+payment <- setSourceTag(payment, 2^32-1)
 payment@source_slippage <- 1
 payment@destination_tag <- UINT32(2^31-1)
 payment@invoice_id <-

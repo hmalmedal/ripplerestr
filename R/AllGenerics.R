@@ -34,6 +34,18 @@ setGeneric("getSourceAmount",
            function(object, ...)
                standardGeneric("getSourceAmount"))
 
+#' hasLedger
+#'
+#' Checks whether an object has a valid \code{ledger} slot.
+#'
+#' @param object Object of class \code{"\link{Payment}"}.
+#' @param ... ignored
+#'
+#' @export
+setGeneric("hasLedger",
+           function(object, ...)
+               standardGeneric("hasLedger"))
+
 #' setSourceTag
 #'
 #' Sets the \code{source_tag} slot.

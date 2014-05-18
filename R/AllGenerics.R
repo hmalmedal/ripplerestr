@@ -59,3 +59,16 @@ setGeneric("setSourceTag",
 setGeneric("setDestinationTag",
            function(object, tag, ...)
                standardGeneric("setDestinationTag"))
+
+#' setInvoiceId
+#'
+#' Sets the \code{invoice_id} slot.
+#'
+#' @param object Object of class \code{"\link{Payment}"}.
+#' @param id Object of class \code{"\link{Hash256}"}.
+#' @param ... ignored
+#'
+#' @export
+setGeneric("setInvoiceId",
+           function(object, id, ...)
+               standardGeneric("setInvoiceId"))

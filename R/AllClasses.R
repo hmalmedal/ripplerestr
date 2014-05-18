@@ -400,13 +400,13 @@ setValidity("AccountSettings", validAccountSettingsObject)
 #' @slot paths Object of class \code{"character"}. A "stringified" version of
 #'   the Ripple PathSet structure that users should treat as opaque.
 #' @slot partial_payment Object of class \code{"logical"}. A boolean that, if
-#'   set to true, indicates that this payment should go through even if the
-#'   whole amount cannot be delivered because of a lack of liquidity or funds in
-#'   the \code{source_account} account.
+#'   set to \code{TRUE}, indicates that this payment should go through even if
+#'   the whole amount cannot be delivered because of a lack of liquidity or
+#'   funds in the \code{source_account} account.
 #' @slot no_direct_ripple Object of class \code{"logical"}. A boolean that can
-#'   be set to true if paths are specified and the sender would like the Ripple
-#'   Network to disregard any direct paths from the \code{source_account} to the
-#'   \code{destination_account}. This may be used to take advantage of an
+#'   be set to \code{TRUE} if paths are specified and the sender would like the
+#'   Ripple Network to disregard any direct paths from the \code{source_account}
+#'   to the \code{destination_account}. This may be used to take advantage of an
 #'   arbitrage opportunity or by gateways wishing to issue balances from a hot
 #'   wallet to a user who has mistakenly set a trustline directly to the hot
 #'   wallet.

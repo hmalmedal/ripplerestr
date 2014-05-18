@@ -77,7 +77,7 @@ payment <- setSourceTag(payment, 2^32-1)
 payment <- setSourceSlippage(payment, 1)
 payment <- setDestinationTag(payment, 2^31-1)
 payment <- setInvoiceId(payment, "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855")
-payment@partial_payment  <- T
+payment <- setPartialPayment(payment, T)
 uuid <- generate_uuid()
 
 response <- submit_payment(payment = payment,

@@ -4,7 +4,7 @@ setMethod("show",
           signature(object = "Balance"),
           function (object)
           {
-              cat("An object of class \"Balance\"\n")
+              cat("An object of class \"", class(object), "\"\n", sep = "")
               if (length(object) > 0)
                   print(as.character(object))
           }
@@ -15,7 +15,7 @@ setMethod("show",
           signature(object = "Amount"),
           function (object)
           {
-              cat("An object of class \"Amount\"\n")
+              cat("An object of class \"", class(object), "\"\n", sep = "")
               if (length(object) > 0)
                   print(as.character(object))
           }
@@ -26,7 +26,7 @@ setMethod("show",
           signature(object = "AccountSettings"),
           function (object)
           {
-              cat("An object of class \"AccountSettings\"\n")
+              cat("An object of class \"", class(object), "\"\n", sep = "")
               for (slotname in slotNames(object)) {
                   s <- slot(object, slotname)
                   if (length(s) > 0) {

@@ -26,6 +26,16 @@ Installation
 
 Download the [latest release](https://github.com/hmalmedal/ripplerestr/releases/latest) and install it.
 
+You can alternatively install the current version from GitHub:
+
+
+```r
+if (!require("devtools")) install.packages("devtools")
+require("devtools")
+install_github("hmalmedal/ripplerestr")
+```
+
+
 Set up
 ------
 

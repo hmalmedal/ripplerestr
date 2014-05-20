@@ -131,11 +131,11 @@ getSourceAmount(paths)
 
 ```
 ## An object of class "Amount"
-## [1] "0.01001+USD"
+## [1] "0.01+USD"
 ```
 
 
-Select one path and set tags, id and flags. The `partial_payment` flag is necessary due to a bug.
+Select one path and set tags and id.
 
 
 ```r
@@ -143,7 +143,6 @@ payment <- paths[1]
 payment <- setSourceTag(payment, 123)
 payment <- setDestinationTag(payment, 456)
 payment <- setInvoiceId(payment, "0000000000000000000000000000000000000000000000000000000000000000")
-payment <- setPartialPayment(payment, T)
 ```
 
 
@@ -179,7 +178,7 @@ getSourceBalanceChanges(status)
 
 ```
 ## An object of class "Amount"
-## [1] "-0.01+USD+rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh"
+## [1] "-0.01+USD+rH3WTUovV1HKx4S5HZup4dUZEjeGnehL6X"
 ## [2] "-1.2e-05+XRP"
 ```
 
@@ -189,7 +188,7 @@ getDestinationBalanceChanges(status)
 
 ```
 ## An object of class "Amount"
-## [1] "0.00999000999+USD+rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh"
+## [1] "0.01+USD+rH3WTUovV1HKx4S5HZup4dUZEjeGnehL6X"
 ```
 
 

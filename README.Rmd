@@ -104,14 +104,13 @@ Examine the possible amounts that can be sent.
 getSourceAmount(paths)
 ```
 
-Select one path and set tags, id and flags. The `partial_payment` flag is necessary due to a bug.
+Select one path and set tags and id.
 
 ```{r payment}
 payment <- paths[1]
 payment <- setSourceTag(payment, 123)
 payment <- setDestinationTag(payment, 456)
 payment <- setInvoiceId(payment, "0000000000000000000000000000000000000000000000000000000000000000")
-payment <- setPartialPayment(payment, T)
 ```
 
 Generate an identifier and submit the payment to the network. It is probably best to read the secret from an encrypted file.

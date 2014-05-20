@@ -61,13 +61,11 @@ test_that("query parameters don't give errors", {
 address <- RippleAddress("rJMNfiJTwXHcMdB4SpxMgL3mvV4xUVHDnd")
 secret <- "snQ9dAZHB3rvqcgRqjbyWHJDeVJbA"
 destination_account <- RippleAddress("rH3WTUovV1HKx4S5HZup4dUZEjeGnehL6X")
-root_account <- RippleAddress("rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh")
 
 value  <- 0.01 / 3
 currency <- Currency("USD")
 destination_amount <- Amount(value = value,
-                             currency = currency,
-                             issuer = root_account)
+                             currency = currency)
 
 paths <- get_payment_paths(address = address,
                            destination_account = destination_account,

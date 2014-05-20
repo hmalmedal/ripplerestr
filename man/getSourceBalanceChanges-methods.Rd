@@ -15,7 +15,7 @@ getSourceBalanceChanges(object, ...)
 \item{...}{ignored}
 }
 \value{
-An object of class \code{"link{Amount}"}.
+An object of class \code{"\link{Amount}"}.
 }
 \description{
 Extracts the \code{source_balance_changes} slot.

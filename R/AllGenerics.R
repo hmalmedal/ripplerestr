@@ -5,7 +5,7 @@
 #' @param object Object with currency slot.
 #' @param ... ignored
 #'
-#' @return An object of class \code{"link{Currency}"}.
+#' @return An object of class \code{"\link{Currency}"}.
 #'
 #' @export
 #' @docType methods
@@ -34,7 +34,7 @@ setGeneric("getTransferRate",
 #'
 #' Extracts the \code{source_amount} slot.
 #'
-#' @return An object of class \code{"link{Amount}"}.
+#' @return An object of class \code{"\link{Amount}"}.
 #'
 #' @param object Object of class \code{"\link{Payment}"}.
 #' @param ... ignored
@@ -50,7 +50,7 @@ setGeneric("getSourceAmount",
 #'
 #' Extracts the \code{source_balance_changes} slot.
 #'
-#' @return An object of class \code{"link{Amount}"}.
+#' @return An object of class \code{"\link{Amount}"}.
 #'
 #' @param object Object of class \code{"\link{Payment}"}.
 #' @param ... ignored
@@ -66,7 +66,7 @@ setGeneric("getSourceBalanceChanges",
 #'
 #' Extracts the \code{destination_balance_changes} slot.
 #'
-#' @return An object of class \code{"link{Amount}"}.
+#' @return An object of class \code{"\link{Amount}"}.
 #'
 #' @param object Object of class \code{"\link{Payment}"}.
 #' @param ... ignored

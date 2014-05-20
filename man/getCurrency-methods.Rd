@@ -21,7 +21,7 @@ getCurrency(object, ...)
 \item{...}{ignored}
 }
 \value{
-An object of class \code{"link{Currency}"}.
+An object of class \code{"\link{Currency}"}.
 }
 \description{
 Extracts the \code{currency} slot.

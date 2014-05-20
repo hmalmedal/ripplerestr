@@ -13,6 +13,7 @@ test_that("classes are correct", {
     expect_that(nf@ledger, is_a("numeric"))
     expect_that(nf@hash, is_a("Hash256"))
     expect_that(nf@timestamp, is_a("POSIXct"))
+    expect_that(nf@timestamp, not(equals(as.POSIXct(NA))))
     expect_that(nf@transaction_url, is_a("character"))
     expect_that(nf@previous_notification_url, is_a("character"))
     expect_that(nf@next_notification_url, is_a("character"))

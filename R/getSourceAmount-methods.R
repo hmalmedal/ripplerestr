@@ -1,10 +1,4 @@
-#' getSourceAmount for Payment class
-#'
-#' Extracts the \code{source_amount} slot.
-#'
-#' @param object Object of class \code{"\link{Payment}"}.
-#'
-#' @export
+#' @rdname getSourceAmount-methods
 setMethod("getSourceAmount",
           signature(object = "Payment"),
           function(object)

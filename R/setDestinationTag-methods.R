@@ -1,11 +1,4 @@
-#' setDestinationTag for Payment class
-#'
-#' Sets the \code{destination_tag} slot.
-#'
-#' @param object Object of class \code{"\link{Payment}"}.
-#' @param tag Object of class \code{"\link{UINT32}"}.
-#'
-#' @export
+#' @rdname setDestinationTag-methods
 setMethod("setDestinationTag",
           signature(object = "Payment"),
           function(object, tag)

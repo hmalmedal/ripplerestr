@@ -1,10 +1,4 @@
-#' getTransferRate for AccountSettings class
-#'
-#' Extracts the \code{transfer_rate} slot.
-#'
-#' @param object Object of class \code{"\link{AccountSettings}"}.
-#'
-#' @export
+#' @rdname getTransferRate-methods
 setMethod("getTransferRate",
           signature(object = "AccountSettings"),
           function(object)

@@ -1,11 +1,4 @@
-#' setSourceSlippage for Payment class
-#'
-#' Sets the \code{source_slippage} slot.
-#'
-#' @param object Object of class \code{"\link{Payment}"}.
-#' @param x Object of class \code{"numeric"}.
-#'
-#' @export
+#' @rdname setSourceSlippage-methods
 setMethod("setSourceSlippage",
           signature(object = "Payment"),
           function(object, x)

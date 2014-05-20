@@ -1,10 +1,4 @@
-#' getSourceBalanceChanges for Payment class
-#'
-#' Extracts the \code{source_balance_changes} slot.
-#'
-#' @param object Object of class \code{"\link{Payment}"}.
-#'
-#' @export
+#' @rdname getSourceBalanceChanges-methods
 setMethod("getSourceBalanceChanges",
           signature(object = "Payment"),
           function(object)

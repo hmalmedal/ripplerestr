@@ -1,10 +1,4 @@
-#' hasLedger for Payment class
-#'
-#' Checks whether an object has a valid \code{ledger} slot.
-#'
-#' @param object Object of class \code{"\link{Payment}"}.
-#'
-#' @export
+#' @rdname hasLedger-methods
 setMethod("hasLedger",
           signature(object = "Payment"),
           function(object)

@@ -1,11 +1,4 @@
-#' setSourceTag for Payment class
-#'
-#' Sets the \code{source_tag} slot.
-#'
-#' @param object Object of class \code{"\link{Payment}"}.
-#' @param tag Object of class \code{"\link{UINT32}"}.
-#'
-#' @export
+#' @rdname setSourceTag-methods
 setMethod("setSourceTag",
           signature(object = "Payment"),
           function(object, tag)

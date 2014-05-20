@@ -1,11 +1,4 @@
-#' setPartialPayment for Payment class
-#'
-#' Sets the \code{partial_payment} slot.
-#'
-#' @param object Object of class \code{"\link{Payment}"}.
-#' @param x Object of class \code{"logical"}.
-#'
-#' @export
+#' @rdname setPartialPayment-methods
 setMethod("setPartialPayment",
           signature(object = "Payment"),
           function(object, x)

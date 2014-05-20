@@ -1,11 +1,4 @@
-#' setNoDirectRipple for Payment class
-#'
-#' Sets the \code{no_direct_ripple} slot.
-#'
-#' @param object Object of class \code{"\link{Payment}"}.
-#' @param x Object of class \code{"logical"}.
-#'
-#' @export
+#' @rdname setNoDirectRipple-methods
 setMethod("setNoDirectRipple",
           signature(object = "Payment"),
           function(object, x)

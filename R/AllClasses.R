@@ -168,6 +168,26 @@ validAmountObject <- function(object) {
     return(TRUE)
 }
 setValidity("Amount", validAmountObject)
+setAs("Amount", "Balance",
+      function(from) {
+          issuer <- from@issuer
+          if (all(issuer == ""))
+              issuer <- from@counterparty
+          value <- from@value
+          currency <- from@currency
+          Balance(value = value,
+                  currency = currency,
+                  counterparty = issuer)
+      })
+setAs("Balance", "Amount",
+      function(from) {
+          value <- from@value
+          currency <- from@currency
+          counterparty <- from@counterparty
+          Amount(value = value,
+                 currency = currency,
+                 counterparty = counterparty)
+      })
 
 #' Notification
 #'

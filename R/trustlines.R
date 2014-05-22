@@ -50,9 +50,18 @@ get_account_trustlines <- function(address, currency, counterparty) {
     currency <- Currency(currency)
     limit <- sapply(trustlines, function(element) element$limit)
     limit <- as.numeric(limit)
+
     reciprocated_limit <- sapply(trustlines,
-                                 function(element) element$reciprocated__limit)
+                                 function(element) element$reciprocated_limit)
+
+    # Check for bug in old version of ripple-rest.
+    if (is.null(reciprocated_limit[[1]]))
+        reciprocated_limit <- sapply(trustlines,
+                                     function(element)
+                                         element$reciprocated__limit)
+
     reciprocated_limit <- as.numeric(reciprocated_limit)
+
     account_allows_rippling <-
         sapply(trustlines, function(element) element$account_allows_rippling)
     counterparty_allows_rippling <-

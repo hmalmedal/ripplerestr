@@ -32,7 +32,7 @@ setMethod("show",
                   if (length(s) > 0) {
                       cat("Slot \"", slotname, "\":\n", sep = "")
                       if (slotname == "transfer_rate") {
-                          if (is.na(s) | s == 0)
+                          if (s == 0)
                               print(1)
                           else
                               print(unclass(s / 1e9))

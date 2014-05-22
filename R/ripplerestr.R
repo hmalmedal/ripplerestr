@@ -47,6 +47,8 @@ NULL
     result@ledger <- ledger
     hash <- Hash256(hash)
     result@hash <- hash
+    if (is.na(result@transfer_rate))
+        result@transfer_rate <- UINT32(0)
     result
 }
 

@@ -3,3 +3,6 @@
 ^cache$
 ^README\.html$
 ^README\.Rmd$
+^man/.*\.md$
+^DOCUMENTATION\.md$
+^Makefile$

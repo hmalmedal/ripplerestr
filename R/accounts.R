@@ -141,26 +141,22 @@ change_account_settings <- function(address, secret, transfer_rate, domain,
         settings <- c(settings, email_hash = Hash128(email_hash))
     }
 
-    if (!is.na(disallow_xrp)) {
-        assert_that(is.flag(disallow_xrp))
+    assert_that(is.flag(disallow_xrp))
+    if (!is.na(disallow_xrp))
         settings <- c(settings, disallow_xrp = disallow_xrp)
-    }
 
-    if (!is.na(require_authorization)) {
-        assert_that(is.flag(require_authorization))
+    assert_that(is.flag(require_authorization))
+    if (!is.na(require_authorization))
         settings <- c(settings, require_authorization = require_authorization)
-    }
 
-    if (!is.na(require_destination_tag)) {
-        assert_that(is.flag(require_destination_tag))
+    assert_that(is.flag(require_destination_tag))
+    if (!is.na(require_destination_tag))
         settings <- c(settings,
                       require_destination_tag = require_destination_tag)
-    }
 
-    if (!is.na(password_spent)) {
-        assert_that(is.flag(password_spent))
+    assert_that(is.flag(password_spent))
+    if (!is.na(password_spent))
         settings <- c(settings, password_spent = password_spent)
-    }
 
     if (length(settings) == 0) stop("No settings provided")
 

@@ -112,6 +112,7 @@ set_account_trustline <- function(address, secret, amount,
 
     if (!missing(amount)) {
         assert_that(is(amount, "Amount"))
+        assert_that(is.scalar(amount))
         limit <- amount@value
         currency <- amount@currency
         counterparty <- amount@counterparty

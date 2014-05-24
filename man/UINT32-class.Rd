@@ -5,6 +5,6 @@
 \alias{UINT32-class}
 \title{UINT32}
 \description{
-A representation of an unsigned 32-bit integer (0-4294967295)
+A representation of an unsigned 32-bit integer (0-4294967295).
 }
 

@@ -7,7 +7,12 @@ AccountSettings
 
 ### Description
 
-AccountSettings
+The return value from `change_account_settings` and
+`get_account_settings`.
+
+### Details
+
+Each slot length must be `0` or `1`.
 
 ### Slots
 
@@ -91,7 +96,14 @@ Amount
 ### Description
 
 An Amount on the Ripple Protocol, used also for XRP in the ripple-rest
-API
+API.
+
+### Details
+
+Each element of the slots `issuer` and `counterparty` must match the
+regular expression `"^$|^r[1-9A-HJ-NP-Za-km-z]{25,33}$"`.
+
+All slot lengths must be equal.
 
 ### Slots
 
@@ -222,7 +234,14 @@ Balance
 
 ### Description
 
-A simplified representation of an account Balance
+A simplified representation of an account Balance.
+
+### Details
+
+Each element of the slot `counterparty` must match the regular
+expression `"^$|^r[1-9A-HJ-NP-Za-km-z]{25,33}$"`.
+
+All slot lengths must be equal.
 
 ### Slots
 
@@ -387,7 +406,12 @@ Currency
 
 ### Description
 
-The three-character code or hex string used to denote currencies
+The three-character code or hex string used to denote currencies.
+
+### Details
+
+A character vector where each element must match the regular expression
+`"^([a-zA-Z0-9]{3}|[A-Fa-f0-9]{40})$"`.
 
 ### Examples
 
@@ -930,7 +954,12 @@ Hash128
 
 ### Description
 
-The hex representation of a 128-bit hash
+The hex representation of a 128-bit hash.
+
+### Details
+
+A character vector where each element must match the regular expression
+`"^$|^[A-Fa-f0-9]{32}$"`.
   --------------- -----------------
   Hash256-class   R Documentation
   --------------- -----------------
@@ -940,7 +969,12 @@ Hash256
 
 ### Description
 
-The hex representation of a 256-bit hash
+The hex representation of a 256-bit hash.
+
+### Details
+
+A character vector where each element must match the regular expression
+`"^$|^[A-Fa-f0-9]{64}$"`.
   ----------- -----------------
   hasLedger   R Documentation
   ----------- -----------------
@@ -1107,7 +1141,11 @@ Notification
 
 ### Description
 
-Notification
+The return value from `get_notification`.
+
+### Details
+
+All slot lengths must be equal.
 
 ### Slots
 
@@ -1117,25 +1155,25 @@ Notification
 
 `type`
   ~ Object of class `"character"`. The resource type this notification
-    corresponds to. Possible values are "payment", "order", "trustline",
-    "accountsettings".
+    corresponds to. Possible values are `"payment"`, `"order"`,
+    `"trustline"`, `"accountsettings"`.
 
 `direction`
   ~ Object of class `"character"`. The direction of the transaction,
     from the perspective of the account being queried. Possible values
-    are "incoming", "outgoing", and "passthrough".
+    are `"incoming"`, `"outgoing"`, and `"passthrough"`.
 
 `state`
   ~ Object of class `"character"`. The state of the transaction from the
-    perspective of the Ripple Ledger. Possible values are "validated"
-    and "failed".
+    perspective of the Ripple Ledger. Possible values are `"validated"`
+    and `"failed"`.
 
 `result`
   ~ Object of class `"character"`. The rippled code indicating the
-    success or failure type of the transaction. The code "tesSUCCESS"
+    success or failure type of the transaction. The code `"tesSUCCESS"`
     indicates that the transaction was successfully validated and
     written into the Ripple Ledger. All other codes will begin with the
-    following prefixes: "tec", "tef", "tel", or "tej".
+    following prefixes: `"tec"`, `"tef"`, `"tel"`, or `"tej"`.
 
 `ledger`
   ~ Object of class `"numeric"`. The index number of the ledger
@@ -1174,7 +1212,17 @@ Payment
 
 ### Description
 
-A flattened Payment object used by the ripple-rest API
+A flattened Payment object used by the ripple-rest API.
+
+### Details
+
+All of the 11 first slot lengths must be equal.
+
+Each of the other slot lengths must be `0` or `1`.
+
+All elements of `source_slippage` must be greater than or equal to `0`.
+
+The slots `partial_payment` and `no_direct_ripple` cannot contain `NA`.
 
 ### Slots
 
@@ -1297,6 +1345,11 @@ transaction used to prevent duplicate payments and help confirm the
 transaction's final status. All ASCII printable characters are allowed.
 Note that 256-bit hex strings are disallowed because of the potential
 confusion with transaction hashes.
+
+### Details
+
+A character vector where each element must match the regular expression
+`"^(?!$|^[A-Fa-f0-9]{64})[ -~]{1,255}$"`.
   --------------------- -----------------
   RippleAddress-class   R Documentation
   --------------------- -----------------
@@ -1306,7 +1359,12 @@ RippleAddress
 
 ### Description
 
-A Ripple account address
+A Ripple account address.
+
+### Details
+
+A character vector where each element must match the regular expression
+`"^r[1-9A-HJ-NP-Za-km-z]{25,33}$"`.
 
 ### Examples
 
@@ -2053,7 +2111,11 @@ Trustline
 
 ### Description
 
-A simplified Trustline object used by the `ripple-rest` API
+A simplified Trustline object used by the `ripple-rest` API.
+
+### Details
+
+All slot lengths must be equal.
 
 ### Slots
 
@@ -2106,4 +2168,4 @@ UINT32
 
 ### Description
 
-A representation of an unsigned 32-bit integer (0-4294967295)
+A representation of an unsigned 32-bit integer (0-4294967295).

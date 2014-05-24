@@ -1,6 +1,9 @@
 #' Currency
 #'
-#' The three-character code or hex string used to denote currencies
+#' The three-character code or hex string used to denote currencies.
+#'
+#' A character vector where each element must match the regular expression
+#' \code{"^([a-zA-Z0-9]{3}|[A-Fa-f0-9]{40})$"}.
 #'
 #' @examples
 #' USD <- Currency("USD")
@@ -19,7 +22,10 @@ setValidity("Currency", validCurrencyObject)
 
 #' RippleAddress
 #'
-#' A Ripple account address
+#' A Ripple account address.
+#'
+#' A character vector where each element must match the regular expression
+#' \code{"^r[1-9A-HJ-NP-Za-km-z]{25,33}$"}.
 #'
 #' @examples
 #' root_account <- RippleAddress("rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh")
@@ -37,7 +43,10 @@ setValidity("RippleAddress", validRippleAddressObject)
 
 #' Hash256
 #'
-#' The hex representation of a 256-bit hash
+#' The hex representation of a 256-bit hash.
+#'
+#' A character vector where each element must match the regular expression
+#' \code{"^$|^[A-Fa-f0-9]{64}$"}.
 #'
 #' @export Hash256
 #' @exportClass Hash256
@@ -52,7 +61,10 @@ setValidity("Hash256", validHash256Object)
 
 #' Hash128
 #'
-#' The hex representation of a 128-bit hash
+#' The hex representation of a 128-bit hash.
+#'
+#' A character vector where each element must match the regular expression
+#' \code{"^$|^[A-Fa-f0-9]{32}$"}.
 #'
 #' @export Hash128
 #' @exportClass Hash128
@@ -73,6 +85,9 @@ setValidity("Hash128", validHash128Object)
 #' strings are disallowed because of the potential confusion with transaction
 #' hashes.
 #'
+#' A character vector where each element must match the regular expression
+#' \code{"^(?!$|^[A-Fa-f0-9]{64})[ -~]{1,255}$"}.
+#'
 #' @export ResourceId
 #' @exportClass ResourceId
 ResourceId <- setClass("ResourceId", contains = "character")
@@ -87,7 +102,7 @@ setValidity("ResourceId", validResourceIdObject)
 
 #' UINT32
 #'
-#' A representation of an unsigned 32-bit integer (0-4294967295)
+#' A representation of an unsigned 32-bit integer (0-4294967295).
 #'
 #' @export UINT32
 #' @exportClass UINT32
@@ -107,7 +122,12 @@ setAs("ANY", "UINT32", function(from) {
 
 #' Balance
 #'
-#' A simplified representation of an account Balance
+#' A simplified representation of an account Balance.
+#'
+#' Each element of the slot \code{counterparty} must match the regular
+#' expression \code{"^$|^r[1-9A-HJ-NP-Za-km-z]{25,33}$"}.
+#'
+#' All slot lengths must be equal.
 #'
 #' @slot value Object of class \code{"numeric"}. The quantity of the currency.
 #' @slot currency Object of class \code{"\link{Currency}"}. The currency
@@ -135,7 +155,12 @@ setValidity("Balance", validBalanceObject)
 
 #' Amount
 #'
-#' An Amount on the Ripple Protocol, used also for XRP in the ripple-rest API
+#' An Amount on the Ripple Protocol, used also for XRP in the ripple-rest API.
+#'
+#' Each element of the slots \code{issuer} and \code{counterparty} must match
+#' the regular expression \code{"^$|^r[1-9A-HJ-NP-Za-km-z]{25,33}$"}.
+#'
+#' All slot lengths must be equal.
 #'
 #' @slot value Object of class \code{"numeric"}. The quantity of the currency.
 #' @slot currency Object of class \code{"\link{Currency}"}. The currency
@@ -191,22 +216,27 @@ setAs("Balance", "Amount",
 
 #' Notification
 #'
+#' The return value from \code{\link{get_notification}}.
+#'
+#' All slot lengths must be equal.
+#'
 #' @slot account Object of class \code{"\link{RippleAddress}"}. The Ripple
 #'   address of the account to which the notification pertains.
 #' @slot type Object of class \code{"character"}. The resource type this
-#'   notification corresponds to. Possible values are "payment", "order",
-#'   "trustline", "accountsettings".
+#'   notification corresponds to. Possible values are \code{"payment"},
+#'   \code{"order"}, \code{"trustline"}, \code{"accountsettings"}.
 #' @slot direction Object of class \code{"character"}. The direction of the
 #'   transaction, from the perspective of the account being queried. Possible
-#'   values are "incoming", "outgoing", and "passthrough".
+#'   values are \code{"incoming"}, \code{"outgoing"}, and \code{"passthrough"}.
 #' @slot state Object of class \code{"character"}. The state of the transaction
-#'   from the perspective of the Ripple Ledger. Possible values are "validated"
-#'   and "failed".
+#'   from the perspective of the Ripple Ledger. Possible values are
+#'   \code{"validated"} and \code{"failed"}.
 #' @slot result Object of class \code{"character"}. The rippled code indicating
-#'   the success or failure type of the transaction. The code "tesSUCCESS"
-#'   indicates that the transaction was successfully validated and written into
-#'   the Ripple Ledger. All other codes will begin with the following prefixes:
-#'   "tec", "tef", "tel", or "tej".
+#'   the success or failure type of the transaction. The code
+#'   \code{"tesSUCCESS"} indicates that the transaction was successfully
+#'   validated and written into the Ripple Ledger. All other codes will begin
+#'   with the following prefixes: \code{"tec"}, \code{"tef"}, \code{"tel"}, or
+#'   \code{"tej"}.
 #' @slot ledger Object of class \code{"numeric"}. The index number of the ledger
 #'   containing the validated or failed transaction. Failed payments will only
 #'   be written into the Ripple Ledger if they fail after submission to a
@@ -264,7 +294,9 @@ setValidity("Notification", validNotificationObject)
 
 #' Trustline
 #'
-#' A simplified Trustline object used by the \code{ripple-rest} API
+#' A simplified Trustline object used by the \code{ripple-rest} API.
+#'
+#' All slot lengths must be equal.
 #'
 #' @slot account Object of class \code{"\link{RippleAddress}"}. The account from
 #'   whose perspective this trustline is being viewed.
@@ -325,6 +357,11 @@ validTrustlineObject <- function(object) {
 setValidity("Trustline", validTrustlineObject)
 
 #' AccountSettings
+#'
+#' The return value from \code{\link{change_account_settings}} and
+#' \code{\link{get_account_settings}}.
+#'
+#' Each slot length must be \code{0} or \code{1}.
 #'
 #' @slot account Object of class \code{"\link{RippleAddress}"}. The Ripple
 #'   address of the account in question.
@@ -396,7 +433,17 @@ setValidity("AccountSettings", validAccountSettingsObject)
 
 #' Payment
 #'
-#' A flattened Payment object used by the ripple-rest API
+#' A flattened Payment object used by the ripple-rest API.
+#'
+#' All of the 11 first slot lengths must be equal.
+#'
+#' Each of the other slot lengths must be \code{0} or \code{1}.
+#'
+#' All elements of \code{source_slippage} must be greater than or equal to
+#' \code{0}.
+#'
+#' The slots \code{partial_payment} and \code{no_direct_ripple} cannot contain
+#' \code{NA}.
 #'
 #' @slot source_account Object of class \code{"\link{RippleAddress}"}. The
 #'   Ripple account address of the Payment sender.

@@ -5,6 +5,10 @@
 \alias{Hash256-class}
 \title{Hash256}
 \description{
-The hex representation of a 256-bit hash
+The hex representation of a 256-bit hash.
+}
+\details{
+A character vector where each element must match the regular expression
+\code{"^$|^[A-Fa-f0-9]{64}$"}.
 }
 

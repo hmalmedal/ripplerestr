@@ -5,7 +5,11 @@
 \alias{Currency-class}
 \title{Currency}
 \description{
-The three-character code or hex string used to denote currencies
+The three-character code or hex string used to denote currencies.
+}
+\details{
+A character vector where each element must match the regular expression
+\code{"^([a-zA-Z0-9]{3}|[A-Fa-f0-9]{40})$"}.
 }
 \examples{
 USD <- Currency("USD")

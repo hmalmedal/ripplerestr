@@ -5,7 +5,18 @@
 \alias{Payment-class}
 \title{Payment}
 \description{
-A flattened Payment object used by the ripple-rest API
+A flattened Payment object used by the ripple-rest API.
+}
+\details{
+All of the 11 first slot lengths must be equal.
+
+Each of the other slot lengths must be \code{0} or \code{1}.
+
+All elements of \code{source_slippage} must be greater than or equal to
+\code{0}.
+
+The slots \code{partial_payment} and \code{no_direct_ripple} cannot contain
+\code{NA}.
 }
 \section{Slots}{
 

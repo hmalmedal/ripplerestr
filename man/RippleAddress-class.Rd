@@ -5,7 +5,11 @@
 \alias{RippleAddress-class}
 \title{RippleAddress}
 \description{
-A Ripple account address
+A Ripple account address.
+}
+\details{
+A character vector where each element must match the regular expression
+\code{"^r[1-9A-HJ-NP-Za-km-z]{25,33}$"}.
 }
 \examples{
 root_account <- RippleAddress("rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh")

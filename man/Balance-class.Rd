@@ -5,7 +5,13 @@
 \alias{Balance-class}
 \title{Balance}
 \description{
-A simplified representation of an account Balance
+A simplified representation of an account Balance.
+}
+\details{
+Each element of the slot \code{counterparty} must match the regular
+expression \code{"^$|^r[1-9A-HJ-NP-Za-km-z]{25,33}$"}.
+
+All slot lengths must be equal.
 }
 \section{Slots}{
 

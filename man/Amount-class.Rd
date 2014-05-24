@@ -5,7 +5,13 @@
 \alias{Amount-class}
 \title{Amount}
 \description{
-An Amount on the Ripple Protocol, used also for XRP in the ripple-rest API
+An Amount on the Ripple Protocol, used also for XRP in the ripple-rest API.
+}
+\details{
+Each element of the slots \code{issuer} and \code{counterparty} must match
+the regular expression \code{"^$|^r[1-9A-HJ-NP-Za-km-z]{25,33}$"}.
+
+All slot lengths must be equal.
 }
 \section{Slots}{
 

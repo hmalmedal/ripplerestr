@@ -5,7 +5,10 @@
 \alias{Notification-class}
 \title{Notification}
 \description{
-Notification
+The return value from \code{\link{get_notification}}.
+}
+\details{
+All slot lengths must be equal.
 }
 \section{Slots}{
 
@@ -14,22 +17,23 @@ Notification
 address of the account to which the notification pertains.}
 
 \item{\code{type}}{Object of class \code{"character"}. The resource type this
-notification corresponds to. Possible values are "payment", "order",
-"trustline", "accountsettings".}
+notification corresponds to. Possible values are \code{"payment"},
+\code{"order"}, \code{"trustline"}, \code{"accountsettings"}.}
 
 \item{\code{direction}}{Object of class \code{"character"}. The direction of the
 transaction, from the perspective of the account being queried. Possible
-values are "incoming", "outgoing", and "passthrough".}
+values are \code{"incoming"}, \code{"outgoing"}, and \code{"passthrough"}.}
 
 \item{\code{state}}{Object of class \code{"character"}. The state of the transaction
-from the perspective of the Ripple Ledger. Possible values are "validated"
-and "failed".}
+from the perspective of the Ripple Ledger. Possible values are
+\code{"validated"} and \code{"failed"}.}
 
 \item{\code{result}}{Object of class \code{"character"}. The rippled code indicating
-the success or failure type of the transaction. The code "tesSUCCESS"
-indicates that the transaction was successfully validated and written into
-the Ripple Ledger. All other codes will begin with the following prefixes:
-"tec", "tef", "tel", or "tej".}
+the success or failure type of the transaction. The code
+\code{"tesSUCCESS"} indicates that the transaction was successfully
+validated and written into the Ripple Ledger. All other codes will begin
+with the following prefixes: \code{"tec"}, \code{"tef"}, \code{"tel"}, or
+\code{"tej"}.}
 
 \item{\code{ledger}}{Object of class \code{"numeric"}. The index number of the ledger
 containing the validated or failed transaction. Failed payments will only

@@ -5,7 +5,11 @@
 \alias{AccountSettings-class}
 \title{AccountSettings}
 \description{
-AccountSettings
+The return value from \code{\link{change_account_settings}} and
+\code{\link{get_account_settings}}.
+}
+\details{
+Each slot length must be \code{0} or \code{1}.
 }
 \section{Slots}{
 

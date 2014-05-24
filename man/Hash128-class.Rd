@@ -5,6 +5,10 @@
 \alias{Hash128-class}
 \title{Hash128}
 \description{
-The hex representation of a 128-bit hash
+The hex representation of a 128-bit hash.
+}
+\details{
+A character vector where each element must match the regular expression
+\code{"^$|^[A-Fa-f0-9]{32}$"}.
 }
 

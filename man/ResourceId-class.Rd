@@ -11,4 +11,8 @@ status. All ASCII printable characters are allowed. Note that 256-bit hex
 strings are disallowed because of the potential confusion with transaction
 hashes.
 }
+\details{
+A character vector where each element must match the regular expression
+\code{"^(?!$|^[A-Fa-f0-9]{64})[ -~]{1,255}$"}.
+}
 

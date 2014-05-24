@@ -183,7 +183,7 @@ submit_payment <- function(payment, secret, client_resource_id) {
     assert_that(is(payment, "Payment"))
     assert_that(is.scalar(payment))
     assert_that(is.string(secret))
-    assert_that(is(client_resource_id, "ResourceId"))
+    client_resource_id <- ResourceId(client_resource_id)
     assert_that(is.string(client_resource_id))
 
     source_account <- payment@source_account

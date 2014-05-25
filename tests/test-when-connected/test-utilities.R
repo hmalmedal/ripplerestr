@@ -2,7 +2,7 @@ library(ripplerestr)
 context("utilities")
 
 test_that("class is correct", {
-    expect_that(is(generate_uuid(), "ResourceId"), is_true())
+    expect_that(generate_uuid(), is_a("ResourceId"))
 })
 
 test_that("result is list", {

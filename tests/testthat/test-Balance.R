@@ -8,8 +8,8 @@ b <- Balance(value = values, currency = currencies,
              counterparty = rep.int(root_account, 26))
 
 test_that("addition results in numeric", {
-    expect_that(is(b + b, "numeric"), is_true())
-    expect_that(is(b + 1, "numeric"), is_true())
+    expect_that(b + b, is_a("numeric"))
+    expect_that(b + 1, is_a("numeric"))
 })
 
 test_that("wrong length gives warning", {

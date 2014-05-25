@@ -61,7 +61,6 @@ get_payment_paths <- function(address, destination_account,
         if (!is(source_currencies, "Amount")) {
             assert_that(is.string(source_currencies))
         } else {
-            assert_that(is.scalar(source_currencies))
             source_currencies <- paste(gsub("^[^\\+]*\\+",
                                             "",
                                             source_currencies),

@@ -61,9 +61,6 @@ test_that("wrong lengths throw errors", {
     expect_that(get_payment_paths(one, one,, 1, "USD", two),
                 throws_error("string"))
     expect_that(get_payment_paths(one, one, amounts[1],
-                                  source_currencies = amounts),
-                throws_error("scalar"))
-    expect_that(get_payment_paths(one, one, amounts[1],
                                   source_currencies = cur),
                 throws_error("string"))
     expect_that(submit_payment(payments), throws_error("scalar"))

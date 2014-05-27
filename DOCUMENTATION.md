@@ -229,8 +229,8 @@ further arguments passed to or from other methods.
   Balance-class   R Documentation
   --------------- -----------------
 
-Balance
--------
+Balance class
+-------------
 
 ### Description
 

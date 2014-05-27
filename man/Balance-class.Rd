@@ -3,7 +3,7 @@
 \name{Balance-class}
 \alias{Balance}
 \alias{Balance-class}
-\title{Balance}
+\title{Balance class}
 \description{
 A simplified representation of an account Balance.
 }

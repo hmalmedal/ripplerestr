@@ -23,6 +23,7 @@ Collate:
     'AllClasses.R'
     'AccountSettings-class.R'
     'AllGenerics.R'
+    'Balance-class.R'
     'Amount-class.R'
     'Math-methods.R'
     'Notification-class.R'

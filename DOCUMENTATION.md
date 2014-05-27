@@ -2,8 +2,8 @@
   AccountSettings-class   R Documentation
   ----------------------- -----------------
 
-AccountSettings
----------------
+AccountSettings class
+---------------------
 
 ### Description
 

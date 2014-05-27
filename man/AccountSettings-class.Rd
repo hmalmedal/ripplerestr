@@ -3,7 +3,7 @@
 \name{AccountSettings-class}
 \alias{AccountSettings}
 \alias{AccountSettings-class}
-\title{AccountSettings}
+\title{AccountSettings class}
 \description{
 The return value from \code{\link{change_account_settings}} and
 \code{\link{get_account_settings}}.

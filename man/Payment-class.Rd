@@ -3,7 +3,7 @@
 \name{Payment-class}
 \alias{Payment}
 \alias{Payment-class}
-\title{Payment}
+\title{Payment class}
 \description{
 A flattened Payment object used by the ripple-rest API.
 }

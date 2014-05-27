@@ -1207,8 +1207,8 @@ All slot lengths must be equal.
   Payment-class   R Documentation
   --------------- -----------------
 
-Payment
--------
+Payment class
+-------------
 
 ### Description
 

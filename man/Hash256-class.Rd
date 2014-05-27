@@ -3,7 +3,7 @@
 \name{Hash256-class}
 \alias{Hash256}
 \alias{Hash256-class}
-\title{Hash256}
+\title{Hash256 class}
 \description{
 The hex representation of a 256-bit hash.
 }

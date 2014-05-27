@@ -964,8 +964,8 @@ A character vector where each element must match the regular expression
   Hash256-class   R Documentation
   --------------- -----------------
 
-Hash256
--------
+Hash256 class
+-------------
 
 ### Description
 

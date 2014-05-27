@@ -2106,8 +2106,8 @@ elements, not for the replacement. See `drop` for further details.
   Trustline-class   R Documentation
   ----------------- -----------------
 
-Trustline
----------
+Trustline class
+---------------
 
 ### Description
 

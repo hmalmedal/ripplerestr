@@ -27,6 +27,7 @@ Collate:
     'Ops-methods.R'
     'Payment-class.R'
     'Summary-methods.R'
+    'Trustline-class.R'
     'accounts.R'
     'as.character-methods.R'
     'as.numeric-methods.R'

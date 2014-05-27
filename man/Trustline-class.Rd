@@ -3,7 +3,7 @@
 \name{Trustline-class}
 \alias{Trustline}
 \alias{Trustline-class}
-\title{Trustline}
+\title{Trustline class}
 \description{
 A simplified Trustline object used by the \code{ripple-rest} API.
 }

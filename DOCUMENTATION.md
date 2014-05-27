@@ -1354,8 +1354,8 @@ A character vector where each element must match the regular expression
   RippleAddress-class   R Documentation
   --------------------- -----------------
 
-RippleAddress
--------------
+RippleAddress class
+-------------------
 
 ### Description
 

@@ -3,7 +3,7 @@
 \name{RippleAddress-class}
 \alias{RippleAddress}
 \alias{RippleAddress-class}
-\title{RippleAddress}
+\title{RippleAddress class}
 \description{
 A Ripple account address.
 }

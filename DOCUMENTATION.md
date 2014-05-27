@@ -90,8 +90,8 @@ Each slot length must be `0` or `1`.
   Amount-class   R Documentation
   -------------- -----------------
 
-Amount
-------
+Amount class
+------------
 
 ### Description
 

@@ -3,7 +3,7 @@
 \name{Amount-class}
 \alias{Amount}
 \alias{Amount-class}
-\title{Amount}
+\title{Amount class}
 \description{
 An Amount on the Ripple Protocol, used also for XRP in the ripple-rest API.
 }

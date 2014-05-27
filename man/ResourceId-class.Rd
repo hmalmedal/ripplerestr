@@ -3,7 +3,7 @@
 \name{ResourceId-class}
 \alias{ResourceId}
 \alias{ResourceId-class}
-\title{ResourceId}
+\title{ResourceId class}
 \description{
 A client-supplied unique identifier (ideally a UUID) for this transaction
 used to prevent duplicate payments and help confirm the transaction's final

@@ -30,6 +30,7 @@ Collate:
     'Notification-class.R'
     'Ops-methods.R'
     'Payment-class.R'
+    'ResourceId-class.R'
     'Summary-methods.R'
     'Trustline-class.R'
     'accounts.R'

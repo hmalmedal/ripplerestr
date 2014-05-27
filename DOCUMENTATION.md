@@ -1335,8 +1335,8 @@ The slots `partial_payment` and `no_direct_ripple` cannot contain `NA`.
   ResourceId-class   R Documentation
   ------------------ -----------------
 
-ResourceId
-----------
+ResourceId class
+----------------
 
 ### Description
 

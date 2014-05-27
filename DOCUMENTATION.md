@@ -1319,16 +1319,16 @@ The slots `partial_payment` and `no_direct_ripple` cannot contain `NA`.
 `source_balance_changes`
   ~ Object of class `"Amount"`. Parsed from the validated transaction
     metadata, this represents all of the changes to balances held by the
-    `source_account.` Most often this will have one amount representing
+    `source_account`. Most often this will have one amount representing
     the Ripple Network fee and, if the `source_amount` was not XRP, one
     amount representing the actual `source_amount` that was sent.
 
 `destination_balance_changes`
   ~ Object of class `"Amount"`. Parsed from the validated transaction
     metadata, this represents the changes to balances held by the
-    `destination_account.` For those receiving payments this is
+    `destination_account`. For those receiving payments this is
     important to check because if the `partial_payment` flag is set this
-    value may be less than the `destination_amount.`
+    value may be less than the `destination_amount`.
 
 
   ------------------ -----------------

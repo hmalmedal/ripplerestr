@@ -97,15 +97,15 @@ is used elsewhere in the Ripple protocol).}
 
 \item{\code{source_balance_changes}}{Object of class \code{"\link{Amount}"}. Parsed
 from the validated transaction metadata, this represents all of the changes
-to balances held by the \code{source_account.} Most often this will have
+to balances held by the \code{source_account}. Most often this will have
 one amount representing the Ripple Network fee and, if the
 \code{source_amount} was not XRP, one amount representing the actual
 \code{source_amount} that was sent.}
 
 \item{\code{destination_balance_changes}}{Object of class \code{"\link{Amount}"}.
   Parsed from the validated transaction metadata, this represents the changes
-  to balances held by the \code{destination_account.} For those receiving
+  to balances held by the \code{destination_account}. For those receiving
   payments this is important to check because if the \code{partial_payment}
-  flag is set this value may be less than the \code{destination_amount.}}
+  flag is set this value may be less than the \code{destination_amount}.}
 }}
 

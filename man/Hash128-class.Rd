@@ -3,7 +3,7 @@
 \name{Hash128-class}
 \alias{Hash128}
 \alias{Hash128-class}
-\title{Hash128}
+\title{Hash128 class}
 \description{
 The hex representation of a 128-bit hash.
 }

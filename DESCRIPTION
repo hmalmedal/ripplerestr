@@ -21,6 +21,7 @@ BugReports: https://github.com/hmalmedal/ripplerestr/issues
 Encoding: UTF-8
 Collate:
     'UINT32-class.R'
+    'Hash128-class.R'
     'AllClasses.R'
     'AccountSettings-class.R'
     'AllGenerics.R'

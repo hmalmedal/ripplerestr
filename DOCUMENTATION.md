@@ -949,8 +949,8 @@ The transfer rate as `"numeric"`.
   Hash128-class   R Documentation
   --------------- -----------------
 
-Hash128
--------
+Hash128 class
+-------------
 
 ### Description
 

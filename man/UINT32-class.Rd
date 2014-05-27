@@ -3,7 +3,7 @@
 \name{UINT32-class}
 \alias{UINT32}
 \alias{UINT32-class}
-\title{UINT32}
+\title{UINT32 class}
 \description{
 A representation of an unsigned 32-bit integer (0-4294967295).
 }

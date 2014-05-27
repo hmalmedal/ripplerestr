@@ -82,7 +82,7 @@
 #'
 #' @export Payment
 #' @exportClass Payment
-#' @include AllClasses.R Amount-class.R
+#' @include AllClasses.R Amount-class.R UINT32-class.R
 Payment <- setClass("Payment",
                     slots = c(source_account = "RippleAddress",
                               source_tag = "UINT32",

@@ -48,7 +48,7 @@
 #'
 #' @export AccountSettings
 #' @exportClass AccountSettings
-#' @include AllClasses.R
+#' @include AllClasses.R UINT32-class.R
 AccountSettings <- setClass("AccountSettings",
                             slots = c(account = "RippleAddress",
                                       regular_key = "RippleAddress",

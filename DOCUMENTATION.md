@@ -2163,8 +2163,8 @@ All slot lengths must be equal.
   UINT32-class   R Documentation
   -------------- -----------------
 
-UINT32
-------
+UINT32 class
+------------
 
 ### Description
 

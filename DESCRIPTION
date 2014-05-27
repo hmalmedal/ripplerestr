@@ -24,6 +24,7 @@ Collate:
     'AccountSettings-class.R'
     'AllGenerics.R'
     'Math-methods.R'
+    'Notification-class.R'
     'Ops-methods.R'
     'Payment-class.R'
     'Summary-methods.R'

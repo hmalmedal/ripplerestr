@@ -3,7 +3,7 @@
 \name{Notification-class}
 \alias{Notification}
 \alias{Notification-class}
-\title{Notification}
+\title{Notification class}
 \description{
 The return value from \code{\link{get_notification}}.
 }

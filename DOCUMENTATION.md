@@ -1136,8 +1136,8 @@ an **R** object. For replacement, a vector or factor.
   Notification-class   R Documentation
   -------------------- -----------------
 
-Notification
-------------
+Notification class
+------------------
 
 ### Description
 

@@ -1,4 +1,4 @@
-#' Currency
+#' Currency class
 #'
 #' The three-character code or hex string used to denote currencies.
 #'

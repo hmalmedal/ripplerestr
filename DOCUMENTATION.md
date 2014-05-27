@@ -401,8 +401,8 @@ An object of class `"Payment"`
   Currency-class   R Documentation
   ---------------- -----------------
 
-Currency
---------
+Currency class
+--------------
 
 ### Description
 

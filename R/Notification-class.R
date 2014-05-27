@@ -41,7 +41,7 @@
 #'
 #' @export Notification
 #' @exportClass Notification
-#' @include AllClasses.R Hash256-class.R RippleAddress-class.R
+#' @include Hash256-class.R RippleAddress-class.R
 Notification <- setClass("Notification",
                          slots = c(account = "RippleAddress",
                                    type = "character",

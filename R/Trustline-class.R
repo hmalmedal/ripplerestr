@@ -41,7 +41,7 @@
 #'
 #' @export Trustline
 #' @exportClass Trustline
-#' @include AllClasses.R Hash256-class.R RippleAddress-class.R
+#' @include Hash256-class.R RippleAddress-class.R Currency-class.R
 Trustline <- setClass("Trustline",
                       slots = c(account = "RippleAddress",
                                 counterparty = "RippleAddress",

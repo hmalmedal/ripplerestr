@@ -3,7 +3,7 @@
 \name{Currency-class}
 \alias{Currency}
 \alias{Currency-class}
-\title{Currency}
+\title{Currency class}
 \description{
 The three-character code or hex string used to denote currencies.
 }

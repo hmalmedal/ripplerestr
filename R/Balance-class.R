@@ -16,7 +16,7 @@
 #'
 #' @export Balance
 #' @exportClass Balance
-#' @include AllClasses.R
+#' @include Currency-class.R
 Balance <- setClass(Class = "Balance",
                     slots = c(value = "numeric",
                               currency = "Currency",

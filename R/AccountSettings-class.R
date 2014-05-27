@@ -48,7 +48,7 @@
 #'
 #' @export AccountSettings
 #' @exportClass AccountSettings
-#' @include AllClasses.R UINT32-class.R Hash128-class.R Hash256-class.R RippleAddress-class.R
+#' @include UINT32-class.R Hash128-class.R Hash256-class.R RippleAddress-class.R
 AccountSettings <- setClass("AccountSettings",
                             slots = c(account = "RippleAddress",
                                       regular_key = "RippleAddress",

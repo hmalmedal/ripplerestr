@@ -74,7 +74,7 @@ payment <- paths[1]
 payment <- setSourceTag(payment, 2^32-1)
 source_slippage(payment) <- 1
 payment <- setDestinationTag(payment, 2^31-1)
-payment <- setInvoiceId(payment, "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855")
+invoice_id(payment) <- "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
 partial_payment(payment) <- T
 no_direct_ripple(payment) <- F
 uuid <- generate_uuid()

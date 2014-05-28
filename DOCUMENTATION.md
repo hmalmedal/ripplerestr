@@ -1006,6 +1006,43 @@ ignored
 ### Value
 
 `TRUE` or `FALSE`.
+  ------------- -----------------
+  invoice\_id   R Documentation
+  ------------- -----------------
+
+Get/set `invoice_id` value
+--------------------------
+
+### Description
+
+Access the `invoice_id` slot.
+
+### Usage
+
+    invoice_id(object)
+
+    ## S4 method for signature 'Payment'
+    invoice_id(object)
+
+    ## S4 replacement method for signature 'Payment,Hash256'
+    invoice_id(object) <- value
+
+    ## S4 replacement method for signature 'Payment,character'
+    invoice_id(object) <- value
+
+### Arguments
+
+`object`
+
+Object of class `"Payment"`.
+
+`value`
+
+Object of class `"Hash256"` or class `"character"`.
+
+### Value
+
+Object of class `"Hash256"`.
   ----------------------- -----------------
   is\_server\_connected   R Documentation
   ----------------------- -----------------
@@ -1549,41 +1586,6 @@ ignored
 ### Value
 
 `object` with `destination_tag` set to `tag`.
-  -------------- -----------------
-  setInvoiceId   R Documentation
-  -------------- -----------------
-
-setInvoiceId
-------------
-
-### Description
-
-Sets the `invoice_id` slot.
-
-### Usage
-
-    setInvoiceId(object, id, ...)
-
-    ## S4 method for signature 'Payment'
-    setInvoiceId(object, id)
-
-### Arguments
-
-`object`
-
-Object of class `"Payment"`.
-
-`id`
-
-Object of class `"Hash256"`.
-
-`...`
-
-ignored
-
-### Value
-
-`object` with `invoice_id` set to `id`.
   -------------- -----------------
   setSourceTag   R Documentation
   -------------- -----------------

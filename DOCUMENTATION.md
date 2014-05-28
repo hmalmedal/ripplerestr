@@ -1584,41 +1584,6 @@ ignored
 ### Value
 
 `object` with `invoice_id` set to `id`.
-  ------------------- -----------------
-  setSourceSlippage   R Documentation
-  ------------------- -----------------
-
-setSourceSlippage
------------------
-
-### Description
-
-Sets the `source_slippage` slot.
-
-### Usage
-
-    setSourceSlippage(object, x, ...)
-
-    ## S4 method for signature 'Payment'
-    setSourceSlippage(object, x)
-
-### Arguments
-
-`object`
-
-Object of class `"Payment"`.
-
-`x`
-
-Object of class `"numeric"`.
-
-`...`
-
-ignored
-
-### Value
-
-`object` with `source_slippage` set to `x`.
   -------------- -----------------
   setSourceTag   R Documentation
   -------------- -----------------
@@ -1717,6 +1682,40 @@ Show for Balance class
 `object`
 
 Any R object
+  ------------------ -----------------
+  source\_slippage   R Documentation
+  ------------------ -----------------
+
+Get/set `source_slippage` value
+-------------------------------
+
+### Description
+
+Access the `source_slippage` slot.
+
+### Usage
+
+    source_slippage(object)
+
+    ## S4 method for signature 'Payment'
+    source_slippage(object)
+
+    ## S4 replacement method for signature 'Payment,numeric'
+    source_slippage(object) <- value
+
+### Arguments
+
+`object`
+
+Object of class `"Payment"`.
+
+`value`
+
+Object of class `"numeric"`.
+
+### Value
+
+Object of class `"numeric"`.
   ----------------- -----------------
   [,Amount-method   R Documentation
   ----------------- -----------------

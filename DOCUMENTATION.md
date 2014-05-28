@@ -417,6 +417,43 @@ A character vector where each element must match the regular expression
 
     USD <- Currency("USD")
     XAU <- Currency("015841551A748AD2C1F76FF6ECB0CCCD00000000")
+  ------------------ -----------------
+  destination\_tag   R Documentation
+  ------------------ -----------------
+
+Get/set `destination_tag` value
+-------------------------------
+
+### Description
+
+Access the `destination_tag` slot.
+
+### Usage
+
+    destination_tag(object)
+
+    ## S4 method for signature 'Payment'
+    destination_tag(object)
+
+    ## S4 replacement method for signature 'Payment,UINT32'
+    destination_tag(object) <- value
+
+    ## S4 replacement method for signature 'Payment,ANY'
+    destination_tag(object) <- value
+
+### Arguments
+
+`object`
+
+Object of class `"Payment"`.
+
+`value`
+
+Object of class `"UINT32"` or class `"ANY"`.
+
+### Value
+
+Object of class `"UINT32"`.
   ---------------- -----------------
   generate\_uuid   R Documentation
   ---------------- -----------------
@@ -1551,41 +1588,6 @@ provided.
 ### Value
 
 An object of class `"Trustline"`
-  ------------------- -----------------
-  setDestinationTag   R Documentation
-  ------------------- -----------------
-
-setDestinationTag
------------------
-
-### Description
-
-Sets the `destination_tag` slot.
-
-### Usage
-
-    setDestinationTag(object, tag, ...)
-
-    ## S4 method for signature 'Payment'
-    setDestinationTag(object, tag)
-
-### Arguments
-
-`object`
-
-Object of class `"Payment"`.
-
-`tag`
-
-Object of class `"UINT32"`.
-
-`...`
-
-ignored
-
-### Value
-
-`object` with `destination_tag` set to `tag`.
   -------------- -----------------
   setSourceTag   R Documentation
   -------------- -----------------

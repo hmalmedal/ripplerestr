@@ -110,20 +110,3 @@ setGeneric("hasLedger",
 setGeneric("setSourceTag",
            function(object, tag, ...)
                standardGeneric("setSourceTag"))
-
-#' setDestinationTag
-#'
-#' Sets the \code{destination_tag} slot.
-#'
-#' @return \code{object} with \code{destination_tag} set to \code{tag}.
-#'
-#' @param object Object of class \code{"\link{Payment}"}.
-#' @param tag Object of class \code{"\link{UINT32}"}.
-#' @param ... ignored
-#'
-#' @export
-#' @docType methods
-#' @rdname setDestinationTag-methods
-setGeneric("setDestinationTag",
-           function(object, tag, ...)
-               standardGeneric("setDestinationTag"))

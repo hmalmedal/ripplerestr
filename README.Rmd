@@ -101,7 +101,7 @@ paths <- get_payment_paths(address, destination_account,
 Examine the possible amounts that can be sent.
 
 ```{r examine-paths}
-getSourceAmount(paths)
+source_amount(paths)
 ```
 
 Select one path and set tags and id.

@@ -858,37 +858,6 @@ and the `rippled` server it is connected to.
 ### Value
 
 A list of lists
-  ----------------- -----------------
-  getSourceAmount   R Documentation
-  ----------------- -----------------
-
-getSourceAmount
----------------
-
-### Description
-
-Extracts the `source_amount` slot.
-
-### Usage
-
-    getSourceAmount(object, ...)
-
-    ## S4 method for signature 'Payment'
-    getSourceAmount(object)
-
-### Arguments
-
-`object`
-
-Object of class `"Payment"`.
-
-`...`
-
-ignored
-
-### Value
-
-An object of class `"Amount"`.
   ------------------ -----------------
   get\_transaction   R Documentation
   ------------------ -----------------
@@ -1612,6 +1581,33 @@ Show for Balance class
 `object`
 
 Any R object
+  ---------------- -----------------
+  source\_amount   R Documentation
+  ---------------- -----------------
+
+Get `source_amount` value
+-------------------------
+
+### Description
+
+Access the `source_amount` slot.
+
+### Usage
+
+    source_amount(object)
+
+    ## S4 method for signature 'Payment'
+    source_amount(object)
+
+### Arguments
+
+`object`
+
+Object of class `"Payment"`.
+
+### Value
+
+Object of class `"Amount"`.
   -------------------------- -----------------
   source\_balance\_changes   R Documentation
   -------------------------- -----------------

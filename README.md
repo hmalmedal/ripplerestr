@@ -126,7 +126,7 @@ Examine the possible amounts that can be sent.
 
 
 ```r
-getSourceAmount(paths)
+source_amount(paths)
 ```
 
 ```

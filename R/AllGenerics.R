@@ -29,19 +29,3 @@ setGeneric("getCurrency",
 setGeneric("getTransferRate",
            function(object, ...)
                standardGeneric("getTransferRate"))
-
-#' getSourceAmount
-#'
-#' Extracts the \code{source_amount} slot.
-#'
-#' @return An object of class \code{"\link{Amount}"}.
-#'
-#' @param object Object of class \code{"\link{Payment}"}.
-#' @param ... ignored
-#'
-#' @export
-#' @docType methods
-#' @rdname getSourceAmount-methods
-setGeneric("getSourceAmount",
-           function(object, ...)
-               standardGeneric("getSourceAmount"))

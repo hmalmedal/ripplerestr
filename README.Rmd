@@ -135,7 +135,7 @@ repeat {
 Display how the amounts have changed.
 
 ```{r amount-changes}
-getSourceBalanceChanges(status)
+source_balance_changes(status)
 destination_balance_changes(status)
 ```
 

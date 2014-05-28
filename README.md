@@ -173,7 +173,7 @@ Display how the amounts have changed.
 
 
 ```r
-getSourceBalanceChanges(status)
+source_balance_changes(status)
 ```
 
 ```

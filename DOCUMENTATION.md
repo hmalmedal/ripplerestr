@@ -889,37 +889,6 @@ ignored
 ### Value
 
 An object of class `"Amount"`.
-  ------------------------- -----------------
-  getSourceBalanceChanges   R Documentation
-  ------------------------- -----------------
-
-getSourceBalanceChanges
------------------------
-
-### Description
-
-Extracts the `source_balance_changes` slot.
-
-### Usage
-
-    getSourceBalanceChanges(object, ...)
-
-    ## S4 method for signature 'Payment'
-    getSourceBalanceChanges(object)
-
-### Arguments
-
-`object`
-
-Object of class `"Payment"`.
-
-`...`
-
-ignored
-
-### Value
-
-An object of class `"Amount"`.
   ------------------ -----------------
   get\_transaction   R Documentation
   ------------------ -----------------
@@ -1643,6 +1612,33 @@ Show for Balance class
 `object`
 
 Any R object
+  -------------------------- -----------------
+  source\_balance\_changes   R Documentation
+  -------------------------- -----------------
+
+Get `source_balance_changes` value
+----------------------------------
+
+### Description
+
+Access the `source_balance_changes` slot.
+
+### Usage
+
+    source_balance_changes(object)
+
+    ## S4 method for signature 'Payment'
+    source_balance_changes(object)
+
+### Arguments
+
+`object`
+
+Object of class `"Payment"`.
+
+### Value
+
+Object of class `"Amount"`.
   ------------------ -----------------
   source\_slippage   R Documentation
   ------------------ -----------------

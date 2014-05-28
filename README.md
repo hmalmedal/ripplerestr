@@ -183,7 +183,7 @@ getSourceBalanceChanges(status)
 ```
 
 ```r
-getDestinationBalanceChanges(status)
+destination_balance_changes(status)
 ```
 
 ```

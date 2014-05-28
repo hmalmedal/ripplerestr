@@ -61,19 +61,3 @@ setGeneric("getSourceAmount",
 setGeneric("getSourceBalanceChanges",
            function(object, ...)
                standardGeneric("getSourceBalanceChanges"))
-
-#' getDestinationBalanceChanges
-#'
-#' Extracts the \code{destination_balance_changes} slot.
-#'
-#' @return An object of class \code{"\link{Amount}"}.
-#'
-#' @param object Object of class \code{"\link{Payment}"}.
-#' @param ... ignored
-#'
-#' @export
-#' @docType methods
-#' @rdname getDestinationBalanceChanges-methods
-setGeneric("getDestinationBalanceChanges",
-           function(object, ...)
-               standardGeneric("getDestinationBalanceChanges"))

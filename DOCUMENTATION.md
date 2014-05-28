@@ -417,6 +417,33 @@ A character vector where each element must match the regular expression
 
     USD <- Currency("USD")
     XAU <- Currency("015841551A748AD2C1F76FF6ECB0CCCD00000000")
+  ------------------------------- -----------------
+  destination\_balance\_changes   R Documentation
+  ------------------------------- -----------------
+
+Get `destination_balance_changes` value
+---------------------------------------
+
+### Description
+
+Access the `destination_balance_changes` slot.
+
+### Usage
+
+    destination_balance_changes(object)
+
+    ## S4 method for signature 'Payment'
+    destination_balance_changes(object)
+
+### Arguments
+
+`object`
+
+Object of class `"Payment"`.
+
+### Value
+
+Object of class `"Amount"`.
   ------------------ -----------------
   destination\_tag   R Documentation
   ------------------ -----------------
@@ -707,37 +734,6 @@ ignored
 ### Value
 
 An object of class `"Currency"`.
-  ------------------------------ -----------------
-  getDestinationBalanceChanges   R Documentation
-  ------------------------------ -----------------
-
-getDestinationBalanceChanges
-----------------------------
-
-### Description
-
-Extracts the `destination_balance_changes` slot.
-
-### Usage
-
-    getDestinationBalanceChanges(object, ...)
-
-    ## S4 method for signature 'Payment'
-    getDestinationBalanceChanges(object)
-
-### Arguments
-
-`object`
-
-Object of class `"Payment"`.
-
-`...`
-
-ignored
-
-### Value
-
-An object of class `"Amount"`.
   ------------------- -----------------
   get\_notification   R Documentation
   ------------------- -----------------

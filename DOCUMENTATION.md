@@ -417,6 +417,61 @@ A character vector where each element must match the regular expression
 
     USD <- Currency("USD")
     XAU <- Currency("015841551A748AD2C1F76FF6ECB0CCCD00000000")
+  ---------- -----------------
+  currency   R Documentation
+  ---------- -----------------
+
+Get/set `currency` value
+------------------------
+
+### Description
+
+Access the `currency` slot.
+
+### Usage
+
+    currency(object)
+
+    ## S4 method for signature 'Balance'
+    currency(object)
+
+    ## S4 method for signature 'Amount'
+    currency(object)
+
+    ## S4 method for signature 'Trustline'
+    currency(object)
+
+    ## S4 replacement method for signature 'Balance,Currency'
+    currency(object) <- value
+
+    ## S4 replacement method for signature 'Amount,Currency'
+    currency(object) <- value
+
+    ## S4 replacement method for signature 'Trustline,Currency'
+    currency(object) <- value
+
+    ## S4 replacement method for signature 'Balance,character'
+    currency(object) <- value
+
+    ## S4 replacement method for signature 'Amount,character'
+    currency(object) <- value
+
+    ## S4 replacement method for signature 'Trustline,character'
+    currency(object) <- value
+
+### Arguments
+
+`object`
+
+Object with currency slot.
+
+`value`
+
+Object of class `"Currency"` or class `"character"`.
+
+### Value
+
+Object of class `"Currency"`.
   ------------------------------- -----------------
   destination\_balance\_changes   R Documentation
   ------------------------------- -----------------
@@ -697,43 +752,6 @@ additional filtering.
 ### Value
 
 An object of class `"Trustline"`
-  ------------- -----------------
-  getCurrency   R Documentation
-  ------------- -----------------
-
-getCurrency
------------
-
-### Description
-
-Extracts the `currency` slot.
-
-### Usage
-
-    getCurrency(object, ...)
-
-    ## S4 method for signature 'Balance'
-    getCurrency(object)
-
-    ## S4 method for signature 'Amount'
-    getCurrency(object)
-
-    ## S4 method for signature 'Trustline'
-    getCurrency(object)
-
-### Arguments
-
-`object`
-
-Object with currency slot.
-
-`...`
-
-ignored
-
-### Value
-
-An object of class `"Currency"`.
   ------------------- -----------------
   get\_notification   R Documentation
   ------------------- -----------------

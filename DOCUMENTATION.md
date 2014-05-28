@@ -1133,6 +1133,40 @@ Length for Trustline class
 
 an **R** object. For replacement, a vector or factor.
   -------------------- -----------------
+  no\_direct\_ripple   R Documentation
+  -------------------- -----------------
+
+Get/set `no_direct_ripple` flag
+-------------------------------
+
+### Description
+
+Access the `no_direct_ripple` slot.
+
+### Usage
+
+    no_direct_ripple(object)
+
+    ## S4 method for signature 'Payment'
+    no_direct_ripple(object)
+
+    ## S4 replacement method for signature 'Payment,logical'
+    no_direct_ripple(object) <- value
+
+### Arguments
+
+`object`
+
+Object of class `"Payment"`.
+
+`value`
+
+Object of class `"logical"`.
+
+### Value
+
+Object of class `"logical"`.
+  -------------------- -----------------
   Notification-class   R Documentation
   -------------------- -----------------
 
@@ -1516,41 +1550,6 @@ ignored
 ### Value
 
 `object` with `invoice_id` set to `id`.
-  ------------------- -----------------
-  setNoDirectRipple   R Documentation
-  ------------------- -----------------
-
-setNoDirectRipple
------------------
-
-### Description
-
-Sets the `no_direct_ripple` slot.
-
-### Usage
-
-    setNoDirectRipple(object, x, ...)
-
-    ## S4 method for signature 'Payment'
-    setNoDirectRipple(object, x)
-
-### Arguments
-
-`object`
-
-Object of class `"Payment"`.
-
-`x`
-
-Object of class `"logical"`.
-
-`...`
-
-ignored
-
-### Value
-
-`object` with `no_direct_ripple` set to `x`.
   ------------------- -----------------
   setPartialPayment   R Documentation
   ------------------- -----------------

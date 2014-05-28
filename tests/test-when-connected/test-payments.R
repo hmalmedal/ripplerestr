@@ -75,7 +75,7 @@ payment <- setSourceTag(payment, 2^32-1)
 payment <- setSourceSlippage(payment, 1)
 payment <- setDestinationTag(payment, 2^31-1)
 payment <- setInvoiceId(payment, "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855")
-payment <- setPartialPayment(payment, T)
+partial_payment(payment) <- T
 no_direct_ripple(payment) <- F
 uuid <- generate_uuid()
 

@@ -1237,6 +1237,40 @@ All slot lengths must be equal.
     notification that followed this one chronologically.
 
 
+  ------------------ -----------------
+  partial\_payment   R Documentation
+  ------------------ -----------------
+
+Get/set `partial_payment` flag
+------------------------------
+
+### Description
+
+Access the `partial_payment` slot.
+
+### Usage
+
+    partial_payment(object)
+
+    ## S4 method for signature 'Payment'
+    partial_payment(object)
+
+    ## S4 replacement method for signature 'Payment,logical'
+    partial_payment(object) <- value
+
+### Arguments
+
+`object`
+
+Object of class `"Payment"`.
+
+`value`
+
+Object of class `"logical"`.
+
+### Value
+
+Object of class `"logical"`.
   --------------- -----------------
   Payment-class   R Documentation
   --------------- -----------------
@@ -1550,41 +1584,6 @@ ignored
 ### Value
 
 `object` with `invoice_id` set to `id`.
-  ------------------- -----------------
-  setPartialPayment   R Documentation
-  ------------------- -----------------
-
-setPartialPayment
------------------
-
-### Description
-
-Sets the `partial_payment` slot.
-
-### Usage
-
-    setPartialPayment(object, x, ...)
-
-    ## S4 method for signature 'Payment'
-    setPartialPayment(object, x)
-
-### Arguments
-
-`object`
-
-Object of class `"Payment"`.
-
-`x`
-
-Object of class `"logical"`.
-
-`...`
-
-ignored
-
-### Value
-
-`object` with `partial_payment` set to `x`.
   ------------------- -----------------
   setSourceSlippage   R Documentation
   ------------------- -----------------

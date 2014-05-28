@@ -161,20 +161,3 @@ setGeneric("setInvoiceId",
 setGeneric("setSourceSlippage",
            function(object, x, ...)
                standardGeneric("setSourceSlippage"))
-
-#' setPartialPayment
-#'
-#' Sets the \code{partial_payment} slot.
-#'
-#' @return \code{object} with \code{partial_payment} set to \code{x}.
-#'
-#' @param object Object of class \code{"\link{Payment}"}.
-#' @param x Object of class \code{"logical"}.
-#' @param ... ignored
-#'
-#' @export
-#' @docType methods
-#' @rdname setPartialPayment-methods
-setGeneric("setPartialPayment",
-           function(object, x, ...)
-               standardGeneric("setPartialPayment"))

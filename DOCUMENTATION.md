@@ -885,37 +885,6 @@ Transaction hash
 ### Value
 
 A list
-  ----------------- -----------------
-  getTransferRate   R Documentation
-  ----------------- -----------------
-
-getTransferRate
----------------
-
-### Description
-
-Extracts the `transfer_rate` slot.
-
-### Usage
-
-    getTransferRate(object, ...)
-
-    ## S4 method for signature 'AccountSettings'
-    getTransferRate(object)
-
-### Arguments
-
-`object`
-
-Object of class `"AccountSettings"`.
-
-`...`
-
-ignored
-
-### Value
-
-The transfer rate as `"numeric"`.
   --------------- -----------------
   Hash128-class   R Documentation
   --------------- -----------------
@@ -2089,6 +2058,33 @@ An index value of `NULL` is treated as if it were `integer(0)`.
 For matrices and arrays. If `TRUE` the result is coerced to the lowest
 possible dimension (see the examples). This only works for extracting
 elements, not for the replacement. See `drop` for further details.
+  ---------------- -----------------
+  transfer\_rate   R Documentation
+  ---------------- -----------------
+
+Get `transfer_rate` value
+-------------------------
+
+### Description
+
+Access the `transfer_rate` slot.
+
+### Usage
+
+    transfer_rate(object)
+
+    ## S4 method for signature 'AccountSettings'
+    transfer_rate(object)
+
+### Arguments
+
+`object`
+
+Object of class `"AccountSettings"`.
+
+### Value
+
+The transfer rate as `"numeric"`.
   ----------------- -----------------
   Trustline-class   R Documentation
   ----------------- -----------------

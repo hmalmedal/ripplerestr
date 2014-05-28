@@ -13,19 +13,3 @@
 setGeneric("getCurrency",
            function(object, ...)
                standardGeneric("getCurrency"))
-
-#' getTransferRate
-#'
-#' Extracts the \code{transfer_rate} slot.
-#'
-#' @return The transfer rate as \code{"numeric"}.
-#'
-#' @param object Object of class \code{"\link{AccountSettings}"}.
-#' @param ... ignored
-#'
-#' @export
-#' @docType methods
-#' @rdname getTransferRate-methods
-setGeneric("getTransferRate",
-           function(object, ...)
-               standardGeneric("getTransferRate"))

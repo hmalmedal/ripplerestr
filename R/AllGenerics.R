@@ -93,20 +93,3 @@ setGeneric("getDestinationBalanceChanges",
 setGeneric("hasLedger",
            function(object, ...)
                standardGeneric("hasLedger"))
-
-#' setSourceTag
-#'
-#' Sets the \code{source_tag} slot.
-#'
-#' @return \code{object} with \code{source_tag} set to \code{tag}.
-#'
-#' @param object Object of class \code{"\link{Payment}"}.
-#' @param tag Object of class \code{"\link{UINT32}"}.
-#' @param ... ignored
-#'
-#' @export
-#' @docType methods
-#' @rdname setSourceTag-methods
-setGeneric("setSourceTag",
-           function(object, tag, ...)
-               standardGeneric("setSourceTag"))

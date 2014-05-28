@@ -108,7 +108,7 @@ Select one path and set tags and id.
 
 ```{r payment}
 payment <- paths[1]
-payment <- setSourceTag(payment, 123)
+source_tag(payment) <- 123
 destination_tag(payment) <- 456
 invoice_id(payment) <- "0000000000000000000000000000000000000000000000000000000000000000"
 ```

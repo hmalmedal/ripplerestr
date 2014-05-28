@@ -1588,41 +1588,6 @@ provided.
 ### Value
 
 An object of class `"Trustline"`
-  -------------- -----------------
-  setSourceTag   R Documentation
-  -------------- -----------------
-
-setSourceTag
-------------
-
-### Description
-
-Sets the `source_tag` slot.
-
-### Usage
-
-    setSourceTag(object, tag, ...)
-
-    ## S4 method for signature 'Payment'
-    setSourceTag(object, tag)
-
-### Arguments
-
-`object`
-
-Object of class `"Payment"`.
-
-`tag`
-
-Object of class `"UINT32"`.
-
-`...`
-
-ignored
-
-### Value
-
-`object` with `source_tag` set to `tag`.
   ----------------------------- -----------------
   show,AccountSettings-method   R Documentation
   ----------------------------- -----------------
@@ -1720,6 +1685,43 @@ Object of class `"numeric"`.
 ### Value
 
 Object of class `"numeric"`.
+  ------------- -----------------
+  source\_tag   R Documentation
+  ------------- -----------------
+
+Get/set `source_tag` value
+--------------------------
+
+### Description
+
+Access the `source_tag` slot.
+
+### Usage
+
+    source_tag(object)
+
+    ## S4 method for signature 'Payment'
+    source_tag(object)
+
+    ## S4 replacement method for signature 'Payment,UINT32'
+    source_tag(object) <- value
+
+    ## S4 replacement method for signature 'Payment,ANY'
+    source_tag(object) <- value
+
+### Arguments
+
+`object`
+
+Object of class `"Payment"`.
+
+`value`
+
+Object of class `"UINT32"` or class `"ANY"`.
+
+### Value
+
+Object of class `"UINT32"`.
   ----------------- -----------------
   [,Amount-method   R Documentation
   ----------------- -----------------

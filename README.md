@@ -162,7 +162,7 @@ Check the status of the payment.
 ```r
 repeat {
     status <- check_payment_status(response$status_url)
-    if (hasLedger(status)) 
+    if (has_ledger(status)) 
         break
     Sys.sleep(1)
 }

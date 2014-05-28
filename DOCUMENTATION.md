@@ -1012,12 +1012,12 @@ The hex representation of a 256-bit hash.
 
 A character vector where each element must match the regular expression
 `"^$|^[A-Fa-f0-9]{64}$"`.
-  ----------- -----------------
-  hasLedger   R Documentation
-  ----------- -----------------
+  ------------- -----------------
+  has\_ledger   R Documentation
+  ------------- -----------------
 
-hasLedger
----------
+Check for valid `ledger` slot
+-----------------------------
 
 ### Description
 
@@ -1025,20 +1025,16 @@ Checks whether an object has a valid `ledger` slot.
 
 ### Usage
 
-    hasLedger(object, ...)
+    has_ledger(object)
 
     ## S4 method for signature 'Payment'
-    hasLedger(object)
+    has_ledger(object)
 
 ### Arguments
 
 `object`
 
 Object of class `"Payment"`.
-
-`...`
-
-ignored
 
 ### Value
 

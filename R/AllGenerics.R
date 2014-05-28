@@ -77,19 +77,3 @@ setGeneric("getSourceBalanceChanges",
 setGeneric("getDestinationBalanceChanges",
            function(object, ...)
                standardGeneric("getDestinationBalanceChanges"))
-
-#' hasLedger
-#'
-#' Checks whether an object has a valid \code{ledger} slot.
-#'
-#' @return \code{TRUE} or \code{FALSE}.
-#'
-#' @param object Object of class \code{"\link{Payment}"}.
-#' @param ... ignored
-#'
-#' @export
-#' @docType methods
-#' @rdname hasLedger-methods
-setGeneric("hasLedger",
-           function(object, ...)
-               standardGeneric("hasLedger"))

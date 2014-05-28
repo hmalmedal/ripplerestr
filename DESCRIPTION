@@ -47,7 +47,7 @@ Collate:
     'getSourceAmount-methods.R'
     'getSourceBalanceChanges-methods.R'
     'getTransferRate-methods.R'
-    'hasLedger-methods.R'
+    'has_ledger-methods.R'
     'initialize-methods.R'
     'invoice_id-methods.R'
     'length-methods.R'

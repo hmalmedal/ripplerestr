@@ -35,7 +35,6 @@ require("devtools")
 install_github("hmalmedal/ripplerestr")
 ```
 
-
 Set up
 ------
 
@@ -44,10 +43,8 @@ Load the `ripplerestr` library and set the URL.
 
 ```r
 library(ripplerestr)
-options(ripplerestr.url = "http://localhost:5990/")
+options("ripplerestr.url" = "http://localhost:5990/")
 ```
-
-
 
 
 Check server
@@ -63,7 +60,6 @@ is_server_connected()
 ```
 ## [1] TRUE
 ```
-
 
 Get an account's balances
 -------------------------
@@ -81,9 +77,8 @@ bitstamp_USD
 ```
 
 ```
-## [1] -1900765
+## [1] -2869363
 ```
-
 
 Examine account settings
 ------------------------
@@ -92,8 +87,9 @@ Compare the transfer rates of different gateways.
 
 
 ```r
-df <- rbind(c("bitstamp", "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"), c("dividendrippler", 
-    "rfYv1TXnwgDDK4WQNbFALykYuEBnrR4pDX"), c("justcoin", "rJHygWcTLVpSXkowott6kzgZU6viQSVYM1"))
+df <- rbind(c("bitstamp", "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"),
+            c("dividendrippler", "rfYv1TXnwgDDK4WQNbFALykYuEBnrR4pDX"),
+            c("justcoin", "rJHygWcTLVpSXkowott6kzgZU6viQSVYM1"))
 colnames(df) <- c("gateway", "address")
 df <- as.data.frame(df)
 settings <- lapply(df$address, get_account_settings)
@@ -108,7 +104,6 @@ print(df, digits = 5)
 ## 3        justcoin rJHygWcTLVpSXkowott6kzgZU6viQSVYM1        1.0000
 ```
 
-
 Send a payment
 --------------
 
@@ -118,9 +113,9 @@ Find possible payment paths.
 ```r
 address <- "rJMNfiJTwXHcMdB4SpxMgL3mvV4xUVHDnd"
 destination_account <- "rH3WTUovV1HKx4S5HZup4dUZEjeGnehL6X"
-paths <- get_payment_paths(address, destination_account, value = 0.01, currency = "USD")
+paths <- get_payment_paths(address, destination_account,
+                           value = 0.01, currency = "USD")
 ```
-
 
 Examine the possible amounts that can be sent.
 
@@ -134,7 +129,6 @@ source_amount(paths)
 ## [1] "0.01+USD"
 ```
 
-
 Select one path and set tags and id.
 
 
@@ -145,7 +139,6 @@ destination_tag(payment) <- 456
 invoice_id(payment) <- "0000000000000000000000000000000000000000000000000000000000000000"
 ```
 
-
 Generate an identifier and submit the payment to the network. It is probably best to read the secret from an encrypted file.
 
 
@@ -155,19 +148,17 @@ uuid <- generate_uuid()
 response <- submit_payment(payment, secret, uuid)
 ```
 
-
 Check the status of the payment.
 
 
 ```r
 repeat {
     status <- check_payment_status(response$status_url)
-    if (has_ledger(status)) 
+    if (has_ledger(status))
         break
     Sys.sleep(1)
-}
+    }
 ```
-
 
 Display how the amounts have changed.
 
@@ -190,5 +181,4 @@ destination_balance_changes(status)
 ## An object of class "Amount"
 ## [1] "0.01+USD+rH3WTUovV1HKx4S5HZup4dUZEjeGnehL6X"
 ```
-
 

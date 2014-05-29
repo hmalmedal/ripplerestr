@@ -1,5 +1,11 @@
-#' Show for Balance class
+#' Show object
 #'
+#' Display an object.
+#'
+#' @name show-method
+#' @aliases show,Balance-method
+#' @rdname show-methods
+#' @include Balance-class.R Amount-class.R AccountSettings-class.R
 setMethod("show",
           signature(object = "Balance"),
           function (object)
@@ -9,8 +15,8 @@ setMethod("show",
                   print(as.character(object))
           }
 )
-#' Show for Amount class
-#'
+
+#' @rdname show-methods
 setMethod("show",
           signature(object = "Amount"),
           function (object)
@@ -20,8 +26,8 @@ setMethod("show",
                   print(as.character(object))
           }
 )
-#' Show for AccountSettings class
-#'
+
+#' @rdname show-methods
 setMethod("show",
           signature(object = "AccountSettings"),
           function (object)

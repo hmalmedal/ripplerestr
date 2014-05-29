@@ -1452,62 +1452,26 @@ provided.
 ### Value
 
 An object of class `"Trustline"`
-  ----------------------------- -----------------
-  show,AccountSettings-method   R Documentation
-  ----------------------------- -----------------
+  ------------- -----------------
+  show-method   R Documentation
+  ------------- -----------------
 
-Show for AccountSettings class
-------------------------------
-
-### Description
-
-Show for AccountSettings class
-
-### Usage
-
-    ## S4 method for signature 'AccountSettings'
-    show(object)
-
-### Arguments
-
-`object`
-
-Any R object
-  -------------------- -----------------
-  show,Amount-method   R Documentation
-  -------------------- -----------------
-
-Show for Amount class
----------------------
+Show object
+-----------
 
 ### Description
 
-Show for Amount class
-
-### Usage
-
-    ## S4 method for signature 'Amount'
-    show(object)
-
-### Arguments
-
-`object`
-
-Any R object
-  --------------------- -----------------
-  show,Balance-method   R Documentation
-  --------------------- -----------------
-
-Show for Balance class
-----------------------
-
-### Description
-
-Show for Balance class
+Display an object.
 
 ### Usage
 
     ## S4 method for signature 'Balance'
+    show(object)
+
+    ## S4 method for signature 'Amount'
+    show(object)
+
+    ## S4 method for signature 'AccountSettings'
     show(object)
 
 ### Arguments

@@ -12,8 +12,3 @@ validUINT32Object <- function(object) {
                   all(object[i] %% 1 == 0))
 }
 setValidity("UINT32", validUINT32Object)
-setAs("ANY", "UINT32", function(from) {
-    from <- UINT32(as.numeric(from))
-    validObject(from)
-    from
-})

@@ -2,6 +2,11 @@ setAs("Balance", "numeric", function(from) from@value)
 #' Coerce to numeric
 #'
 #' Extract the slot \code{"value"} from an object.
+#'
+#' @examples
+#' x <- Amount(1, "USD")
+#' as.numeric(x)
+#'
 #' @name as.numeric-method
 #' @aliases as.numeric,Balance-method
 #' @rdname as.numeric-methods

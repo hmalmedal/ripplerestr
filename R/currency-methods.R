@@ -8,6 +8,10 @@
 #' @param value Object of class \code{"\link{Currency}"} or class
 #'   \code{"character"}.
 #'
+#' @examples
+#' x <- Amount(1, "USD")
+#' currency(x) <- "EUR"
+#'
 #' @export currency "currency<-"
 #' @aliases currency currency<-
 #' @docType methods

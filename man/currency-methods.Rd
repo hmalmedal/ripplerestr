@@ -46,4 +46,8 @@ Object of class \code{"\link{Currency}"}.
 \description{
 Access the \code{currency} slot.
 }
+\examples{
+x <- Amount(1, "USD")
+currency(x) <- "EUR"
+}
 

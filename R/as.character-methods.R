@@ -10,6 +10,10 @@ setAs("Balance", "character",
 #'
 #' Coerce an object to \code{"character"} class.
 #'
+#' @examples
+#' x <- Amount(1, "USD")
+#' as.character(x)
+#'
 #' @name as.character-method
 #' @aliases as.character,Balance-method
 #' @rdname as.character-methods

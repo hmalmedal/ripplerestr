@@ -2,6 +2,10 @@
 #'
 #' Get the length of an object.
 #'
+#' @examples
+#' x <- Amount(1, "USD")
+#' length(x)
+#'
 #' @name length-method
 #' @aliases length,Balance-method
 #' @rdname length-methods

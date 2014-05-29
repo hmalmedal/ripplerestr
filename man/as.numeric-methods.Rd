@@ -18,4 +18,8 @@
 \description{
 Extract the slot \code{"value"} from an object.
 }
+\examples{
+x <- Amount(1, "USD")
+as.numeric(x)
+}
 

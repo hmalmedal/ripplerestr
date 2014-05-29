@@ -18,4 +18,8 @@
 \description{
 Coerce an object to \code{"character"} class.
 }
+\examples{
+x <- Amount(1, "USD")
+as.character(x)
+}
 

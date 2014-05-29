@@ -153,6 +153,11 @@ object to be coerced or tested.
 `...`
 
 further arguments passed to or from other methods.
+
+### Examples
+
+    x <- Amount(1, "USD")
+    as.character(x)
   ------------------- -----------------
   as.numeric-method   R Documentation
   ------------------- -----------------
@@ -181,6 +186,11 @@ object to be coerced or tested.
 `...`
 
 further arguments passed to or from other methods.
+
+### Examples
+
+    x <- Amount(1, "USD")
+    as.numeric(x)
   --------------- -----------------
   Balance-class   R Documentation
   --------------- -----------------
@@ -428,6 +438,11 @@ Object of class `"Currency"` or class `"character"`.
 ### Value
 
 Object of class `"Currency"`.
+
+### Examples
+
+    x <- Amount(1, "USD")
+    currency(x) <- "EUR"
   ------------------------------- -----------------
   destination\_balance\_changes   R Documentation
   ------------------------------- -----------------
@@ -1070,6 +1085,11 @@ Get the length of an object.
 `x`
 
 an **R** object. For replacement, a vector or factor.
+
+### Examples
+
+    x <- Amount(1, "USD")
+    length(x)
   -------------------- -----------------
   no\_direct\_ripple   R Documentation
   -------------------- -----------------

@@ -1,5 +1,12 @@
-#' Length for Balance class
+#' Length of object
 #'
+#' Get the length of an object.
+#'
+#' @name length-method
+#' @aliases length,Balance-method
+#' @rdname length-methods
+#' @include Balance-class.R Notification-class.R Trustline-class.R
+#'   Amount-class.R Payment-class.R
 setMethod("length",
           signature(x = "Balance"),
           function (x)
@@ -7,8 +14,8 @@ setMethod("length",
               length(x@value)
           }
 )
-#' Length for Notification class
-#'
+
+#' @rdname length-methods
 setMethod("length",
           signature(x = "Notification"),
           function (x)
@@ -16,8 +23,8 @@ setMethod("length",
               length(x@account)
           }
 )
-#' Length for Trustline class
-#'
+
+#' @rdname length-methods
 setMethod("length",
           signature(x = "Trustline"),
           function (x)
@@ -25,8 +32,8 @@ setMethod("length",
               length(x@account)
           }
 )
-#' Length for Amount class
-#'
+
+#' @rdname length-methods
 setMethod("length",
           signature(x = "Amount"),
           function (x)
@@ -34,8 +41,8 @@ setMethod("length",
               length(x@value)
           }
 )
-#' Length for Payment class
-#'
+
+#' @rdname length-methods
 setMethod("length",
           signature(x = "Payment"),
           function (x)

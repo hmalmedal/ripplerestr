@@ -1037,104 +1037,32 @@ to process transactions.
 ### Value
 
 `TRUE` or `FALSE`
-  ---------------------- -----------------
-  length,Amount-method   R Documentation
-  ---------------------- -----------------
+  --------------- -----------------
+  length-method   R Documentation
+  --------------- -----------------
 
-Length for Amount class
------------------------
-
-### Description
-
-Length for Amount class
-
-### Usage
-
-    ## S4 method for signature 'Amount'
-    length(x)
-
-### Arguments
-
-`x`
-
-an **R** object. For replacement, a vector or factor.
-  ----------------------- -----------------
-  length,Balance-method   R Documentation
-  ----------------------- -----------------
-
-Length for Balance class
-------------------------
+Length of object
+----------------
 
 ### Description
 
-Length for Balance class
+Get the length of an object.
 
 ### Usage
 
     ## S4 method for signature 'Balance'
     length(x)
 
-### Arguments
-
-`x`
-
-an **R** object. For replacement, a vector or factor.
-  ---------------------------- -----------------
-  length,Notification-method   R Documentation
-  ---------------------------- -----------------
-
-Length for Notification class
------------------------------
-
-### Description
-
-Length for Notification class
-
-### Usage
-
     ## S4 method for signature 'Notification'
     length(x)
 
-### Arguments
-
-`x`
-
-an **R** object. For replacement, a vector or factor.
-  ----------------------- -----------------
-  length,Payment-method   R Documentation
-  ----------------------- -----------------
-
-Length for Payment class
-------------------------
-
-### Description
-
-Length for Payment class
-
-### Usage
-
-    ## S4 method for signature 'Payment'
+    ## S4 method for signature 'Trustline'
     length(x)
 
-### Arguments
+    ## S4 method for signature 'Amount'
+    length(x)
 
-`x`
-
-an **R** object. For replacement, a vector or factor.
-  ------------------------- -----------------
-  length,Trustline-method   R Documentation
-  ------------------------- -----------------
-
-Length for Trustline class
---------------------------
-
-### Description
-
-Length for Trustline class
-
-### Usage
-
-    ## S4 method for signature 'Trustline'
+    ## S4 method for signature 'Payment'
     length(x)
 
 ### Arguments

@@ -6,8 +6,14 @@ setAs("Balance", "character",
           result <- paste(value, currency, counterparty, sep = "+")
           sub("\\+$", "", result)
       })
-#' as.character for Balance class
+#' Coerce to character
 #'
+#' Coerce an object to \code{"character"} class.
+#'
+#' @name as.character-method
+#' @aliases as.character,Balance-method
+#' @rdname as.character-methods
+#' @include Balance-class.R Amount-class.R
 setMethod("as.character",
           signature(x = "Balance"),
           function (x, ...)
@@ -26,8 +32,7 @@ setAs("Amount", "character",
           result <- paste(value, currency, issuer, sep = "+")
           sub("\\+$", "", result)
       })
-#' as.character for Amount class
-#'
+#' @rdname as.character-methods
 setMethod("as.character",
           signature(x = "Amount"),
           function (x, ...)

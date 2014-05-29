@@ -1,7 +1,11 @@
 setAs("Balance", "numeric", function(from) from@value)
-#' as.numeric for Balance class
+#' Coerce to numeric
 #'
-#' Extracts the slot \code{"value"} from a \code{\link{Balance}} object
+#' Extract the slot \code{"value"} from an object.
+#' @name as.numeric-method
+#' @aliases as.numeric,Balance-method
+#' @rdname as.numeric-methods
+#' @include Balance-class.R Amount-class.R
 setMethod("as.numeric",
     signature(x = "Balance"),
     function (x, ...)
@@ -11,9 +15,7 @@ setMethod("as.numeric",
 )
 
 setAs("Amount", "numeric", function(from) from@value)
-#' as.numeric for Amount class
-#'
-#' Extracts the slot \code{"value"} from an \code{\link{Amount}} object
+#' @rdname as.numeric-methods
 setMethod("as.numeric",
           signature(x = "Amount"),
           function (x, ...)

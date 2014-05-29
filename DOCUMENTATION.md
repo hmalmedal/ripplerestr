@@ -125,47 +125,25 @@ All slot lengths must be equal.
     XRP.
 
 
-  ---------------------------- -----------------
-  as.character,Amount-method   R Documentation
-  ---------------------------- -----------------
+  --------------------- -----------------
+  as.character-method   R Documentation
+  --------------------- -----------------
 
-as.character for Amount class
------------------------------
-
-### Description
-
-as.character for Amount class
-
-### Usage
-
-    ## S4 method for signature 'Amount'
-    as.character(x, ...)
-
-### Arguments
-
-`x`
-
-object to be coerced or tested.
-
-`...`
-
-further arguments passed to or from other methods.
-  ----------------------------- -----------------
-  as.character,Balance-method   R Documentation
-  ----------------------------- -----------------
-
-as.character for Balance class
-------------------------------
+Coerce to character
+-------------------
 
 ### Description
 
-as.character for Balance class
+Coerce an object to `"character"` class.
 
 ### Usage
 
     ## S4 method for signature 'Balance'
     as.character(x, ...)
 
+    ## S4 method for signature 'Amount'
+    as.character(x, ...)
+
 ### Arguments
 
 `x`
@@ -175,45 +153,23 @@ object to be coerced or tested.
 `...`
 
 further arguments passed to or from other methods.
-  -------------------------- -----------------
-  as.numeric,Amount-method   R Documentation
-  -------------------------- -----------------
+  ------------------- -----------------
+  as.numeric-method   R Documentation
+  ------------------- -----------------
 
-as.numeric for Amount class
----------------------------
+Coerce to numeric
+-----------------
 
 ### Description
 
-Extracts the slot `"value"` from an `Amount` object
+Extract the slot `"value"` from an object.
 
 ### Usage
 
-    ## S4 method for signature 'Amount'
+    ## S4 method for signature 'Balance'
     as.numeric(x, ...)
 
-### Arguments
-
-`x`
-
-object to be coerced or tested.
-
-`...`
-
-further arguments passed to or from other methods.
-  --------------------------- -----------------
-  as.numeric,Balance-method   R Documentation
-  --------------------------- -----------------
-
-as.numeric for Balance class
-----------------------------
-
-### Description
-
-Extracts the slot `"value"` from a `Balance` object
-
-### Usage
-
-    ## S4 method for signature 'Balance'
+    ## S4 method for signature 'Amount'
     as.numeric(x, ...)
 
 ### Arguments

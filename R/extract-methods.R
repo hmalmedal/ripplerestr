@@ -1,10 +1,14 @@
-#' Extract for Balance class
+#' Extract/replace parts of object
 #'
-#' @param j ignored
-#' @param ... ignored
+#' Extract or replace parts of an object.
+#'
+#' @name extract-method
+#' @aliases [,Balance-method
+#' @rdname extract-methods
+#' @include Balance-class.R Trustline-class.R Amount-class.R Payment-class.R
 setMethod("[",
           signature(x = "Balance"),
-          function (x, i, j, ..., drop = TRUE)
+          function (x, i)
           {
               slots <- getSlots(class(x))
               for (slotname in names(slots)) {
@@ -15,13 +19,11 @@ setMethod("[",
               x
           }
 )
-#' Extract for Trustline class
-#'
-#' @param j ignored
-#' @param ... ignored
+
+#' @rdname extract-methods
 setMethod("[",
           signature(x = "Trustline"),
-          function (x, i, j, ..., drop = TRUE)
+          function (x, i)
           {
               slots <- getSlots(class(x))
               for (slotname in names(slots)) {
@@ -32,13 +34,11 @@ setMethod("[",
               x
           }
 )
-#' Extract for Amount class
-#'
-#' @param j ignored
-#' @param ... ignored
+
+#' @rdname extract-methods
 setMethod("[",
           signature(x = "Amount"),
-          function (x, i, j, ..., drop = TRUE)
+          function (x, i)
           {
               slots <- getSlots(class(x))
               for (slotname in names(slots)) {
@@ -49,13 +49,11 @@ setMethod("[",
               x
           }
 )
-#' Extract for Payment class
-#'
-#' @param j ignored
-#' @param ... ignored
+
+#' @rdname extract-methods
 setMethod("[",
           signature(x = "Payment"),
-          function (x, i, j, ..., drop = TRUE)
+          function (x, i)
           {
               slots <- getSlots(class(x))[1:11]
               for (slotname in names(slots)) {
@@ -66,15 +64,12 @@ setMethod("[",
               x
           }
 )
-#' Replace for Balance class
-#'
-#' @param j ignored
-#' @param ... ignored
+
+#' @rdname extract-methods
 setMethod("[<-",
-          signature(x = "Balance"),
-          function (x, i, j, ..., value)
+          signature(x = "Balance", value = "Balance", j = "missing"),
+          function (x, i, value)
           {
-              if (!is(value, "Balance")) stop("wrong class")
               .value <- x@value
               .currency <- x@currency
               .counterparty <- x@counterparty
@@ -86,15 +81,12 @@ setMethod("[<-",
                       counterparty = .counterparty)
           }
 )
-#' Replace for Trustline class
-#'
-#' @param j ignored
-#' @param ... ignored
+
+#' @rdname extract-methods
 setMethod("[<-",
-          signature(x = "Trustline"),
-          function (x, i, j, ..., value)
+          signature(x = "Trustline", value = "Trustline", j = "missing"),
+          function (x, i, value)
           {
-              if (!is(value, "Trustline")) stop("wrong class")
               .account <- x@account
               .counterparty <- x@counterparty
               .currency <- x@currency

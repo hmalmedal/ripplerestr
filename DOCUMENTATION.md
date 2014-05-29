@@ -493,6 +493,69 @@ Object of class `"UINT32"` or class `"ANY"`.
 
 Object of class `"UINT32"`.
   ---------------- -----------------
+  extract-method   R Documentation
+  ---------------- -----------------
+
+Extract/replace parts of object
+-------------------------------
+
+### Description
+
+Extract or replace parts of an object.
+
+### Usage
+
+    ## S4 method for signature 'Balance'
+    x[i]
+
+    ## S4 method for signature 'Trustline'
+    x[i]
+
+    ## S4 method for signature 'Amount'
+    x[i]
+
+    ## S4 method for signature 'Payment'
+    x[i]
+
+    ## S4 replacement method for signature 'Balance,ANY,missing,Balance'
+    x[i] <- value
+
+    ## S4 replacement method for signature 'Trustline,ANY,missing,Trustline'
+    x[i] <- value
+
+### Arguments
+
+`x`
+
+object from which to extract element(s) or in which to replace
+element(s).
+
+`i`
+
+indices specifying elements to extract or replace. Indices are `numeric`
+or `character` vectors or empty (missing) or `NULL`. Numeric values are
+coerced to integer as by `as.integer` (and hence truncated towards
+zero). Character vectors will be matched to the `names` of the object
+(or for matrices/arrays, the `dimnames`): see ‘Character indices’ below
+for further details.
+
+For `[`-indexing only: `i`, `j`, `...` can be logical vectors,
+indicating elements/slices to select. Such vectors are recycled if
+necessary to match the corresponding extent. `i`, `j`, `...` can also be
+negative integers, indicating elements/slices to leave out of the
+selection.
+
+When indexing arrays by `[` a single argument `i` can be a matrix with
+as many columns as there are dimensions of `x`; the result is then a
+vector with elements corresponding to the sets of indices in each row of
+`i`.
+
+An index value of `NULL` is treated as if it were `integer(0)`.
+
+`value`
+
+typically an array-like **R** object of a similar class as `x`.
+  ---------------- -----------------
   generate\_uuid   R Documentation
   ---------------- -----------------
 
@@ -1650,122 +1713,6 @@ Object of class `"UINT32"` or class `"ANY"`.
 
 Object of class `"UINT32"`.
   ----------------- -----------------
-  [,Amount-method   R Documentation
-  ----------------- -----------------
-
-Extract for Amount class
-------------------------
-
-### Description
-
-Extract for Amount class
-
-### Usage
-
-    ## S4 method for signature 'Amount'
-    x[i, j, ..., drop = TRUE]
-
-### Arguments
-
-`j`
-
-ignored
-
-`...`
-
-ignored
-
-`x`
-
-object from which to extract element(s) or in which to replace
-element(s).
-
-`i`
-
-indices specifying elements to extract or replace. Indices are `numeric`
-or `character` vectors or empty (missing) or `NULL`. Numeric values are
-coerced to integer as by `as.integer` (and hence truncated towards
-zero). Character vectors will be matched to the `names` of the object
-(or for matrices/arrays, the `dimnames`): see ‘Character indices’ below
-for further details.
-
-For `[`-indexing only: `i`, `j`, `...` can be logical vectors,
-indicating elements/slices to select. Such vectors are recycled if
-necessary to match the corresponding extent. `i`, `j`, `...` can also be
-negative integers, indicating elements/slices to leave out of the
-selection.
-
-When indexing arrays by `[` a single argument `i` can be a matrix with
-as many columns as there are dimensions of `x`; the result is then a
-vector with elements corresponding to the sets of indices in each row of
-`i`.
-
-An index value of `NULL` is treated as if it were `integer(0)`.
-
-`drop`
-
-For matrices and arrays. If `TRUE` the result is coerced to the lowest
-possible dimension (see the examples). This only works for extracting
-elements, not for the replacement. See `drop` for further details.
-  ------------------ -----------------
-  [,Balance-method   R Documentation
-  ------------------ -----------------
-
-Extract for Balance class
--------------------------
-
-### Description
-
-Extract for Balance class
-
-### Usage
-
-    ## S4 method for signature 'Balance'
-    x[i, j, ..., drop = TRUE]
-
-### Arguments
-
-`j`
-
-ignored
-
-`...`
-
-ignored
-
-`x`
-
-object from which to extract element(s) or in which to replace
-element(s).
-
-`i`
-
-indices specifying elements to extract or replace. Indices are `numeric`
-or `character` vectors or empty (missing) or `NULL`. Numeric values are
-coerced to integer as by `as.integer` (and hence truncated towards
-zero). Character vectors will be matched to the `names` of the object
-(or for matrices/arrays, the `dimnames`): see ‘Character indices’ below
-for further details.
-
-For `[`-indexing only: `i`, `j`, `...` can be logical vectors,
-indicating elements/slices to select. Such vectors are recycled if
-necessary to match the corresponding extent. `i`, `j`, `...` can also be
-negative integers, indicating elements/slices to leave out of the
-selection.
-
-When indexing arrays by `[` a single argument `i` can be a matrix with
-as many columns as there are dimensions of `x`; the result is then a
-vector with elements corresponding to the sets of indices in each row of
-`i`.
-
-An index value of `NULL` is treated as if it were `integer(0)`.
-
-`drop`
-
-For matrices and arrays. If `TRUE` the result is coerced to the lowest
-possible dimension (see the examples). This only works for extracting
-elements, not for the replacement. See `drop` for further details.
-  ----------------- -----------------
   submit\_payment   R Documentation
   ----------------- -----------------
 
@@ -1804,234 +1751,6 @@ generator readily available.
 A named list. The first element is the `"client_resource_id"` you gave.
 The second element is named `"status_url"` and can be used with
 `check_payment_status`.
-  ------------------ -----------------
-  [,Payment-method   R Documentation
-  ------------------ -----------------
-
-Extract for Payment class
--------------------------
-
-### Description
-
-Extract for Payment class
-
-### Usage
-
-    ## S4 method for signature 'Payment'
-    x[i, j, ..., drop = TRUE]
-
-### Arguments
-
-`j`
-
-ignored
-
-`...`
-
-ignored
-
-`x`
-
-object from which to extract element(s) or in which to replace
-element(s).
-
-`i`
-
-indices specifying elements to extract or replace. Indices are `numeric`
-or `character` vectors or empty (missing) or `NULL`. Numeric values are
-coerced to integer as by `as.integer` (and hence truncated towards
-zero). Character vectors will be matched to the `names` of the object
-(or for matrices/arrays, the `dimnames`): see ‘Character indices’ below
-for further details.
-
-For `[`-indexing only: `i`, `j`, `...` can be logical vectors,
-indicating elements/slices to select. Such vectors are recycled if
-necessary to match the corresponding extent. `i`, `j`, `...` can also be
-negative integers, indicating elements/slices to leave out of the
-selection.
-
-When indexing arrays by `[` a single argument `i` can be a matrix with
-as many columns as there are dimensions of `x`; the result is then a
-vector with elements corresponding to the sets of indices in each row of
-`i`.
-
-An index value of `NULL` is treated as if it were `integer(0)`.
-
-`drop`
-
-For matrices and arrays. If `TRUE` the result is coerced to the lowest
-possible dimension (see the examples). This only works for extracting
-elements, not for the replacement. See `drop` for further details.
-  -------------------------------- -----------------
-  [<-,Balance,ANY,ANY,ANY-method   R Documentation
-  -------------------------------- -----------------
-
-Replace for Balance class
--------------------------
-
-### Description
-
-Replace for Balance class
-
-### Usage
-
-    ## S4 replacement method for signature 'Balance,ANY,ANY,ANY'
-    x[i, j, ...] <- value
-
-### Arguments
-
-`j`
-
-ignored
-
-`...`
-
-ignored
-
-`x`
-
-object from which to extract element(s) or in which to replace
-element(s).
-
-`i`
-
-indices specifying elements to extract or replace. Indices are `numeric`
-or `character` vectors or empty (missing) or `NULL`. Numeric values are
-coerced to integer as by `as.integer` (and hence truncated towards
-zero). Character vectors will be matched to the `names` of the object
-(or for matrices/arrays, the `dimnames`): see ‘Character indices’ below
-for further details.
-
-For `[`-indexing only: `i`, `j`, `...` can be logical vectors,
-indicating elements/slices to select. Such vectors are recycled if
-necessary to match the corresponding extent. `i`, `j`, `...` can also be
-negative integers, indicating elements/slices to leave out of the
-selection.
-
-When indexing arrays by `[` a single argument `i` can be a matrix with
-as many columns as there are dimensions of `x`; the result is then a
-vector with elements corresponding to the sets of indices in each row of
-`i`.
-
-An index value of `NULL` is treated as if it were `integer(0)`.
-
-`value`
-
-typically an array-like **R** object of a similar class as `x`.
-  ---------------------------------- -----------------
-  [<-,Trustline,ANY,ANY,ANY-method   R Documentation
-  ---------------------------------- -----------------
-
-Replace for Trustline class
----------------------------
-
-### Description
-
-Replace for Trustline class
-
-### Usage
-
-    ## S4 replacement method for signature 'Trustline,ANY,ANY,ANY'
-    x[i, j, ...] <- value
-
-### Arguments
-
-`j`
-
-ignored
-
-`...`
-
-ignored
-
-`x`
-
-object from which to extract element(s) or in which to replace
-element(s).
-
-`i`
-
-indices specifying elements to extract or replace. Indices are `numeric`
-or `character` vectors or empty (missing) or `NULL`. Numeric values are
-coerced to integer as by `as.integer` (and hence truncated towards
-zero). Character vectors will be matched to the `names` of the object
-(or for matrices/arrays, the `dimnames`): see ‘Character indices’ below
-for further details.
-
-For `[`-indexing only: `i`, `j`, `...` can be logical vectors,
-indicating elements/slices to select. Such vectors are recycled if
-necessary to match the corresponding extent. `i`, `j`, `...` can also be
-negative integers, indicating elements/slices to leave out of the
-selection.
-
-When indexing arrays by `[` a single argument `i` can be a matrix with
-as many columns as there are dimensions of `x`; the result is then a
-vector with elements corresponding to the sets of indices in each row of
-`i`.
-
-An index value of `NULL` is treated as if it were `integer(0)`.
-
-`value`
-
-typically an array-like **R** object of a similar class as `x`.
-  -------------------- -----------------
-  [,Trustline-method   R Documentation
-  -------------------- -----------------
-
-Extract for Trustline class
----------------------------
-
-### Description
-
-Extract for Trustline class
-
-### Usage
-
-    ## S4 method for signature 'Trustline'
-    x[i, j, ..., drop = TRUE]
-
-### Arguments
-
-`j`
-
-ignored
-
-`...`
-
-ignored
-
-`x`
-
-object from which to extract element(s) or in which to replace
-element(s).
-
-`i`
-
-indices specifying elements to extract or replace. Indices are `numeric`
-or `character` vectors or empty (missing) or `NULL`. Numeric values are
-coerced to integer as by `as.integer` (and hence truncated towards
-zero). Character vectors will be matched to the `names` of the object
-(or for matrices/arrays, the `dimnames`): see ‘Character indices’ below
-for further details.
-
-For `[`-indexing only: `i`, `j`, `...` can be logical vectors,
-indicating elements/slices to select. Such vectors are recycled if
-necessary to match the corresponding extent. `i`, `j`, `...` can also be
-negative integers, indicating elements/slices to leave out of the
-selection.
-
-When indexing arrays by `[` a single argument `i` can be a matrix with
-as many columns as there are dimensions of `x`; the result is then a
-vector with elements corresponding to the sets of indices in each row of
-`i`.
-
-An index value of `NULL` is treated as if it were `integer(0)`.
-
-`drop`
-
-For matrices and arrays. If `TRUE` the result is coerced to the lowest
-possible dimension (see the examples). This only works for extracting
-elements, not for the replacement. See `drop` for further details.
   ---------------- -----------------
   transfer\_rate   R Documentation
   ---------------- -----------------

@@ -214,35 +214,6 @@ All slot lengths must be equal.
     XRP.
 
 
-  ------------------ -----------------
-  c,Balance-method   R Documentation
-  ------------------ -----------------
-
-Combine for Balance class
--------------------------
-
-### Description
-
-Combine for Balance class
-
-### Usage
-
-    ## S4 method for signature 'Balance'
-    c(x, ..., recursive = FALSE)
-
-### Arguments
-
-`x`
-
-object to be concatenated.
-
-`recursive`
-
-ignored
-
-`...`
-
-objects to be concatenated.
   --------------------------- -----------------
   change\_account\_settings   R Documentation
   --------------------------- -----------------
@@ -353,6 +324,35 @@ The transaction hash for the desired payment. Ignored if `status_url` or
 ### Value
 
 An object of class `"Payment"`
+  ---------- -----------------
+  c-method   R Documentation
+  ---------- -----------------
+
+Combine values
+--------------
+
+### Description
+
+Combine arguments with the same class.
+
+### Usage
+
+    ## S4 method for signature 'Balance'
+    c(x, ..., recursive = FALSE)
+
+### Arguments
+
+`x`
+
+object to be concatenated.
+
+`recursive`
+
+ignored
+
+`...`
+
+objects to be concatenated.
   ---------------- -----------------
   Currency-class   R Documentation
   ---------------- -----------------

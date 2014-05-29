@@ -1,7 +1,14 @@
-#' Combine for Balance class
+#' Combine values
+#'
+#' Combine arguments with the same class.
 #'
 #' @param x object to be concatenated.
 #' @param recursive ignored
+#'
+#' @name c-method
+#' @aliases c,Balance-method
+#' @rdname c-methods
+#' @include Balance-class.R
 setMethod("c",
           signature(x = "Balance"),
           function (x, ..., recursive = FALSE)
@@ -16,6 +23,6 @@ setMethod("c",
                   x@counterparty <- c(x@counterparty, slot(..., "counterparty"))
                   x
               } else
-                  list(x, ...)
+                  stop("Wrong class")
           }
 )

@@ -92,11 +92,11 @@ get_payment_paths <- function(address, destination_account,
     source_tag <- UINT32(source_tag)
 
     value <- sapply(payments, function(element) element$source_amount$value)
-    value  <- as.numeric(value)
+    value <- as.numeric(value)
 
     currency <- sapply(payments,
                        function(element) element$source_amount$currency)
-    currency  <- Currency(currency)
+    currency <- Currency(currency)
 
     issuer <- sapply(payments, function(element) element$source_amount$issuer)
 
@@ -121,12 +121,12 @@ get_payment_paths <- function(address, destination_account,
     destination_amount.value <- sapply(payments,
                                        function(element)
                                            element$destination_amount$value)
-    destination_amount.value  <- as.numeric(destination_amount.value)
+    destination_amount.value <- as.numeric(destination_amount.value)
 
     destination_amount.currency <-
         sapply(payments,
                function(element) element$destination_amount$currency)
-    destination_amount.currency  <- Currency(destination_amount.currency)
+    destination_amount.currency <- Currency(destination_amount.currency)
 
     destination_amount.issuer <- sapply(payments,
                                         function(element)
@@ -189,7 +189,7 @@ submit_payment <- function(payment, secret, client_resource_id) {
 
     source_tag <- payment@source_tag
     if (is.na(source_tag))
-        source_tag  <- ""
+        source_tag <- ""
     else
         source_tag <- as.character(source_tag)
 
@@ -203,7 +203,7 @@ submit_payment <- function(payment, secret, client_resource_id) {
 
     destination_tag <- payment@destination_tag
     if (is.na(destination_tag))
-        destination_tag  <- ""
+        destination_tag <- ""
     else
         destination_tag <- as.character(destination_tag)
 
@@ -267,7 +267,7 @@ check_payment_status <- function(status_url, address, client_resource_id,
                           "/payments/",
                           "(?!$|^[A-Fa-f0-9]{64})[ -~]{1,255}$")
         if (!grepl(pattern, status_url, perl = T))
-            stop("invalid status_url",  call. = FALSE)
+            stop("invalid status_url", call. = FALSE)
 
         path <- sub("^/", "", status_url)
     } else {
@@ -310,7 +310,7 @@ check_payment_status <- function(status_url, address, client_resource_id,
 #'   given account.
 #' @param destination_account Filter the results to only include payments
 #'   received by the given account.
-#' @param exclude_failed  If set to \code{TRUE}, the results will only include
+#' @param exclude_failed If set to \code{TRUE}, the results will only include
 #'   payments which were successfully validated and written into the ledger.
 #'   Otherwise, failed payments will be included. Defaults to \code{FALSE}.
 #' @param direction Limit the results to only include the given type of

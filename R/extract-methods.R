@@ -91,21 +91,21 @@ setMethod("[<-",
               .counterparty <- x@counterparty
               .currency <- x@currency
               .limit <- x@limit
-              .reciprocated_limit  <- x@reciprocated_limit
-              .account_allows_rippling  <- x@account_allows_rippling
-              .counterparty_allows_rippling  <- x@counterparty_allows_rippling
-              .ledger  <- x@ledger
-              .hash  <- x@hash
+              .reciprocated_limit <- x@reciprocated_limit
+              .account_allows_rippling <- x@account_allows_rippling
+              .counterparty_allows_rippling <- x@counterparty_allows_rippling
+              .ledger <- x@ledger
+              .hash <- x@hash
               .account[i] <- value@account
               .currency[i] <- value@currency
               .counterparty[i] <- value@counterparty
               .limit[i] <- value@limit
-              .reciprocated_limit[i]  <- value@reciprocated_limit
-              .account_allows_rippling[i]  <- value@account_allows_rippling
-              .counterparty_allows_rippling[i]  <-
+              .reciprocated_limit[i] <- value@reciprocated_limit
+              .account_allows_rippling[i] <- value@account_allows_rippling
+              .counterparty_allows_rippling[i] <-
                   value@counterparty_allows_rippling
-              .ledger[i]  <- value@ledger
-              .hash[i]  <- value@hash
+              .ledger[i] <- value@ledger
+              .hash[i] <- value@hash
               Trustline(account = .account,
                         counterparty = .counterparty,
                         currency = .currency,

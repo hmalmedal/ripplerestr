@@ -9,7 +9,7 @@ $(DOC) : $(md)
 	R CMD Rdconv -t html $< -o $@
 
 %.md : %.html
-	pandoc -t markdown_github $< -o $@
+	pandoc $< -o $@
 
 .PHONY : clean distclean
 clean :

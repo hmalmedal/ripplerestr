@@ -17,70 +17,70 @@ Each slot length must be `0` or `1`.
 ### Slots
 
 `account`
-:   Object of class `"RippleAddress"`. The Ripple address of the account
+  ~ Object of class `"RippleAddress"`. The Ripple address of the account
     in question.
 
 `regular_key`
-:   Object of class `"RippleAddress"`. The hash of an optional
+  ~ Object of class `"RippleAddress"`. The hash of an optional
     additional public key that can be used for signing and verifying
     transactions.
 
 `domain`
-:   Object of class `"character"`. The domain associated with this
+  ~ Object of class `"character"`. The domain associated with this
     account. The `ripple.txt` file can be looked up to verify this
     information.
 
 `email_hash`
-:   Object of class `"Hash128"`. The MD5 128-bit hash of the account
+  ~ Object of class `"Hash128"`. The MD5 128-bit hash of the account
     owner's email address.
 
 `message_key`
-:   Object of class `"character"`. An optional public key, represented
+  ~ Object of class `"character"`. An optional public key, represented
     as hex, that can be set to allow others to send encrypted messages
     to the account owner.
 
 `transfer_rate`
-:   Object of class `"UINT32"`.
+  ~ Object of class `"UINT32"`.
 
 `require_destination_tag`
-:   Object of class `"logical"`. If set to `TRUE` incoming payments will
+  ~ Object of class `"logical"`. If set to `TRUE` incoming payments will
     only be validated if they include a `destination_tag`. This may be
     used primarily by gateways that operate exclusively with hosted
     wallets.
 
 `require_authorization`
-:   Object of class `"logical"`. If set to `TRUE` incoming trustlines
+  ~ Object of class `"logical"`. If set to `TRUE` incoming trustlines
     will only be validated if this account first creates a trustline to
     the counterparty with the authorized flag set to `TRUE`. This may be
     used by gateways to prevent accounts unknown to them from holding
     currencies they issue.
 
 `disallow_xrp`
-:   Object of class `"logical"`. If set to `TRUE` incoming XRP payments
+  ~ Object of class `"logical"`. If set to `TRUE` incoming XRP payments
     will not be allowed.
 
 `password_spent`
-:   Object of class `"logical"`.
+  ~ Object of class `"logical"`.
 
 `disable_master`
-:   Object of class `"logical"`.
+  ~ Object of class `"logical"`.
 
 `transaction_sequence`
-:   Object of class `"UINT32"`. The last sequence number of a validated
+  ~ Object of class `"UINT32"`. The last sequence number of a validated
     transaction created by this account.
 
 `trustline_count`
-:   Object of class `"UINT32"`. The number of trustlines owned by this
+  ~ Object of class `"UINT32"`. The number of trustlines owned by this
     account. This value does not include incoming trustlines where this
     account has not explicitly reciprocated trust.
 
 `ledger`
-:   Object of class `"numeric"`. The index number of the ledger
+  ~ Object of class `"numeric"`. The index number of the ledger
     containing these account settings or, in the case of historical
     queries, of the transaction that modified these settings.
 
 `hash`
-:   Object of class `"Hash256"`. If this object was returned by a
+  ~ Object of class `"Hash256"`. If this object was returned by a
     historical query this value will be the hash of the transaction that
     modified these settings. The transaction hash is used throughout the
     Ripple Protocol to uniquely identify a particular transaction.
@@ -108,19 +108,19 @@ All slot lengths must be equal.
 ### Slots
 
 `value`
-:   Object of class `"numeric"`. The quantity of the currency.
+  ~ Object of class `"numeric"`. The quantity of the currency.
 
 `currency`
-:   Object of class `"Currency"`. The currency expressed as a
+  ~ Object of class `"Currency"`. The currency expressed as a
     three-character code.
 
 `issuer`
-:   Object of class `"character"`. The Ripple account address of the
+  ~ Object of class `"character"`. The Ripple account address of the
     currency's issuer or gateway, or an empty string if the currency is
     XRP.
 
 `counterparty`
-:   Object of class `"character"`. The Ripple account address of the
+  ~ Object of class `"character"`. The Ripple account address of the
     currency's issuer or gateway, or an empty string if the currency is
     XRP.
 
@@ -146,12 +146,13 @@ Coerce an object to `"character"` class.
 
 ### Arguments
 
-+--------------------------------------+--------------------------------------+
-| `x`                                  | object to be coerced or tested.      |
-+--------------------------------------+--------------------------------------+
-| `...`                                | further arguments passed to or from  |
-|                                      | other methods.                       |
-+--------------------------------------+--------------------------------------+
+`x`
+
+object to be coerced or tested.
+
+`...`
+
+further arguments passed to or from other methods.
 
 ### Examples
 
@@ -178,12 +179,13 @@ Extract the slot `"value"` from an object.
 
 ### Arguments
 
-+--------------------------------------+--------------------------------------+
-| `x`                                  | object to be coerced or tested.      |
-+--------------------------------------+--------------------------------------+
-| `...`                                | further arguments passed to or from  |
-|                                      | other methods.                       |
-+--------------------------------------+--------------------------------------+
+`x`
+
+object to be coerced or tested.
+
+`...`
+
+further arguments passed to or from other methods.
 
 ### Examples
 
@@ -210,14 +212,14 @@ All slot lengths must be equal.
 ### Slots
 
 `value`
-:   Object of class `"numeric"`. The quantity of the currency.
+  ~ Object of class `"numeric"`. The quantity of the currency.
 
 `currency`
-:   Object of class `"Currency"`. The currency expressed as a
+  ~ Object of class `"Currency"`. The currency expressed as a
     three-character code.
 
 `counterparty`
-:   Object of class `"character"`. The Ripple account address of the
+  ~ Object of class `"character"`. The Ripple account address of the
     currency's issuer or gateway, or an empty string if the currency is
     XRP.
 
@@ -241,54 +243,54 @@ Change an account's settings
 
 ### Arguments
 
-+--------------------------------------+--------------------------------------+
-| `address`                            | The Ripple address of the desired    |
-|                                      | account.                             |
-+--------------------------------------+--------------------------------------+
-| `secret`                             | The secret key for your Ripple       |
-|                                      | account.                             |
-+--------------------------------------+--------------------------------------+
-| `transfer_rate`                      | The rate charged each time a holder  |
-|                                      | of currency issued by this account   |
-|                                      | transfers some funds. The default    |
-|                                      | and minimum rate is "1.0"; a rate of |
-|                                      | "1.01" is a 1% charge on top of the  |
-|                                      | amount being transferred. Up to nine |
-|                                      | decimal places are supported.        |
-+--------------------------------------+--------------------------------------+
-| `domain`                             | The domain name associated with this |
-|                                      | account.                             |
-+--------------------------------------+--------------------------------------+
-| `message_key`                        | An optional public key, represented  |
-|                                      | as a hex string, that can be used to |
-|                                      | allow others to send encrypted       |
-|                                      | messages to the account owner.       |
-+--------------------------------------+--------------------------------------+
-| `email_hash`                         | The MD5 128-bit hash of the account  |
-|                                      | owner's email address, if known.     |
-+--------------------------------------+--------------------------------------+
-| `disallow_xrp`                       | If this is set to `TRUE`, payments   |
-|                                      | in XRP will not be allowed.          |
-+--------------------------------------+--------------------------------------+
-| `require_authorization`              | If this is set to `TRUE`, incoming   |
-|                                      | trustlines will only be validated if |
-|                                      | this account first creates a         |
-|                                      | trustline to the counterparty with   |
-|                                      | the authorized flag set to `TRUE`.   |
-|                                      | This may be used by gateways to      |
-|                                      | prevent accounts unknown to them     |
-|                                      | from holding currencies they issue.  |
-+--------------------------------------+--------------------------------------+
-| `require_destination_tag`            | If this is set to `TRUE`, incoming   |
-|                                      | payments will only be validated if   |
-|                                      | they include a `destination_tag`     |
-|                                      | value. Note that this is used        |
-|                                      | primarily by gateways that operate   |
-|                                      | exclusively with hosted wallets.     |
-+--------------------------------------+--------------------------------------+
-| `password_spent`                     | `TRUE` if the password has been      |
-|                                      | "spent", else `FALSE`.               |
-+--------------------------------------+--------------------------------------+
+`address`
+
+The Ripple address of the desired account.
+
+`secret`
+
+The secret key for your Ripple account.
+
+`transfer_rate`
+
+The rate charged each time a holder of currency issued by this account
+transfers some funds. The default and minimum rate is "1.0"; a rate of
+"1.01" is a 1% charge on top of the amount being transferred. Up to nine
+decimal places are supported.
+
+`domain`
+
+The domain name associated with this account.
+
+`message_key`
+
+An optional public key, represented as a hex string, that can be used to
+allow others to send encrypted messages to the account owner.
+
+`email_hash`
+
+The MD5 128-bit hash of the account owner's email address, if known.
+
+`disallow_xrp`
+
+If this is set to `TRUE`, payments in XRP will not be allowed.
+
+`require_authorization`
+
+If this is set to `TRUE`, incoming trustlines will only be validated if
+this account first creates a trustline to the counterparty with the
+authorized flag set to `TRUE`. This may be used by gateways to prevent
+accounts unknown to them from holding currencies they issue.
+
+`require_destination_tag`
+
+If this is set to `TRUE`, incoming payments will only be validated if
+they include a `destination_tag` value. Note that this is used primarily
+by gateways that operate exclusively with hosted wallets.
+
+`password_spent`
+
+`TRUE` if the password has been "spent", else `FALSE`.
 
 ### Value
 
@@ -311,20 +313,23 @@ call this.
 
 ### Arguments
 
-+--------------------------------------+--------------------------------------+
-| `status_url`                         | Return value from `submit_payment`.  |
-+--------------------------------------+--------------------------------------+
-| `address`                            | The Ripple address for the source    |
-|                                      | account. Ignored if `status_url` is  |
-|                                      | provided.                            |
-+--------------------------------------+--------------------------------------+
-| `client_resource_id`                 | Provided to `submit_payment`.        |
-|                                      | Ignored if `status_url` is provided. |
-+--------------------------------------+--------------------------------------+
-| `hash`                               | The transaction hash for the desired |
-|                                      | payment. Ignored if `status_url` or  |
-|                                      | `client_resource_id` is provided.    |
-+--------------------------------------+--------------------------------------+
+`status_url`
+
+Return value from `submit_payment`.
+
+`address`
+
+The Ripple address for the source account. Ignored if `status_url` is
+provided.
+
+`client_resource_id`
+
+Provided to `submit_payment`. Ignored if `status_url` is provided.
+
+`hash`
+
+The transaction hash for the desired payment. Ignored if `status_url` or
+`client_resource_id` is provided.
 
 ### Value
 
@@ -347,15 +352,17 @@ Combine arguments with the same class.
 
 ### Arguments
 
-+--------------------------------------+--------------------------------------+
-| `x`                                  | object to be concatenated.           |
-+--------------------------------------+--------------------------------------+
-| `recursive`                          | ignored                              |
-+--------------------------------------+--------------------------------------+
-| `...`                                | objects to be concatenated.          |
-+--------------------------------------+--------------------------------------+
+`x`
 
+object to be concatenated.
 
+`recursive`
+
+ignored
+
+`...`
+
+objects to be concatenated.
   ---------------- -----------------
   Currency-class   R Documentation
   ---------------- -----------------
@@ -420,12 +427,13 @@ Access the `currency` slot.
 
 ### Arguments
 
-+--------------------------------------+--------------------------------------+
-| `object`                             | Object with currency slot.           |
-+--------------------------------------+--------------------------------------+
-| `value`                              | Object of class `"Currency"` or      |
-|                                      | class `"character"`.                 |
-+--------------------------------------+--------------------------------------+
+`object`
+
+Object with currency slot.
+
+`value`
+
+Object of class `"Currency"` or class `"character"`.
 
 ### Value
 
@@ -455,9 +463,9 @@ Access the `destination_balance_changes` slot.
 
 ### Arguments
 
-+--------------------------------------+--------------------------------------+
-| `object`                             | Object of class `"Payment"`.         |
-+--------------------------------------+--------------------------------------+
+`object`
+
+Object of class `"Payment"`.
 
 ### Value
 
@@ -488,12 +496,13 @@ Access the `destination_tag` slot.
 
 ### Arguments
 
-+--------------------------------------+--------------------------------------+
-| `object`                             | Object of class `"Payment"`.         |
-+--------------------------------------+--------------------------------------+
-| `value`                              | Object of class `"UINT32"` or class  |
-|                                      | `"ANY"`.                             |
-+--------------------------------------+--------------------------------------+
+`object`
+
+Object of class `"Payment"`.
+
+`value`
+
+Object of class `"UINT32"` or class `"ANY"`.
 
 ### Value
 
@@ -531,48 +540,36 @@ Extract or replace parts of an object.
 
 ### Arguments
 
-+--------------------------------------+--------------------------------------+
-| `x`                                  | object from which to extract         |
-|                                      | element(s) or in which to replace    |
-|                                      | element(s).                          |
-+--------------------------------------+--------------------------------------+
-| `i`                                  | indices specifying elements to       |
-|                                      | extract or replace. Indices are      |
-|                                      | `numeric` or `character` vectors or  |
-|                                      | empty (missing) or `NULL`. Numeric   |
-|                                      | values are coerced to integer as by  |
-|                                      | `as.integer` (and hence truncated    |
-|                                      | towards zero). Character vectors     |
-|                                      | will be matched to the `names` of    |
-|                                      | the object (or for matrices/arrays,  |
-|                                      | the `dimnames`): see ‘Character      |
-|                                      | indices’ below for further details.  |
-|                                      |                                      |
-|                                      | For `[`-indexing only: `i`, `j`,     |
-|                                      | `...` can be logical vectors,        |
-|                                      | indicating elements/slices to        |
-|                                      | select. Such vectors are recycled if |
-|                                      | necessary to match the corresponding |
-|                                      | extent. `i`, `j`, `...` can also be  |
-|                                      | negative integers, indicating        |
-|                                      | elements/slices to leave out of the  |
-|                                      | selection.                           |
-|                                      |                                      |
-|                                      | When indexing arrays by `[` a single |
-|                                      | argument `i` can be a matrix with as |
-|                                      | many columns as there are dimensions |
-|                                      | of `x`; the result is then a vector  |
-|                                      | with elements corresponding to the   |
-|                                      | sets of indices in each row of `i`.  |
-|                                      |                                      |
-|                                      | An index value of `NULL` is treated  |
-|                                      | as if it were `integer(0)`.          |
-+--------------------------------------+--------------------------------------+
-| `value`                              | typically an array-like **R** object |
-|                                      | of a similar class as `x`.           |
-+--------------------------------------+--------------------------------------+
+`x`
 
+object from which to extract element(s) or in which to replace
+element(s).
 
+`i`
+
+indices specifying elements to extract or replace. Indices are `numeric`
+or `character` vectors or empty (missing) or `NULL`. Numeric values are
+coerced to integer as by `as.integer` (and hence truncated towards
+zero). Character vectors will be matched to the `names` of the object
+(or for matrices/arrays, the `dimnames`): see ‘Character indices’ below
+for further details.
+
+For `[`-indexing only: `i`, `j`, `...` can be logical vectors,
+indicating elements/slices to select. Such vectors are recycled if
+necessary to match the corresponding extent. `i`, `j`, `...` can also be
+negative integers, indicating elements/slices to leave out of the
+selection.
+
+When indexing arrays by `[` a single argument `i` can be a matrix with
+as many columns as there are dimensions of `x`; the result is then a
+vector with elements corresponding to the sets of indices in each row of
+`i`.
+
+An index value of `NULL` is treated as if it were `integer(0)`.
+
+`value`
+
+typically an array-like **R** object of a similar class as `x`.
   ---------------- -----------------
   generate\_uuid   R Documentation
   ---------------- -----------------
@@ -610,15 +607,17 @@ Retrieve the current balances for the given Ripple account.
 
 ### Arguments
 
-+--------------------------------------+--------------------------------------+
-| `address`                            | The Ripple address of the desired    |
-|                                      | account                              |
-+--------------------------------------+--------------------------------------+
-| `currency`                           | Three letter currency denominations  |
-+--------------------------------------+--------------------------------------+
-| `counterparty`                       | The Ripple address of the            |
-|                                      | counterparty trusted                 |
-+--------------------------------------+--------------------------------------+
+`address`
+
+The Ripple address of the desired account
+
+`currency`
+
+Three letter currency denominations
+
+`counterparty`
+
+The Ripple address of the counterparty trusted
 
 ### Details
 
@@ -656,63 +655,60 @@ been submitted.
 
 ### Arguments
 
-+--------------------------------------+--------------------------------------+
-| `address`                            | The Ripple address of the desired    |
-|                                      | account                              |
-+--------------------------------------+--------------------------------------+
-| `source_account`                     | Filter the results to only include   |
-|                                      | payments sent by the given account.  |
-+--------------------------------------+--------------------------------------+
-| `destination_account`                | Filter the results to only include   |
-|                                      | payments received by the given       |
-|                                      | account.                             |
-+--------------------------------------+--------------------------------------+
-| `exclude_failed`                     | If set to `TRUE`, the results will   |
-|                                      | only include payments which were     |
-|                                      | successfully validated and written   |
-|                                      | into the ledger. Otherwise, failed   |
-|                                      | payments will be included. Defaults  |
-|                                      | to `FALSE`.                          |
-+--------------------------------------+--------------------------------------+
-| `direction`                          | Limit the results to only include    |
-|                                      | the given type of payments. The      |
-|                                      | following direction values are       |
-|                                      | currently supported: `incoming`,     |
-|                                      | `outgoing`, `pending`                |
-+--------------------------------------+--------------------------------------+
-| `earliest_first`                     | If set to `TRUE`, the payments will  |
-|                                      | be returned in ascending date order. |
-|                                      | Otherwise, the payments will be      |
-|                                      | returned in descending date order    |
-|                                      | (ie, the most recent payment will be |
-|                                      | returned first). Defaults to         |
-|                                      | `FALSE`.                             |
-+--------------------------------------+--------------------------------------+
-| `start_ledger`                       | The index for the starting ledger.   |
-|                                      | If `earliest_first` is `TRUE`, this  |
-|                                      | will be the oldest ledger to be      |
-|                                      | queried; otherwise, it will be the   |
-|                                      | most recent ledger. Defaults to the  |
-|                                      | first ledger in the `rippled`        |
-|                                      | server's database.                   |
-+--------------------------------------+--------------------------------------+
-| `end_ledger`                         | The index for the ending ledger. If  |
-|                                      | `earliest_first` is `TRUE`, this     |
-|                                      | will be the most recent ledger to be |
-|                                      | queried; otherwise, it will be the   |
-|                                      | oldest ledger. Defaults to the most  |
-|                                      | recent ledger in the `rippled`       |
-|                                      | server's database.                   |
-+--------------------------------------+--------------------------------------+
-| `results_per_page`                   | The maximum number of payments to be |
-|                                      | returned at once. Defaults to 10.    |
-+--------------------------------------+--------------------------------------+
-| `page`                               | The page number to be returned. The  |
-|                                      | first page of results will have page |
-|                                      | number 1, the second page will have  |
-|                                      | page number 2, and so on. Defaults   |
-|                                      | to 1.                                |
-+--------------------------------------+--------------------------------------+
+`address`
+
+The Ripple address of the desired account
+
+`source_account`
+
+Filter the results to only include payments sent by the given account.
+
+`destination_account`
+
+Filter the results to only include payments received by the given
+account.
+
+`exclude_failed`
+
+If set to `TRUE`, the results will only include payments which were
+successfully validated and written into the ledger. Otherwise, failed
+payments will be included. Defaults to `FALSE`.
+
+`direction`
+
+Limit the results to only include the given type of payments. The
+following direction values are currently supported: `incoming`,
+`outgoing`, `pending`
+
+`earliest_first`
+
+If set to `TRUE`, the payments will be returned in ascending date order.
+Otherwise, the payments will be returned in descending date order (ie,
+the most recent payment will be returned first). Defaults to `FALSE`.
+
+`start_ledger`
+
+The index for the starting ledger. If `earliest_first` is `TRUE`, this
+will be the oldest ledger to be queried; otherwise, it will be the most
+recent ledger. Defaults to the first ledger in the `rippled` server's
+database.
+
+`end_ledger`
+
+The index for the ending ledger. If `earliest_first` is `TRUE`, this
+will be the most recent ledger to be queried; otherwise, it will be the
+oldest ledger. Defaults to the most recent ledger in the `rippled`
+server's database.
+
+`results_per_page`
+
+The maximum number of payments to be returned at once. Defaults to 10.
+
+`page`
+
+The page number to be returned. The first page of results will have page
+number 1, the second page will have page number 2, and so on. Defaults
+to 1.
 
 ### Details
 
@@ -746,10 +742,9 @@ the current settings in force for the given account.
 
 ### Arguments
 
-+--------------------------------------+--------------------------------------+
-| `address`                            | The Ripple address of the desired    |
-|                                      | account                              |
-+--------------------------------------+--------------------------------------+
+`address`
+
+The Ripple address of the desired account
 
 ### Value
 
@@ -771,15 +766,17 @@ Retrieves all trustlines associated with the Ripple address.
 
 ### Arguments
 
-+--------------------------------------+--------------------------------------+
-| `address`                            | The Ripple address of the desired    |
-|                                      | account                              |
-+--------------------------------------+--------------------------------------+
-| `currency`                           | Three letter currency denominations  |
-+--------------------------------------+--------------------------------------+
-| `counterparty`                       | The Ripple address of the            |
-|                                      | counterparty trusted                 |
-+--------------------------------------+--------------------------------------+
+`address`
+
+The Ripple address of the desired account
+
+`currency`
+
+Three letter currency denominations
+
+`counterparty`
+
+The Ripple address of the counterparty trusted
 
 ### Details
 
@@ -815,12 +812,13 @@ available on the rippled you are connecting to.
 
 ### Arguments
 
-+--------------------------------------+--------------------------------------+
-| `address`                            | The Ripple address of the desired    |
-|                                      | account                              |
-+--------------------------------------+--------------------------------------+
-| `hash`                               | Transaction hash                     |
-+--------------------------------------+--------------------------------------+
+`address`
+
+The Ripple address of the desired account
+
+`hash`
+
+Transaction hash
 
 ### Value
 
@@ -849,50 +847,46 @@ processing.
 
 ### Arguments
 
-+--------------------------------------+--------------------------------------+
-| `address`                            | The Ripple address for the source    |
-|                                      | account.                             |
-+--------------------------------------+--------------------------------------+
-| `destination_account`                | The Ripple address for the           |
-|                                      | destination account.                 |
-+--------------------------------------+--------------------------------------+
-| `destination_amount`                 | An object of class `"Amount"`. The   |
-|                                      | amount to be sent to the destination |
-|                                      | account.                             |
-+--------------------------------------+--------------------------------------+
-| `value`                              | The quantity of the currency.        |
-|                                      | Ignored if `destination_amount` is   |
-|                                      | provided.                            |
-+--------------------------------------+--------------------------------------+
-| `currency`                           | The currency expressed as a          |
-|                                      | three-character code. Ignored if     |
-|                                      | `destination_amount` is provided.    |
-+--------------------------------------+--------------------------------------+
-| `issuer`                             | The Ripple account address of the    |
-|                                      | currency's issuer or gateway, or an  |
-|                                      | empty string if the currency is XRP. |
-|                                      | Ignored if `destination_amount` is   |
-|                                      | provided.                            |
-+--------------------------------------+--------------------------------------+
-| `source_currencies`                  | A string or an object of class       |
-|                                      | `"Amount"`. This is used to filter   |
-|                                      | the returned list of possible        |
-|                                      | payments. Each source currency can   |
-|                                      | be specified either as a currency    |
-|                                      | code, or as a currency code and      |
-|                                      | issuer. If the issuer is not         |
-|                                      | specified for a currency other than  |
-|                                      | XRP, then the results will be        |
-|                                      | limited to the specified currency,   |
-|                                      | but any issuer for that currency     |
-|                                      | will be included in the results. The |
-|                                      | string should be a comma-separated   |
-|                                      | list of source currencies. Each      |
-|                                      | source currency can be specified     |
-|                                      | either as a currency code (eg,       |
-|                                      | `USD`), or as a currency code and    |
-|                                      | issuer (eg, `USD+r...`).             |
-+--------------------------------------+--------------------------------------+
+`address`
+
+The Ripple address for the source account.
+
+`destination_account`
+
+The Ripple address for the destination account.
+
+`destination_amount`
+
+An object of class `"Amount"`. The amount to be sent to the destination
+account.
+
+`value`
+
+The quantity of the currency. Ignored if `destination_amount` is
+provided.
+
+`currency`
+
+The currency expressed as a three-character code. Ignored if
+`destination_amount` is provided.
+
+`issuer`
+
+The Ripple account address of the currency's issuer or gateway, or an
+empty string if the currency is XRP. Ignored if `destination_amount` is
+provided.
+
+`source_currencies`
+
+A string or an object of class `"Amount"`. This is used to filter the
+returned list of possible payments. Each source currency can be
+specified either as a currency code, or as a currency code and issuer.
+If the issuer is not specified for a currency other than XRP, then the
+results will be limited to the specified currency, but any issuer for
+that currency will be included in the results. The string should be a
+comma-separated list of source currencies. Each source currency can be
+specified either as a currency code (eg, `USD`), or as a currency code
+and issuer (eg, `USD+r...`).
 
 ### Value
 
@@ -936,9 +930,9 @@ data format. When you need to do this, you can retrieve a transaction.
 
 ### Arguments
 
-+--------------------------------------+--------------------------------------+
-| `hash`                               | Transaction hash                     |
-+--------------------------------------+--------------------------------------+
+`hash`
+
+Transaction hash
 
 ### Value
 
@@ -993,9 +987,9 @@ Checks whether an object has a valid `ledger` slot.
 
 ### Arguments
 
-+--------------------------------------+--------------------------------------+
-| `object`                             | Object of class `"Payment"`.         |
-+--------------------------------------+--------------------------------------+
+`object`
+
+Object of class `"Payment"`.
 
 ### Value
 
@@ -1026,12 +1020,13 @@ Access the `invoice_id` slot.
 
 ### Arguments
 
-+--------------------------------------+--------------------------------------+
-| `object`                             | Object of class `"Payment"`.         |
-+--------------------------------------+--------------------------------------+
-| `value`                              | Object of class `"Hash256"` or class |
-|                                      | `"character"`.                       |
-+--------------------------------------+--------------------------------------+
+`object`
+
+Object of class `"Payment"`.
+
+`value`
+
+Object of class `"Hash256"` or class `"character"`.
 
 ### Value
 
@@ -1087,10 +1082,9 @@ Get the length of an object.
 
 ### Arguments
 
-+--------------------------------------+--------------------------------------+
-| `x`                                  | an **R** object. For replacement, a  |
-|                                      | vector or factor.                    |
-+--------------------------------------+--------------------------------------+
+`x`
+
+an **R** object. For replacement, a vector or factor.
 
 ### Examples
 
@@ -1119,11 +1113,13 @@ Access the `no_direct_ripple` slot.
 
 ### Arguments
 
-+--------------------------------------+--------------------------------------+
-| `object`                             | Object of class `"Payment"`.         |
-+--------------------------------------+--------------------------------------+
-| `value`                              | Object of class `"logical"`.         |
-+--------------------------------------+--------------------------------------+
+`object`
+
+Object of class `"Payment"`.
+
+`value`
+
+Object of class `"logical"`.
 
 ### Value
 
@@ -1146,56 +1142,56 @@ All slot lengths must be equal.
 ### Slots
 
 `account`
-:   Object of class `"RippleAddress"`. The Ripple address of the account
+  ~ Object of class `"RippleAddress"`. The Ripple address of the account
     to which the notification pertains.
 
 `type`
-:   Object of class `"character"`. The resource type this notification
+  ~ Object of class `"character"`. The resource type this notification
     corresponds to. Possible values are `"payment"`, `"order"`,
     `"trustline"`, `"accountsettings"`.
 
 `direction`
-:   Object of class `"character"`. The direction of the transaction,
+  ~ Object of class `"character"`. The direction of the transaction,
     from the perspective of the account being queried. Possible values
     are `"incoming"`, `"outgoing"`, and `"passthrough"`.
 
 `state`
-:   Object of class `"character"`. The state of the transaction from the
+  ~ Object of class `"character"`. The state of the transaction from the
     perspective of the Ripple Ledger. Possible values are `"validated"`
     and `"failed"`.
 
 `result`
-:   Object of class `"character"`. The rippled code indicating the
+  ~ Object of class `"character"`. The rippled code indicating the
     success or failure type of the transaction. The code `"tesSUCCESS"`
     indicates that the transaction was successfully validated and
     written into the Ripple Ledger. All other codes will begin with the
     following prefixes: `"tec"`, `"tef"`, `"tel"`, or `"tej"`.
 
 `ledger`
-:   Object of class `"numeric"`. The index number of the ledger
+  ~ Object of class `"numeric"`. The index number of the ledger
     containing the validated or failed transaction. Failed payments will
     only be written into the Ripple Ledger if they fail after submission
     to a rippled and a Ripple Network fee is claimed.
 
 `hash`
-:   Object of class `"Hash256"`. The 256-bit hash of the transaction.
+  ~ Object of class `"Hash256"`. The 256-bit hash of the transaction.
     This is used throughout the Ripple protocol as the unique identifier
     for the transaction.
 
 `timestamp`
-:   Object of class `"POSIXct"`. The timestamp representing when the
+  ~ Object of class `"POSIXct"`. The timestamp representing when the
     transaction was validated and written into the Ripple ledger.
 
 `transaction_url`
-:   Object of class `"character"`. An URL that can be used to fetch the
+  ~ Object of class `"character"`. An URL that can be used to fetch the
     full resource this notification corresponds to.
 
 `previous_notification_url`
-:   Object of class `"character"`. An URL that can be used to fetch the
+  ~ Object of class `"character"`. An URL that can be used to fetch the
     notification that preceded this one chronologically.
 
 `next_notification_url`
-:   Object of class `"character"`. An URL that can be used to fetch the
+  ~ Object of class `"character"`. An URL that can be used to fetch the
     notification that followed this one chronologically.
 
 
@@ -1222,11 +1218,13 @@ Access the `partial_payment` slot.
 
 ### Arguments
 
-+--------------------------------------+--------------------------------------+
-| `object`                             | Object of class `"Payment"`.         |
-+--------------------------------------+--------------------------------------+
-| `value`                              | Object of class `"logical"`.         |
-+--------------------------------------+--------------------------------------+
+`object`
+
+Object of class `"Payment"`.
+
+`value`
+
+Object of class `"logical"`.
 
 ### Value
 
@@ -1255,50 +1253,50 @@ The slots `partial_payment` and `no_direct_ripple` cannot contain `NA`.
 ### Slots
 
 `source_account`
-:   Object of class `"RippleAddress"`. The Ripple account address of the
+  ~ Object of class `"RippleAddress"`. The Ripple account address of the
     Payment sender.
 
 `source_tag`
-:   Object of class `"UINT32"`. An unsigned 32-bit integer most commonly
+  ~ Object of class `"UINT32"`. An unsigned 32-bit integer most commonly
     used to refer to a sender's hosted account at a Ripple gateway.
 
 `source_amount`
-:   Object of class `"Amount"`. An optional amount that can be specified
+  ~ Object of class `"Amount"`. An optional amount that can be specified
     to constrain cross-currency payments.
 
 `source_slippage`
-:   Object of class `"numeric"`. An optional cushion for the
+  ~ Object of class `"numeric"`. An optional cushion for the
     `source_amount` to increase the likelihood that the payment will
     succeed. The `source_account` will never be charged more than
     `source_amount@value` + `source_slippage`.
 
 `destination_account`
-:   Object of class `"RippleAddress"`.
+  ~ Object of class `"RippleAddress"`.
 
 `destination_tag`
-:   Object of class `"UINT32"`. An unsigned 32-bit integer most commonly
+  ~ Object of class `"UINT32"`. An unsigned 32-bit integer most commonly
     used to refer to a receiver's hosted account at a Ripple gateway.
 
 `destination_amount`
-:   Object of class `"Amount"`. The amount the `destination_account`
+  ~ Object of class `"Amount"`. The amount the `destination_account`
     will receive.
 
 `invoice_id`
-:   Object of class `"Hash256"`. A 256-bit hash that can be used to
+  ~ Object of class `"Hash256"`. A 256-bit hash that can be used to
     identify a particular payment.
 
 `paths`
-:   Object of class `"character"`. A "stringified" version of the Ripple
+  ~ Object of class `"character"`. A "stringified" version of the Ripple
     PathSet structure that users should treat as opaque.
 
 `partial_payment`
-:   Object of class `"logical"`. A boolean that, if set to `TRUE`,
+  ~ Object of class `"logical"`. A boolean that, if set to `TRUE`,
     indicates that this payment should go through even if the whole
     amount cannot be delivered because of a lack of liquidity or funds
     in the `source_account` account.
 
 `no_direct_ripple`
-:   Object of class `"logical"`. A boolean that can be set to `TRUE` if
+  ~ Object of class `"logical"`. A boolean that can be set to `TRUE` if
     paths are specified and the sender would like the Ripple Network to
     disregard any direct paths from the `source_account` to the
     `destination_account`. This may be used to take advantage of an
@@ -1307,52 +1305,52 @@ The slots `partial_payment` and `no_direct_ripple` cannot contain `NA`.
     to the hot wallet.
 
 `direction`
-:   Object of class `"character"`. The direction of the payment, from
+  ~ Object of class `"character"`. The direction of the payment, from
     the perspective of the account being queried. Possible values are
     `"incoming"`, `"outgoing"`, and `"passthrough"`.
 
 `state`
-:   Object of class `"character"`. The state of the payment from the
+  ~ Object of class `"character"`. The state of the payment from the
     perspective of the Ripple Ledger. Possible values are `"validated"`
     and `"failed"` and `"new"` if the payment has not been submitted
     yet.
 
 `result`
-:   Object of class `"character"`. The rippled code indicating the
+  ~ Object of class `"character"`. The rippled code indicating the
     success or failure type of the payment. The code `"tesSUCCESS"`
     indicates that the payment was successfully validated and written
     into the Ripple Ledger. All other codes will begin with the
     following prefixes: `"tec"`, `"tef"`, `"tel"`, or `"tej"`.
 
 `ledger`
-:   Object of class `"numeric"`. The index number of the ledger
+  ~ Object of class `"numeric"`. The index number of the ledger
     containing the validated or failed payment. Failed payments will
     only be written into the Ripple Ledger if they fail after submission
     to a rippled and a Ripple Network fee is claimed.
 
 `hash`
-:   Object of class `"Hash256"`. The 256-bit hash of the payment. This
+  ~ Object of class `"Hash256"`. The 256-bit hash of the payment. This
     is used throughout the Ripple protocol as the unique identifier for
     the transaction.
 
 `timestamp`
-:   Object of class `"POSIXct"`. The timestamp representing when the
+  ~ Object of class `"POSIXct"`. The timestamp representing when the
     payment was validated and written into the Ripple ledger.
 
 `fee`
-:   Object of class `"numeric"`. The Ripple Network transaction fee,
+  ~ Object of class `"numeric"`. The Ripple Network transaction fee,
     represented in whole XRP (NOT "drops", or millionths of an XRP,
     which is used elsewhere in the Ripple protocol).
 
 `source_balance_changes`
-:   Object of class `"Amount"`. Parsed from the validated transaction
+  ~ Object of class `"Amount"`. Parsed from the validated transaction
     metadata, this represents all of the changes to balances held by the
     `source_account`. Most often this will have one amount representing
     the Ripple Network fee and, if the `source_amount` was not XRP, one
     amount representing the actual `source_amount` that was sent.
 
 `destination_balance_changes`
-:   Object of class `"Amount"`. Parsed from the validated transaction
+  ~ Object of class `"Amount"`. Parsed from the validated transaction
     metadata, this represents the changes to balances held by the
     `destination_account`. For those receiving payments this is
     important to check because if the `partial_payment` flag is set this
@@ -1440,31 +1438,36 @@ counterparty combination by submitting to this endpoint.
 
 ### Arguments
 
-+--------------------------------------+--------------------------------------+
-| `address`                            | The Ripple address of the desired    |
-|                                      | account                              |
-+--------------------------------------+--------------------------------------+
-| `secret`                             | The secret key for your Ripple       |
-|                                      | account.                             |
-+--------------------------------------+--------------------------------------+
-| `amount`                             | Object of class `"Amount"`. The      |
-|                                      | limit, currency and counterparty for |
-|                                      | the trustline.                       |
-+--------------------------------------+--------------------------------------+
-| `allows_rippling`                    | `TRUE` or `FALSE`. Allow rippling or |
-|                                      | not for the trustline.               |
-+--------------------------------------+--------------------------------------+
-| `limit`                              | A number indicating the maximum you  |
-|                                      | are willing to trust. Ignored if     |
-|                                      | `amount` is provided.                |
-+--------------------------------------+--------------------------------------+
-| `currency`                           | Three letter currency denomination.  |
-|                                      | Ignored if `amount` is provided.     |
-+--------------------------------------+--------------------------------------+
-| `counterparty`                       | Ripple address of the counterparty   |
-|                                      | trusted. Ignored if `amount` is      |
-|                                      | provided.                            |
-+--------------------------------------+--------------------------------------+
+`address`
+
+The Ripple address of the desired account
+
+`secret`
+
+The secret key for your Ripple account.
+
+`amount`
+
+Object of class `"Amount"`. The limit, currency and counterparty for the
+trustline.
+
+`allows_rippling`
+
+`TRUE` or `FALSE`. Allow rippling or not for the trustline.
+
+`limit`
+
+A number indicating the maximum you are willing to trust. Ignored if
+`amount` is provided.
+
+`currency`
+
+Three letter currency denomination. Ignored if `amount` is provided.
+
+`counterparty`
+
+Ripple address of the counterparty trusted. Ignored if `amount` is
+provided.
 
 ### Value
 
@@ -1493,11 +1496,9 @@ Display an object.
 
 ### Arguments
 
-+--------------------------------------+--------------------------------------+
-| `object`                             | Any R object                         |
-+--------------------------------------+--------------------------------------+
+`object`
 
-
+Any R object
   ---------------- -----------------
   source\_amount   R Documentation
   ---------------- -----------------
@@ -1518,9 +1519,9 @@ Access the `source_amount` slot.
 
 ### Arguments
 
-+--------------------------------------+--------------------------------------+
-| `object`                             | Object of class `"Payment"`.         |
-+--------------------------------------+--------------------------------------+
+`object`
+
+Object of class `"Payment"`.
 
 ### Value
 
@@ -1545,9 +1546,9 @@ Access the `source_balance_changes` slot.
 
 ### Arguments
 
-+--------------------------------------+--------------------------------------+
-| `object`                             | Object of class `"Payment"`.         |
-+--------------------------------------+--------------------------------------+
+`object`
+
+Object of class `"Payment"`.
 
 ### Value
 
@@ -1575,11 +1576,13 @@ Access the `source_slippage` slot.
 
 ### Arguments
 
-+--------------------------------------+--------------------------------------+
-| `object`                             | Object of class `"Payment"`.         |
-+--------------------------------------+--------------------------------------+
-| `value`                              | Object of class `"numeric"`.         |
-+--------------------------------------+--------------------------------------+
+`object`
+
+Object of class `"Payment"`.
+
+`value`
+
+Object of class `"numeric"`.
 
 ### Value
 
@@ -1610,12 +1613,13 @@ Access the `source_tag` slot.
 
 ### Arguments
 
-+--------------------------------------+--------------------------------------+
-| `object`                             | Object of class `"Payment"`.         |
-+--------------------------------------+--------------------------------------+
-| `value`                              | Object of class `"UINT32"` or class  |
-|                                      | `"ANY"`.                             |
-+--------------------------------------+--------------------------------------+
+`object`
+
+Object of class `"Payment"`.
+
+`value`
+
+Object of class `"UINT32"` or class `"ANY"`.
 
 ### Value
 
@@ -1638,23 +1642,21 @@ information.
 
 ### Arguments
 
-+--------------------------------------+--------------------------------------+
-| `payment`                            | The `"Payment"` object to be         |
-|                                      | submitted.                           |
-+--------------------------------------+--------------------------------------+
-| `secret`                             | The secret or private key for your   |
-|                                      | Ripple account.                      |
-+--------------------------------------+--------------------------------------+
-| `client_resource_id`                 | Will uniquely identify this payment. |
-|                                      | This is a 36-character UUID          |
-|                                      | (universally unique identifier)      |
-|                                      | value which will uniquely identify   |
-|                                      | this payment within the              |
-|                                      | `ripple-rest` API. Note that you can |
-|                                      | use `generate_uuid` to calculate a   |
-|                                      | UUID value if you do not have a UUID |
-|                                      | generator readily available.         |
-+--------------------------------------+--------------------------------------+
+`payment`
+
+The `"Payment"` object to be submitted.
+
+`secret`
+
+The secret or private key for your Ripple account.
+
+`client_resource_id`
+
+Will uniquely identify this payment. This is a 36-character UUID
+(universally unique identifier) value which will uniquely identify this
+payment within the `ripple-rest` API. Note that you can use
+`generate_uuid` to calculate a UUID value if you do not have a UUID
+generator readily available.
 
 ### Value
 
@@ -1681,9 +1683,9 @@ Access the `transfer_rate` slot.
 
 ### Arguments
 
-+--------------------------------------+--------------------------------------+
-| `object`                             | Object of class `"AccountSettings"`. |
-+--------------------------------------+--------------------------------------+
+`object`
+
+Object of class `"AccountSettings"`.
 
 ### Value
 
@@ -1706,40 +1708,40 @@ All slot lengths must be equal.
 ### Slots
 
 `account`
-:   Object of class `"RippleAddress"`. The account from whose
+  ~ Object of class `"RippleAddress"`. The account from whose
     perspective this trustline is being viewed.
 
 `counterparty`
-:   Object of class `"RippleAddress"`. The other party in this
+  ~ Object of class `"RippleAddress"`. The other party in this
     trustline.
 
 `currency`
-:   Object of class `"Currency"`. The code of the currency in which this
+  ~ Object of class `"Currency"`. The code of the currency in which this
     trustline denotes trust.
 
 `limit`
-:   Object of class `"numeric"`. The maximum value of the currency that
+  ~ Object of class `"numeric"`. The maximum value of the currency that
     the account may hold issued by the counterparty.
 
 `reciprocated_limit`
-:   Object of class `"numeric"`. The maximum value of the currency that
+  ~ Object of class `"numeric"`. The maximum value of the currency that
     the counterparty may hold issued by the account.
 
 `account_allows_rippling`
-:   Object of class `"logical"`. If `TRUE` it indicates that the account
+  ~ Object of class `"logical"`. If `TRUE` it indicates that the account
     allows pairwise rippling out through this trustline.
 
 `counterparty_allows_rippling`
-:   Object of class `"logical"`. If `TRUE` it indicates that the
+  ~ Object of class `"logical"`. If `TRUE` it indicates that the
     counterparty allows pairwise rippling out through this trustline.
 
 `ledger`
-:   Object of class `"numeric"`. The index number of the ledger
+  ~ Object of class `"numeric"`. The index number of the ledger
     containing this trustline or, in the case of historical queries, of
     the transaction that modified this Trustline.
 
 `hash`
-:   Object of class `"Hash256"`. If this object was returned by a
+  ~ Object of class `"Hash256"`. If this object was returned by a
     historical query this value will be the hash of the transaction that
     modified this Trustline. The transaction hash is used throughout the
     Ripple Protocol to uniquely identify a particular transaction.

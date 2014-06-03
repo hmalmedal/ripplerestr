@@ -232,8 +232,7 @@ submit_payment <- function(payment, secret, client_resource_id) {
     body <- list(secret = secret,
                  client_resource_id = client_resource_id,
                  payment = payment)
-    body <- jsonlite::toJSON(body)
-    body <- gsub("\\[ | \\]", "", body)
+    body <- toJSON(body, auto_unbox = T)
     path <- "v1/payments"
     req <- .POST(path, body)
     object <- .parse(req)

@@ -17,6 +17,7 @@
 #' @import httr
 #' @import lubridate
 #' @import assertthat
+#' @import jsonlite
 NULL
 
 .are_slot_lengths_equal <- function(object, i) {
@@ -165,7 +166,7 @@ NULL
     if (identical(text, ""))
         stop("No output to parse", call. = FALSE)
     if (grepl("^\\{", text))
-        jsonlite::fromJSON(text, simplifyVector = FALSE)
+        fromJSON(text, simplifyVector = FALSE)
     else
         stop(text, call. = FALSE)
 }

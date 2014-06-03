@@ -11,9 +11,9 @@ License: file LICENSE
 Imports:
     httr,
     lubridate,
-    assertthat
+    assertthat,
+    jsonlite (>= 0.9.8)
 Suggests:
-    jsonlite,
     methods,
     testthat
 URL: https://github.com/hmalmedal/ripplerestr

@@ -161,8 +161,7 @@ change_account_settings <- function(address, secret, transfer_rate, domain,
     if (length(settings) == 0) stop("No settings provided")
 
     body <- list(secret = secret, settings = settings)
-    body <- jsonlite::toJSON(body)
-    body <- gsub("\\[ | \\]", "", body)
+    body <- toJSON(body, auto_unbox = T)
     path <- paste0("v1/accounts/", address, "/settings")
     req <- .POST(path, body)
     settings <- .parse(req)$settings

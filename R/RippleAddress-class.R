@@ -7,6 +7,7 @@
 #'
 #' @examples
 #' root_account <- RippleAddress("rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh")
+#' root_account
 #'
 #' @export RippleAddress
 #' @exportClass RippleAddress

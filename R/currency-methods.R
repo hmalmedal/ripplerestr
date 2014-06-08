@@ -9,8 +9,8 @@
 #'   \code{"character"}.
 #'
 #' @examples
-#' x <- Amount(1, "USD")
-#' currency(x) <- "EUR"
+#' x <- Amount(1, "USD"); x
+#' currency(x) <- "EUR"; x
 #'
 #' @export currency "currency<-"
 #' @aliases currency currency<-

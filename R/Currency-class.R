@@ -6,8 +6,8 @@
 #' \code{"^([a-zA-Z0-9]{3}|[A-Fa-f0-9]{40})$"}.
 #'
 #' @examples
-#' USD <- Currency("USD")
-#' XAU <- Currency("015841551A748AD2C1F76FF6ECB0CCCD00000000")
+#' USD <- Currency("USD"); USD
+#' XAU <- Currency("015841551A748AD2C1F76FF6ECB0CCCD00000000"); XAU
 #'
 #' @export Currency
 #' @exportClass Currency

@@ -13,5 +13,6 @@ A character vector where each element must match the regular expression
 }
 \examples{
 root_account <- RippleAddress("rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh")
+root_account
 }
 

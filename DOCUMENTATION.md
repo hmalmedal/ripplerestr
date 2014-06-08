@@ -446,8 +446,8 @@ A character vector where each element must match the regular expression
 
 ### Examples
 
-    USD <- Currency("USD")
-    XAU <- Currency("015841551A748AD2C1F76FF6ECB0CCCD00000000")
+    USD <- Currency("USD"); USD
+    XAU <- Currency("015841551A748AD2C1F76FF6ECB0CCCD00000000"); XAU
 <table>
 <tbody>
 <tr class="odd">
@@ -518,8 +518,8 @@ Object of class `"Currency"`.
 
 ### Examples
 
-    x <- Amount(1, "USD")
-    currency(x) <- "EUR"
+    x <- Amount(1, "USD"); x
+    currency(x) <- "EUR"; x
 <table>
 <tbody>
 <tr class="odd">
@@ -1654,6 +1654,7 @@ A character vector where each element must match the regular expression
 ### Examples
 
     root_account <- RippleAddress("rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh")
+    root_account
 <table>
 <tbody>
 <tr class="odd">

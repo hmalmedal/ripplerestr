@@ -1,4 +1,5 @@
 library(ripplerestr)
+library(testthat)
 context("server")
 
 test_that("result is boolean", {

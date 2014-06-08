@@ -1,4 +1,5 @@
 library(ripplerestr)
+library(testthat)
 context("notifications")
 
 test_that("classes are correct", {

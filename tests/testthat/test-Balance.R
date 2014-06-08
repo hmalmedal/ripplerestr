@@ -1,3 +1,5 @@
+library(ripplerestr)
+library(testthat)
 context("Balance")
 
 values <- seq(-1, 1, length.out = 26)

@@ -1,3 +1,5 @@
+library(ripplerestr)
+library(testthat)
 context("Amount")
 
 value  <- 0.001

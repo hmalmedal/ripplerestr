@@ -1,3 +1,5 @@
+library(ripplerestr)
+library(testthat)
 context("Currency")
 
 test_that("invalid currencies fail", {

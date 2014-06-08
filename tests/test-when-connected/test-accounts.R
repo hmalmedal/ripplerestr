@@ -1,4 +1,5 @@
 library(ripplerestr)
+library(testthat)
 context("accounts")
 
 root_account <- RippleAddress("rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh")

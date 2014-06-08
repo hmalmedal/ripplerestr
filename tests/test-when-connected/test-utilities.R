@@ -1,4 +1,5 @@
 library(ripplerestr)
+library(testthat)
 context("utilities")
 
 test_that("class is correct", {

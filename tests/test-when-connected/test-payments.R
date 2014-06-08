@@ -1,4 +1,5 @@
 library(ripplerestr)
+library(testthat)
 context("payments")
 
 address <- RippleAddress("r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59")

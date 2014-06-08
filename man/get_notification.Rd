@@ -3,12 +3,15 @@
 \alias{get_notification}
 \title{Checking Notifications}
 \usage{
-get_notification(address, hash)
+get_notification(address, hash, notification_url)
 }
 \arguments{
-\item{address}{The Ripple address of the desired account}
+\item{address}{The Ripple address of the desired account. Ignored if
+\code{notification_url} is provided.}
 
-\item{hash}{Transaction hash}
+\item{hash}{Transaction hash. Ignored if \code{notification_url} is provided.}
+
+\item{notification_url}{Given by a previous call to this function.}
 }
 \value{
 An object of class \code{"\link{Notification}"}

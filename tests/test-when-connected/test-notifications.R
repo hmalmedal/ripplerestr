@@ -25,3 +25,10 @@ test_that("directions are correct", {
     expect_that(notification_url(nf), equals(notification_url(nf, F)))
     expect_that(notification_url(nf, T), not(equals(notification_url(nf, F))))
 })
+
+test_that("notification urls don't give errors", {
+    expect_that(get_notification(notification_url = notification_url(nf, T)),
+                not(throws_error()))
+    expect_that(get_notification(notification_url = notification_url(nf, F)),
+                not(throws_error()))
+})

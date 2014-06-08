@@ -11,20 +11,43 @@
 #' are holding the earliest notification available on the rippled you are
 #' connecting to.
 #'
-#' @param address The Ripple address of the desired account
-#' @param hash Transaction hash
+#' @param address The Ripple address of the desired account. Ignored if
+#'   \code{notification_url} is provided.
+#' @param hash Transaction hash. Ignored if \code{notification_url} is provided.
+#' @param notification_url Given by a previous call to this function.
 #'
 #' @return An object of class \code{"\link{Notification}"}
 #'
 #' @export
-get_notification <- function(address, hash) {
-    address <- RippleAddress(address)
-    assert_that(is.string(address))
+get_notification <- function(address, hash, notification_url) {
+    path <- NULL
 
-    hash <- Hash256(hash)
-    assert_that(is.string(hash))
+    if (!missing(address)) {
+        address <- RippleAddress(address)
+        assert_that(is.string(address))
+    }
 
-    path <- paste0("v1/accounts/", address, "/notifications/", hash)
+    if (!missing(hash)) {
+        hash <- Hash256(hash)
+        assert_that(is.string(hash))
+        path <- paste0("v1/accounts/", address, "/notifications/", hash)
+    }
+
+    if (!missing(notification_url)) {
+        assert_that(is.string(notification_url))
+
+        pattern <- paste0("^/v1/accounts/",
+                          "r[1-9A-HJ-NP-Za-km-z]{25,33}",
+                          "/notifications/",
+                          "(?!$|^[A-Fa-f0-9]{64})[ -~]{1,255}$")
+        if (!grepl(pattern, notification_url, perl = T))
+            stop("invalid notification_url", call. = FALSE)
+
+        path <- sub("^/", "", notification_url)
+    }
+
+    if (is.null(path)) stop("No parameters given.")
+
     req <- .GET(path)
     notification <- .parse(req)$notification
     account <- RippleAddress(notification$account)

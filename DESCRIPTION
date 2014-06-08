@@ -60,6 +60,7 @@ Collate:
     'is_server_connected.R'
     'length-methods.R'
     'no_direct_ripple-methods.R'
+    'notification_url-methods.R'
     'partial_payment-methods.R'
     'ripplerestr.R'
     'set_account_trustline.R'

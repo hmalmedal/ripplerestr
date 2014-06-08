@@ -31,8 +31,7 @@ You can alternatively install the current version from GitHub:
 
 ```r
 if (!require("devtools")) install.packages("devtools")
-require("devtools")
-install_github("hmalmedal/ripplerestr")
+devtools::install_github("hmalmedal/ripplerestr")
 ```
 
 Set up

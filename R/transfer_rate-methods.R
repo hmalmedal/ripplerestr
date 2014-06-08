@@ -1,4 +1,4 @@
-#' Get \code{transfer_rate} value
+#' Get transfer rate
 #'
 #' Access the \code{transfer_rate} slot.
 #'

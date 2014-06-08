@@ -3,7 +3,7 @@
 \name{transfer_rate}
 \alias{transfer_rate}
 \alias{transfer_rate,AccountSettings-method}
-\title{Get \code{transfer_rate} value}
+\title{Get transfer rate}
 \usage{
 transfer_rate(object)
 

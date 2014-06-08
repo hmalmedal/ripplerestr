@@ -12,7 +12,7 @@
 \alias{currency<-,Balance,character-method}
 \alias{currency<-,Trustline,Currency-method}
 \alias{currency<-,Trustline,character-method}
-\title{Get/set \code{currency} value}
+\title{Get/set currency}
 \usage{
 currency(object)
 

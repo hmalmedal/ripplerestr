@@ -3,7 +3,7 @@
 \name{destination_balance_changes}
 \alias{destination_balance_changes}
 \alias{destination_balance_changes,Payment-method}
-\title{Get \code{destination_balance_changes} value}
+\title{Get destination balance changes}
 \usage{
 destination_balance_changes(object)
 

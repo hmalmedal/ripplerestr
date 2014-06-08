@@ -3,7 +3,7 @@
 \name{source_amount}
 \alias{source_amount}
 \alias{source_amount,Payment-method}
-\title{Get \code{source_amount} value}
+\title{Get source amount}
 \usage{
 source_amount(object)
 

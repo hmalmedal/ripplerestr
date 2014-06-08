@@ -5,7 +5,7 @@
 \alias{source_slippage,Payment-method}
 \alias{source_slippage<-}
 \alias{source_slippage<-,Payment,numeric-method}
-\title{Get/set \code{source_slippage} value}
+\title{Get/set source slippage}
 \usage{
 source_slippage(object)
 

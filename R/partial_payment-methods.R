@@ -1,4 +1,4 @@
-#' Get/set \code{partial_payment} flag
+#' Get/set flag for partial payment
 #'
 #' Access the \code{partial_payment} slot.
 #'

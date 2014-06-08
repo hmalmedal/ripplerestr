@@ -3,7 +3,7 @@
 \name{has_ledger}
 \alias{has_ledger}
 \alias{has_ledger,Payment-method}
-\title{Check for valid \code{ledger} slot}
+\title{Check for valid ledger}
 \usage{
 has_ledger(object)
 

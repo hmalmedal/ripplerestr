@@ -6,7 +6,7 @@
 \alias{destination_tag<-}
 \alias{destination_tag<-,Payment,ANY-method}
 \alias{destination_tag<-,Payment,UINT32-method}
-\title{Get/set \code{destination_tag} value}
+\title{Get/set destination tag}
 \usage{
 destination_tag(object)
 

@@ -23,6 +23,6 @@ A named list. The first element is the \code{"client_resource_id"}
 }
 \description{
 Before you can submit a payment, you will need to have three pieces of
-information.
+information: \code{payment}, \code{secret} and \code{client_resource_id}.
 }
 

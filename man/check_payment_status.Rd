@@ -21,7 +21,7 @@ if \code{status_url} is provided.}
 An object of class \code{"\link{Payment}"}
 }
 \description{
-To confirm that your payment has been submitted successfully, you can call
-this.
+To confirm that your payment has been submitted successfully, you can use
+this function.
 }
 

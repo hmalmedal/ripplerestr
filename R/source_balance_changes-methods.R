@@ -1,4 +1,4 @@
-#' Get \code{source_balance_changes} value
+#' Get source balance changes
 #'
 #' Access the \code{source_balance_changes} slot.
 #'

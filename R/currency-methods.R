@@ -1,4 +1,4 @@
-#' Get/set \code{currency} value
+#' Get/set currency
 #'
 #' Access the \code{currency} slot.
 #'

@@ -5,7 +5,7 @@
 \alias{no_direct_ripple,Payment-method}
 \alias{no_direct_ripple<-}
 \alias{no_direct_ripple<-,Payment,logical-method}
-\title{Get/set \code{no_direct_ripple} flag}
+\title{Get/set flag for no direct ripple}
 \usage{
 no_direct_ripple(object)
 

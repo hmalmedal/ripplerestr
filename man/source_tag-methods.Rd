@@ -6,7 +6,7 @@
 \alias{source_tag<-}
 \alias{source_tag<-,Payment,ANY-method}
 \alias{source_tag<-,Payment,UINT32-method}
-\title{Get/set \code{source_tag} value}
+\title{Get/set source tag}
 \usage{
 source_tag(object)
 

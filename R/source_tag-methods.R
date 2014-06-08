@@ -1,4 +1,4 @@
-#' Get/set \code{source_tag} value
+#' Get/set source tag
 #'
 #' Access the \code{source_tag} slot.
 #'

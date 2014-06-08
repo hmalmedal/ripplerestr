@@ -1,4 +1,4 @@
-#' Get \code{source_amount} value
+#' Get source amount
 #'
 #' Access the \code{source_amount} slot.
 #'

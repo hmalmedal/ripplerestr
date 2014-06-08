@@ -1,4 +1,4 @@
-#' Get/set \code{invoice_id} value
+#' Get/set invoice id
 #'
 #' Access the \code{invoice_id} slot.
 #'

@@ -163,7 +163,7 @@ get_payment_paths <- function(address, destination_account,
 #' Submitting a Payment
 #'
 #' Before you can submit a payment, you will need to have three pieces of
-#' information.
+#' information: \code{payment}, \code{secret} and \code{client_resource_id}.
 #'
 #' @param payment The \code{"\link{Payment}"} object to be submitted.
 #' @param secret The secret or private key for your Ripple account.
@@ -242,8 +242,8 @@ submit_payment <- function(payment, secret, client_resource_id) {
 
 #' Confirming a Payment
 #'
-#' To confirm that your payment has been submitted successfully, you can call
-#' this.
+#' To confirm that your payment has been submitted successfully, you can use
+#' this function.
 #'
 #' @param status_url Return value from \code{\link{submit_payment}}.
 #' @param address The Ripple address for the source account. Ignored if

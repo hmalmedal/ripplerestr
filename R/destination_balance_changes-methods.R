@@ -1,4 +1,4 @@
-#' Get \code{destination_balance_changes} value
+#' Get destination balance changes
 #'
 #' Access the \code{destination_balance_changes} slot.
 #'

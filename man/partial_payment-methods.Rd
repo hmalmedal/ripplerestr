@@ -5,7 +5,7 @@
 \alias{partial_payment,Payment-method}
 \alias{partial_payment<-}
 \alias{partial_payment<-,Payment,logical-method}
-\title{Get/set \code{partial_payment} flag}
+\title{Get/set flag for partial payment}
 \usage{
 partial_payment(object)
 

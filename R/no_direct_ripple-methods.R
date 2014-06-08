@@ -1,4 +1,4 @@
-#' Get/set \code{no_direct_ripple} flag
+#' Get/set flag for no direct ripple
 #'
 #' Access the \code{no_direct_ripple} slot.
 #'

@@ -3,7 +3,7 @@
 \name{source_balance_changes}
 \alias{source_balance_changes}
 \alias{source_balance_changes,Payment-method}
-\title{Get \code{source_balance_changes} value}
+\title{Get source balance changes}
 \usage{
 source_balance_changes(object)
 

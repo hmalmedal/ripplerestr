@@ -1,4 +1,4 @@
-#' Get/set \code{source_slippage} value
+#' Get/set source slippage
 #'
 #' Access the \code{source_slippage} slot.
 #'

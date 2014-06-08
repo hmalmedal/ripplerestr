@@ -1,4 +1,4 @@
-#' Get/set \code{destination_tag} value
+#' Get/set destination tag
 #'
 #' Access the \code{destination_tag} slot.
 #'

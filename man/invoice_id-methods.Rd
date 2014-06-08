@@ -6,7 +6,7 @@
 \alias{invoice_id<-}
 \alias{invoice_id<-,Payment,Hash256-method}
 \alias{invoice_id<-,Payment,character-method}
-\title{Get/set \code{invoice_id} value}
+\title{Get/set invoice id}
 \usage{
 invoice_id(object)
 

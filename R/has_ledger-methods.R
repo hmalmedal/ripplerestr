@@ -1,4 +1,4 @@
-#' Check for valid \code{ledger} slot
+#' Check for valid ledger
 #'
 #' Checks whether an object has a valid \code{ledger} slot.
 #'

@@ -62,7 +62,7 @@ Collate:
     'no_direct_ripple-methods.R'
     'notification_url-methods.R'
     'partial_payment-methods.R'
-    'ripplerestr.R'
+    'ripplerestr-package.R'
     'set_account_trustline.R'
     'show-methods.R'
     'source_amount-methods.R'

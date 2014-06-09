@@ -13,6 +13,7 @@
 #' options("ripplerestr.url" = "http://example.com/")
 #'
 #' @name ripplerestr-package
+#' @aliases ripplerestr
 #' @docType package
 #' @import httr
 #' @import lubridate

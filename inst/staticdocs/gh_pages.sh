@@ -2,23 +2,15 @@
 
 if [ "$TRAVIS_REPO_SLUG" == "${GH_REF}" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ] && [ "$TRAVIS_BRANCH" == "master" ]; then
 
-    echo -e "Publishing staticdocs...\n"
-
-    cp -r inst/web ${HOME}
-    cd $HOME
+    cd inst/web/
 
     git config --global user.email "travis@travis-ci.org"
     git config --global user.name "travis-ci"
-    git clone --quiet --branch=gh-pages https://${GH_TOKEN}@github.com/${GH_REF} gh-pages > /dev/null
 
-    # Commit and Push the Changes
-    cd gh-pages
-    git rm -rf *
-    cp -Rf $HOME/web/* .
-    git add -A
-    git commit -m "Lastest staticdoc on successful travis build $TRAVIS_BUILD_NUMBER auto-pushed to gh-pages"
-    git push -fq origin gh-pages
-
-    echo -e "Published staticdocs to gh-pages.\n"
+    git init -q .
+    git add .
+    git commit -m "Auto-publish documentation"
+    git remote add -t gh-pages origin https://${GH_TOKEN}@github.com/${GH_REF} > /dev/null
+    git push -fq origin +gh-pages
 
 fi

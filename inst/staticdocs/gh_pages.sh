@@ -16,7 +16,7 @@ if [ "$TRAVIS_REPO_SLUG" == "${GH_REF}" ] && [ "$TRAVIS_PULL_REQUEST" == "false"
     git rm -rf *
     cp -Rf $HOME/web/* .
     git add -A
-    git commit -m "Lastest staticdoc on successful travis build $TRAVIS_BUILD_NUMBER auto-pushed to gh-pages"
+    git commit -m "Latest staticdocs on successful travis build $TRAVIS_BUILD_NUMBER auto-pushed to gh-pages"
     git push -fq origin gh-pages
 
     echo -e "Published staticdocs to gh-pages.\n"

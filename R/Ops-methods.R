@@ -20,3 +20,43 @@ setMethod("Ops",
               callGeneric(e1@value, e2@value)
           }
 )
+
+setMethod("Ops",
+          signature(e1 = "Amount"),
+          function (e1, e2)
+          {
+              callGeneric(e1@value, e2)
+          }
+)
+setMethod("Ops",
+          signature(e2 = "Amount"),
+          function (e1, e2)
+          {
+              callGeneric(e1, e2@value)
+          }
+)
+setMethod("Ops",
+          signature(e1 = "Amount",
+                    e2 = "Amount"),
+          function (e1, e2)
+          {
+              callGeneric(e1@value, e2@value)
+          }
+)
+
+setMethod("Ops",
+          signature(e1 = "Amount",
+                    e2 = "Balance"),
+          function (e1, e2)
+          {
+              callGeneric(e1@value, e2@value)
+          }
+)
+setMethod("Ops",
+          signature(e1 = "Balance",
+                    e2 = "Amount"),
+          function (e1, e2)
+          {
+              callGeneric(e1@value, e2@value)
+          }
+)

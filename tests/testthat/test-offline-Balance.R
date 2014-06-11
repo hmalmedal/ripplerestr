@@ -30,3 +30,10 @@ test_that("summary values are correct", {
     expect_that(prod(b), equals(prod(values)))
     expect_that(sum(b), equals(sum(values)))
 })
+
+amounts <- as(b, "Amount")
+
+test_that("different classes can be added", {
+    expect_that(amounts + b, is_a("numeric"))
+    expect_that(b + amounts, is_a("numeric"))
+})

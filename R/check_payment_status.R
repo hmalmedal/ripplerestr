@@ -19,14 +19,14 @@ check_payment_status <- function(status_url, address, client_resource_id,
     if (!missing(status_url)) {
         assert_that(is.string(status_url))
 
-        pattern <- paste0("^/v1/accounts/",
+        pattern <- paste0("/v1/accounts/",
                           "r[1-9A-HJ-NP-Za-km-z]{25,33}",
                           "/payments/",
                           "(?!$|^[A-Fa-f0-9]{64})[ -~]{1,255}$")
         if (!grepl(pattern, status_url, perl = T))
             stop("invalid status_url", call. = FALSE)
 
-        path <- sub("^/", "", status_url)
+        path <- parse_url(status_url)$path
     } else {
         address <- RippleAddress(address)
         assert_that(is.string(address))

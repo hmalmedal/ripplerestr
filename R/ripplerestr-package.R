@@ -178,7 +178,7 @@ NULL
                      default = "http://localhost:5990/")
     url <- build_url(parse_url(url))
     req <- POST(url, path = path, body = I(body),
-                content_type_json(), ...)
+                add_headers("Content-type" = "application/json"), ...)
     .check(req)
     .success(req)
 

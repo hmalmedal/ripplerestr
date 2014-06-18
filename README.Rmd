@@ -1,3 +1,7 @@
+---
+output: md_document
+---
+
 ripplerestr
 ===========
 
@@ -43,7 +47,7 @@ library(ripplerestr)
 options("ripplerestr.url" = "http://localhost:5990/")
 ```
 ```{r cache, echo=FALSE}
-opts_chunk$set(cache=TRUE)
+knitr::opts_chunk$set(cache=TRUE)
 ```
 
 Check server

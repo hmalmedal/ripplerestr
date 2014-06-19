@@ -1,5 +1,7 @@
 ---
-output: md_document
+output:
+  md_document:
+    variant: markdown_github
 ---
 
 ripplerestr
@@ -78,15 +80,15 @@ Examine account settings
 
 Compare the transfer rates of different gateways.
 
-```{r rate}
+```{r rate, results = 'asis'}
 df <- rbind(c("bitstamp", "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"),
             c("dividendrippler", "rfYv1TXnwgDDK4WQNbFALykYuEBnrR4pDX"),
             c("justcoin", "rJHygWcTLVpSXkowott6kzgZU6viQSVYM1"))
 colnames(df) <- c("gateway", "address")
 df <- as.data.frame(df)
 settings <- lapply(df$address, get_account_settings)
-df$transfer_rate <- sapply(settings, transfer_rate)
-print(df, digits = 5)
+df$transfer_rate <- (sapply(settings, transfer_rate) - 1) * 100
+knitr::kable(df)
 ```
 
 Send a payment

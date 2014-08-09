@@ -83,11 +83,10 @@ get_payment_paths <- function(address, destination_account,
 
     if (length(payments) == 0) return(Payment())
 
-    source_account <- sapply(payments,
-                             function(element) element$source_account)
+    source_account <- sapply(payments, getElement, "source_account")
     source_account <- RippleAddress(source_account)
 
-    source_tag <- sapply(payments, function(element) element$source_tag)
+    source_tag <- sapply(payments, getElement, "source_tag")
     source_tag[source_tag == ""] <- NA
     source_tag <- UINT32(source_tag)
 
@@ -104,17 +103,13 @@ get_payment_paths <- function(address, destination_account,
                             currency = currency,
                             issuer = issuer)
 
-    source_slippage <- sapply(payments,
-                              function(element) element$source_slippage)
+    source_slippage <- sapply(payments, getElement, "source_slippage")
     source_slippage <- as.numeric(source_slippage)
 
-    destination_account <- sapply(payments,
-                                  function(element)
-                                      element$destination_account)
+    destination_account <- sapply(payments, getElement, "destination_account")
     destination_account <- RippleAddress(destination_account)
 
-    destination_tag <- sapply(payments,
-                              function(element) element$destination_tag)
+    destination_tag <- sapply(payments, getElement, "destination_tag")
     destination_tag[destination_tag == ""] <- NA
     destination_tag <- UINT32(destination_tag)
 
@@ -136,16 +131,14 @@ get_payment_paths <- function(address, destination_account,
                                  currency = destination_amount.currency,
                                  issuer = destination_amount.issuer)
 
-    invoice_id <- sapply(payments, function(element) element$invoice_id)
+    invoice_id <- sapply(payments, getElement, "invoice_id")
     invoice_id <- Hash256(invoice_id)
 
-    paths <- sapply(payments, function(element) element$paths)
+    paths <- sapply(payments, getElement, "paths")
 
-    partial_payment <- sapply(payments,
-                              function(element) element$partial_payment)
+    partial_payment <- sapply(payments, getElement, "partial_payment")
 
-    no_direct_ripple <- sapply(payments,
-                               function(element) element$no_direct_ripple)
+    no_direct_ripple <- sapply(payments, getElement, "no_direct_ripple")
 
     Payment(source_account = source_account,
             source_tag = source_tag,

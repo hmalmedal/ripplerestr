@@ -41,32 +41,29 @@ get_account_trustlines <- function(address, currency, counterparty) {
 
     if (length(trustlines) == 0) return(Trustline())
 
-    account <- sapply(trustlines, function(element) element$account)
+    account <- sapply(trustlines, getElement, "account")
     n <- length(account)
     account <- RippleAddress(account)
-    counterparty <- sapply(trustlines, function(element) element$counterparty)
+    counterparty <- sapply(trustlines, getElement, "counterparty")
     counterparty <- RippleAddress(counterparty)
-    currency <- sapply(trustlines, function(element) element$currency)
+    currency <- sapply(trustlines, getElement, "currency")
     currency <- Currency(currency)
-    limit <- sapply(trustlines, function(element) element$limit)
+    limit <- sapply(trustlines, getElement, "limit")
     limit <- as.numeric(limit)
 
-    reciprocated_limit <- sapply(trustlines,
-                                 function(element) element$reciprocated_limit)
+    reciprocated_limit <- sapply(trustlines, getElement, "reciprocated_limit")
 
     # Check for bug in old version of ripple-rest.
     if (is.null(reciprocated_limit[[1]]))
-        reciprocated_limit <- sapply(trustlines,
-                                     function(element)
-                                         element$reciprocated__limit)
+        reciprocated_limit <- sapply(trustlines, getElement,
+                                     "reciprocated__limit")
 
     reciprocated_limit <- as.numeric(reciprocated_limit)
 
-    account_allows_rippling <-
-        sapply(trustlines, function(element) element$account_allows_rippling)
-    counterparty_allows_rippling <-
-        sapply(trustlines,
-               function(element) element$counterparty_allows_rippling)
+    account_allows_rippling <- sapply(trustlines, getElement,
+                                      "account_allows_rippling")
+    counterparty_allows_rippling <- sapply(trustlines, getElement,
+                                           "counterparty_allows_rippling")
     ledger <- rep(NA_real_, n)
     hash <- character(n)
     hash <- Hash256(hash)

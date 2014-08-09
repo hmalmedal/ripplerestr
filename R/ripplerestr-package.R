@@ -82,33 +82,29 @@ NULL
     fee <- as.numeric(p$payment$fee)
 
     source_balance_changes.value <- sapply(p$payment$source_balance_changes,
-                                           function(element) element$value)
+                                           getElement, "value")
     source_balance_changes.value <- as.numeric(source_balance_changes.value)
-    source_balance_changes.currency <-
-        sapply(p$payment$source_balance_changes,
-               function(element) element$currency)
+    source_balance_changes.currency <- sapply(p$payment$source_balance_changes,
+                                              getElement, "currency")
     source_balance_changes.currency <-
         Currency(source_balance_changes.currency)
     source_balance_changes.issuer <- sapply(p$payment$source_balance_changes,
-                                            function(element) element$issuer)
+                                            getElement, "issuer")
     source_balance_changes <-
         Amount(value = source_balance_changes.value,
                currency = source_balance_changes.currency,
                issuer = source_balance_changes.issuer)
 
     destination_balance_changes.value <-
-        sapply(p$payment$destination_balance_changes,
-               function(element) element$value)
+        sapply(p$payment$destination_balance_changes, getElement, "value")
     destination_balance_changes.value <-
         as.numeric(destination_balance_changes.value)
     destination_balance_changes.currency <-
-        sapply(p$payment$destination_balance_changes,
-               function(element) element$currency)
+        sapply(p$payment$destination_balance_changes, getElement, "currency")
     destination_balance_changes.currency <-
         Currency(destination_balance_changes.currency)
     destination_balance_changes.issuer <-
-        sapply(p$payment$destination_balance_changes,
-               function(element) element$issuer)
+        sapply(p$payment$destination_balance_changes, getElement, "issuer")
     destination_balance_changes <-
         Amount(value = destination_balance_changes.value,
                currency = destination_balance_changes.currency,

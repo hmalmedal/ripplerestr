@@ -46,11 +46,11 @@ get_account_balances <- function(address, currency, counterparty) {
 
     if (length(balances) == 0) return(Balance())
 
-    value <- sapply(balances, function(element) element$value)
+    value <- sapply(balances, getElement, "value")
     value <- as.numeric(value)
-    currency <- sapply(balances, function(element) element$currency)
+    currency <- sapply(balances, getElement, "currency")
     currency <- Currency(currency)
-    counterparty <- sapply(balances, function(element) element$counterparty)
+    counterparty <- sapply(balances, getElement, "counterparty")
     Balance(value = value,
             currency = currency,
             counterparty = counterparty)

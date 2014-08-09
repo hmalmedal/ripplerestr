@@ -1,6 +1,6 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
-^cache$
+^.*cache$
 ^README\.html$
 ^README\.Rmd$
 ^inst$

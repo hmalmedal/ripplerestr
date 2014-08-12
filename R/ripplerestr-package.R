@@ -8,7 +8,7 @@
 #' setting the option \code{"ripplerestr.url"}.
 #'
 #' @references
-#' \url{https://dev.ripple.com/}
+#' \url{https://dev.ripple.com/ripple-rest.html}
 #'
 #' @examples
 #' options("ripplerestr.url" = "http://example.com/")

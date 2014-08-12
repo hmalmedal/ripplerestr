@@ -7,14 +7,14 @@ output:
 ripplerestr
 ===========
 
-Use **R** with the [`ripple-rest`](https://dev.ripple.com/) API.
+Use **R** with the [`ripple-rest`](https://dev.ripple.com/ripple-rest.html) API.
 
 Introduction
 ------------
 
 [Ripple](https://ripple.com/) is an Internet protocol for making financial transactions.
 
-The [`ripple-rest`](https://dev.ripple.com/) API makes it easy to access the Ripple system via a RESTful web interface.
+The [`ripple-rest`](https://dev.ripple.com/ripple-rest.html) API makes it easy to access the Ripple system via a RESTful web interface.
 
 The **R** package [`ripplerestr`](https://github.com/hmalmedal/ripplerestr) uses the [`httr`](https://github.com/hadley/httr) library to communicate with `ripple-rest`.
 

@@ -17,6 +17,6 @@ setting the option \code{"ripplerestr.url"}.
 options("ripplerestr.url" = "http://example.com/")
 }
 \references{
-\url{https://dev.ripple.com/}
+\url{https://dev.ripple.com/ripple-rest.html}
 }
 

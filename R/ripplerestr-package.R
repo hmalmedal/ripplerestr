@@ -1,14 +1,12 @@
 #' Ripple REST Client for R
 #'
-#' The \code{ripple-rest} API makes it easy to access the Ripple system via a
-#' RESTful web interface. The \R package \pkg{ripplerestr} uses the
-#' \pkg{\link{httr}} package to communicate with \code{ripple-rest}.
+#' The \href{https://dev.ripple.com/ripple-rest.html}{\code{ripple-rest}} API
+#' makes it easy to access the Ripple system via a RESTful web interface. The \R
+#' package \pkg{ripplerestr} uses the \pkg{\link{httr}} package to communicate
+#' with \code{ripple-rest}.
 #'
 #' The default url is \code{http://localhost:5990/}. You can change it by
 #' setting the option \code{"ripplerestr.url"}.
-#'
-#' @references
-#' \url{https://dev.ripple.com/ripple-rest.html}
 #'
 #' @examples
 #' options("ripplerestr.url" = "http://example.com/")

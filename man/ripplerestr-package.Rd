@@ -5,9 +5,10 @@
 \alias{ripplerestr-package}
 \title{Ripple REST Client for R}
 \description{
-The \code{ripple-rest} API makes it easy to access the Ripple system via a
-RESTful web interface. The \R package \code{ripplerestr} uses the
-\code{\link{httr}} library to communicate with \code{ripple-rest}.
+The \href{https://dev.ripple.com/ripple-rest.html}{\code{ripple-rest}} API
+makes it easy to access the Ripple system via a RESTful web interface. The \R
+package \pkg{ripplerestr} uses the \pkg{\link{httr}} package to communicate
+with \code{ripple-rest}.
 }
 \details{
 The default url is \code{http://localhost:5990/}. You can change it by
@@ -15,8 +16,5 @@ setting the option \code{"ripplerestr.url"}.
 }
 \examples{
 options("ripplerestr.url" = "http://example.com/")
-}
-\references{
-\url{https://dev.ripple.com/ripple-rest.html}
 }
 

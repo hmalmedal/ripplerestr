@@ -2,6 +2,12 @@
 #'
 #' Extract or replace parts of an object.
 #'
+#' @param x object from which to extract element(s) or in which to replace
+#'   element(s).
+#' @param i indices specifying elements to extract or replace.
+#' @param value typically an array-like \R object of a similar class as
+#'   \code{x}.
+#'
 #' @name extract-method
 #' @aliases [,Balance-method
 #' @rdname extract-methods

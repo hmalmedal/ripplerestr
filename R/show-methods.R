@@ -2,6 +2,8 @@
 #'
 #' Display an object.
 #'
+#' @param object Any R object
+#'
 #' @name show-method
 #' @aliases show,Balance-method
 #' @rdname show-methods

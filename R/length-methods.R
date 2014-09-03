@@ -2,6 +2,8 @@
 #'
 #' Get the length of an object.
 #'
+#' @param x an \R object.  For replacement, a vector or factor.
+#'
 #' @examples
 #' x <- Amount(1, "USD")
 #' length(x)

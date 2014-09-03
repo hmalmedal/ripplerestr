@@ -3,6 +3,7 @@
 #' Combine arguments with the same class.
 #'
 #' @param x object to be concatenated.
+#' @param ... objects to be concatenated.
 #' @param recursive ignored
 #'
 #' @name c-method

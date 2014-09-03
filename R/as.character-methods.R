@@ -10,6 +10,9 @@ setAs("Balance", "character",
 #'
 #' Coerce an object to \code{"character"} class.
 #'
+#' @param x object to be coerced or tested.
+#' @param ... further arguments passed to or from other methods.
+#'
 #' @examples
 #' x <- Amount(1, "USD")
 #' as.character(x)

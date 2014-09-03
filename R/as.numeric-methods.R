@@ -3,6 +3,9 @@ setAs("Balance", "numeric", function(from) from@value)
 #'
 #' Extract the slot \code{"value"} from an object.
 #'
+#' @param x object to be coerced or tested.
+#' @param ... further arguments passed to or from other methods.
+#'
 #' @examples
 #' x <- Amount(1, "USD")
 #' as.numeric(x)

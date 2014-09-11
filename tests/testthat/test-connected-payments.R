@@ -11,6 +11,7 @@ destination_amount <- Amount(value = value,
                              currency = currency,
                              issuer = issuer)
 
+Sys.sleep(1)
 result <- get_payment_paths(address = address,
                             destination_account = destination_account,
                             destination_amount = destination_amount)
@@ -46,12 +47,14 @@ test_that("slot lengths are equal to object length", {
 })
 
 test_that("query parameters don't give errors", {
+    Sys.sleep(1)
     expect_that(get_payment_paths(address = address,
                                   destination_account = destination_account,
                                   destination_amount = destination_amount,
                                   source_currencies = "JPY,EUR"),
                 not(throws_error()))
     amounts <- Amount(1:2, c("EUR", "JPY"))
+    Sys.sleep(1)
     expect_that(get_payment_paths(address = address,
                                   destination_account = destination_account,
                                   destination_amount = destination_amount,
@@ -68,6 +71,7 @@ currency <- Currency("USD")
 destination_amount <- Amount(value = value,
                              currency = currency)
 
+Sys.sleep(1)
 paths <- get_payment_paths(address = address,
                            destination_account = destination_account,
                            destination_amount = destination_amount)

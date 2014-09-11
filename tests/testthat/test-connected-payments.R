@@ -147,7 +147,7 @@ test_that("query parameters don't give errors", {
 test_that("invalid direction throws error", {
     expect_that(get_account_payments(address,
                                      direction = "down"),
-                throws_error())
+                throws_error("Invalid direction"))
 })
 
 test_that("number of results per page is correct", {

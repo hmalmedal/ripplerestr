@@ -80,7 +80,7 @@ change_account_settings <- function(address, secret, transfer_rate, domain,
     if (!is.na(password_spent))
         settings <- c(settings, password_spent = password_spent)
 
-    if (length(settings) == 0) stop("No settings provided")
+    if (length(settings) == 0) stop("No settings provided", call. = F)
 
     body <- list(secret = secret, settings = settings)
     body <- toJSON(body, auto_unbox = T)

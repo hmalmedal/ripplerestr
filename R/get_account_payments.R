@@ -82,7 +82,7 @@ get_account_payments <- function(address,
     if (!missing(direction)) {
         assert_that(is.string(direction))
         if (!grepl("^incoming|outgoing|pending$", direction))
-            stop("Invalid direction")
+            stop("Invalid direction", call. = F)
         direction_query <- paste0("direction=", direction)
     }
 

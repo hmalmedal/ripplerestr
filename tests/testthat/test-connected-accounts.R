@@ -79,13 +79,13 @@ test_that("transfer rate less than 1 gives error", {
     expect_that(change_account_settings(address = address,
                                         secret = secret,
                                         transfer_rate = 0.9),
-                throws_error())
+                throws_error("not greater than or equal to"))
 })
 
 test_that("no provided settings gives error", {
     expect_that(change_account_settings(address = address,
                                         secret = secret),
-                throws_error())
+                throws_error("No settings provided"))
 })
 
 transfer_rate = 18/17

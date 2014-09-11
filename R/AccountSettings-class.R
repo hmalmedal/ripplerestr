@@ -66,10 +66,18 @@ AccountSettings <- setClass("AccountSettings",
                                       ledger = "numeric",
                                       hash = "Hash256"))
 validAccountSettingsObject <- function(object) {
-    f <- function(slotname)
-        if (length(slot(object, slotname)) > 1)
-            return(stop(paste("slot", slotname, "has length larger than 1")))
-    lapply(slotNames(object), f)
-    return(TRUE)
+    f <- function(slotname) {
+        if (length(slot(object, slotname)) > 1) {
+            return(paste0("slot \"", slotname, "\" has length larger than 1"))
+        } else {
+            return("")
+        }
+    }
+    l <- vapply(slotNames(object), f, "")
+    if (all(l == "")) {
+        return(TRUE)
+    } else {
+        return(l[l != ""][1])
+    }
 }
 setValidity("AccountSettings", validAccountSettingsObject)

@@ -16,18 +16,20 @@ test_that("classes are correct", {
     expect_that(nf@hash, is_a("Hash256"))
     expect_that(nf@timestamp, is_a("POSIXct"))
     expect_that(nf@transaction_url, is_a("character"))
-    expect_that(notification_url(nf, T), is_a("character"))
-    expect_that(notification_url(nf, F), is_a("character"))
+    expect_that(notification_url(nf, TRUE), is_a("character"))
+    expect_that(notification_url(nf, FALSE), is_a("character"))
 })
 
 test_that("directions are correct", {
-    expect_that(notification_url(nf), equals(notification_url(nf, F)))
-    expect_that(notification_url(nf, T), not(equals(notification_url(nf, F))))
+    expect_that(notification_url(nf), equals(notification_url(nf, FALSE)))
+    expect_that(notification_url(nf, TRUE),
+                not(equals(notification_url(nf, FALSE))))
 })
 
 test_that("notification urls don't give errors", {
-    expect_that(get_notification(notification_url = notification_url(nf, T)),
+    expect_that(get_notification(notification_url = notification_url(nf, TRUE)),
                 not(throws_error()))
-    expect_that(get_notification(notification_url = notification_url(nf, F)),
+    expect_that(get_notification(notification_url = notification_url(nf,
+                                                                     FALSE)),
                 not(throws_error()))
 })

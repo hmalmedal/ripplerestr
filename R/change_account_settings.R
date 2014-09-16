@@ -80,10 +80,10 @@ change_account_settings <- function(address, secret, transfer_rate, domain,
     if (!is.na(password_spent))
         settings <- c(settings, password_spent = password_spent)
 
-    if (length(settings) == 0) stop("No settings provided", call. = F)
+    if (length(settings) == 0) stop("No settings provided", call. = FALSE)
 
     body <- list(secret = secret, settings = settings)
-    body <- toJSON(body, auto_unbox = T)
+    body <- toJSON(body, auto_unbox = TRUE)
     path <- paste0("v1/accounts/", address, "/settings")
     req <- .POST(path, body)
     settings <- .parse(req)$settings

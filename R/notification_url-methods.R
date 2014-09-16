@@ -14,13 +14,13 @@
 #' @rdname notification_url-methods
 #' @include Notification-class.R
 setGeneric("notification_url",
-           function(object, previous = F)
+           function(object, previous = FALSE)
                standardGeneric("notification_url"))
 
 #' @rdname notification_url-methods
 setMethod("notification_url",
           signature(object = "Notification"),
-          function(object, previous = F)
+          function(object, previous = FALSE)
           {
               assert_that(is.flag(previous))
               assert_that(noNA(previous))

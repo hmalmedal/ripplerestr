@@ -9,7 +9,7 @@ hash128 <- paste(rep.int("0", 32), collapse = "")
 hash2 <- rep.int(hash128, 2)
 hash256 <- paste(hash2, collapse = "")
 hash4 <- rep.int(hash256, 2)
-TF <- c(T, F)
+TF <- c(TRUE, FALSE)
 amounts <- Amount(1:2, cur, two)
 payments <- Payment(source_account = RippleAddress(two),
                     source_tag = UINT32(1:2),

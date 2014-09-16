@@ -80,8 +80,8 @@ source_tag(payment) <- 2^32-1
 source_slippage(payment) <- 1
 destination_tag(payment) <- 2^31-1
 invoice_id(payment) <- "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
-partial_payment(payment) <- T
-no_direct_ripple(payment) <- F
+partial_payment(payment) <- TRUE
+no_direct_ripple(payment) <- FALSE
 uuid <- generate_uuid()
 
 response <- submit_payment(payment = payment,
@@ -136,7 +136,7 @@ test_that("query parameters don't give errors", {
                                      destination_account = account),
                 not(throws_error()))
     expect_that(get_account_payments(address,
-                                     exclude_failed = T),
+                                     exclude_failed = TRUE),
                 not(throws_error()))
     expect_that(get_account_payments(address,
                                      direction = "incoming"),

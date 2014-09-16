@@ -64,11 +64,11 @@ test_that("classes are correct", {
 test_that("slot values are correct", {
     expect_that(result@account, equals(black_hole))
     expect_that(result@transfer_rate, equals(UINT32(0)))
-    expect_that(result@require_destination_tag, equals(F))
-    expect_that(result@require_authorization, equals(F))
-    expect_that(result@disallow_xrp, equals(F))
-    expect_that(result@password_spent, equals(T))
-    expect_that(result@disable_master, equals(T))
+    expect_that(result@require_destination_tag, equals(FALSE))
+    expect_that(result@require_authorization, equals(FALSE))
+    expect_that(result@disallow_xrp, equals(FALSE))
+    expect_that(result@password_spent, equals(TRUE))
+    expect_that(result@disable_master, equals(TRUE))
     expect_that(result@transaction_sequence, equals(UINT32(14)))
 })
 
@@ -97,9 +97,9 @@ result <- change_account_settings(address = address,
                                   transfer_rate = transfer_rate,
                                   domain = domain,
                                   email_hash = email_hash,
-                                  disallow_xrp = T,
-                                  require_authorization = F,
-                                  require_destination_tag = T)
+                                  disallow_xrp = TRUE,
+                                  require_authorization = FALSE,
+                                  require_destination_tag = TRUE)
 
 test_that("classes are correct", {
     expect_that(result, is_a("AccountSettings"))

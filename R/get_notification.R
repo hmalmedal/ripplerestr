@@ -40,7 +40,7 @@ get_notification <- function(address, hash, notification_url) {
                           "r[1-9A-HJ-NP-Za-km-z]{25,33}",
                           "/notifications/",
                           "(?!$|^[A-Fa-f0-9]{64})[ -~]{1,255}$")
-        if (!grepl(pattern, notification_url, perl = T))
+        if (!grepl(pattern, notification_url, perl = TRUE))
             stop("invalid notification_url", call. = FALSE)
 
         path <- parse_url(notification_url)$path

@@ -14,7 +14,7 @@
 ResourceId <- setClass("ResourceId", contains = "character")
 validResourceIdObject <- function(object) {
     if (!all(grepl("^(?!$|^[A-Fa-f0-9]{64})[ -~]{1,255}$", object,
-                   perl = T))) {
+                   perl = TRUE))) {
         return("Invalid resource ID.")
     }
     return(TRUE)

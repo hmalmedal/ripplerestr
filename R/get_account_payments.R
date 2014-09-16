@@ -82,7 +82,7 @@ get_account_payments <- function(address,
     if (!missing(direction)) {
         assert_that(is.string(direction))
         if (!grepl("^incoming|outgoing|pending$", direction))
-            stop("Invalid direction", call. = F)
+            stop("Invalid direction", call. = FALSE)
         direction_query <- paste0("direction=", direction)
     }
 
@@ -94,15 +94,15 @@ get_account_payments <- function(address,
     start_ledger_query <- ""
     if (!missing(start_ledger)) {
         assert_that(is.count(start_ledger))
-        start_ledger_query <- paste0("start_ledger=", format(start_ledger,
-                                                             scientific = F))
+        start_ledger_query <- paste0("start_ledger=",
+                                     format(start_ledger, scientific = FALSE))
     }
 
     end_ledger_query <- ""
     if (!missing(end_ledger)) {
         assert_that(is.count(end_ledger))
         end_ledger_query <- paste0("end_ledger=", format(end_ledger,
-                                                         scientific = F))
+                                                         scientific = FALSE))
     }
 
     results_per_page_query <- ""
@@ -110,7 +110,7 @@ get_account_payments <- function(address,
     if (results_per_page != 10)
         results_per_page_query <- paste0("results_per_page=",
                                          format(results_per_page,
-                                                scientific = F))
+                                                scientific = FALSE))
 
     page_query <- ""
     assert_that(is.count(page))

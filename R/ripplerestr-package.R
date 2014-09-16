@@ -27,7 +27,7 @@ NULL
     l <- sapply(slotnames,
                 function(slotname) length(slot(object, slotname)))
     l <- unique(l)
-    if (length(l) > 1) F else T
+    if (length(l) > 1) FALSE else TRUE
 }
 
 .parse_settings <- function(address, settings,
@@ -75,7 +75,7 @@ NULL
     result <- p$payment$result
     ledger <- as.numeric(p$payment$ledger)
     hash <- Hash256(p$payment$hash)
-    timestamp <- ymd_hms(p$payment$timestamp, quiet = T)
+    timestamp <- ymd_hms(p$payment$timestamp, quiet = TRUE)
     fee <- as.numeric(p$payment$fee)
 
     source_balance_changes.value <- sapply(p$payment$source_balance_changes,

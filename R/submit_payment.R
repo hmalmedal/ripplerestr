@@ -70,7 +70,7 @@ submit_payment <- function(payment, secret, client_resource_id) {
     body <- list(secret = secret,
                  client_resource_id = client_resource_id,
                  payment = payment)
-    body <- toJSON(body, auto_unbox = T)
+    body <- toJSON(body, auto_unbox = TRUE)
     path <- "v1/payments"
     req <- .POST(path, body)
     object <- .parse(req)

@@ -5,9 +5,9 @@
 \alias{notification_url,Notification-method}
 \title{Get notification url}
 \usage{
-notification_url(object, previous = F)
+notification_url(object, previous = FALSE)
 
-\S4method{notification_url}{Notification}(object, previous = F)
+\S4method{notification_url}{Notification}(object, previous = FALSE)
 }
 \arguments{
 \item{object}{Object of class \code{"\link{Notification}"}.}

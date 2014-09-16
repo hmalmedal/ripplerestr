@@ -49,7 +49,7 @@ set_account_trustline <- function(address, secret, amount,
     if (!is.na(allows_rippling))
         trustline <- c(trustline, list(allows_rippling = allows_rippling))
     body <- list(secret = secret, trustline = trustline)
-    body <- toJSON(body, auto_unbox = T)
+    body <- toJSON(body, auto_unbox = TRUE)
     path <- paste0("v1/accounts/", address, "/trustlines")
     req <- .POST(path, body)
     result <- .parse(req)

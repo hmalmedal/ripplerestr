@@ -17,9 +17,9 @@ Prerequisites
 
 Before you can use the `ripple-rest` API, you will need to have three things:
 
--   An installed version of `ripple-rest` running locally or remotely. Instructions on installing `ripple-rest` can be found in the README.md file in the [Github repository](https://github.com/ripple/ripple-rest).
--   An activated Ripple account.
--   The URL of the server running the `ripple-rest` API that you wish to use.
+ * An installed version of `ripple-rest` running locally or remotely. Instructions on installing `ripple-rest` can be found in the README.md file in the [Github repository](https://github.com/ripple/ripple-rest).
+ * An activated Ripple account.
+ * The URL of the server running the `ripple-rest` API that you wish to use.
 
 Installation
 ------------
@@ -52,8 +52,6 @@ Check whether the server is ready to be used.
 is_server_connected()
 ```
 
-    ## [1] TRUE
-
 Get an account's balances
 -------------------------
 
@@ -68,8 +66,6 @@ bitstamp_USD <- sum(bitstamp_coldUSD) + sum(bitstamp_hotUSD)
 bitstamp_USD
 ```
 
-    ## [1] -2306230
-
 Examine account settings
 ------------------------
 
@@ -83,14 +79,8 @@ colnames(df) <- c("gateway", "address")
 df <- as.data.frame(df)
 settings <- lapply(df$address, get_account_settings)
 df$transfer_rate <- (sapply(settings, transfer_rate) - 1) * 100
-knitr::kable(df)
+df
 ```
-
-|gateway|address|transfer\_rate|
-|:------|:------|-------------:|
-|bitstamp|rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B|0.20|
-|dividendrippler|rfYv1TXnwgDDK4WQNbFALykYuEBnrR4pDX|0.15|
-|justcoin|rJHygWcTLVpSXkowott6kzgZU6viQSVYM1|0.00|
 
 Send a payment
 --------------
@@ -109,9 +99,6 @@ Examine the possible amounts that can be sent.
 ``` {.r}
 source_amount(paths)
 ```
-
-    ## An object of class "Amount"
-    ## [1] "0.01+USD"
 
 Select one path and set tags and id.
 
@@ -145,15 +132,5 @@ Display how the amounts have changed.
 
 ``` {.r}
 source_balance_changes(status)
-```
-
-    ## An object of class "Amount"
-    ## [1] "-0.01+USD+rH3WTUovV1HKx4S5HZup4dUZEjeGnehL6X"
-    ## [2] "-1.2e-05+XRP"
-
-``` {.r}
 destination_balance_changes(status)
 ```
-
-    ## An object of class "Amount"
-    ## [1] "0.01+USD+rH3WTUovV1HKx4S5HZup4dUZEjeGnehL6X"

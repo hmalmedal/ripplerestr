@@ -1,5 +1,3 @@
-library(ripplerestr)
-library(testthat)
 context("inputs")
 
 one <- "rrrrrrrrrrrrrrrrrrrrBZbvji"

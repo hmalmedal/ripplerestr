@@ -1,5 +1,3 @@
-library(ripplerestr)
-library(testthat)
 context("Hash128")
 
 test_that("invalid hashes fail", {

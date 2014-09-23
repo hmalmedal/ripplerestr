@@ -1,5 +1,3 @@
-library(ripplerestr)
-library(testthat)
 context("ResourceId")
 
 test_that("256-bit hex strings fail", {

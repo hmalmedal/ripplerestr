@@ -1,5 +1,3 @@
-library(ripplerestr)
-library(testthat)
 context("RippleAddress")
 
 test_that("invalid addresses fail", {

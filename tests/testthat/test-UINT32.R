@@ -1,5 +1,3 @@
-library(ripplerestr)
-library(testthat)
 context("UINT32")
 
 test_that("negative integers fail", {

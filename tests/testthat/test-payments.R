@@ -1,6 +1,8 @@
-library(ripplerestr)
-library(testthat)
 context("payments")
+
+skip_unconnected <- function() {
+    if(!is_server_connected()) skip("Server is not connected.")
+}
 
 address <- RippleAddress("r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59")
 destination_account <- address
@@ -11,12 +13,12 @@ destination_amount <- Amount(value = value,
                              currency = currency,
                              issuer = issuer)
 
-Sys.sleep(1)
-result <- get_payment_paths(address = address,
-                            destination_account = destination_account,
-                            destination_amount = destination_amount)
-
-test_that("classes are correct", {
+test_that("paths are correct", {
+    skip_unconnected()
+    Sys.sleep(1)
+    result <- get_payment_paths(address = address,
+                                destination_account = destination_account,
+                                destination_amount = destination_amount)
     expect_that(result, is_a("Payment"))
     expect_that(result@source_account, is_a("RippleAddress"))
     expect_that(result@source_tag, is_a("UINT32"))
@@ -29,9 +31,6 @@ test_that("classes are correct", {
     expect_that(result@paths, is_a("character"))
     expect_that(result@partial_payment, is_a("logical"))
     expect_that(result@no_direct_ripple, is_a("logical"))
-})
-
-test_that("slot lengths are equal to object length", {
     n <- length(result)
     expect_that(n, equals(length(result@source_account)))
     expect_that(n, equals(length(result@source_tag)))
@@ -47,6 +46,7 @@ test_that("slot lengths are equal to object length", {
 })
 
 test_that("query parameters don't give errors", {
+    skip_unconnected()
     Sys.sleep(1)
     expect_that(get_payment_paths(address = address,
                                   destination_account = destination_account,
@@ -71,32 +71,27 @@ currency <- Currency("USD")
 destination_amount <- Amount(value = value,
                              currency = currency)
 
-Sys.sleep(1)
-paths <- get_payment_paths(address = address,
-                           destination_account = destination_account,
-                           destination_amount = destination_amount)
-payment <- paths[1]
-source_tag(payment) <- 2^32-1
-source_slippage(payment) <- 1
-destination_tag(payment) <- 2^31-1
-invoice_id(payment) <- "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
-partial_payment(payment) <- TRUE
-no_direct_ripple(payment) <- FALSE
-uuid <- generate_uuid()
-
-response <- submit_payment(payment = payment,
-                           secret = secret,
-                           client_resource_id = uuid)
-
-test_that("classes are correct", {
+test_that("payments are correct", {
+    skip_unconnected()
+    Sys.sleep(1)
+    paths <- get_payment_paths(address = address,
+                               destination_account = destination_account,
+                               destination_amount = destination_amount)
+    payment <- paths[1]
+    source_tag(payment) <- 2^32-1
+    source_slippage(payment) <- 1
+    destination_tag(payment) <- 2^31-1
+    invoice_id(payment) <- "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    partial_payment(payment) <- TRUE
+    no_direct_ripple(payment) <- FALSE
+    uuid <- generate_uuid()
+    response <- submit_payment(payment = payment,
+                               secret = secret,
+                               client_resource_id = uuid)
     expect_that(response, is_a("list"))
     expect_that(response$client_resource_id, is_a("character"))
     expect_that(response$status_url, is_a("character"))
-})
-
-status <- check_payment_status(status_url = response$status_url)
-
-test_that("classes are correct", {
+    status <- check_payment_status(status_url = response$status_url)
     expect_that(status, is_a("Payment"))
     expect_that(status@direction, is_a("character"))
     expect_that(status@state, is_a("character"))
@@ -112,6 +107,7 @@ test_that("classes are correct", {
 address <- RippleAddress("rJMNfiJTwXHcMdB4SpxMgL3mvV4xUVHDnd")
 
 test_that("classes are correct", {
+    skip_unconnected()
     result <- get_account_payments(address = address)
     expect_that(result, is_a("list"))
     expect_that(result[[1]], is_a("Payment"))
@@ -129,6 +125,7 @@ test_that("classes are correct", {
 account <- RippleAddress("rH3WTUovV1HKx4S5HZup4dUZEjeGnehL6X")
 
 test_that("query parameters don't give errors", {
+    skip_unconnected()
     expect_that(get_account_payments(address,
                                      source_account = account),
                 not(throws_error()))
@@ -155,6 +152,7 @@ test_that("invalid direction throws error", {
 })
 
 test_that("number of results per page is correct", {
+    skip_unconnected()
     expect_that(length(get_account_payments(address)), equals(10))
     expect_that(length(get_account_payments(address, results_per_page = 10)),
                 equals(10))

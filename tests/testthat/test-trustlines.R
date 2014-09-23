@@ -1,11 +1,14 @@
-library(ripplerestr)
-library(testthat)
 context("trustlines")
 
-root_account <- RippleAddress("rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh")
-result <- get_account_trustlines(root_account)
+skip_unconnected <- function() {
+    if(!is_server_connected()) skip("Server is not connected.")
+}
 
-test_that("classes are correct", {
+root_account <- RippleAddress("rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh")
+
+test_that("trustlines are correct", {
+    skip_unconnected()
+    result <- get_account_trustlines(root_account)
     expect_that(result, is_a("Trustline"))
     expect_that(result@account, is_a("RippleAddress"))
     expect_that(result@counterparty, is_a("RippleAddress"))
@@ -16,9 +19,6 @@ test_that("classes are correct", {
     expect_that(result@counterparty_allows_rippling, is_a("logical"))
     expect_that(result@ledger, is_a("numeric"))
     expect_that(result@hash, is_a("Hash256"))
-})
-
-test_that("slot lengths are equal to object length", {
     n <- length(result)
     expect_that(n, equals(length(result@account)))
     expect_that(n, equals(length(result@counterparty)))
@@ -32,6 +32,7 @@ test_that("slot lengths are equal to object length", {
 })
 
 test_that("query parameters don't give errors", {
+    skip_unconnected()
     expect_that(get_account_trustlines(root_account,
                                        currency = "USD",
                                        counterparty =
@@ -54,9 +55,10 @@ counterparty <- root_account
 amount <- Amount(value = limit,
                  currency = currency,
                  counterparty = counterparty)
-result <- set_account_trustline(address, secret, amount)
 
-test_that("classes are correct", {
+test_that("new trustlines are correct", {
+    skip_unconnected()
+    result <- set_account_trustline(address, secret, amount)
     expect_that(result, is_a("Trustline"))
     expect_that(result@account, is_a("RippleAddress"))
     expect_that(result@counterparty, is_a("RippleAddress"))
@@ -67,9 +69,6 @@ test_that("classes are correct", {
     expect_that(result@counterparty_allows_rippling, is_a("logical"))
     expect_that(result@ledger, is_a("numeric"))
     expect_that(result@hash, is_a("Hash256"))
-})
-
-test_that("object length and slot lengths are 1", {
     n <- 1
     expect_that(n, equals(length(result)))
     expect_that(n, equals(length(result@account)))

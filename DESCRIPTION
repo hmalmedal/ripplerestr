@@ -15,7 +15,7 @@ Imports:
     jsonlite (>= 0.9.8)
 Suggests:
     methods,
-    testthat
+    testthat (>= 0.9)
 URL: https://github.com/hmalmedal/ripplerestr
 BugReports: https://github.com/hmalmedal/ripplerestr/issues
 Encoding: UTF-8

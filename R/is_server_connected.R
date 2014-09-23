@@ -10,6 +10,8 @@
 #' @export
 is_server_connected <- function() {
     path <- "v1/server/connected"
-    req <- .GET(path)
-    .parse(req)$connected
+    tryCatch({
+        req <- .GET(path)
+        .parse(req)$connected
+    }, error = function(e) FALSE)
 }

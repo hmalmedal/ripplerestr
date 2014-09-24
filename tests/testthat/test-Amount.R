@@ -8,11 +8,11 @@ amount <- Amount(value = value,
                  issuer = issuer)
 
 test_that("classes are correct", {
-    expect_that(amount, is_a("Amount"))
-    expect_that(amount@value, is_a("numeric"))
-    expect_that(amount@currency, is_a("Currency"))
-    expect_that(amount@issuer, is_a("character"))
-    expect_that(amount@counterparty, is_a("character"))
+    expect_is(amount, "Amount")
+    expect_is(amount@value, "numeric")
+    expect_is(amount@currency, "Currency")
+    expect_is(amount@issuer, "character")
+    expect_is(amount@counterparty, "character")
 })
 
 values <- seq(-1, 1, length.out = 26)
@@ -23,38 +23,39 @@ amounts <- Amount(value = values, currency = currencies,
                   counterparty = rep.int(root_account, 26))
 
 test_that("lengths are correct", {
-    expect_that(length(amounts), equals(26))
-    expect_that(length(amounts@value), equals(26))
-    expect_that(length(amounts@currency), equals(26))
-    expect_that(length(amounts@issuer), equals(26))
-    expect_that(length(amounts@counterparty), equals(26))
+    expect_equal(length(amounts), 26)
+    expect_equal(length(amounts@value), 26)
+    expect_equal(length(amounts@currency), 26)
+    expect_equal(length(amounts@issuer), 26)
+    expect_equal(length(amounts@counterparty), 26)
 })
 
 test_that("addition results in numeric", {
-    expect_that(amounts + amounts, is_a("numeric"))
-    expect_that(amounts + 1, is_a("numeric"))
+    expect_is(amounts + amounts, "numeric")
+    expect_is(amounts + 1, "numeric")
 })
 
 test_that("wrong length gives warning", {
-    expect_that(amounts - 1:3, gives_warning())
+    expect_warning(amounts - 1:3,
+                   "longer object length is not a multiple of shorter object length")
 })
 
 test_that("f(amounts)@value = f(values)", {
-    expect_that(abs(amounts)@value, equals(abs(values)))
-    expect_that(asin(amounts)@value, equals(asin(values)))
+    expect_equal(abs(amounts)@value, abs(values))
+    expect_equal(asin(amounts)@value, asin(values))
 })
 
 test_that("summary values are correct", {
-    expect_that(max(amounts), equals(max(values)))
-    expect_that(min(amounts), equals(min(values)))
-    expect_that(range(amounts), equals(range(values)))
-    expect_that(prod(amounts), equals(prod(values)))
-    expect_that(sum(amounts), equals(sum(values)))
+    expect_equal(max(amounts), max(values))
+    expect_equal(min(amounts), min(values))
+    expect_equal(range(amounts), range(values))
+    expect_equal(prod(amounts), prod(values))
+    expect_equal(sum(amounts), sum(values))
 })
 
 b <- as(amounts, "Balance")
 
 test_that("different classes can be added", {
-    expect_that(amounts + b, is_a("numeric"))
-    expect_that(b + amounts, is_a("numeric"))
+    expect_is(amounts + b, "numeric")
+    expect_is(b + amounts, "numeric")
 })

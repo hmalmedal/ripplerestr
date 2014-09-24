@@ -22,76 +22,59 @@ payments <- Payment(source_account = RippleAddress(two),
                     no_direct_ripple = TF)
 
 test_that("wrong lengths throw errors", {
-    expect_that(get_account_balances(two), throws_error("string"))
-    expect_that(get_account_balances(one, cur), throws_error("string"))
-    expect_that(get_account_balances(one,, two), throws_error("string"))
-    expect_that(get_account_settings(two), throws_error("string"))
-    expect_that(change_account_settings(two), throws_error("string"))
-    expect_that(change_account_settings(one, two), throws_error("string"))
-    expect_that(change_account_settings(one, one,
-                                        transfer_rate = 1:2),
-                throws_error("number"))
-    expect_that(change_account_settings(one, one,
-                                        domain = cur), throws_error("string"))
-    expect_that(change_account_settings(one, one,
-                                        message_key = cur),
-                throws_error("string"))
-    expect_that(change_account_settings(one, one,
-                                        email_hash = hash2),
-                throws_error("string"))
-    expect_that(change_account_settings(one, one,
-                                        disallow_xrp = TF),
-                throws_error("flag"))
-    expect_that(change_account_settings(one, one,
-                                        require_authorization = TF),
-                throws_error("flag"))
-    expect_that(change_account_settings(one, one,
-                                        require_destination_tag = TF),
-                throws_error("flag"))
-    expect_that(change_account_settings(one, one,
-                                        password_spent = TF),
-                throws_error("flag"))
-    expect_that(get_notification(two), throws_error("string"))
-    expect_that(get_notification(one, hash4), throws_error("string"))
-    expect_that(get_payment_paths(two), throws_error("string"))
-    expect_that(get_payment_paths(one, two), throws_error("string"))
-    expect_that(get_payment_paths(one, one, amounts), throws_error("scalar"))
-    expect_that(get_payment_paths(one, one,, 1:2), throws_error("number"))
-    expect_that(get_payment_paths(one, one,, 1, cur), throws_error("string"))
-    expect_that(get_payment_paths(one, one,, 1, "USD", two),
-                throws_error("string"))
-    expect_that(get_payment_paths(one, one, amounts[1],
-                                  source_currencies = cur),
-                throws_error("string"))
-    expect_that(submit_payment(payments), throws_error("scalar"))
-    expect_that(submit_payment(payments[1], two), throws_error("string"))
-    expect_that(submit_payment(payments[1], one, cur), throws_error("string"))
-    expect_that(check_payment_status(two), throws_error("string"))
-    expect_that(check_payment_status(, two), throws_error("string"))
-    expect_that(check_payment_status(, one, two), throws_error("string"))
-    expect_that(check_payment_status(, one,, hash4), throws_error("string"))
-    expect_that(get_account_payments(two), throws_error("string"))
-    expect_that(get_account_payments(one, two), throws_error("string"))
-    expect_that(get_account_payments(one,, two), throws_error("string"))
-    expect_that(get_account_payments(one,,, TF), throws_error("flag"))
-    expect_that(get_account_payments(one,,,, cur), throws_error("string"))
-    expect_that(get_account_payments(one,,,,, TF), throws_error("flag"))
-    expect_that(get_account_payments(one,,,,,, 1:2), throws_error("count"))
-    expect_that(get_account_payments(one,,,,,,, 1:2), throws_error("count"))
-    expect_that(get_account_payments(one,,,,,,,, 1:2), throws_error("count"))
-    expect_that(get_account_payments(one,,,,,,,,, 1:2), throws_error("count"))
-    expect_that(get_account_trustlines(two), throws_error("string"))
-    expect_that(get_account_trustlines(one, cur), throws_error("string"))
-    expect_that(get_account_trustlines(one,, two), throws_error("string"))
-    expect_that(set_account_trustline(two), throws_error("string"))
-    expect_that(set_account_trustline(one, two), throws_error("string"))
-    expect_that(set_account_trustline(one, one, amounts),
-                throws_error("scalar"))
-    expect_that(set_account_trustline(one, one, amounts[1], TF),
-                throws_error("flag"))
-    expect_that(set_account_trustline(one, one,,, 1:2),
-                throws_error("number"))
-    expect_that(set_account_trustline(one, one,,, 1, "USD", two),
-                throws_error("string"))
-    expect_that(get_transaction(hash4), throws_error("string"))
+    expect_error(get_account_balances(two), "string")
+    expect_error(get_account_balances(one, cur), "string")
+    expect_error(get_account_balances(one,, two), "string")
+    expect_error(get_account_settings(two), "string")
+    expect_error(change_account_settings(two), "string")
+    expect_error(change_account_settings(one, two), "string")
+    expect_error(change_account_settings(one, one, transfer_rate = 1:2),
+                 "number")
+    expect_error(change_account_settings(one, one, domain = cur), "string")
+    expect_error(change_account_settings(one, one, message_key = cur), "string")
+    expect_error(change_account_settings(one, one, email_hash = hash2),
+                 "string")
+    expect_error(change_account_settings(one, one, disallow_xrp = TF), "flag")
+    expect_error(change_account_settings(one, one, require_authorization = TF),
+                 "flag")
+    expect_error(change_account_settings(one, one,
+                                         require_destination_tag = TF), "flag")
+    expect_error(change_account_settings(one, one, password_spent = TF), "flag")
+    expect_error(get_notification(two), "string")
+    expect_error(get_notification(one, hash4), "string")
+    expect_error(get_payment_paths(two), "string")
+    expect_error(get_payment_paths(one, two), "string")
+    expect_error(get_payment_paths(one, one, amounts), "scalar")
+    expect_error(get_payment_paths(one, one,, 1:2), "number")
+    expect_error(get_payment_paths(one, one,, 1, cur), "string")
+    expect_error(get_payment_paths(one, one,, 1, "USD", two), "string")
+    expect_error(get_payment_paths(one, one, amounts[1],
+                                   source_currencies = cur), "string")
+    expect_error(submit_payment(payments), "scalar")
+    expect_error(submit_payment(payments[1], two), "string")
+    expect_error(submit_payment(payments[1], one, cur), "string")
+    expect_error(check_payment_status(two), "string")
+    expect_error(check_payment_status(, two), "string")
+    expect_error(check_payment_status(, one, two), "string")
+    expect_error(check_payment_status(, one,, hash4), "string")
+    expect_error(get_account_payments(two), "string")
+    expect_error(get_account_payments(one, two), "string")
+    expect_error(get_account_payments(one,, two), "string")
+    expect_error(get_account_payments(one,,, TF), "flag")
+    expect_error(get_account_payments(one,,,, cur), "string")
+    expect_error(get_account_payments(one,,,,, TF), "flag")
+    expect_error(get_account_payments(one,,,,,, 1:2), "count")
+    expect_error(get_account_payments(one,,,,,,, 1:2), "count")
+    expect_error(get_account_payments(one,,,,,,,, 1:2), "count")
+    expect_error(get_account_payments(one,,,,,,,,, 1:2), "count")
+    expect_error(get_account_trustlines(two), "string")
+    expect_error(get_account_trustlines(one, cur), "string")
+    expect_error(get_account_trustlines(one,, two), "string")
+    expect_error(set_account_trustline(two), "string")
+    expect_error(set_account_trustline(one, two), "string")
+    expect_error(set_account_trustline(one, one, amounts), "scalar")
+    expect_error(set_account_trustline(one, one, amounts[1], TF), "flag")
+    expect_error(set_account_trustline(one, one,,, 1:2), "number")
+    expect_error(set_account_trustline(one, one,,, 1, "USD", two), "string")
+    expect_error(get_transaction(hash4), "string")
 })

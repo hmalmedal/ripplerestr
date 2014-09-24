@@ -6,45 +6,33 @@ skip_unconnected <- function() {
 
 root_account <- RippleAddress("rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh")
 
-test_that("trustlines are correct", {
+test_that("get_account_trustlines", {
     skip_unconnected()
-    result <- get_account_trustlines(root_account)
-    expect_that(result, is_a("Trustline"))
-    expect_that(result@account, is_a("RippleAddress"))
-    expect_that(result@counterparty, is_a("RippleAddress"))
-    expect_that(result@currency, is_a("Currency"))
-    expect_that(result@limit, is_a("numeric"))
-    expect_that(result@reciprocated_limit, is_a("numeric"))
-    expect_that(result@account_allows_rippling, is_a("logical"))
-    expect_that(result@counterparty_allows_rippling, is_a("logical"))
-    expect_that(result@ledger, is_a("numeric"))
-    expect_that(result@hash, is_a("Hash256"))
-    n <- length(result)
-    expect_that(n, equals(length(result@account)))
-    expect_that(n, equals(length(result@counterparty)))
-    expect_that(n, equals(length(result@currency)))
-    expect_that(n, equals(length(result@limit)))
-    expect_that(n, equals(length(result@reciprocated_limit)))
-    expect_that(n, equals(length(result@account_allows_rippling)))
-    expect_that(n, equals(length(result@counterparty_allows_rippling)))
-    expect_that(n, equals(length(result@ledger)))
-    expect_that(n, equals(length(result@hash)))
-})
 
-test_that("query parameters don't give errors", {
-    skip_unconnected()
-    expect_that(get_account_trustlines(root_account,
-                                       currency = "USD",
-                                       counterparty =
-                                           "rJMNfiJTwXHcMdB4SpxMgL3mvV4xUVHDnd"),
-                not(throws_error()))
-    expect_that(get_account_trustlines(root_account,
-                                       currency = "USD"),
-                not(throws_error()))
-    expect_that(get_account_trustlines(root_account,
-                                       counterparty =
-                                           "rJMNfiJTwXHcMdB4SpxMgL3mvV4xUVHDnd"),
-                not(throws_error()))
+    result <- get_account_trustlines(root_account)
+
+    expect_is(result, "Trustline")
+    expect_is(result@account, "RippleAddress")
+    expect_is(result@counterparty, "RippleAddress")
+    expect_is(result@currency, "Currency")
+    expect_is(result@limit, "numeric")
+    expect_is(result@reciprocated_limit, "numeric")
+    expect_is(result@account_allows_rippling, "logical")
+    expect_is(result@counterparty_allows_rippling, "logical")
+    expect_is(result@ledger, "numeric")
+    expect_is(result@hash, "Hash256")
+
+    n <- length(result)
+
+    expect_equal(n, length(result@account))
+    expect_equal(n, length(result@counterparty))
+    expect_equal(n, length(result@currency))
+    expect_equal(n, length(result@limit))
+    expect_equal(n, length(result@reciprocated_limit))
+    expect_equal(n, length(result@account_allows_rippling))
+    expect_equal(n, length(result@counterparty_allows_rippling))
+    expect_equal(n, length(result@ledger))
+    expect_equal(n, length(result@hash))
 })
 
 address <- "rJMNfiJTwXHcMdB4SpxMgL3mvV4xUVHDnd"
@@ -56,28 +44,32 @@ amount <- Amount(value = limit,
                  currency = currency,
                  counterparty = counterparty)
 
-test_that("new trustlines are correct", {
+test_that("set_account_trustline", {
     skip_unconnected()
+
     result <- set_account_trustline(address, secret, amount)
-    expect_that(result, is_a("Trustline"))
-    expect_that(result@account, is_a("RippleAddress"))
-    expect_that(result@counterparty, is_a("RippleAddress"))
-    expect_that(result@currency, is_a("Currency"))
-    expect_that(result@limit, is_a("numeric"))
-    expect_that(result@reciprocated_limit, is_a("numeric"))
-    expect_that(result@account_allows_rippling, is_a("logical"))
-    expect_that(result@counterparty_allows_rippling, is_a("logical"))
-    expect_that(result@ledger, is_a("numeric"))
-    expect_that(result@hash, is_a("Hash256"))
+
+    expect_is(result, "Trustline")
+    expect_is(result@account, "RippleAddress")
+    expect_is(result@counterparty, "RippleAddress")
+    expect_is(result@currency, "Currency")
+    expect_is(result@limit, "numeric")
+    expect_is(result@reciprocated_limit, "numeric")
+    expect_is(result@account_allows_rippling, "logical")
+    expect_is(result@counterparty_allows_rippling, "logical")
+    expect_is(result@ledger, "numeric")
+    expect_is(result@hash, "Hash256")
+
     n <- 1
-    expect_that(n, equals(length(result)))
-    expect_that(n, equals(length(result@account)))
-    expect_that(n, equals(length(result@counterparty)))
-    expect_that(n, equals(length(result@currency)))
-    expect_that(n, equals(length(result@limit)))
-    expect_that(n, equals(length(result@reciprocated_limit)))
-    expect_that(n, equals(length(result@account_allows_rippling)))
-    expect_that(n, equals(length(result@counterparty_allows_rippling)))
-    expect_that(n, equals(length(result@ledger)))
-    expect_that(n, equals(length(result@hash)))
+
+    expect_equal(n, length(result))
+    expect_equal(n, length(result@account))
+    expect_equal(n, length(result@counterparty))
+    expect_equal(n, length(result@currency))
+    expect_equal(n, length(result@limit))
+    expect_equal(n, length(result@reciprocated_limit))
+    expect_equal(n, length(result@account_allows_rippling))
+    expect_equal(n, length(result@counterparty_allows_rippling))
+    expect_equal(n, length(result@ledger))
+    expect_equal(n, length(result@hash))
 })

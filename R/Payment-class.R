@@ -115,10 +115,10 @@ validPaymentObject <- function(object) {
     if (!all(grepl("^incoming|outgoing|passthrough$",
                    object@direction)))
         return("Invalid direction")
-    if (!all(grepl("^validated|failed|new$",
+    if (!all(grepl("^validated|failed|new|$",
                    object@state)))
         return("Invalid state")
-    if (!all(grepl("te[cfjlms][A-Za-z_]+",
+    if (!all(grepl("^$|te[cfjlms][A-Za-z_]+",
                    object@result)))
         return("Invalid result")
     validate_that(all(object@source_slippage >= 0))

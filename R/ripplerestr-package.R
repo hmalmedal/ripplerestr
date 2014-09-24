@@ -9,7 +9,10 @@
 #' setting the option \code{"ripplerestr.url"}.
 #'
 #' @examples
-#' options("ripplerestr.url" = "http://example.com/")
+#' options("ripplerestr.url" = "https://api.ripple.com/")
+#' # Avoid certificate issues
+#' library(httr)
+#' set_config(config(ssl.verifypeer = FALSE))
 #'
 #' @name ripplerestr-package
 #' @aliases ripplerestr

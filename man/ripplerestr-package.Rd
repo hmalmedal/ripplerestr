@@ -15,6 +15,9 @@ The default url is \code{http://localhost:5990/}. You can change it by
 setting the option \code{"ripplerestr.url"}.
 }
 \examples{
-options("ripplerestr.url" = "http://example.com/")
+options("ripplerestr.url" = "https://api.ripple.com/")
+# Avoid certificate issues
+library(httr)
+set_config(config(ssl.verifypeer = FALSE))
 }
 

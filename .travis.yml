@@ -3,13 +3,6 @@
 language: c
 
 before_install:
-  - cd inst/
-  - git clone -b master --depth 1 https://github.com/ripple/ripple-rest.git
-  - cd ripple-rest/
-  - npm install
-  - sed '6,10d' config-example.json > config.json
-  - node server.js &
-  - cd ../../
   - curl -OL http://raw.github.com/craigcitro/r-travis/master/scripts/travis-tool.sh
   - chmod 755 ./travis-tool.sh
   - ./travis-tool.sh bootstrap

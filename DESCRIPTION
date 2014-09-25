@@ -9,8 +9,8 @@ Description: This is a client that interacts with the Ripple network using the
     Ripple REST APIs.
 License: file LICENSE
 Imports:
-    httr,
-    lubridate,
+    httr (>= 0.3),
+    lubridate (>= 1.2.0),
     assertthat,
     jsonlite (>= 0.9.8)
 Suggests:

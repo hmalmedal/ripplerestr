@@ -45,6 +45,7 @@ Collate:
     'destination_balance_changes-methods.R'
     'destination_tag-methods.R'
     'extract-methods.R'
+    'generate_account.R'
     'generate_uuid.R'
     'get_account_balances.R'
     'get_account_payments.R'

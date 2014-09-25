@@ -114,3 +114,12 @@ test_that("account settings are correct", {
     expect_false(result@require_authorization)
     expect_true(result@require_destination_tag)
 })
+
+test_that("generate_account", {
+    skip_unconnected()
+
+    result <- generate_account()
+
+    expect_is(result, "list")
+    expect_equal(length(result), 2)
+})

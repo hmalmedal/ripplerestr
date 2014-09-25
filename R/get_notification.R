@@ -57,7 +57,7 @@ get_notification <- function(address, hash, notification_url) {
     result <- notification$result
     ledger <- as.numeric(notification$ledger)
     hash <- Hash256(notification$hash)
-    timestamp <- ymd_hms(notification$timestamp)
+    timestamp <- ymd_hms(notification$timestamp, quiet = TRUE)
     transaction_url <- notification$transaction_url
     previous_notification_url <- notification$previous_notification_url
     next_notification_url <- notification$next_notification_url

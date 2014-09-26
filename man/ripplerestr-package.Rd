@@ -3,12 +3,12 @@
 \name{ripplerestr-package}
 \alias{ripplerestr}
 \alias{ripplerestr-package}
-\title{Ripple REST Client for R}
+\title{Ripple-REST Client for R}
 \description{
-The \href{https://dev.ripple.com/ripple-rest.html}{\code{ripple-rest}} API
-makes it easy to access the Ripple system via a RESTful web interface. The \R
-package \pkg{ripplerestr} uses the \pkg{\link{httr}} package to communicate
-with \code{ripple-rest}.
+The \href{https://dev.ripple.com/ripple-rest.html}{Ripple-REST} API provides
+a simplified, easy-to-use interface to the Ripple Network via a RESTful API.
+The \R package \pkg{ripplerestr} uses the \pkg{\link[httr]{httr}} package to
+communicate with Ripple-REST.
 }
 \details{
 The default url is \code{http://localhost:5990/}. You can change it by

@@ -8,7 +8,7 @@
 #' queue. Once the \code{next_notification_url} is empty that means you have the
 #' most current notification, this applies for the
 #' \code{previous_notification_url} similarly when it's empty as it means you
-#' are holding the earliest notification available on the rippled you are
+#' are holding the earliest notification available on the \code{rippled} you are
 #' connecting to.
 #'
 #' @param address The Ripple address of the desired account. Ignored if

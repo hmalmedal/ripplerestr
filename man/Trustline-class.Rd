@@ -5,7 +5,7 @@
 \alias{Trustline-class}
 \title{Trustline class}
 \description{
-A simplified Trustline object used by the \code{ripple-rest} API.
+A simplified Trustline object used by the Ripple-REST API.
 }
 \details{
 All slot lengths must be equal.

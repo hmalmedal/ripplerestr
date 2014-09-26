@@ -1,6 +1,6 @@
 #' Amount class
 #'
-#' An Amount on the Ripple Protocol, used also for XRP in the ripple-rest API.
+#' An Amount on the Ripple Protocol, used also for XRP in the Ripple-REST API.
 #'
 #' Each element of the slots \code{issuer} and \code{counterparty} must match
 #' the regular expression \code{"^$|^r[1-9A-HJ-NP-Za-km-z]{25,33}$"}.

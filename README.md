@@ -1,25 +1,25 @@
 ripplerestr
 ===========
 
-Use **R** with the [`ripple-rest`](https://dev.ripple.com/ripple-rest.html) API.
+Use **R** with the [Ripple-REST](https://dev.ripple.com/ripple-rest.html) API.
 
 Introduction
 ------------
 
 [Ripple](https://ripple.com/) is an Internet protocol for making financial transactions.
 
-The [`ripple-rest`](https://dev.ripple.com/ripple-rest.html) API makes it easy to access the Ripple system via a RESTful web interface.
+The [Ripple-REST](https://dev.ripple.com/ripple-rest.html) API provides a simplified, easy-to-use interface to the Ripple Network via a RESTful API.
 
-The **R** package [`ripplerestr`](https://github.com/hmalmedal/ripplerestr) uses the [`httr`](https://github.com/hadley/httr) library to communicate with `ripple-rest`.
+The **R** package [`ripplerestr`](https://github.com/hmalmedal/ripplerestr) uses the [`httr`](https://github.com/hadley/httr) package to communicate with Ripple-REST.
 
 Prerequisites
 -------------
 
-Before you can use the `ripple-rest` API, you will need to have three things:
+Before you can use the Ripple-REST API, you will need to have three things:
 
- * An installed version of `ripple-rest` running locally or remotely. Instructions on installing `ripple-rest` can be found in the README.md file in the [Github repository](https://github.com/ripple/ripple-rest).
+ * An installed version of Ripple-REST running locally or remotely. Instructions on installing Ripple-REST can be found in the README.md file in the [Github repository](https://github.com/ripple/ripple-rest).
  * An activated Ripple account.
- * The URL of the server running the `ripple-rest` API that you wish to use.
+ * The URL of the server running the Ripple-REST API that you wish to use.
 
 Installation
 ------------

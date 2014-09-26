@@ -9,7 +9,7 @@ is_server_connected()
 \code{TRUE} or \code{FALSE}
 }
 \description{
-Checks to see if the \code{ripple-rest} API is currently connected to a
+Checks to see if the Ripple-REST API is currently connected to a
 \code{rippled} server, and is ready to be used. This provides a quick and
 easy way to check to see if the API is up and running, before attempting to
 process transactions.

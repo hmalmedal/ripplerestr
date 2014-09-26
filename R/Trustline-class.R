@@ -1,6 +1,6 @@
 #' Trustline class
 #'
-#' A simplified Trustline object used by the \code{ripple-rest} API.
+#' A simplified Trustline object used by the Ripple-REST API.
 #'
 #' All slot lengths must be equal.
 #'

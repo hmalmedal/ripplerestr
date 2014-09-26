@@ -28,8 +28,8 @@ values are \code{"incoming"}, \code{"outgoing"}, and \code{"passthrough"}.}
 from the perspective of the Ripple Ledger. Possible values are
 \code{"validated"} and \code{"failed"}.}
 
-\item{\code{result}}{Object of class \code{"character"}. The rippled code indicating
-the success or failure type of the transaction. The code
+\item{\code{result}}{Object of class \code{"character"}. The \code{rippled} code
+indicating the success or failure type of the transaction. The code
 \code{"tesSUCCESS"} indicates that the transaction was successfully
 validated and written into the Ripple Ledger. All other codes will begin
 with the following prefixes: \code{"tec"}, \code{"tef"}, \code{"tel"}, or
@@ -38,7 +38,7 @@ with the following prefixes: \code{"tec"}, \code{"tef"}, \code{"tel"}, or
 \item{\code{ledger}}{Object of class \code{"numeric"}. The index number of the ledger
 containing the validated or failed transaction. Failed payments will only
 be written into the Ripple Ledger if they fail after submission to a
-rippled and a Ripple Network fee is claimed.}
+\code{rippled} and a Ripple Network fee is claimed.}
 
 \item{\code{hash}}{Object of class \code{"\link{Hash256}"}. The 256-bit hash of the
 transaction. This is used throughout the Ripple protocol as the unique

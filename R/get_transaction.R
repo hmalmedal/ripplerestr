@@ -1,10 +1,10 @@
 #' Retrieve Ripple Transaction
 #'
-#' While the \code{ripple-rest} API is a high-level API built on top of the
+#' While the Ripple-REST API is a high-level API built on top of the
 #' \code{rippled} server, there are times when you may need to access an
-#' underlying Ripple transaction rather than dealing with the \code{ripple-rest}
-#' data format. When you need to do this, you can retrieve a transaction with
-#' this function.
+#' underlying Ripple transaction rather than dealing with the Ripple-REST data
+#' format. When you need to do this, you can retrieve a transaction with this
+#' function.
 #'
 #' @param hash Transaction hash
 #'

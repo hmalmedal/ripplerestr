@@ -53,7 +53,7 @@ get_account_trustlines <- function(address, currency, counterparty) {
 
     reciprocated_limit <- sapply(trustlines, getElement, "reciprocated_limit")
 
-    # Check for bug in old version of ripple-rest.
+    # Check for bug in old version of Ripple-REST.
     if (is.null(reciprocated_limit[[1]]))
         reciprocated_limit <- sapply(trustlines, getElement,
                                      "reciprocated__limit")

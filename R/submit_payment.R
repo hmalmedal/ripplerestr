@@ -7,9 +7,9 @@
 #' @param secret The secret or private key for your Ripple account.
 #' @param client_resource_id Will uniquely identify this payment. This is a
 #'   36-character UUID (universally unique identifier) value which will uniquely
-#'   identify this payment within the \code{ripple-rest} API. Note that you can
-#'   use \code{\link{generate_uuid}} to calculate a UUID value if you do not
-#'   have a UUID generator readily available.
+#'   identify this payment within the Ripple-REST API. Note that you can use
+#'   \code{\link{generate_uuid}} to calculate a UUID value if you do not have a
+#'   UUID generator readily available.
 #'
 #' @return A named list. The first element is the \code{"client_resource_id"}
 #'   you gave. The second element is named \code{"status_url"} and can be used

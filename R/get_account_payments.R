@@ -8,10 +8,9 @@
 #' are no more pages of results to be returned. Otherwise, increment the page
 #' number and re-issue the query to get the next page of results.
 #'
-#' Note that the \code{ripple-rest} API has to retrieve the full list of
-#' payments from the server and then filter them before returning them back to
-#' the caller. This means that there is no speed advantage to specifying more
-#' filter values.
+#' Note that the Ripple-REST API has to retrieve the full list of payments from
+#' the server and then filter them before returning them back to the caller.
+#' This means that there is no speed advantage to specifying more filter values.
 #'
 #' @param address The Ripple address of the desired account
 #' @param source_account Filter the results to only include payments sent by the

@@ -1,6 +1,6 @@
 #' Payment class
 #'
-#' A flattened Payment object used by the ripple-rest API.
+#' A flattened Payment object used by the Ripple-REST API.
 #'
 #' All of the 11 first slot lengths must be equal.
 #'
@@ -51,15 +51,16 @@
 #'   the perspective of the Ripple Ledger. Possible values are
 #'   \code{"validated"} and \code{"failed"} and \code{"new"} if the payment has
 #'   not been submitted yet.
-#' @slot result Object of class \code{"character"}. The rippled code indicating
-#'   the success or failure type of the payment. The code \code{"tesSUCCESS"}
-#'   indicates that the payment was successfully validated and written into the
-#'   Ripple Ledger. All other codes will begin with the following prefixes:
-#'   \code{"tec"}, \code{"tef"}, \code{"tel"}, or \code{"tej"}.
+#' @slot result Object of class \code{"character"}. The \code{rippled} code
+#'   indicating the success or failure type of the payment. The code
+#'   \code{"tesSUCCESS"} indicates that the payment was successfully validated
+#'   and written into the Ripple Ledger. All other codes will begin with the
+#'   following prefixes: \code{"tec"}, \code{"tef"}, \code{"tel"}, or
+#'   \code{"tej"}.
 #' @slot ledger Object of class \code{"numeric"}. The index number of the ledger
 #'   containing the validated or failed payment. Failed payments will only be
-#'   written into the Ripple Ledger if they fail after submission to a rippled
-#'   and a Ripple Network fee is claimed.
+#'   written into the Ripple Ledger if they fail after submission to a
+#'   \code{rippled} and a Ripple Network fee is claimed.
 #' @slot hash Object of class \code{"\link{Hash256}"}. The 256-bit hash of the
 #'   payment. This is used throughout the Ripple protocol as the unique
 #'   identifier for the transaction.

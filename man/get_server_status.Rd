@@ -9,7 +9,7 @@ get_server_status()
 A list of lists
 }
 \description{
-Retrieve information about the current status of the \code{ripple-rest} API
-and the \code{rippled} server it is connected to.
+Retrieve information about the current status of the Ripple-REST API and the
+\code{rippled} server it is connected to.
 }
 

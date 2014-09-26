@@ -1,7 +1,7 @@
 #' Get Server Status
 #'
-#' Retrieve information about the current status of the \code{ripple-rest} API
-#' and the \code{rippled} server it is connected to.
+#' Retrieve information about the current status of the Ripple-REST API and the
+#' \code{rippled} server it is connected to.
 #'
 #' @return A list of lists
 #'

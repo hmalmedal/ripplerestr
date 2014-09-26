@@ -1,10 +1,10 @@
-#' Preparing a Payment
+#' Prepare Payment
 #'
-#' To prepare a payment, you first make a call to this endpoint. This will
-#' generate a list of possible payments between the two parties for the desired
-#' amount, taking into account the established trustlines between the two
-#' parties for the currency being transferred. You can then choose one of the
-#' returned payments, modify it if necessary (for example, to set slippage
+#' Before you make a payment, it is necessary to figure out the possible ways in
+#' which that payment can be made. This method gets a list of possible ways to
+#' make a payment, but it does not affect the network: consider it like getting
+#' quotes before actually making the payment. You can then choose one of the
+#' returned payment objects, modify it as desired (for example, to set slippage
 #' values or tags), and then submit the payment for processing.
 #'
 #' @param address The Ripple address for the source account.

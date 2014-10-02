@@ -19,13 +19,3 @@ notifications:
   email:
     on_success: change
     on_failure: change
-
-env:
-  global:
-    - GH_REF: hmalmedal/ripplerestr
-    - secure: "Hef+oNZBUsviJCBebRw+2sAvJ0dW5rxP8aoZmsmqDRf9tqjlVEJgweHyVzolE2Dm0Xx+Veh1QrSO9qCOb17TM2iS1BihRxgNdbixQ0JLQnh/iZK6ZCU3sTM6e2Tl4BHARVdevf9OfpquhisDl3OXGxLVaKSwuvpYvpk9R86K1N0="
-
-after_success:
-  - ./travis-tool.sh install_github hadley/staticdocs
-  - R -e "staticdocs::build_site()"
-  - ./inst/staticdocs/gh_pages.sh

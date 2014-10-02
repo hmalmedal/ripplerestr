@@ -1,6 +1,8 @@
 ripplerestr
 ===========
 
+[![Build Status](https://travis-ci.org/hmalmedal/ripplerestr.png?branch=master)](https://travis-ci.org/hmalmedal/ripplerestr)
+
 Use **R** with the [Ripple-REST](https://dev.ripple.com/ripple-rest.html) API.
 
 Introduction

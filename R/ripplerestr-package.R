@@ -1,7 +1,7 @@
 #' Ripple-REST Client for R
 #'
-#' The \href{https://dev.ripple.com/ripple-rest.html}{Ripple-REST} API provides
-#' a simplified, easy-to-use interface to the Ripple Network via a RESTful API.
+#' The \href{https://ripple.com/build/ripple-rest/}{Ripple-REST} API provides a
+#' simplified, easy-to-use interface to the Ripple Network via a RESTful API.
 #' The \R package \pkg{ripplerestr} uses the \pkg{\link[httr]{httr}} package to
 #' communicate with Ripple-REST.
 #'

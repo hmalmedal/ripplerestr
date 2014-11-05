@@ -3,14 +3,14 @@ ripplerestr
 
 [![Build Status](https://travis-ci.org/hmalmedal/ripplerestr.png?branch=master)](https://travis-ci.org/hmalmedal/ripplerestr)
 
-Use **R** with the [Ripple-REST](https://dev.ripple.com/ripple-rest.html) API.
+Use **R** with the [Ripple-REST](https://ripple.com/build/ripple-rest/) API.
 
 Introduction
 ------------
 
 [Ripple](https://ripple.com/) is an Internet protocol for making financial transactions.
 
-The [Ripple-REST](https://dev.ripple.com/ripple-rest.html) API provides a simplified, easy-to-use interface to the Ripple Network via a RESTful API.
+The [Ripple-REST](https://ripple.com/build/ripple-rest/) API provides a simplified, easy-to-use interface to the Ripple Network via a RESTful API.
 
 The **R** package [`ripplerestr`](https://github.com/hmalmedal/ripplerestr) uses the [`httr`](https://github.com/hadley/httr) package to communicate with Ripple-REST.
 
